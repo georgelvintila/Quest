@@ -6,21 +6,17 @@
 //  Copyright (c) 2015 Stefanini. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "QuestLoginViewController.h"
 
-@interface ViewController ()
+@interface QuestLoginViewController ()
 
 @property (nonatomic,strong) PFLogInViewController *loginViewController;
 @end
 
-@implementation ViewController
+@implementation QuestLoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.loginViewController = [[PFLogInViewController alloc] init];
-    self.loginViewController.fields = (PFLogInFieldsDefault | PFLogInFieldsFacebook);
-    self.loginViewController.view.backgroundColor = [UIColor lightGrayColor];
-    [self presentViewController:self.loginViewController animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
