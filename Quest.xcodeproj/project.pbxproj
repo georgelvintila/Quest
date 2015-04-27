@@ -31,6 +31,8 @@
 		E1D705501AEA83C900525E19 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D7054C1AEA83C900525E19 /* ParseFacebookUtils.framework */; };
 		E1D705511AEA83C900525E19 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D7054D1AEA83C900525E19 /* ParseFacebookUtilsV4.framework */; };
 		E1D705521AEA83C900525E19 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D7054E1AEA83C900525E19 /* ParseUI.framework */; };
+		E1D8FAAD1AEE493C00F78777 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D8FAAC1AEE493C00F78777 /* Accounts.framework */; };
+		E1D8FAAF1AEE494500F78777 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D8FAAE1AEE494500F78777 /* Social.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,9 @@
 		E1D7054C1AEA83C900525E19 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		E1D7054D1AEA83C900525E19 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		E1D7054E1AEA83C900525E19 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		E1D8FAAC1AEE493C00F78777 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		E1D8FAAE1AEE494500F78777 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		E1D8FAB01AEE4AC800F78777 /* QuestPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestPrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +86,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1D8FAAF1AEE494500F78777 /* Social.framework in Frameworks */,
+				E1D8FAAD1AEE493C00F78777 /* Accounts.framework in Frameworks */,
 				E1D7054A1AEA7E2C00525E19 /* libsqlite3.dylib in Frameworks */,
 				E1D705481AEA7E1E00525E19 /* libz.dylib in Frameworks */,
 				E1D705461AEA7E0E00525E19 /* SystemConfiguration.framework in Frameworks */,
@@ -148,6 +155,7 @@
 		E1D705051AEA7B8900525E19 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E1D8FAB01AEE4AC800F78777 /* QuestPrefixHeader.pch */,
 				E1D705061AEA7B8900525E19 /* Info.plist */,
 				E1D705071AEA7B8900525E19 /* main.m */,
 			);
@@ -174,6 +182,8 @@
 		E1D7052B1AEA7C9E00525E19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1D8FAAE1AEE494500F78777 /* Social.framework */,
+				E1D8FAAC1AEE493C00F78777 /* Accounts.framework */,
 				E1D705491AEA7E2C00525E19 /* libsqlite3.dylib */,
 				E1D705471AEA7E1E00525E19 /* libz.dylib */,
 				E1D705451AEA7E0E00525E19 /* SystemConfiguration.framework */,
@@ -364,6 +374,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -407,6 +418,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -429,6 +441,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Quest",
 				);
+				GCC_PREFIX_HEADER = Quest/QuestPrefixHeader.pch;
 				INFOPLIST_FILE = Quest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -443,6 +456,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Quest",
 				);
+				GCC_PREFIX_HEADER = Quest/QuestPrefixHeader.pch;
 				INFOPLIST_FILE = Quest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

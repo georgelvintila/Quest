@@ -7,15 +7,20 @@
 //
 
 #import "ViewController.h"
-#import <Parse/Parse.h>
 
 @interface ViewController ()
+
+@property (nonatomic,strong) PFLogInViewController *loginViewController;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.loginViewController = [[PFLogInViewController alloc] init];
+    self.loginViewController.fields = (PFLogInFieldsDefault | PFLogInFieldsFacebook);
+    self.loginViewController.view.backgroundColor = [UIColor lightGrayColor];
+    [self presentViewController:self.loginViewController animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
