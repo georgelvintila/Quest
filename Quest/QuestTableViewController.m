@@ -101,4 +101,27 @@
 }
 */
 
+- (IBAction)showQuestSheet:(id)sender {
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Quest Types" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", nil];
+   // actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [actionSheet showInView:self.view];    
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [actionSheet dismissWithClickedButtonIndex:0 animated:YES];
+    actionSheet.delegate = nil;
+    switch (buttonIndex)
+    {
+        case 0:
+        [self performSegueWithIdentifier: @"TakePhotoSegue" sender: self];
+            break;
+        case 1:
+            break;
+
+    }
+}
+
+
 @end

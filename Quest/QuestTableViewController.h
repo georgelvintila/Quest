@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QuestTableViewController : UITableViewController
+@interface QuestTableViewController : UITableViewController <UIActionSheetDelegate>
+
+- (IBAction)showQuestSheet:(id)sender;
 
 @end

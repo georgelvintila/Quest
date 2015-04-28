@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HMO-TQ-h4y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HMO-TQ-h4y">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--My Quests-->
         <scene sceneID="jIB-8U-bvs">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EmU-Jb-ELm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController title="My Quests" automaticallyAdjustsScrollViewInsets="NO" id="EDU-Ti-Gp3" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Quests" id="Wjk-36-1Q2"/>
                     <toolbarItems/>
@@ -27,6 +26,7 @@
                         <segue destination="GWF-7b-0Co" kind="relationship" relationship="rootViewController" id="oj2-gi-mYO"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EmU-Jb-ELm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="220" y="-166"/>
         </scene>
@@ -51,11 +51,117 @@
                             <outlet property="delegate" destination="GWF-7b-0Co" id="Htn-o2-XHj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Quests" id="Ban-JQ-AjB"/>
+                    <navigationItem key="navigationItem" title="My Quests" id="Ban-JQ-AjB">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="sWX-kY-63H">
+                            <connections>
+                                <action selector="showQuestSheet:" destination="GWF-7b-0Co" id="mvN-jb-zZg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="32d-ao-9PT" kind="show" identifier="TakePhotoSegue" id="GuE-OP-K02"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zxn-Nv-qCm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="684" y="-166"/>
+            <point key="canvasLocation" x="633" y="-166"/>
+        </scene>
+        <!--Take Photo Quest-->
+        <scene sceneID="o8h-8F-Ig8">
+            <objects>
+                <viewController id="32d-ao-9PT" userLabel="Take Photo Quest" customClass="TakePhotoQuestViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8OW-db-ahG"/>
+                        <viewControllerLayoutGuide type="bottom" id="NJf-BG-KzK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aoc-3q-ErD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quest Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b0a-gb-qY0">
+                                <rect key="frame" x="16" y="62" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n0c-MQ-yym">
+                                <rect key="frame" x="16" y="129" width="288" height="128"/>
+                                <color key="backgroundColor" red="0.96865135732323226" green="0.96865135732323226" blue="0.96865135732323226" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgC-fZ-ev1">
+                                <rect key="frame" x="16" y="269" width="65" height="30"/>
+                                <state key="normal" title="Location">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="FdO-V3-NGN" kind="show" id="id2-zj-VpQ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCP-ge-q6P">
+                                <rect key="frame" x="16" y="100" width="50" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Angle:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RcF-cS-Z1n">
+                                <rect key="frame" x="16" y="324" width="94" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jYq-mD-ACn">
+                                <rect key="frame" x="130" y="382" width="124" height="31"/>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Radius:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35m-ZM-Cx0">
+                                <rect key="frame" x="16" y="386" width="65" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="oxp-e7-HKl">
+                                <rect key="frame" x="132" y="320" width="94" height="29"/>
+                            </stepper>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Take Photo" id="dBV-l5-gRN"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G1e-J1-wRv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1067" y="-415"/>
+        </scene>
+        <!--Location Picker-->
+        <scene sceneID="vKc-h6-5lJ">
+            <objects>
+                <viewController id="FdO-V3-NGN" userLabel="Location Picker" customClass="LocationPickerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fK9-aV-8O2"/>
+                        <viewControllerLayoutGuide type="bottom" id="rjI-Qd-Jzm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tAB-g0-Gex">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zpp-Fa-KMM">
+                                <rect key="frame" x="0.0" y="44" width="320" height="250"/>
+                                <gestureRecognizers/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Location" id="6X2-gx-qnK"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="mapView" destination="zpp-Fa-KMM" id="7sJ-A1-Tey"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lOt-ZG-hPj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1612" y="-92"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8H7-pe-9sX">
@@ -84,7 +190,6 @@
         <!--Other Quests-->
         <scene sceneID="amg-ON-Nhm">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="whs-7K-lI6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BlC-Fo-637" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Other Quests" id="1j7-SH-rjP"/>
                     <toolbarItems/>
@@ -104,6 +209,7 @@
                         <segue destination="btl-f7-gAh" kind="relationship" relationship="rootViewController" id="Z9K-RK-dh8"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="whs-7K-lI6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="220" y="504"/>
         </scene>
