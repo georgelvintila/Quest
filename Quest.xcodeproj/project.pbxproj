@@ -34,6 +34,8 @@
 		E1D8FAAD1AEE493C00F78777 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D8FAAC1AEE493C00F78777 /* Accounts.framework */; };
 		E1D8FAAF1AEE494500F78777 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D8FAAE1AEE494500F78777 /* Social.framework */; };
 		E1D8FAB31AEE906000F78777 /* QuestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D8FAB21AEE906000F78777 /* QuestTableViewController.m */; };
+		E1EBEBBD1AEF79FD000A3790 /* QuestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EBEBBC1AEF79FD000A3790 /* QuestManager.m */; };
+		E1EBEBC11AEF7AED000A3790 /* Quest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EBEBC01AEF7AED000A3790 /* Quest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,11 @@
 		E1D8FAB01AEE4AC800F78777 /* QuestPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestPrefixHeader.pch; sourceTree = "<group>"; };
 		E1D8FAB11AEE906000F78777 /* QuestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestTableViewController.h; sourceTree = "<group>"; };
 		E1D8FAB21AEE906000F78777 /* QuestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestTableViewController.m; sourceTree = "<group>"; };
+		E1EBEBBB1AEF79FD000A3790 /* QuestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestManager.h; sourceTree = "<group>"; };
+		E1EBEBBC1AEF79FD000A3790 /* QuestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestManager.m; sourceTree = "<group>"; };
+		E1EBEBBF1AEF7AED000A3790 /* Quest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quest.h; sourceTree = "<group>"; };
+		E1EBEBC01AEF7AED000A3790 /* Quest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Quest.m; sourceTree = "<group>"; };
+		E1EBEBC21AEF9305000A3790 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,12 +149,14 @@
 		E1D705041AEA7B8900525E19 /* Quest */ = {
 			isa = PBXGroup;
 			children = (
+				E1EBEBBE1AEF7A0A000A3790 /* model */,
 				E1D705091AEA7B8900525E19 /* AppDelegate.h */,
 				E1D7050A1AEA7B8900525E19 /* AppDelegate.m */,
 				E1D7050C1AEA7B8900525E19 /* QuestLoginViewController.h */,
 				E1D7050D1AEA7B8900525E19 /* QuestLoginViewController.m */,
 				E1D8FAB11AEE906000F78777 /* QuestTableViewController.h */,
 				E1D8FAB21AEE906000F78777 /* QuestTableViewController.m */,
+				E1EBEBC21AEF9305000A3790 /* Constants.h */,
 				E1D7050F1AEA7B8900525E19 /* Main.storyboard */,
 				E1D705121AEA7B8900525E19 /* Images.xcassets */,
 				E1D705141AEA7B8900525E19 /* LaunchScreen.xib */,
@@ -208,6 +217,17 @@
 				E1D7052C1AEA7CBB00525E19 /* Parse.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E1EBEBBE1AEF7A0A000A3790 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				E1EBEBBF1AEF7AED000A3790 /* Quest.h */,
+				E1EBEBC01AEF7AED000A3790 /* Quest.m */,
+				E1EBEBBB1AEF79FD000A3790 /* QuestManager.h */,
+				E1EBEBBC1AEF79FD000A3790 /* QuestManager.m */,
+			);
+			name = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,9 +330,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1EBEBC11AEF7AED000A3790 /* Quest.m in Sources */,
 				E1D7050E1AEA7B8900525E19 /* QuestLoginViewController.m in Sources */,
 				E1D7050B1AEA7B8900525E19 /* AppDelegate.m in Sources */,
 				E1D8FAB31AEE906000F78777 /* QuestTableViewController.m in Sources */,
+				E1EBEBBD1AEF79FD000A3790 /* QuestManager.m in Sources */,
 				E1D705081AEA7B8900525E19 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,6 +10,7 @@
 
 @interface QuestTableViewController ()
 
+
 @end
 
 @implementation QuestTableViewController
