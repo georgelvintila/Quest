@@ -11,9 +11,9 @@
 @interface LocationPickerViewController ()
 
 @property (nonatomic, strong) CLLocation *currentLocation;
-
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, assign) BOOL mapPannedSinceLocationUpdate;
+@property (nonatomic, strong) MKPointAnnotation* annot;
 
 @end
 
@@ -46,7 +46,7 @@ static double const filterDistance = 1000;
 {
     UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
                                       initWithTarget:self action:@selector(handleLongPress:)];
-    lpgr.minimumPressDuration = 2.0; //user needs to press for 2 seconds
+    lpgr.minimumPressDuration = 1.5; //user needs to press for 2 seconds
     [self.mapView addGestureRecognizer:lpgr];
 }
 
@@ -58,10 +58,16 @@ static double const filterDistance = 1000;
     CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
     CLLocationCoordinate2D touchMapCoordinate =
     [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
-    
-    MKPointAnnotation *annot = [[MKPointAnnotation alloc] init];
-    annot.coordinate = touchMapCoordinate;
-    [self.mapView addAnnotation:annot];
+    if (!_annot)
+    {
+        _annot = [[MKPointAnnotation alloc] init];
+        _annot.coordinate = touchMapCoordinate;
+        [self.mapView addAnnotation:_annot];
+    }
+    else
+    {
+        _annot.coordinate = touchMapCoordinate;
+    }            
 }
 
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
@@ -85,10 +91,8 @@ static double const filterDistance = 1000;
 - (CLLocationManager *)locationManager {
     if (_locationManager == nil) {
         _locationManager = [[CLLocationManager alloc] init];
-        
         _locationManager.delegate = self;
         _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        
         // Set a movement threshold for new events.
         _locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters;
     }
@@ -193,9 +197,4 @@ static double const filterDistance = 1000;
 }
 
 
-
-
-
-- (IBAction)dropMapPin:(id)sender {
-}
 @end
