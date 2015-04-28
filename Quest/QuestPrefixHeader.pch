@@ -9,6 +9,12 @@
 #ifndef Quest_QuestPrefixHeader_pch
 #define Quest_QuestPrefixHeader_pch
 
+#ifdef DEBUG
+#   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#   define DLog(...)
+#endif
+
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
 #import "Constants.h"

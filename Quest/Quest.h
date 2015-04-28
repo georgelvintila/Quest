@@ -17,6 +17,7 @@
 ///@brief Property that contains the description of the Quest
 @property (nonatomic,readonly,strong) NSString *detail;
 
+///@brief Property that contains the Owner of the Quest
 @property (nonatomic,readonly,strong) PFUser *owner;
 
 ///@brief Property that contains the location of the Quest

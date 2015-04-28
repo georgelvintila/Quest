@@ -8,13 +8,11 @@
 
 #import "Quest.h"
 
-@interface Quest ()
-
-@end
-
 @implementation Quest
+
 #pragma mark -
 #pragma mark Properties
+
 @synthesize questType = _questType;
 
 #pragma mark -
