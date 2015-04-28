@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		212D2C221AEFCABC004991BA /* LocationPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212D2C1F1AEFCABC004991BA /* LocationPickerViewController.m */; };
+		212D2C231AEFCABC004991BA /* TakePhotoQuestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212D2C211AEFCABC004991BA /* TakePhotoQuestViewController.m */; };
 		E1D705081AEA7B8900525E19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D705071AEA7B8900525E19 /* main.m */; };
 		E1D7050B1AEA7B8900525E19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D7050A1AEA7B8900525E19 /* AppDelegate.m */; };
 		E1D7050E1AEA7B8900525E19 /* QuestLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D7050D1AEA7B8900525E19 /* QuestLoginViewController.m */; };
@@ -49,6 +51,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		212D2C1E1AEFCABC004991BA /* LocationPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationPickerViewController.h; sourceTree = "<group>"; };
+		212D2C1F1AEFCABC004991BA /* LocationPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationPickerViewController.m; sourceTree = "<group>"; };
+		212D2C201AEFCABC004991BA /* TakePhotoQuestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePhotoQuestViewController.h; sourceTree = "<group>"; };
+		212D2C211AEFCABC004991BA /* TakePhotoQuestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakePhotoQuestViewController.m; sourceTree = "<group>"; };
 		E1D705021AEA7B8900525E19 /* Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D705061AEA7B8900525E19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1D705071AEA7B8900525E19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -156,6 +162,10 @@
 				E1D7050D1AEA7B8900525E19 /* QuestLoginViewController.m */,
 				E1D8FAB11AEE906000F78777 /* QuestTableViewController.h */,
 				E1D8FAB21AEE906000F78777 /* QuestTableViewController.m */,
+				212D2C1E1AEFCABC004991BA /* LocationPickerViewController.h */,
+				212D2C1F1AEFCABC004991BA /* LocationPickerViewController.m */,
+				212D2C201AEFCABC004991BA /* TakePhotoQuestViewController.h */,
+				212D2C211AEFCABC004991BA /* TakePhotoQuestViewController.m */,
 				E1EBEBC21AEF9305000A3790 /* Constants.h */,
 				E1D7050F1AEA7B8900525E19 /* Main.storyboard */,
 				E1D705121AEA7B8900525E19 /* Images.xcassets */,
@@ -331,11 +341,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1EBEBC11AEF7AED000A3790 /* Quest.m in Sources */,
+				212D2C231AEFCABC004991BA /* TakePhotoQuestViewController.m in Sources */,
 				E1D7050E1AEA7B8900525E19 /* QuestLoginViewController.m in Sources */,
 				E1D7050B1AEA7B8900525E19 /* AppDelegate.m in Sources */,
 				E1D8FAB31AEE906000F78777 /* QuestTableViewController.m in Sources */,
 				E1EBEBBD1AEF79FD000A3790 /* QuestManager.m in Sources */,
 				E1D705081AEA7B8900525E19 /* main.m in Sources */,
+				212D2C221AEFCABC004991BA /* LocationPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
