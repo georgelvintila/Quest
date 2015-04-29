@@ -78,7 +78,7 @@ static double const filterDistance = 1000;
 
 - (void)startStandardUpdates {
     [self.locationManager startUpdatingLocation];
-    
+    mapView.showsUserLocation = YES;
     CLLocation *currentLocation = self.locationManager.location;
     if (currentLocation) {
         [self setCurrentLocation: currentLocation];
@@ -203,12 +203,12 @@ static double const filterDistance = 1000;
     if (annot)
     {
         CLLocation *location = [[CLLocation alloc] initWithLatitude:annot.coordinate.latitude longitude:annot.coordinate.longitude];
-        {
+        
             if ([self.delegate respondsToSelector:@selector(locationPickerViewController:saveLocation:)])
             {
                 [self.delegate locationPickerViewController:self saveLocation:location];
             }
-        }
+        
     }
 }
 

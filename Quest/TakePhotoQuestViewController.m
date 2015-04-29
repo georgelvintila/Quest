@@ -19,8 +19,7 @@
     [super viewDidLoad];
     
     
-    LocationPickerViewController *locationPickerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LocationPicker"];
-    locationPickerViewController.delegate = self;
+    
     // Do any additional setup after loading the view.
 }
 
@@ -43,10 +42,16 @@
 - (IBAction)saveQuest:(id)sender {
 }
 
+- (IBAction)chooseLocation:(id)sender {
+    LocationPickerViewController *locationPickerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LocationPicker"];
+    locationPickerViewController.delegate = self;
+    [self.navigationController showViewController:locationPickerViewController sender:sender];
+}
+
 -(void)locationPickerViewController:(LocationPickerViewController *)viewController saveLocation:(CLLocation *)location
 {
     questLocation = location;
-    [self.navigationController popViewControllerAnimated:YES];
+    [viewController.navigationController popViewControllerAnimated:YES];
 }
 
 @end

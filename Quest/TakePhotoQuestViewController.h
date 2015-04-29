@@ -17,6 +17,7 @@
 - (IBAction)angleStepperValueChanged:(UIStepper*)sender;
 - (IBAction)radiusSliderValueChanged:(UISlider*)sender;
 - (IBAction)saveQuest:(id)sender;
+- (IBAction)chooseLocation:(id)sender;
 
 
 @end
