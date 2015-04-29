@@ -9,7 +9,7 @@
 #import "TakePhotoQuestViewController.h"
 #import "QuestManager.h"
 
-@interface TakePhotoQuestViewController ()
+@interface TakePhotoQuestViewController () <UITextFieldDelegate>
 @property (nonatomic, strong) CLLocation *questLocation;
 @property (nonatomic, strong) NSCharacterSet *blockedCharacterSet;
 @end
@@ -17,6 +17,11 @@
 @implementation TakePhotoQuestViewController
 @synthesize angleValue, radiusValue, questLocation, angleStepper, radiusSlider,questNameText,detailTextView
 ,blockedCharacterSet,saveButton;
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
