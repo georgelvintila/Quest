@@ -8,12 +8,17 @@
 
 #import "TakePhotoQuestViewController.h"
 
-@interface TakePhotoQuestViewController ()
+@interface TakePhotoQuestViewController () <UITextFieldDelegate>
 @property (nonatomic, strong) CLLocation *questLocation;
 @end
 
 @implementation TakePhotoQuestViewController
 @synthesize angleValue, radiusValue, questLocation;
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
