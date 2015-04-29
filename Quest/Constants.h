@@ -17,7 +17,7 @@ static NSString * const kQuestTypeViewPhotoQuest = @"ViewPhotoQuest";
 //General Quest Property Keys
 
 static NSString * const kQuestColumnName = @"name";
-static NSString * const kQuestColumnDetail = @"description";
+static NSString * const kQuestColumnDetails = @"details";
 static NSString * const kQuestColumnLocation = @"location";
 static NSString * const kQuestColumnOwner = @"owner";
 static NSString * const kQuestColumnCreatedAt = @"createdAt";

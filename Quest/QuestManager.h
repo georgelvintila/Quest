@@ -17,6 +17,8 @@
 ///@brief Property that contains all quests of the other users grouped by type
 @property (atomic,readonly) NSMutableDictionary *otherQuests;
 
+@property (nonatomic,readonly) NSArray *allQuestTypes;
+
 ///@brief Shared Instance of the Manager
 +(instancetype) sharedManager;
 
@@ -29,6 +31,15 @@
 ///@brief Update information for a certain quest
 -(void)updateQuestOfType:(NSString *)type atIndex:(NSUInteger) index withQuestInfo:(NSDictionary*)questInfo;
 
-///@brief Make a request for all the quests of the curent user
--(void)requestMyQuests;
+///@brief Make a request for all the quests of a certain owner
+-(void)requestItemsOfType:(NSString *)questType forOwner:(QuestOwnerType)questOwner;
+
+///@brief Make a request for all the quests of a certain owner with item limit
+-(void)requestItemsOfType:(NSString *)questType forOwner:(QuestOwnerType)questOwner withLimit:(NSUInteger) limit;
+
+///@brief Make a request for all the quests of a certain owner with item limit and skiping first
+-(void)requestItemsOfType:(NSString *)questType forOwner:(QuestOwnerType)questOwner withLimit:(NSUInteger) limit skipFirst:(NSUInteger) skip;
+
+-(void)requestAllItemsForOwner:(QuestOwnerType)questOwner;
+
 @end

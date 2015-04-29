@@ -39,6 +39,7 @@
     self = [super init];
     if (self) {
         _myQuests = [NSMutableDictionary new];
+        _allQuestTypes = @[kQuestTypeTakePhotoQuest,kQuestTypeViewPhotoQuest];
     }
     return self;
 }
@@ -95,12 +96,42 @@
 
 #pragma mark -
 #pragma mark Request Methods
--(void)requestMyQuests
+
+-(void)requestAllItemsForOwner:(QuestOwnerType)questOwner
 {
-    PFQuery *query = [PFQuery queryWithClassName:kQuestTypeTakePhotoQuest];
-//    [query whereKey:kQuestColumnOwner equalTo:[PFUser currentUser]];
+    for(NSString *type in self.allQuestTypes)
+        [self requestItemsOfType:type forOwner:questOwner withLimit:0 skipFirst:0];
+}
+
+-(void)requestItemsOfType:(NSString *)questType forOwner:(QuestOwnerType)questOwner
+{
+    [self requestItemsOfType:questType forOwner:questOwner withLimit:0 skipFirst:0];
+}
+
+-(void)requestItemsOfType:(NSString *)questType forOwner:(QuestOwnerType)questOwner withLimit:(NSUInteger)limit
+{
+    [self requestItemsOfType:questType forOwner:questOwner withLimit:limit skipFirst:0];
+}
+
+-(void)requestItemsOfType:(NSString *)questType forOwner:(QuestOwnerType)questOwner withLimit:(NSUInteger)limit skipFirst:(NSUInteger) skip
+{
+    PFQuery *query = [PFQuery queryWithClassName:questType];
+    switch (questOwner)
+    {
+        case QuestOwnerTypeCurrent:
+            [query whereKey:kQuestColumnOwner equalTo:[PFUser currentUser]];
+            break;
+        case QuestOwnerTypeOthers:
+            [query whereKey:kQuestColumnOwner notEqualTo:[PFUser currentUser]];
+            break;
+        default:
+            break;
+    }
+    
     [query orderByDescending:kQuestColumnUpdatedAt];
-    query.limit = 20;
+    if(limit)
+        query.limit = limit;
+    query.skip = skip;
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
        if(error)
        {
@@ -109,7 +140,7 @@
        }
        else
        {
-           [self.myQuests setObject:[results mutableCopy] forKey:kQuestTypeTakePhotoQuest];
+           [self.myQuests setObject:[results mutableCopy] forKey:questType];
            [[NSNotificationCenter defaultCenter] postNotificationName:kMyQuestQuerySuccesNotification object:nil];
        }
     }];

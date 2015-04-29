@@ -44,7 +44,7 @@
     
     NSDictionary *nsDict = [[NSDictionary alloc]initWithObjectsAndKeys:
                             [[NSString alloc] initWithString:questNameText.text], kQuestColumnName,
-                            [[NSString alloc] initWithString:detailTextView.text], kQuestColumnDetail,
+                            [[NSString alloc] initWithString:detailTextView.text], kQuestColumnDetails,
                             questLocation, kQuestColumnLocation,
                             [NSNumber numberWithInteger:angleStepper.value], kQuestColumnTakePhotoAngle,
                             [NSNumber numberWithInteger:radiusSlider.value], kQuestColumnTakePhotoRadius, nil];

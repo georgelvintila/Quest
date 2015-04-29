@@ -542,6 +542,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Quest",
 				);
+				GCC_PREFIX_HEADER = Quest/QuestPrefixHeader.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -562,6 +563,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Quest",
 				);
+				GCC_PREFIX_HEADER = Quest/QuestPrefixHeader.pch;
 				INFOPLIST_FILE = QuestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
