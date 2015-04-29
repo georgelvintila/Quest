@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Stefanini. All rights reserved.
 //
 
-#import "TakePhoto.h"
+#import "TakePhotoQuest.h"
 #import <Parse/PFObject+Subclass.h>
 
-@implementation TakePhoto
+@implementation TakePhotoQuest
 
 #pragma mark -
 #pragma mark Properties
@@ -25,7 +25,7 @@
 }
 
 + (NSString *)parseClassName {
-    return kQuestTypeTakePhoto;
+    return kQuestTypeTakePhotoQuest;
 }
 
 @end

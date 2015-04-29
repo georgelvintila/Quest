@@ -11,12 +11,16 @@
 #import "PFObject+Quest.h"
 
 
-@interface TakePhoto : PFObject<PFSubclassing>
+@interface ViewPhotoQuest : PFObject<PFSubclassing>
 
 + (NSString *)parseClassName;
 
-@property (nonatomic,readonly) NSNumber *radius;
+@property (nonatomic,readonly) NSNumber *viewRadius;
 
-@property (nonatomic,readonly) NSNumber *angle;
+@property (nonatomic,readonly) NSString *message;
+
+@property (nonatomic,readonly) PFFile *imageFile;
+
+@property (nonatomic,readonly) UIImage *image;
 
 @end

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import <Parse/Parse.h>
+#import "QuestManager.h"
+#import "Constants.h"
 
 @interface QuestTests : XCTestCase
 
@@ -17,6 +20,9 @@
 
 - (void)setUp {
     [super setUp];
+    [self addNewQuestTest];
+//    [self deleteQuestTest];
+    
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
@@ -30,11 +36,16 @@
     XCTAssert(YES, @"Pass");
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+
+- (void)addNewQuestTest
+{
+    NSDictionary *info = @{kQuestColumnName:@"name",kQuestColumnViewPhotoViewRadius:@3,kQuestColumnViewPhotoImageFile:[UIImage imageNamed:@"Globe"]};
+    [[QuestManager sharedManager] addNewQuestWithType:kQuestTypeViewPhotoQuest andInfo:info];
+}
+
+-(void)deleteQuestTest
+{
+    [[QuestManager sharedManager] deleteQuestOfType:kQuestTypeTakePhotoQuest atIndex:0];
 }
 
 @end

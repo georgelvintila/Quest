@@ -11,8 +11,8 @@
 
 // Quest Types
 
-static NSString * const kQuestTypeTakePhoto = @"TakePhoto";
-static NSString * const kQuestTypeSeePhoto = @"SeePhoto";
+static NSString * const kQuestTypeTakePhotoQuest = @"TakePhotoQuest";
+static NSString * const kQuestTypeViewPhotoQuest = @"ViewPhotoQuest";
 
 //General Quest Property Keys
 
@@ -26,9 +26,14 @@ static NSString * const kQuestColumnACL = @"ACL";
 static NSString * const kQuestColumnObjectId = @"objectId";
 
 //Specific Quest Property Keys
-//Take Photo
+//Take Photo Quest
 static NSString * const kQuestColumnTakePhotoAngle = @"angle";
 static NSString * const kQuestColumnTakePhotoRadius = @"radius";
+
+//View Photo Quest
+static NSString * const kQuestColumnViewPhotoViewRadius = @"viewRadius";
+static NSString * const kQuestColumnViewPhotoMessage = @"message";
+static NSString * const kQuestColumnViewPhotoImageFile = @"imageFile";
 
 //Notification Strings
 static NSString * const kMyQuestQuerySuccesNotification = @"kMyQuestQuerySuccesNotification";

@@ -97,7 +97,7 @@
 #pragma mark Request Methods
 -(void)requestMyQuests
 {
-    PFQuery *query = [PFQuery queryWithClassName:kQuestTypeTakePhoto];
+    PFQuery *query = [PFQuery queryWithClassName:kQuestTypeTakePhotoQuest];
 //    [query whereKey:kQuestColumnOwner equalTo:[PFUser currentUser]];
     [query orderByDescending:kQuestColumnUpdatedAt];
     query.limit = 20;
@@ -109,7 +109,7 @@
        }
        else
        {
-           [self.myQuests setObject:[results mutableCopy] forKey:kQuestTypeTakePhoto];
+           [self.myQuests setObject:[results mutableCopy] forKey:kQuestTypeTakePhotoQuest];
            [[NSNotificationCenter defaultCenter] postNotificationName:kMyQuestQuerySuccesNotification object:nil];
        }
     }];

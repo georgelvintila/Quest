@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TakePhoto.h"
+#import "TakePhotoQuest.h"
 
 @interface QuestManager : NSObject
 
