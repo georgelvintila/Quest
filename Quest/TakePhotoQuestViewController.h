@@ -19,11 +19,13 @@
 @property (weak, nonatomic) IBOutlet UISlider *radiusSlider;
 @property (weak, nonatomic) IBOutlet UIStepper *angleStepper;
 
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
 - (IBAction)angleStepperValueChanged:(UIStepper*)sender;
 - (IBAction)radiusSliderValueChanged:(UISlider*)sender;
 - (IBAction)saveQuest:(id)sender;
 - (IBAction)chooseLocation:(id)sender;
 
+- (IBAction)questTextChanged:(id)sender;
 
 @end
