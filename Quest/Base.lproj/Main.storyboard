@@ -83,19 +83,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n0c-MQ-yym">
-                                <rect key="frame" x="16" y="129" width="288" height="128"/>
-                                <color key="backgroundColor" red="0.96865135732323226" green="0.96865135732323226" blue="0.96865135732323226" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgC-fZ-ev1">
                                 <rect key="frame" x="16" y="269" width="65" height="30"/>
                                 <state key="normal" title="Location">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="FdO-V3-NGN" kind="show" id="id2-zj-VpQ"/>
+                                    <action selector="chooseLocation:" destination="32d-ao-9PT" eventType="touchUpInside" id="qKo-kS-jUB"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCP-ge-q6P">
@@ -105,28 +99,65 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Angle:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RcF-cS-Z1n">
-                                <rect key="frame" x="16" y="324" width="94" height="21"/>
+                                <rect key="frame" x="16" y="307" width="94" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jYq-mD-ACn">
-                                <rect key="frame" x="130" y="382" width="124" height="31"/>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="jYq-mD-ACn">
+                                <rect key="frame" x="98" y="360" width="124" height="31"/>
+                                <connections>
+                                    <action selector="radiusSliderValueChanged:" destination="32d-ao-9PT" eventType="valueChanged" id="BRd-oL-xG3"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Radius:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35m-ZM-Cx0">
-                                <rect key="frame" x="16" y="386" width="65" height="21"/>
+                                <rect key="frame" x="16" y="365" width="65" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="oxp-e7-HKl">
-                                <rect key="frame" x="132" y="320" width="94" height="29"/>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="45" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="oxp-e7-HKl">
+                                <rect key="frame" x="210" y="332" width="94" height="29"/>
+                                <connections>
+                                    <action selector="angleStepperValueChanged:" destination="32d-ao-9PT" eventType="valueChanged" id="c9Y-il-Yx9"/>
+                                </connections>
                             </stepper>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="45" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJG-ys-B8H">
+                                <rect key="frame" x="16" y="336" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqm-qj-5xf">
+                                <rect key="frame" x="278" y="369" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zo3-KQ-Zd1">
+                                <rect key="frame" x="0.0" y="489" width="320" height="30"/>
+                                <state key="normal" title="Save Quest">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveQuest:" destination="32d-ao-9PT" eventType="touchUpInside" id="QFR-nX-e4S"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n0c-MQ-yym">
+                                <rect key="frame" x="16" y="129" width="288" height="128"/>
+                                <color key="backgroundColor" red="0.96865135732323226" green="0.96865135732323226" blue="0.96865135732323226" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Take Photo" id="dBV-l5-gRN"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="angleValue" destination="QJG-ys-B8H" id="rN8-tI-Mdm"/>
+                        <outlet property="radiusValue" destination="Fqm-qj-5xf" id="UuV-ej-Bsi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G1e-J1-wRv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -135,7 +166,7 @@
         <!--Location Picker-->
         <scene sceneID="vKc-h6-5lJ">
             <objects>
-                <viewController id="FdO-V3-NGN" userLabel="Location Picker" customClass="LocationPickerViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LocationPicker" id="FdO-V3-NGN" userLabel="Location Picker" customClass="LocationPickerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fK9-aV-8O2"/>
                         <viewControllerLayoutGuide type="bottom" id="rjI-Qd-Jzm"/>
@@ -145,9 +176,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zpp-Fa-KMM">
-                                <rect key="frame" x="0.0" y="44" width="320" height="250"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="403"/>
                                 <gestureRecognizers/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jrG-T7-dvf">
+                                <rect key="frame" x="16" y="494" width="124" height="30"/>
+                                <state key="normal" title="Save Location">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveLocation:" destination="FdO-V3-NGN" eventType="touchUpInside" id="XCA-qa-XUk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLJ-Ac-kGN">
+                                <rect key="frame" x="180" y="494" width="124" height="30"/>
+                                <state key="normal" title="Delete Marker">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteMarker:" destination="FdO-V3-NGN" eventType="touchUpInside" id="ipg-Qg-9bq"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use Current Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDe-Bl-6eQ">
+                                <rect key="frame" x="16" y="460" width="185" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UGe-KP-C8Z">
+                                <rect key="frame" x="218" y="455" width="51" height="31"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
