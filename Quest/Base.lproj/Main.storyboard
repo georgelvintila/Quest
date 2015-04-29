@@ -117,19 +117,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="45" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="oxp-e7-HKl">
-                                <rect key="frame" x="210" y="332" width="94" height="29"/>
+                                <rect key="frame" x="100" y="303" width="94" height="29"/>
                                 <connections>
                                     <action selector="angleStepperValueChanged:" destination="32d-ao-9PT" eventType="valueChanged" id="c9Y-il-Yx9"/>
                                 </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="45" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJG-ys-B8H">
-                                <rect key="frame" x="16" y="336" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqm-qj-5xf">
-                                <rect key="frame" x="278" y="369" width="42" height="21"/>
+                                <rect key="frame" x="262" y="303" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -149,13 +143,23 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqm-qj-5xf">
+                                <rect key="frame" x="262" y="365" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Take Photo" id="dBV-l5-gRN"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="angleStepper" destination="oxp-e7-HKl" id="7dt-2c-Su4"/>
                         <outlet property="angleValue" destination="QJG-ys-B8H" id="rN8-tI-Mdm"/>
+                        <outlet property="detailTextView" destination="n0c-MQ-yym" id="B1A-lo-0QM"/>
+                        <outlet property="questNameText" destination="b0a-gb-qY0" id="Pch-XN-wye"/>
+                        <outlet property="radiusSlider" destination="jYq-mD-ACn" id="LpA-X1-41x"/>
                         <outlet property="radiusValue" destination="Fqm-qj-5xf" id="UuV-ej-Bsi"/>
                     </connections>
                 </viewController>
@@ -175,9 +179,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zpp-Fa-KMM">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zpp-Fa-KMM">
                                 <rect key="frame" x="0.0" y="44" width="320" height="403"/>
                                 <gestureRecognizers/>
+                                <connections>
+                                    <outlet property="delegate" destination="FdO-V3-NGN" id="foF-dg-cM8"/>
+                                </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jrG-T7-dvf">
                                 <rect key="frame" x="16" y="494" width="124" height="30"/>
@@ -205,6 +212,9 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UGe-KP-C8Z">
                                 <rect key="frame" x="218" y="455" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchUseLocation:" destination="FdO-V3-NGN" eventType="valueChanged" id="Wwz-7y-Ckd"/>
+                                </connections>
                             </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -214,6 +224,8 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="deleteButton" destination="eLJ-Ac-kGN" id="w94-IC-Muy"/>
+                        <outlet property="locationSwitch" destination="UGe-KP-C8Z" id="eRh-KZ-uxl"/>
                         <outlet property="mapView" destination="zpp-Fa-KMM" id="7sJ-A1-Tey"/>
                     </connections>
                 </viewController>

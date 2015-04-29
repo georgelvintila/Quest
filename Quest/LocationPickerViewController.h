@@ -16,6 +16,11 @@
 
 - (IBAction)saveLocation:(id)sender;
 - (IBAction)deleteMarker:(id)sender;
+- (IBAction)switchUseLocation:(UISwitch*)sender;
+
+@property (weak, nonatomic) IBOutlet UISwitch *locationSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+
 
 @property (nonatomic, weak) id<LocationPickerViewControllerDelegate> delegate;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;

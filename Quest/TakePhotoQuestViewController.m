@@ -7,19 +7,17 @@
 //
 
 #import "TakePhotoQuestViewController.h"
+#import "QuestManager.h"
 
 @interface TakePhotoQuestViewController ()
 @property (nonatomic, strong) CLLocation *questLocation;
 @end
 
 @implementation TakePhotoQuestViewController
-@synthesize angleValue, radiusValue, questLocation;
+@synthesize angleValue, radiusValue, questLocation, angleStepper, radiusSlider,questNameText,detailTextView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    
     // Do any additional setup after loading the view.
 }
 
@@ -30,16 +28,29 @@
 
 
 - (IBAction)angleStepperValueChanged:(UIStepper*)sender {
-    int intValue = (int) sender.value;
+    NSInteger intValue = sender.value;
     angleValue.text = [NSString stringWithFormat:@"%d", intValue];
 }
 
 - (IBAction)radiusSliderValueChanged:(UISlider*)sender {
-    int intValue = (int) sender.value;
+    NSInteger intValue = sender.value;
     radiusValue.text = [NSString stringWithFormat:@"%d", intValue];
 }
 
 - (IBAction)saveQuest:(id)sender {
+    
+    NSDictionary *nsDict = [[NSDictionary alloc]initWithObjectsAndKeys:
+                            [[NSString alloc] initWithString:questNameText.text], kQuestColumnName,
+                            [[NSString alloc] initWithString:detailTextView.text], kQuestColumnDetail,
+                            questLocation, kQuestColumnLocation,
+                            [NSNumber numberWithInteger:angleStepper.value], kQuestColumnTakePhotoAngle,
+                            [NSNumber numberWithInteger:radiusSlider.value], kQuestColumnTakePhotoRadius, nil];
+    
+    
+    QuestManager *qmanager = [QuestManager sharedManager];
+    [qmanager addNewQuestWithType:kQuestTypeTakePhoto andInfo:nsDict];
+    
+
 }
 
 - (IBAction)chooseLocation:(id)sender {

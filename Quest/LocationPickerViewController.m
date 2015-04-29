@@ -18,7 +18,7 @@
 @end
 
 @implementation LocationPickerViewController
-@synthesize annot,delegate,mapView;
+@synthesize annot,delegate,mapView,deleteButton,locationSwitch;
 
 
 static double const filterDistance = 1000;
@@ -78,7 +78,6 @@ static double const filterDistance = 1000;
 
 - (void)startStandardUpdates {
     [self.locationManager startUpdatingLocation];
-    mapView.showsUserLocation = YES;
     CLLocation *currentLocation = self.locationManager.location;
     if (currentLocation) {
         [self setCurrentLocation: currentLocation];
@@ -176,10 +175,8 @@ static double const filterDistance = 1000;
     if (!self.mapPannedSinceLocationUpdate) {
         // Set the map's region centered on their new location at 2x filterDistance
         MKCoordinateRegion newRegion = MKCoordinateRegionMakeWithDistance(self.currentLocation.coordinate, filterDistance * 2.0f, filterDistance * 2.0f);
-        
-        BOOL oldMapPannedValue = self.mapPannedSinceLocationUpdate;
         [mapView setRegion:newRegion animated:YES];
-        self.mapPannedSinceLocationUpdate = oldMapPannedValue;
+        self.mapPannedSinceLocationUpdate = NO;
     } // else do nothing.
     
     /*
@@ -203,16 +200,35 @@ static double const filterDistance = 1000;
     if (annot)
     {
         CLLocation *location = [[CLLocation alloc] initWithLatitude:annot.coordinate.latitude longitude:annot.coordinate.longitude];
-        
             if ([self.delegate respondsToSelector:@selector(locationPickerViewController:saveLocation:)])
             {
                 [self.delegate locationPickerViewController:self saveLocation:location];
             }
-        
     }
 }
 
 - (IBAction)deleteMarker:(id)sender {
     [mapView removeAnnotations:mapView.annotations];
+    annot = nil;
+}
+
+- (IBAction)switchUseLocation:(UISwitch*)sender {
+    if (sender.isOn)
+    {
+        deleteButton.enabled = NO;
+        mapView.userInteractionEnabled = NO;
+        if ((self.mapPannedSinceLocationUpdate)&&(self.currentLocation))
+        {
+            self.mapPannedSinceLocationUpdate=NO;
+            MKCoordinateRegion newRegion = MKCoordinateRegionMakeWithDistance(self.currentLocation.coordinate, filterDistance * 2.0f, filterDistance * 2.0f);
+            [mapView setRegion:newRegion animated:YES];
+        }
+        
+    }
+    else
+    {
+        deleteButton.enabled = YES;
+        mapView.userInteractionEnabled = YES;
+    }
 }
 @end
