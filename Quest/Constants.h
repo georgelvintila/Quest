@@ -14,6 +14,9 @@
 static NSString * const kQuestTypeTakePhotoQuest = @"TakePhotoQuest";
 static NSString * const kQuestTypeViewPhotoQuest = @"ViewPhotoQuest";
 
+static NSString * const kQuestTableViewControllerTitleOtherQuests = @"OtherQuests";
+static NSString * const kQuestTableViewControllerTitleMyQuests = @"MyQuests";
+
 //General Quest Property Keys
 
 static NSString * const kQuestColumnName = @"name";

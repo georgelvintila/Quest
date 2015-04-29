@@ -106,6 +106,7 @@
 		E1EFDF8D1AF0C3CA00894032 /* PFObject+Quest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFObject+Quest.m"; sourceTree = "<group>"; };
 		E1EFDF8F1AF0F12E00894032 /* ViewPhotoQuest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPhotoQuest.h; sourceTree = "<group>"; };
 		E1EFDF901AF0F12E00894032 /* ViewPhotoQuest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPhotoQuest.m; sourceTree = "<group>"; };
+		E1EFDF971AF1188B00894032 /* QuestTestsPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestTestsPrefixHeader.pch; path = Quest/QuestTestsPrefixHeader.pch; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +214,7 @@
 		E1D7051F1AEA7B8900525E19 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E1EFDF971AF1188B00894032 /* QuestTestsPrefixHeader.pch */,
 				E1D705201AEA7B8900525E19 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -542,7 +544,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Quest",
 				);
-				GCC_PREFIX_HEADER = Quest/QuestPrefixHeader.pch;
+				GCC_PREFIX_HEADER = Quest/QuestTestsPrefixHeader.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -563,7 +565,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Quest",
 				);
-				GCC_PREFIX_HEADER = Quest/QuestPrefixHeader.pch;
+				GCC_PREFIX_HEADER = Quest/QuestTestsPrefixHeader.pch;
 				INFOPLIST_FILE = QuestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -17,8 +17,6 @@
 ///@brief Property that contains all quests of the other users grouped by type
 @property (atomic,readonly) NSMutableDictionary *otherQuests;
 
-@property (nonatomic,readonly) NSArray *allQuestTypes;
-
 ///@brief Shared Instance of the Manager
 +(instancetype) sharedManager;
 
@@ -42,4 +40,5 @@
 
 -(void)requestAllItemsForOwner:(QuestOwnerType)questOwner;
 
+-(NSArray *)allQuestTypesForOwner:(QuestOwnerType)owner;
 @end

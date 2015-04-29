@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import <Parse/Parse.h>
 #import "QuestManager.h"
-#import "Constants.h"
 
 @interface QuestTests : XCTestCase
 

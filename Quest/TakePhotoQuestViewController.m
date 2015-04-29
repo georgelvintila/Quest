@@ -32,12 +32,12 @@
 
 - (IBAction)angleStepperValueChanged:(UIStepper*)sender {
     NSInteger intValue = sender.value;
-    angleValue.text = [NSString stringWithFormat:@"%d", intValue];
+    angleValue.text = [NSString stringWithFormat:@"%lu", intValue];
 }
 
 - (IBAction)radiusSliderValueChanged:(UISlider*)sender {
     NSInteger intValue = sender.value;
-    radiusValue.text = [NSString stringWithFormat:@"%d", intValue];
+    radiusValue.text = [NSString stringWithFormat:@"%lu", intValue];
 }
 
 - (IBAction)saveQuest:(id)sender {

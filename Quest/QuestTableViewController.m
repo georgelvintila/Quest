@@ -13,6 +13,7 @@
 
 @property(nonatomic,strong) QuestManager *questManager;
 @property(nonatomic,strong) NSArray *allQuestTypes;
+@property(nonatomic) QuestOwnerType owner;
 
 @end
 
@@ -24,14 +25,41 @@
     if (self) {
         _questManager = [QuestManager sharedManager];
         _allQuestTypes = [NSMutableArray new];
+        if ([self.title isEqualToString:kQuestTableViewControllerTitleMyQuests]) {
+            _owner = QuestOwnerTypeCurrent;
+        }
+        else
+        {
+            if ([self.title isEqualToString:kQuestTableViewControllerTitleOtherQuests])
+            {
+               _owner = QuestOwnerTypeOthers;
+            }
+            else
+            {
+                _owner = QuestOwnerTypeAll;
+            }
+        }
+
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.questManager requestAllItemsForOwner:QuestOwnerTypeOthers];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:kMyQuestQuerySuccesNotification object:nil];
+    [self requestData];
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:kMyQuestQuerySuccesNotification object:nil];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kMyQuestQuerySuccesNotification object:nil];
+    [super viewDidDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,10 +67,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-
--(void)reloadData
+-(void) requestData
 {
-    self.allQuestTypes = self.questManager.allQuestTypes;
+        [self.questManager requestAllItemsForOwner:self.owner];
+
+}
+
+-(void)reloadData:(NSNotification*)notification
+{
+    self.allQuestTypes = [self.questManager allQuestTypesForOwner:self.owner];
     [self.tableView reloadData];
 }
 #pragma mark - Table view data source
@@ -70,18 +103,43 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-     return [[self.questManager.myQuests objectForKey:[self.allQuestTypes objectAtIndex:section]] count];
+    
+    
+    switch (self.owner) {
+        case QuestOwnerTypeCurrent:
+            return [[self.questManager.myQuests objectForKey:[self.allQuestTypes objectAtIndex:section]] count];
+            break;
+        case QuestOwnerTypeOthers:
+            return [[self.questManager.otherQuests objectForKey:[self.allQuestTypes objectAtIndex:section]] count];
+            break;
+        default:
+            break;
+    }
+    return 0;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellIdentifier = @"";
+    NSString *cellIdentifier = @"cellId";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if(!cell)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    PFObject *quest = [((NSArray *)[self.questManager.myQuests objectForKey:[self.allQuestTypes objectAtIndex:indexPath.section]]) objectAtIndex:indexPath.row];
+    PFObject *quest = nil;
+    
+    switch (self.owner) {
+        case QuestOwnerTypeCurrent:
+            quest = [((NSArray *)[self.questManager.myQuests objectForKey:[self.allQuestTypes objectAtIndex:indexPath.section]]) objectAtIndex:indexPath.row];
+            break;
+        case QuestOwnerTypeOthers:
+            quest = [((NSArray *)[self.questManager.otherQuests objectForKey:[self.allQuestTypes objectAtIndex:indexPath.section]]) objectAtIndex:indexPath.row];
+
+            break;
+        default:
+            break;
+    }
+
     cell.textLabel.text = quest.name;
     cell.detailTextLabel.text = quest.details;
     

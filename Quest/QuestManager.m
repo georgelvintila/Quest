@@ -9,8 +9,12 @@
 #import "QuestManager.h"
 
 @interface QuestManager ()
+{
+    NSArray *typesList;
+}
 
 @property (atomic,readwrite) NSMutableDictionary *myQuests;
+@property (atomic,readwrite) NSMutableDictionary *otherQuests;
 
 @end
 
@@ -20,7 +24,7 @@
 #pragma mark Properties
 
 @synthesize myQuests = _myQuests;
-
+@synthesize otherQuests = _otherQuests;
 #pragma mark -
 #pragma mark Instantition
 
@@ -39,13 +43,31 @@
     self = [super init];
     if (self) {
         _myQuests = [NSMutableDictionary new];
-        _allQuestTypes = @[kQuestTypeTakePhotoQuest,kQuestTypeViewPhotoQuest];
+        _otherQuests = [NSMutableDictionary new];
+        typesList = @[kQuestTypeTakePhotoQuest,kQuestTypeViewPhotoQuest];
     }
     return self;
 }
 
 #pragma mark -
 #pragma mark Properties
+
+-(NSMutableDictionary *)otherQuests
+{
+    @synchronized(_otherQuests)
+    {
+        return _otherQuests;
+    }
+}
+
+-(void)setOtherQuests:(NSMutableDictionary *)otherQuests
+{
+    @synchronized(_otherQuests)
+    {
+        if(_otherQuests != otherQuests)
+            _otherQuests = otherQuests;
+    }
+}
 
 -(NSMutableDictionary *)myQuests
 {
@@ -62,6 +84,21 @@
         if(_myQuests != myQuests)
             _myQuests = myQuests;
     }
+}
+
+-(NSArray *)allQuestTypesForOwner:(QuestOwnerType)owner
+{
+    switch (owner) {
+        case QuestOwnerTypeCurrent:
+            return [self.myQuests.allKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+            break;
+        case QuestOwnerTypeOthers:
+            return [self.otherQuests.allKeys sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+            break;
+        default:
+            break;
+    }
+    return  nil;
 }
 
 
@@ -99,13 +136,13 @@
 
 -(void)requestAllItemsForOwner:(QuestOwnerType)questOwner
 {
-    for(NSString *type in self.allQuestTypes)
-        [self requestItemsOfType:type forOwner:questOwner withLimit:0 skipFirst:0];
+    for(NSString *type in typesList)
+        [self requestItemsOfType:type forOwner:questOwner withLimit:-1 skipFirst:0];
 }
 
 -(void)requestItemsOfType:(NSString *)questType forOwner:(QuestOwnerType)questOwner
 {
-    [self requestItemsOfType:questType forOwner:questOwner withLimit:0 skipFirst:0];
+    [self requestItemsOfType:questType forOwner:questOwner withLimit:-1 skipFirst:0];
 }
 
 -(void)requestItemsOfType:(NSString *)questType forOwner:(QuestOwnerType)questOwner withLimit:(NSUInteger)limit
@@ -116,21 +153,23 @@
 -(void)requestItemsOfType:(NSString *)questType forOwner:(QuestOwnerType)questOwner withLimit:(NSUInteger)limit skipFirst:(NSUInteger) skip
 {
     PFQuery *query = [PFQuery queryWithClassName:questType];
+    __block NSMutableDictionary *source = nil;
     switch (questOwner)
     {
         case QuestOwnerTypeCurrent:
             [query whereKey:kQuestColumnOwner equalTo:[PFUser currentUser]];
+            source = self.myQuests;
             break;
         case QuestOwnerTypeOthers:
             [query whereKey:kQuestColumnOwner notEqualTo:[PFUser currentUser]];
+            source = self.otherQuests;
             break;
         default:
             break;
     }
     
     [query orderByDescending:kQuestColumnUpdatedAt];
-    if(limit)
-        query.limit = limit;
+    query.limit = limit;
     query.skip = skip;
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
        if(error)
@@ -140,8 +179,12 @@
        }
        else
        {
-           [self.myQuests setObject:[results mutableCopy] forKey:questType];
-           [[NSNotificationCenter defaultCenter] postNotificationName:kMyQuestQuerySuccesNotification object:nil];
+           if([results count])
+           {
+               [source setObject:[results mutableCopy] forKey:questType];
+               NSDictionary *userInfo = @{@"owner":[NSNumber numberWithInteger:questOwner]};
+               [[NSNotificationCenter defaultCenter] postNotificationName:kMyQuestQuerySuccesNotification object:nil userInfo:userInfo];
+           }
        }
     }];
 }
