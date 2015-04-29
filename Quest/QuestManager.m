@@ -70,7 +70,10 @@
 -(void)addNewQuestWithType:(NSString *)type andInfo:(NSDictionary *)questInfo
 {
     NSMutableArray *array = [self.myQuests objectForKey:type];
-    Quest *quest = [[Quest alloc] initWithType:type];
+    
+    Class typeClass = NSClassFromString(type);
+    
+    PFObject *quest = [[typeClass alloc] init];
     [quest saveQuestInformation:questInfo];
     [array addObject:quest];
 }
@@ -78,7 +81,7 @@
 -(void)deleteQuestOfType:(NSString *)type atIndex:(NSUInteger) index
 {
     NSMutableArray *array = [self.myQuests objectForKey:type];
-    Quest *quest = [array objectAtIndex:index];
+    PFObject *quest = [array objectAtIndex:index];
     [array removeObjectAtIndex:index];
     [quest delete];
 }
@@ -86,7 +89,7 @@
 -(void) updateQuestOfType:(NSString *)type atIndex:(NSUInteger) index withQuestInfo:(NSDictionary*)questInfo
 {
     NSMutableArray *array = [self.myQuests objectForKey:type];
-    Quest *quest = [array objectAtIndex:index];
+    PFObject *quest = [array objectAtIndex:index];
     [quest saveQuestInformation:questInfo];
 }
 
@@ -95,7 +98,7 @@
 -(void)requestMyQuests
 {
     PFQuery *query = [PFQuery queryWithClassName:kQuestTypeTakePhoto];
-    [query whereKey:kQuestColumnOwner equalTo:[PFUser currentUser]];
+//    [query whereKey:kQuestColumnOwner equalTo:[PFUser currentUser]];
     [query orderByDescending:kQuestColumnUpdatedAt];
     query.limit = 20;
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {

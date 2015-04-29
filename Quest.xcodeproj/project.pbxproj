@@ -36,8 +36,12 @@
 		E1D8FAAD1AEE493C00F78777 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D8FAAC1AEE493C00F78777 /* Accounts.framework */; };
 		E1D8FAAF1AEE494500F78777 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D8FAAE1AEE494500F78777 /* Social.framework */; };
 		E1D8FAB31AEE906000F78777 /* QuestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D8FAB21AEE906000F78777 /* QuestTableViewController.m */; };
+		E1DBE7181AEFCF15005026EB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1DBE7171AEFCF15005026EB /* MapKit.framework */; };
+		E1DBE7191AEFD618005026EB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D7052C1AEA7CBB00525E19 /* Parse.framework */; };
+		E1DBE71A1AEFD61C005026EB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D7052E1AEA7CE900525E19 /* Bolts.framework */; };
 		E1EBEBBD1AEF79FD000A3790 /* QuestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EBEBBC1AEF79FD000A3790 /* QuestManager.m */; };
-		E1EBEBC11AEF7AED000A3790 /* Quest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EBEBC01AEF7AED000A3790 /* Quest.m */; };
+		E1EBEBC11AEF7AED000A3790 /* TakePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EBEBC01AEF7AED000A3790 /* TakePhoto.m */; };
+		E1EFDF8E1AF0C3CA00894032 /* PFObject+Quest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EFDF8D1AF0C3CA00894032 /* PFObject+Quest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,11 +94,14 @@
 		E1D8FAB01AEE4AC800F78777 /* QuestPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestPrefixHeader.pch; sourceTree = "<group>"; };
 		E1D8FAB11AEE906000F78777 /* QuestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestTableViewController.h; sourceTree = "<group>"; };
 		E1D8FAB21AEE906000F78777 /* QuestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestTableViewController.m; sourceTree = "<group>"; };
+		E1DBE7171AEFCF15005026EB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E1EBEBBB1AEF79FD000A3790 /* QuestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestManager.h; sourceTree = "<group>"; };
 		E1EBEBBC1AEF79FD000A3790 /* QuestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestManager.m; sourceTree = "<group>"; };
-		E1EBEBBF1AEF7AED000A3790 /* Quest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quest.h; sourceTree = "<group>"; };
-		E1EBEBC01AEF7AED000A3790 /* Quest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Quest.m; sourceTree = "<group>"; };
+		E1EBEBBF1AEF7AED000A3790 /* TakePhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePhoto.h; sourceTree = "<group>"; };
+		E1EBEBC01AEF7AED000A3790 /* TakePhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakePhoto.m; sourceTree = "<group>"; };
 		E1EBEBC21AEF9305000A3790 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		E1EFDF8C1AF0C3CA00894032 /* PFObject+Quest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFObject+Quest.h"; sourceTree = "<group>"; };
+		E1EFDF8D1AF0C3CA00894032 /* PFObject+Quest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFObject+Quest.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1DBE7181AEFCF15005026EB /* MapKit.framework in Frameworks */,
 				E1D8FAAF1AEE494500F78777 /* Social.framework in Frameworks */,
 				E1D8FAAD1AEE493C00F78777 /* Accounts.framework in Frameworks */,
 				E1D7054A1AEA7E2C00525E19 /* libsqlite3.dylib in Frameworks */,
@@ -128,6 +136,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1DBE7191AEFD618005026EB /* Parse.framework in Frameworks */,
+				E1DBE71A1AEFD61C005026EB /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +216,7 @@
 		E1D7052B1AEA7C9E00525E19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1DBE7171AEFCF15005026EB /* MapKit.framework */,
 				E1D8FAAE1AEE494500F78777 /* Social.framework */,
 				E1D8FAAC1AEE493C00F78777 /* Accounts.framework */,
 				E1D705491AEA7E2C00525E19 /* libsqlite3.dylib */,
@@ -232,10 +243,12 @@
 		E1EBEBBE1AEF7A0A000A3790 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				E1EBEBBF1AEF7AED000A3790 /* Quest.h */,
-				E1EBEBC01AEF7AED000A3790 /* Quest.m */,
+				E1EBEBBF1AEF7AED000A3790 /* TakePhoto.h */,
+				E1EBEBC01AEF7AED000A3790 /* TakePhoto.m */,
 				E1EBEBBB1AEF79FD000A3790 /* QuestManager.h */,
 				E1EBEBBC1AEF79FD000A3790 /* QuestManager.m */,
+				E1EFDF8C1AF0C3CA00894032 /* PFObject+Quest.h */,
+				E1EFDF8D1AF0C3CA00894032 /* PFObject+Quest.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -340,7 +353,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1EBEBC11AEF7AED000A3790 /* Quest.m in Sources */,
+				E1EBEBC11AEF7AED000A3790 /* TakePhoto.m in Sources */,
+				E1EFDF8E1AF0C3CA00894032 /* PFObject+Quest.m in Sources */,
 				212D2C231AEFCABC004991BA /* TakePhotoQuestViewController.m in Sources */,
 				E1D7050E1AEA7B8900525E19 /* QuestLoginViewController.m in Sources */,
 				E1D7050B1AEA7B8900525E19 /* AppDelegate.m in Sources */,
@@ -510,6 +524,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Quest",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -529,6 +544,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Quest",
 				);
 				INFOPLIST_FILE = QuestTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

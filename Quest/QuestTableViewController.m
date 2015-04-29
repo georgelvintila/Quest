@@ -7,22 +7,32 @@
 //
 
 #import "QuestTableViewController.h"
+#import "QuestManager.h"
 
 @interface QuestTableViewController ()
 
+@property(nonatomic,strong) QuestManager *questManager;
+@property(nonatomic,strong) NSMutableArray *allQuestTypes;
 
 @end
 
 @implementation QuestTableViewController
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        _questManager = [QuestManager sharedManager];
+        _allQuestTypes = [NSMutableArray new];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.questManager requestMyQuests];
+    [self.allQuestTypes addObjectsFromArray:self.questManager.myQuests.allKeys];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:kMyQuestQuerySuccesNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,16 +40,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+-(void)reloadData
+{
+    [self.allQuestTypes addObjectsFromArray:self.questManager.myQuests.allKeys];
+    [self.tableView reloadData];
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    return [self.allQuestTypes count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 1;
+     return [[self.questManager.myQuests objectForKey:[self.allQuestTypes objectAtIndex:section]] count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -48,9 +64,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if(!cell)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    cell.textLabel.text = @"Quest";
+    PFObject *quest = [((NSArray *)[self.questManager.myQuests objectForKey:[self.allQuestTypes objectAtIndex:indexPath.section]]) objectAtIndex:indexPath.row];
+    cell.textLabel.text = quest.name;
+    cell.detailTextLabel.text = quest.details;
     
     return  cell;
     
