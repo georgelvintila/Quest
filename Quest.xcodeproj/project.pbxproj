@@ -12,6 +12,7 @@
 		BB18DC271AF11739005B2AB2 /* ViewPhotoQuestInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB18DC261AF11739005B2AB2 /* ViewPhotoQuestInfo.m */; };
 		BB18DC2A1AF119E5005B2AB2 /* TakePhotoQuestInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB18DC291AF119E5005B2AB2 /* TakePhotoQuestInfo.m */; };
 		BB6308E61AF10A0E002DF589 /* QuestInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6308E51AF10A0E002DF589 /* QuestInfo.m */; };
+		BB8962581AF1216B0068D150 /* QuestInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8962571AF1216B0068D150 /* QuestInfoTests.m */; };
 		E1D705081AEA7B8900525E19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D705071AEA7B8900525E19 /* main.m */; };
 		E1D7050B1AEA7B8900525E19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D7050A1AEA7B8900525E19 /* AppDelegate.m */; };
 		E1D7050E1AEA7B8900525E19 /* QuestLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D7050D1AEA7B8900525E19 /* QuestLoginViewController.m */; };
@@ -68,9 +69,9 @@
 		BB18DC261AF11739005B2AB2 /* ViewPhotoQuestInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPhotoQuestInfo.m; sourceTree = "<group>"; };
 		BB18DC281AF119E5005B2AB2 /* TakePhotoQuestInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePhotoQuestInfo.h; sourceTree = "<group>"; };
 		BB18DC291AF119E5005B2AB2 /* TakePhotoQuestInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakePhotoQuestInfo.m; sourceTree = "<group>"; };
-		BB18DC2B1AF11BEA005B2AB2 /* QuestInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestInfoTests.m; sourceTree = "<group>"; };
 		BB6308E41AF10A0E002DF589 /* QuestInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestInfo.h; sourceTree = "<group>"; };
 		BB6308E51AF10A0E002DF589 /* QuestInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestInfo.m; sourceTree = "<group>"; };
+		BB8962571AF1216B0068D150 /* QuestInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestInfoTests.m; sourceTree = "<group>"; };
 		E1D705021AEA7B8900525E19 /* Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D705061AEA7B8900525E19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1D705071AEA7B8900525E19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -228,9 +229,9 @@
 		E1D7051E1AEA7B8900525E19 /* QuestTests */ = {
 			isa = PBXGroup;
 			children = (
+				BB8962571AF1216B0068D150 /* QuestInfoTests.m */,
 				E1D705211AEA7B8900525E19 /* QuestTests.m */,
 				E1D7051F1AEA7B8900525E19 /* Supporting Files */,
-				BB18DC2B1AF11BEA005B2AB2 /* QuestInfoTests.m */,
 			);
 			path = QuestTests;
 			sourceTree = "<group>";
@@ -413,7 +414,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB18DC2C1AF11BEA005B2AB2 /* QuestInfoTests.m in Sources */,
+				BB8962581AF1216B0068D150 /* QuestInfoTests.m in Sources */,
 				E1D705221AEA7B8900525E19 /* QuestTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
