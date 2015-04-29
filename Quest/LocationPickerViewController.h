@@ -10,9 +10,21 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 
+@protocol LocationPickerViewControllerDelegate;
+
 @interface LocationPickerViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate>
 
+- (IBAction)saveLocation:(id)sender;
+- (IBAction)deleteMarker:(id)sender;
 
+@property (nonatomic, weak) id<LocationPickerViewControllerDelegate> delegate;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+
+@end
+
+@protocol LocationPickerViewControllerDelegate <NSObject>
+
+- (void)locationPickerViewController:(LocationPickerViewController*) viewController
+             saveLocation:(CLLocation*) location;
 
 @end

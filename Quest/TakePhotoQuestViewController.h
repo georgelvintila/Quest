@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LocationPickerViewController.h"
 
-@interface TakePhotoQuestViewController : UIViewController
+@interface TakePhotoQuestViewController : UIViewController<LocationPickerViewControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UILabel *radiusValue;
+@property (weak, nonatomic) IBOutlet UILabel *angleValue;
+
+- (IBAction)angleStepperValueChanged:(UIStepper*)sender;
+- (IBAction)radiusSliderValueChanged:(UISlider*)sender;
+- (IBAction)saveQuest:(id)sender;
+
 
 @end

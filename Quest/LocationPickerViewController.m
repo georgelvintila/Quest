@@ -18,6 +18,8 @@
 @end
 
 @implementation LocationPickerViewController
+@synthesize annot,delegate,mapView;
+
 
 static double const filterDistance = 1000;
 
@@ -46,8 +48,8 @@ static double const filterDistance = 1000;
 {
     UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
                                       initWithTarget:self action:@selector(handleLongPress:)];
-    lpgr.minimumPressDuration = 1.5; //user needs to press for 2 seconds
-    [self.mapView addGestureRecognizer:lpgr];
+    lpgr.minimumPressDuration = 1.5;
+    [mapView addGestureRecognizer:lpgr];
 }
 
 - (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer
@@ -55,19 +57,19 @@ static double const filterDistance = 1000;
     if (gestureRecognizer.state != UIGestureRecognizerStateBegan)
         return;
     
-    CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
+    CGPoint touchPoint = [gestureRecognizer locationInView:mapView];
     CLLocationCoordinate2D touchMapCoordinate =
-    [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
-    if (!_annot)
+    [mapView convertPoint:touchPoint toCoordinateFromView:mapView];
+    if (!annot)
     {
-        _annot = [[MKPointAnnotation alloc] init];
-        _annot.coordinate = touchMapCoordinate;
-        [self.mapView addAnnotation:_annot];
+        annot = [[MKPointAnnotation alloc] init];
+        annot.coordinate = touchMapCoordinate;
+        [mapView addAnnotation:annot];
     }
     else
     {
-        _annot.coordinate = touchMapCoordinate;
-    }            
+        annot.coordinate = touchMapCoordinate;
+    }
 }
 
 - (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
@@ -176,7 +178,7 @@ static double const filterDistance = 1000;
         MKCoordinateRegion newRegion = MKCoordinateRegionMakeWithDistance(self.currentLocation.coordinate, filterDistance * 2.0f, filterDistance * 2.0f);
         
         BOOL oldMapPannedValue = self.mapPannedSinceLocationUpdate;
-        [self.mapView setRegion:newRegion animated:YES];
+        [mapView setRegion:newRegion animated:YES];
         self.mapPannedSinceLocationUpdate = oldMapPannedValue;
     } // else do nothing.
     
@@ -197,4 +199,20 @@ static double const filterDistance = 1000;
 }
 
 
+- (IBAction)saveLocation:(id)sender{
+    if (annot)
+    {
+        CLLocation *location = [[CLLocation alloc] initWithLatitude:annot.coordinate.latitude longitude:annot.coordinate.longitude];
+        {
+            if ([self.delegate respondsToSelector:@selector(locationPickerViewController:saveLocation:)])
+            {
+                [self.delegate locationPickerViewController:self saveLocation:location];
+            }
+        }
+    }
+}
+
+- (IBAction)deleteMarker:(id)sender {
+    [mapView removeAnnotations:mapView.annotations];
+}
 @end
