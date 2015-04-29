@@ -32,7 +32,7 @@
 }
 
 - (void)setQuestDetail:(NSString *)questDetail {
-    self.dictionary[kQuestColumnDetail] = questDetail;
+    self.dictionary[kQuestColumnDetails] = questDetail;
 }
 
 - (void)setQuestLocation:(NSString *)questLocation {
@@ -64,7 +64,7 @@
 }
 
 - (NSString *)questDetail {
-    return self.dictionary[kQuestColumnDetail];
+    return self.dictionary[kQuestColumnDetails];
 }
 
 - (NSString *)questLocation {
