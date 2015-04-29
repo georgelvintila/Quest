@@ -10,100 +10,89 @@
 
 @interface QuestInfo ()
 
+@property (nonatomic) NSMutableDictionary *dictionary;
+
 @end
 
 @implementation QuestInfo
 
-@synthesize questName = _questName;
-@synthesize questDetail = _questDetail;
-@synthesize questLocation = _questLocation;
-@synthesize questOwner = _questOwner;
-@synthesize questCreatedAt = _questCreatedAt;
-@synthesize questUpdatedAt = _questUpdatedAt;
-@synthesize questACL = _questACL;
-@synthesize questObjectId = _questObjectId;
+@synthesize dictionary = _dictionary;
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        _questName = [NSString string];
-        _questDetail = [NSString string];
-        _questLocation = [NSString string];
-        _questOwner = [NSString string];
-        _questCreatedAt = [NSString string];
-        _questUpdatedAt = [NSString string];
-        _questACL = [NSString string];
-        _questObjectId = [NSString string];
+        _dictionary = [NSMutableDictionary dictionary];
     }
     return self;
 }
 
-- (NSDictionary *) questDictionary {
-    return @{@"questName": self.questName,
-             @"questDetail": self.questDetail,
-             @"questLocation": self.questLocation,
-             @"questOwner": self.questOwner,
-             @"questCreatedAt": self.questCreatedAt,
-             @"questUpdatedAt": self.questUpdatedAt,
-             @"questACL": self.questACL,
-             @"questObjectId": self.questObjectId};
+- (void)setQuestName:(NSString *)questName {
+    self.dictionary[kQuestColumnName] = questName;
 }
 
-
-- (void)setObject:(id)obj forKeyedSubscript:(NSString *)key {
-    NSLog(@"setting object for keyed subscript");
-    if ([key isEqualToString: @"questName"]) {
-        self.questName = obj;
-    }
-    if ([key isEqualToString: @"questDetail"]) {
-        self.questDetail = obj;
-    }
-    if ([key isEqualToString: @"questLocation"]) {
-        self.questLocation = obj;
-    }
-    if ([key isEqualToString: @"questOwner"]) {
-        self.questOwner = obj;
-    }
-    if ([key isEqualToString: @"questCreatedAt"]) {
-        self.questCreatedAt = obj;
-    }
-    if ([key isEqualToString: @"questUpdatedAt"]) {
-        self.questUpdatedAt = obj;
-    }
-    if ([key isEqualToString: @"questACL"]) {
-        self.questACL = obj;
-    }
-    if ([key isEqualToString: @"questObjectId"]) {
-        self.questObjectId = obj;
-    }
+- (void)setQuestDetail:(NSString *)questDetail {
+    self.dictionary[kQuestColumnDetail] = questDetail;
 }
-- (id)objectForKeyedSubscript:(NSString *)idx {
-    if ([idx isEqualToString: @"questName"]) {
-        return self.questName;
-    }
-    if ([idx isEqualToString: @"questDetail"]) {
-        return self.questDetail;
-    }
-    if ([idx isEqualToString: @"questLocation"]) {
-        return self.questLocation;
-    }
-    if ([idx isEqualToString: @"questOwner"]) {
-        return self.questOwner;
-    }
-    if ([idx isEqualToString: @"questCreatedAt"]) {
-        return self.questCreatedAt;
-    }
-    if ([idx isEqualToString: @"questUpdatedAt"]) {
-        return self.questUpdatedAt;
-    }
-    if ([idx isEqualToString: @"questACL"]) {
-        return self.questACL;
-    }
-    if ([idx isEqualToString: @"questObjectId"]) {
-        return self.questObjectId;
-    }
-    return nil;
+
+- (void)setQuestLocation:(NSString *)questLocation {
+    self.dictionary[kQuestColumnLocation] = questLocation;
+}
+
+- (void)setQuestOwner:(NSString *)questOwner {
+     self.dictionary[kQuestColumnOwner] = questOwner;
+}
+
+- (void)setQuestCreatedAt:(NSString *)questCreatedAt {
+     self.dictionary[kQuestColumnCreatedAt] = questCreatedAt;
+}
+
+- (void)setQuestUpdatedAt:(NSString *)questUpdatedAt {
+     self.dictionary[kQuestColumnUpdatedAt] = questUpdatedAt;
+}
+
+- (void)setQuestACL:(NSString *)questACL {
+     self.dictionary[kQuestColumnACL] = questACL;
+}
+
+- (void)setQuestObjectId:(NSString *)questObjectId {
+     self.dictionary[kQuestColumnObjectId] = questObjectId;
+}
+
+- (NSString *)questName {
+    return self.dictionary[kQuestColumnName];
+}
+
+- (NSString *)questDetail {
+    return self.dictionary[kQuestColumnDetail];
+}
+
+- (NSString *)questLocation {
+    return self.dictionary[kQuestColumnLocation];
+}
+
+- (NSString *)questOwner {
+    return self.dictionary[kQuestColumnOwner];
+}
+
+- (NSString *)questCreatedAt {
+    return self.dictionary[kQuestColumnCreatedAt];
+}
+
+- (NSString *)questUpdatedAt {
+    return self.dictionary[kQuestColumnUpdatedAt];
+}
+
+- (NSString *)questACL {
+    return self.dictionary[kQuestColumnACL];
+}
+
+- (NSString *)questObjectId {
+    return self.dictionary[kQuestColumnObjectId];
+}
+
+- (NSDictionary *)questDictionary {
+    return [NSDictionary dictionaryWithDictionary:self.dictionary];
 }
 
 @end

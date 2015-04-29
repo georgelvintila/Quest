@@ -12,6 +12,17 @@
 
 // properties
 
+/*
+ static NSString * const kQuestColumnName = @"name";
+ static NSString * const kQuestColumnDetail = @"description";
+ static NSString * const kQuestColumnLocation = @"location";
+ static NSString * const kQuestColumnOwner = @"owner";
+ static NSString * const kQuestColumnCreatedAt = @"createdAt";
+ static NSString * const kQuestColumnUpdatedAt = @"updatedAt";
+ static NSString * const kQuestColumnACL = @"ACL";
+ static NSString * const kQuestColumnObjectId = @"objectId";
+ */
+
 @property (nonatomic) NSString *questName;
 @property (nonatomic) NSString *questDetail;
 @property (nonatomic) NSString *questLocation;
@@ -23,9 +34,6 @@
 
 
 // methods
-
-- (void)setObject:(id)obj forKeyedSubscript:(id <NSCopying>)key; // setter
-- (id)objectForKeyedSubscript:(id)key;                           // getter
 
 - (NSDictionary *) questDictionary;
 
