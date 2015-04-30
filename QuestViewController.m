@@ -89,17 +89,21 @@
     [qmanager addNewQuestWithType:kQuestTypeTakePhotoQuest andInfo:info];
     [self.navigationController popViewControllerAnimated:NO];
     
-    
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSString * segueName = segue.identifier;
-    if ([segueName isEqualToString: @"TakePhotoSegue"]) {
+    if ([segueName isEqualToString: @"TakePhotoSegue"])
+    {
         self.takePhotoQuestViewController = (TakePhotoQuestViewController *) [segue destinationViewController];
-        
     }
+    else
+        if ([segueName isEqualToString: @"QuestToMapSegue"])
+        {
+            LocationPickerViewController *locationPickerViewController = (LocationPickerViewController *) [segue destinationViewController];
+            locationPickerViewController.delegate = self;
+        }
+    
 }
-
-
 @end

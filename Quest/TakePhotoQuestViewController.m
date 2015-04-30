@@ -37,10 +37,4 @@
     self.radiusValue.text = [NSString stringWithFormat:@"%lu", (long)intValue];
 }
 
-
-
-
-
-
-
 @end
