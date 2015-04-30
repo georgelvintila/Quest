@@ -32,6 +32,7 @@
             if(!geoPoint)
             {
                 geoPoint =[PFGeoPoint geoPoint];
+                [self setObject:geoPoint forKey:key];
             }
             [geoPoint setLatitude:loc.coordinate.latitude];
             [geoPoint setLongitude:loc.coordinate.longitude];

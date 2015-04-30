@@ -21,13 +21,13 @@
 +(instancetype) sharedManager;
 
 ///@brief Add a new Quest of a specific type
--(void)addNewQuestWithType:(NSString *)type andInfo:(NSDictionary *)questInfo;
+-(void)addNewQuestWithType:(NSString *)type andInfo:(QuestInfo *)questInfo;
 
 ///@brief Delete a certain quest
 -(void)deleteQuestOfType:(NSString *)type atIndex:(NSUInteger) index;
 
 ///@brief Update information for a certain quest
--(void)updateQuestOfType:(NSString *)type atIndex:(NSUInteger) index withQuestInfo:(NSDictionary*)questInfo;
+-(void)updateQuestOfType:(NSString *)type atIndex:(NSUInteger) index withQuestInfo:(QuestInfo*)questInfo;
 
 ///@brief Make a request for all the quests of a certain owner
 -(void)requestItemsOfType:(NSString *)questType forOwner:(QuestOwnerType)questOwner;

@@ -41,5 +41,6 @@ static NSString * const kQuestColumnViewPhotoImageFile = @"imageFile";
 //Notification Strings
 static NSString * const kMyQuestQuerySuccesNotification = @"kMyQuestQuerySuccesNotification";
 static NSString * const kMyQuestQueryFailureNotification = @"kMyQuestQueryFailureNotification";
+static NSString * const kQuestDataChangedNotification = @"kQuestDataChangedNotification";
 
 #endif

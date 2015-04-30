@@ -114,6 +114,7 @@
     PFObject *quest = [[typeClass alloc] init];
     [quest saveQuestInformation:questInfo];
     [array addObject:quest];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kQuestDataChangedNotification object:nil];
 }
 
 -(void)deleteQuestOfType:(NSString *)type atIndex:(NSUInteger) index
@@ -183,7 +184,7 @@
            {
                [source setObject:[results mutableCopy] forKey:questType];
                NSDictionary *userInfo = @{@"owner":[NSNumber numberWithInteger:questOwner]};
-               [[NSNotificationCenter defaultCenter] postNotificationName:kMyQuestQuerySuccesNotification object:nil userInfo:userInfo];
+               [[NSNotificationCenter defaultCenter] postNotificationName:kQuestDataChangedNotification object:nil userInfo:userInfo];
            }
        }
     }];

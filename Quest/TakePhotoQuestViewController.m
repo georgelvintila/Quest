@@ -8,6 +8,7 @@
 
 #import "TakePhotoQuestViewController.h"
 #import "QuestManager.h"
+#import "TakePhotoQuestInfo.h"
 
 @interface TakePhotoQuestViewController () <UITextFieldDelegate>
 @property (nonatomic, strong) CLLocation *questLocation;
@@ -15,8 +16,6 @@
 @end
 
 @implementation TakePhotoQuestViewController
-@synthesize angleValue, radiusValue, questLocation, angleStepper, radiusSlider,questNameText,detailTextView
-,blockedCharacterSet,saveButton;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
@@ -37,26 +36,26 @@
 
 - (IBAction)angleStepperValueChanged:(UIStepper*)sender {
     NSInteger intValue = sender.value;
-    angleValue.text = [NSString stringWithFormat:@"%lu", intValue];
+    self.angleValue.text = [NSString stringWithFormat:@"%lu", intValue];
 }
 
 - (IBAction)radiusSliderValueChanged:(UISlider*)sender {
     NSInteger intValue = sender.value;
-    radiusValue.text = [NSString stringWithFormat:@"%lu", intValue];
+    self.radiusValue.text = [NSString stringWithFormat:@"%lu", intValue];
 }
 
 - (IBAction)saveQuest:(id)sender {
     
-    NSDictionary *nsDict = [[NSDictionary alloc]initWithObjectsAndKeys:
-                            [[NSString alloc] initWithString:questNameText.text], kQuestColumnName,
-                            [[NSString alloc] initWithString:detailTextView.text], kQuestColumnDetails,
-                            questLocation, kQuestColumnLocation,
-                            [NSNumber numberWithInteger:angleStepper.value], kQuestColumnTakePhotoAngle,
-                            [NSNumber numberWithInteger:radiusSlider.value], kQuestColumnTakePhotoRadius, nil];
-    
+    TakePhotoQuestInfo *info = [[TakePhotoQuestInfo alloc] init];
+    info.questName = self.questNameText.text;
+    info.questDetails = self.detailTextView.text;
+    info.questLocation = self.questLocation;
+    info.questOwner = [PFUser currentUser];
+    info.questPhotoAngle = [NSNumber numberWithInteger:self.angleStepper.value];
+    info.questPhotoRadius = [NSNumber numberWithInteger:self.radiusSlider.value];
     
     QuestManager *qmanager = [QuestManager sharedManager];
-    [qmanager addNewQuestWithType:kQuestTypeTakePhotoQuest andInfo:nsDict];
+    [qmanager addNewQuestWithType:kQuestTypeTakePhotoQuest andInfo:info];
     
 
 }
@@ -73,18 +72,18 @@
 
 -(void)locationPickerViewController:(LocationPickerViewController *)viewController saveLocation:(CLLocation *)location
 {
-    questLocation = location;
+    self.questLocation = location;
     [viewController.navigationController popViewControllerAnimated:YES];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)characters {
-    blockedCharacterSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
-    return ([characters rangeOfCharacterFromSet:blockedCharacterSet].location == NSNotFound);
+    self.blockedCharacterSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
+    return ([characters rangeOfCharacterFromSet:self.blockedCharacterSet].location == NSNotFound);
 }
 
 - (BOOL)textView:(UITextField *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)characters {
-    blockedCharacterSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
-    return ([characters rangeOfCharacterFromSet:blockedCharacterSet].location == NSNotFound);
+    self.blockedCharacterSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
+    return ([characters rangeOfCharacterFromSet:self.blockedCharacterSet].location == NSNotFound);
 }
 
 -(void)textViewDidChange:(UITextView *)textView
@@ -94,13 +93,13 @@
 
 -(void) validateTextFields
 {
-    if ((questNameText.text.length>0)&&(detailTextView.text.length>0))
+    if ((self.questNameText.text.length>0)&&(self.detailTextView.text.length>0))
     {
-        saveButton.enabled = YES;
+        self.saveButton.enabled = YES;
     }
     else
     {
-        saveButton.enabled = NO;
+        self.saveButton.enabled = NO;
     }
 }
 

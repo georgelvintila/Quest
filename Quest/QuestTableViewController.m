@@ -47,29 +47,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self requestData];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:kQuestDataChangedNotification object:nil];
 }
 
--(void)viewDidAppear:(BOOL)animated
+-(void)dealloc
 {
-    [super viewDidAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:kMyQuestQuerySuccesNotification object:nil];
-}
-
--(void)viewDidDisappear:(BOOL)animated
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kMyQuestQuerySuccesNotification object:nil];
-    [super viewDidDisappear:animated];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestDataChangedNotification object:nil];
 }
 
 -(void) requestData
 {
-        [self.questManager requestAllItemsForOwner:self.owner];
+    [self.questManager requestAllItemsForOwner:self.owner];
 
 }
 
