@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self validateTextFields];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,6 +45,7 @@
 {
     self.questLocation = location;
     [viewController.navigationController popViewControllerAnimated:YES];
+    [self validateTextFields];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)characters {
@@ -64,7 +65,7 @@
 
 -(void) validateTextFields
 {
-    if ((self.questNameText.text.length>0)&&(self.detailTextView.text.length>0))
+    if ((self.questNameText.text.length>0)&&(self.detailTextView.text.length>0)&&(self.questLocation))
     {
         self.saveButton.enabled = YES;
     }
@@ -86,6 +87,7 @@
     
     QuestManager *qmanager = [QuestManager sharedManager];
     [qmanager addNewQuestWithType:kQuestTypeTakePhotoQuest andInfo:info];
+    [self.navigationController popViewControllerAnimated:NO];
     
     
 }
@@ -93,10 +95,9 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSString * segueName = segue.identifier;
-    if ([segueName isEqualToString: @"alertview_embed"]) {
+    if ([segueName isEqualToString: @"TakePhotoSegue"]) {
         self.takePhotoQuestViewController = (TakePhotoQuestViewController *) [segue destinationViewController];
         
-        // do something with the AlertView's subviews here...
     }
 }
 
