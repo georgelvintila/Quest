@@ -35,6 +35,7 @@
 {
     self.questLocation = location;
     [viewController.navigationController popViewControllerAnimated:YES];
+    [self validateQuestInfo];
 }
 
 #pragma mark - TextField Delegate Methods
@@ -51,17 +52,9 @@
     return YES;
 }
 
-#pragma mark - TextView Delegate Methods
-
-- (BOOL)textView:(UITextField *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)characters
+-(void)textFieldDidEndEditing:(UITextField *)textField
 {
-    self.blockedCharacterSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
-    return ([characters rangeOfCharacterFromSet:self.blockedCharacterSet].location == NSNotFound);
-}
-
--(void)textViewDidChange:(UITextView *)textView
-{
-    [self validateTextFields];
+    [self validateQuestInfo];
 }
 
 #pragma mark - Action Methods
@@ -87,11 +80,6 @@
     [self.navigationController showViewController:locationPickerViewController sender:sender];
 }
 
-- (IBAction)questTextChanged:(id)sender
-{
-    [self validateTextFields];
-}
-
 #pragma mark - Navigation Methods
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -104,9 +92,9 @@
 
 #pragma mark - Instance Method
 
--(void) validateTextFields
+-(void) validateQuestInfo
 {
-    if ((self.questNameText.text.length > 0) && (self.detailTextView.text.length > 0))
+    if ((self.questNameText.text.length > 0) && self.questLocation)
     {
         self.saveButton.enabled = YES;
     }
