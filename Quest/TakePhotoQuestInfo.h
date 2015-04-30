@@ -11,6 +11,8 @@
 
 @interface TakePhotoQuestInfo : QuestInfo
 
+#pragma mark - Properties
+
 @property (nonatomic) NSNumber *questPhotoAngle;
 @property (nonatomic) NSNumber *questPhotoRadius;
 

@@ -11,13 +11,19 @@
 
 @interface QuestTableViewController ()
 
+#pragma mark - Properties
+
 @property(nonatomic,strong) QuestManager *questManager;
 @property(nonatomic,strong) NSArray *allQuestTypes;
 @property(nonatomic) QuestOwnerType owner;
 
 @end
 
+#pragma mark -
+
 @implementation QuestTableViewController
+
+#pragma mark - Instantiation
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
@@ -44,6 +50,8 @@
     return self;
 }
 
+#pragma mark - Base Methods
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self requestData];
@@ -54,6 +62,8 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestDataChangedNotification object:nil];
 }
+
+#pragma mark - Data Methods
 
 -(void) requestData
 {
@@ -66,7 +76,8 @@
     self.allQuestTypes = [self.questManager allQuestTypesForOwner:self.owner];
     [self.tableView reloadData];
 }
-#pragma mark - Table view data source
+
+#pragma mark - Table View Data Source Methods
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
@@ -85,14 +96,12 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
+
     return [self.allQuestTypes count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    
-    
+
     switch (self.owner) {
         case QuestOwnerTypeCurrent:
             return [[self.questManager.myQuests objectForKey:[self.allQuestTypes objectAtIndex:section]] count];
@@ -122,7 +131,6 @@
             break;
         case QuestOwnerTypeOthers:
             quest = [((NSArray *)[self.questManager.otherQuests objectForKey:[self.allQuestTypes objectAtIndex:indexPath.section]]) objectAtIndex:indexPath.row];
-
             break;
         default:
             break;
@@ -132,8 +140,9 @@
     cell.detailTextLabel.text = quest.details;
     
     return  cell;
-    
 }  
+
+#pragma mark - Action Methods
 
 - (IBAction)showQuestSheet:(id)sender {
     
@@ -141,6 +150,8 @@
    // actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [actionSheet showInView:self.view];    
 }
+
+#pragma mark - Action Sheet Delegate Methods
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -153,9 +164,9 @@
             break;
         case 1:
             break;
-
+        default:
+            break;
     }
 }
-
 
 @end

@@ -10,8 +10,7 @@
 
 @interface QuestInfo ()
 
-#pragma mark -
-#pragma mark Properties
+#pragma mark - Properties
 @property (nonatomic) NSMutableDictionary *dictionary;
 
 @end
@@ -20,12 +19,10 @@
 
 @implementation QuestInfo
 
-#pragma mark -
-#pragma mark Properties
+#pragma mark - Properties
 @synthesize dictionary = _dictionary;
 
-#pragma mark -
-#pragma mark Instance Methods
+#pragma mark - Instance Methods
 - (instancetype)init
 {
     self = [super init];

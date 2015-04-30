@@ -10,6 +10,5 @@
 
 @interface QuestLoginViewController : PFLogInViewController
 
-
 @end
 

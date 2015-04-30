@@ -12,8 +12,7 @@
 {
     NSArray *typesList;
 }
-#pragma mark -
-#pragma mark Properties
+#pragma mark - Properties
 @property (atomic,readwrite) NSMutableDictionary *myQuests;
 @property (atomic,readwrite) NSMutableDictionary *otherQuests;
 
@@ -23,13 +22,12 @@
 
 @implementation QuestManager
 
-#pragma mark -
-#pragma mark Properties
+#pragma mark - Properties
 
 @synthesize myQuests = _myQuests;
 @synthesize otherQuests = _otherQuests;
-#pragma mark -
-#pragma mark Instantition
+
+#pragma mark - Instantition
 
 +(instancetype)sharedManager
 {
@@ -52,8 +50,7 @@
     return self;
 }
 
-#pragma mark -
-#pragma mark Property Methods
+#pragma mark - Property Methods
 
 -(NSMutableDictionary *)otherQuests
 {
@@ -89,8 +86,7 @@
     }
 }
 
-#pragma mark -
-#pragma mark Methods
+#pragma mark - Methods
 
 -(NSArray *)allQuestTypesForOwner:(QuestOwnerType)owner
 {
@@ -108,8 +104,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Edit Methods
+#pragma mark - Edit Methods
 
 -(void)addNewQuestWithType:(NSString *)type andInfo:(QuestInfo *)questInfo
 {
@@ -138,8 +133,7 @@
     [quest saveQuestInformation:questInfo];
 }
 
-#pragma mark -
-#pragma mark Request Methods
+#pragma mark - Request Methods
 
 -(void)requestAllItemsForOwner:(QuestOwnerType)questOwner
 {

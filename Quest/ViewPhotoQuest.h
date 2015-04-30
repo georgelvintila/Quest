@@ -12,8 +12,7 @@
 
 @interface ViewPhotoQuest : PFObject<PFSubclassing>
 
-#pragma mark -
-#pragma mark Properties
+#pragma mark - Properties
 
 @property (nonatomic,readonly) NSNumber *viewRadius;
 
@@ -23,8 +22,7 @@
 
 @property (nonatomic,readonly) UIImage *image;
 
-#pragma mark -
-#pragma mark Class Methods
+#pragma mark - Class Methods
 
 + (NSString *)parseClassName;
 
