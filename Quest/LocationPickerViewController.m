@@ -168,31 +168,13 @@ static double const filterDistance = 1000;
     }
     
     _currentLocation = currentLocation;
-    
-   // CLLocationAccuracy filterDistance = [[NSUserDefaults standardUserDefaults] doubleForKey:PAWUserDefaultsFilterDistanceKey];
-    
-    // If they panned the map since our last location update, don't recenter it.
+
     if (!self.mapPannedSinceLocationUpdate) {
         // Set the map's region centered on their new location at 2x filterDistance
         MKCoordinateRegion newRegion = MKCoordinateRegionMakeWithDistance(self.currentLocation.coordinate, filterDistance * 2.0f, filterDistance * 2.0f);
         [mapView setRegion:newRegion animated:YES];
         self.mapPannedSinceLocationUpdate = NO;
     } // else do nothing.
-    
-    /*
-    if (self.circleOverlay != nil) {
-        [self.mapView removeOverlay:self.circleOverlay];
-        self.circleOverlay = nil;
-    }
-    
-    self.circleOverlay = [MKCircle circleWithCenterCoordinate:self.currentLocation.coordinate radius:filterDistance];
-    [self.mapView addOverlay:self.circleOverlay];
-    */
-    
-    // Update the map with new pins:
-  //  [self queryForAllPostsNearLocation:self.currentLocation withNearbyDistance:filterDistance];
-    // And update the existing pins to reflect any changes in filter distance:
-  //  [self updatePostsForLocation:self.currentLocation withNearbyDistance:filterDistance];
 }
 
 

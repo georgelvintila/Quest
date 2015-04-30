@@ -9,23 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "LocationPickerViewController.h"
 
-@interface TakePhotoQuestViewController : UIViewController<LocationPickerViewControllerDelegate>
+@interface TakePhotoQuestViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *radiusValue;
 @property (weak, nonatomic) IBOutlet UILabel *angleValue;
 
-@property (weak, nonatomic) IBOutlet UITextField *questNameText;
-@property (weak, nonatomic) IBOutlet UITextView *detailTextView;
 @property (weak, nonatomic) IBOutlet UISlider *radiusSlider;
 @property (weak, nonatomic) IBOutlet UIStepper *angleStepper;
 
-@property (weak, nonatomic) IBOutlet UIButton *saveButton;
-
 - (IBAction)angleStepperValueChanged:(UIStepper*)sender;
 - (IBAction)radiusSliderValueChanged:(UISlider*)sender;
-- (IBAction)saveQuest:(id)sender;
-- (IBAction)chooseLocation:(id)sender;
-
-- (IBAction)questTextChanged:(id)sender;
 
 @end
