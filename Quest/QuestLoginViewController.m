@@ -10,19 +10,20 @@
 
 @interface QuestLoginViewController ()
 
+#pragma mark - Properties
+
 @property (nonatomic,strong) PFLogInViewController *loginViewController;
+
 @end
 
+#pragma mark - 
+
 @implementation QuestLoginViewController
+
+#pragma mark - Base Methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 @end

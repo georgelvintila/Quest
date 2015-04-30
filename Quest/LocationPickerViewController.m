@@ -8,7 +8,11 @@
 
 #import "LocationPickerViewController.h"
 
+static CGFloat const filterDistance = 1000.0;
+
 @interface LocationPickerViewController ()
+
+#pragma mark - Properties
 
 @property (nonatomic, strong) CLLocation *currentLocation;
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -17,11 +21,11 @@
 
 @end
 
+#pragma mark -
+
 @implementation LocationPickerViewController
-@synthesize annot,delegate,mapView,deleteButton,locationSwitch;
 
-
-static double const filterDistance = 1000;
+#pragma mark - Base Methods
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -44,49 +48,21 @@ static double const filterDistance = 1000;
     
 }
 
-- (void)addLongPressGestureRecognizer
-{
-    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
-                                      initWithTarget:self action:@selector(handleLongPress:)];
-    lpgr.minimumPressDuration = 1.5;
-    [mapView addGestureRecognizer:lpgr];
-}
+#pragma mark - Property Methods
 
-- (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer
-{
-    if (gestureRecognizer.state != UIGestureRecognizerStateBegan)
+- (void)setCurrentLocation:(CLLocation *)currentLocation {
+    if (self.currentLocation == currentLocation) {
         return;
+    }
     
-    CGPoint touchPoint = [gestureRecognizer locationInView:mapView];
-    CLLocationCoordinate2D touchMapCoordinate =
-    [mapView convertPoint:touchPoint toCoordinateFromView:mapView];
-    if (!annot)
-    {
-        annot = [[MKPointAnnotation alloc] init];
-        annot.coordinate = touchMapCoordinate;
-        [mapView addAnnotation:annot];
-    }
-    else
-    {
-        annot.coordinate = touchMapCoordinate;
-    }
-}
-
-- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
-    self.mapPannedSinceLocationUpdate = YES;
-}
-
-- (void)startStandardUpdates {
-    [self.locationManager startUpdatingLocation];
-    CLLocation *currentLocation = self.locationManager.location;
-    if (currentLocation) {
-        [self setCurrentLocation: currentLocation];
-    }
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    _currentLocation = currentLocation;
+    
+    if (!self.mapPannedSinceLocationUpdate) {
+        // Set the map's region centered on their new location at 2x filterDistance
+        MKCoordinateRegion newRegion = MKCoordinateRegionMakeWithDistance(self.currentLocation.coordinate, filterDistance * 2.0f, filterDistance * 2.0f);
+        [self.mapView setRegion:newRegion animated:YES];
+        self.mapPannedSinceLocationUpdate = NO;
+    } // else do nothing.
 }
 
 - (CLLocationManager *)locationManager {
@@ -100,6 +76,52 @@ static double const filterDistance = 1000;
     return _locationManager;
 }
 
+#pragma mark - Gesture Methods
+
+- (void)addLongPressGestureRecognizer
+{
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
+                                      initWithTarget:self action:@selector(handleLongPress:)];
+    lpgr.minimumPressDuration = 1.5;
+    [self.mapView addGestureRecognizer:lpgr];
+}
+
+- (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer.state != UIGestureRecognizerStateBegan)
+        return;
+    
+    CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
+    CLLocationCoordinate2D touchMapCoordinate =
+    [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
+    if (!self.annot)
+    {
+        self.annot = [[MKPointAnnotation alloc] init];
+        self.annot.coordinate = touchMapCoordinate;
+        [self.mapView addAnnotation:self.annot];
+    }
+    else
+    {
+        self.annot.coordinate = touchMapCoordinate;
+    }
+}
+
+#pragma mark - MapView Delegate Methods
+
+- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
+    self.mapPannedSinceLocationUpdate = YES;
+}
+
+- (void)startStandardUpdates {
+    [self.locationManager startUpdatingLocation];
+    CLLocation *currentLocation = self.locationManager.location;
+    if (currentLocation) {
+        [self setCurrentLocation: currentLocation];
+    }
+}
+
+#pragma mark - Location Manager Delegate Methods
+
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     NSLog(@"%s", __PRETTY_FUNCTION__);
     switch (status) {
@@ -112,8 +134,8 @@ static double const filterDistance = 1000;
         }
             break;
         case kCLAuthorizationStatusDenied:
-            NSLog(@"kCLAuthorizationStatusDenied");
         {
+            NSLog(@"kCLAuthorizationStatusDenied");
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Quest can’t access your current location." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
             [alertView show];
             // Disable the post button.
@@ -162,26 +184,12 @@ static double const filterDistance = 1000;
     }
 }
 
-- (void)setCurrentLocation:(CLLocation *)currentLocation {
-    if (self.currentLocation == currentLocation) {
-        return;
-    }
-    
-    _currentLocation = currentLocation;
-
-    if (!self.mapPannedSinceLocationUpdate) {
-        // Set the map's region centered on their new location at 2x filterDistance
-        MKCoordinateRegion newRegion = MKCoordinateRegionMakeWithDistance(self.currentLocation.coordinate, filterDistance * 2.0f, filterDistance * 2.0f);
-        [mapView setRegion:newRegion animated:YES];
-        self.mapPannedSinceLocationUpdate = NO;
-    } // else do nothing.
-}
-
+#pragma mark - Action Methods
 
 - (IBAction)saveLocation:(id)sender{
-    if (annot)
+    if (self.annot)
     {
-        CLLocation *location = [[CLLocation alloc] initWithLatitude:annot.coordinate.latitude longitude:annot.coordinate.longitude];
+        CLLocation *location = [[CLLocation alloc] initWithLatitude:self.annot.coordinate.latitude longitude:self.annot.coordinate.longitude];
             if ([self.delegate respondsToSelector:@selector(locationPickerViewController:saveLocation:)])
             {
                 [self.delegate locationPickerViewController:self saveLocation:location];
@@ -190,27 +198,27 @@ static double const filterDistance = 1000;
 }
 
 - (IBAction)deleteMarker:(id)sender {
-    [mapView removeAnnotations:mapView.annotations];
-    annot = nil;
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    self.annot = nil;
 }
 
 - (IBAction)switchUseLocation:(UISwitch*)sender {
     if (sender.isOn)
     {
-        deleteButton.enabled = NO;
-        mapView.userInteractionEnabled = NO;
-        if ((self.mapPannedSinceLocationUpdate)&&(self.currentLocation))
+        self.deleteButton.enabled = NO;
+        self.mapView.userInteractionEnabled = NO;
+        if ((self.mapPannedSinceLocationUpdate) && (self.currentLocation))
         {
-            self.mapPannedSinceLocationUpdate=NO;
+            self.mapPannedSinceLocationUpdate = NO;
             MKCoordinateRegion newRegion = MKCoordinateRegionMakeWithDistance(self.currentLocation.coordinate, filterDistance * 2.0f, filterDistance * 2.0f);
-            [mapView setRegion:newRegion animated:YES];
+            [self.mapView setRegion:newRegion animated:YES];
         }
-        
     }
     else
     {
-        deleteButton.enabled = YES;
-        mapView.userInteractionEnabled = YES;
+        self.deleteButton.enabled = YES;
+        self.mapView.userInteractionEnabled = YES;
     }
 }
+
 @end

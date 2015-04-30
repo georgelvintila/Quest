@@ -12,8 +12,7 @@
 {
     NSArray *typesList;
 }
-#pragma mark -
-#pragma mark Properties
+#pragma mark - Properties
 @property (atomic,readwrite) NSMutableDictionary *myQuests;
 @property (atomic,readwrite) NSMutableDictionary *otherQuests;
 
@@ -23,13 +22,12 @@
 
 @implementation QuestManager
 
-#pragma mark -
-#pragma mark Properties
+#pragma mark - Properties
 
 @synthesize myQuests = _myQuests;
 @synthesize otherQuests = _otherQuests;
-#pragma mark -
-#pragma mark Instantition
+
+#pragma mark - Instantition
 
 +(instancetype)sharedManager
 {
@@ -52,8 +50,7 @@
     return self;
 }
 
-#pragma mark -
-#pragma mark Property Methods
+#pragma mark - Property Methods
 
 -(NSMutableDictionary *)otherQuests
 {
@@ -89,8 +86,7 @@
     }
 }
 
-#pragma mark -
-#pragma mark Methods
+#pragma mark - Methods
 
 -(NSArray *)allQuestTypesForOwner:(QuestOwnerType)owner
 {
@@ -107,9 +103,31 @@
     return  nil;
 }
 
+-(NSArray *)questListOfType:(NSString *)type forOwner:(QuestOwnerType)owner
+{
+    switch (owner) {
+        case QuestOwnerTypeCurrent:
+            return self.myQuests[type];
+        case QuestOwnerTypeOthers:
+            return self.otherQuests[type];
+        case QuestOwnerTypeAll:
+        {
+            //lets hope we don't get to this
+            NSArray *array  = [[self.myQuests[type] arrayByAddingObjectsFromArray:self.otherQuests[type]] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                Quest *first = (Quest*)obj1;
+                Quest *second = (Quest*)obj2;
+                return  ([first.updatedAt compare:second.updatedAt]);
+            }];
+            return array;
+        }
+        default:
+            break;
+    }
+    return nil;
+}
 
-#pragma mark -
-#pragma mark Edit Methods
+
+#pragma mark - Edit Methods
 
 -(void)addNewQuestWithType:(NSString *)type andInfo:(QuestInfo *)questInfo
 {
@@ -138,8 +156,7 @@
     [quest saveQuestInformation:questInfo];
 }
 
-#pragma mark -
-#pragma mark Request Methods
+#pragma mark - Request Methods
 
 -(void)requestAllItemsForOwner:(QuestOwnerType)questOwner
 {

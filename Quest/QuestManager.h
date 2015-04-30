@@ -11,23 +11,12 @@
 
 @interface QuestManager : NSObject
 
-#pragma mark -
-#pragma mark Properties
-
-///@brief Property that contains all quests of the curent user grouped by type
-@property (atomic,readonly) NSMutableDictionary *myQuests;
-
-///@brief Property that contains all quests of the other users grouped by type
-@property (atomic,readonly) NSMutableDictionary *otherQuests;
-
-#pragma mark -
-#pragma mark Class Methods
+#pragma mark - Class Methods
 
 ///@brief Shared Instance of the Manager
 +(instancetype) sharedManager;
 
-#pragma mark -
-#pragma mark Instance Methods
+#pragma mark - Instance Methods
 
 ///@brief Add a new Quest of a specific type
 -(void)addNewQuestWithType:(NSString *)type andInfo:(QuestInfo *)questInfo;
@@ -52,5 +41,8 @@
 
 ///@brief Get all quest types for a certain owner
 -(NSArray *)allQuestTypesForOwner:(QuestOwnerType)owner;
+
+///@brief Get all quests of one type for a certain owner
+-(NSArray *)questListOfType:(NSString *)type forOwner:(QuestOwnerType) owner;
 
 @end

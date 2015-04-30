@@ -10,8 +10,7 @@
 
 @interface QuestInfo : NSObject
 
-#pragma mark -
-#pragma mark Properties
+#pragma mark - Properties
 
 @property (nonatomic) NSString *questName;
 @property (nonatomic) NSString *questDetails;
@@ -23,8 +22,7 @@
 @property (nonatomic) NSString *questObjectId;
 
 
-#pragma mark -
-#pragma mark Instance Methods
+#pragma mark - Instance Methods
 
 - (NSDictionary *) questDictionary;
 

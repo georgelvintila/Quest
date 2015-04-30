@@ -10,11 +10,15 @@
 
 @interface QuestInfo ()
 
+#pragma mark - Properties
+
 @property (nonatomic) NSMutableDictionary *dictionary;
 
 @end
 
 @implementation ViewPhotoQuestInfo
+
+#pragma mark - Property Methods
 
 - (NSNumber *)questPhotoViewRadius {
     return self.dictionary[kQuestColumnViewPhotoViewRadius];

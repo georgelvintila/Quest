@@ -272,8 +272,8 @@
 			children = (
 				BB6308E31AF109F9002DF589 /* QuestInfo */,
 				E1F45C991AF21E4E00ACAE6D /* Quests */,
-				E1EBEBBC1AEF79FD000A3790 /* QuestManager.m */,
 				E1EBEBBB1AEF79FD000A3790 /* QuestManager.h */,
+				E1EBEBBC1AEF79FD000A3790 /* QuestManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";

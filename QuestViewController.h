@@ -11,17 +11,14 @@
 #import "QuestManager.h"
 #import "TakePhotoQuestInfo.h"
 #import "TakePhotoQuestViewController.h"
-@interface QuestViewController : UIViewController<LocationPickerViewControllerDelegate>
+
+@interface QuestViewController : UIViewController<LocationPickerViewControllerDelegate,UITextFieldDelegate>
+
+#pragma mark - Properties
 
 @property (weak, nonatomic) IBOutlet UITextField *questNameText;
 @property (weak, nonatomic) IBOutlet UITextView *detailTextView;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
-
 @property (weak, nonatomic) IBOutlet UIView *takePhotoContainer;
-
-- (IBAction)saveQuest:(id)sender;
-- (IBAction)chooseLocation:(id)sender;
-- (IBAction)questTextChanged:(id)sender;
-
 
 @end

@@ -10,16 +10,14 @@
 
 @implementation PFObject (Quest)
 
-#pragma mark -
-#pragma mark Properties
+#pragma mark - Properties
 
 @dynamic name;
 @dynamic details;
 @dynamic owner;
 @dynamic location;
 
-#pragma mark -
-#pragma mark Property Methods
+#pragma mark - Property Methods
 
 -(CLLocation *)mapLocation
 {
@@ -27,8 +25,7 @@
     return loc;
 }
 
-#pragma mark -
-#pragma mark Instance Methods
+#pragma mark - Instance Methods
 
 -(void)saveQuestInformation:(QuestInfo *)questInfo
 {

@@ -14,20 +14,20 @@
 
 @interface LocationPickerViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate>
 
-- (IBAction)saveLocation:(id)sender;
-- (IBAction)deleteMarker:(id)sender;
-- (IBAction)switchUseLocation:(UISwitch*)sender;
+#pragma mark - Properties
 
 @property (weak, nonatomic) IBOutlet UISwitch *locationSwitch;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
-
-
 @property (nonatomic, weak) id<LocationPickerViewControllerDelegate> delegate;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 @end
 
+#pragma mark -
+
 @protocol LocationPickerViewControllerDelegate <NSObject>
+
+#pragma mark - Required Methods
 
 - (void)locationPickerViewController:(LocationPickerViewController*) viewController
              saveLocation:(CLLocation*) location;

@@ -11,13 +11,12 @@
 
 @interface TakePhotoQuestViewController : UIViewController
 
+#pragma mark - Properties
+
 @property (weak, nonatomic) IBOutlet UILabel *radiusValue;
 @property (weak, nonatomic) IBOutlet UILabel *angleValue;
-
 @property (weak, nonatomic) IBOutlet UISlider *radiusSlider;
 @property (weak, nonatomic) IBOutlet UIStepper *angleStepper;
 
-- (IBAction)angleStepperValueChanged:(UIStepper*)sender;
-- (IBAction)radiusSliderValueChanged:(UISlider*)sender;
 
 @end

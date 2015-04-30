@@ -9,21 +9,25 @@
 #import "QuestViewController.h"
 
 @interface QuestViewController ()
+
+#pragma mark - Properties
+
 @property (nonatomic, strong) CLLocation *questLocation;
 @property (nonatomic, strong) NSCharacterSet *blockedCharacterSet;
 @property (nonatomic, strong) TakePhotoQuestViewController *takePhotoQuestViewController;
+
 @end
+
+#pragma mark -
 
 @implementation QuestViewController
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    return YES;
-}
+#pragma mark - Base Methods
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    [self validateTextFields];
+    [self validateQuestInfo];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,52 +35,38 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)chooseLocation:(id)sender {
-    LocationPickerViewController *locationPickerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LocationPicker"];
-    locationPickerViewController.delegate = self;
-    [self.navigationController showViewController:locationPickerViewController sender:sender];
-}
-
-- (IBAction)questTextChanged:(id)sender {
-    [self validateTextFields];
-}
+#pragma mark - Location Picker View Controller Delegate Methods
 
 -(void)locationPickerViewController:(LocationPickerViewController *)viewController saveLocation:(CLLocation *)location
 {
     self.questLocation = location;
     [viewController.navigationController popViewControllerAnimated:YES];
-    [self validateTextFields];
+    [self validateQuestInfo];
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)characters {
+#pragma mark - TextField Delegate Methods
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)characters
+{
     self.blockedCharacterSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
     return ([characters rangeOfCharacterFromSet:self.blockedCharacterSet].location == NSNotFound);
 }
 
-- (BOOL)textView:(UITextField *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)characters {
-    self.blockedCharacterSet = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
-    return ([characters rangeOfCharacterFromSet:self.blockedCharacterSet].location == NSNotFound);
-}
-
--(void)textViewDidChange:(UITextView *)textView
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [self validateTextFields];
+    [textField resignFirstResponder];
+    return YES;
 }
 
--(void) validateTextFields
+-(void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if ((self.questNameText.text.length>0)&&(self.detailTextView.text.length>0)&&(self.questLocation))
-    {
-        self.saveButton.enabled = YES;
-    }
-    else
-    {
-        self.saveButton.enabled = NO;
-    }
+    [self validateQuestInfo];
 }
 
-- (IBAction)saveQuest:(id)sender {
-    
+#pragma mark - Action Methods
+
+- (IBAction)saveQuest:(id)sender
+{
     TakePhotoQuestInfo *info = [[TakePhotoQuestInfo alloc] init];
     info.questName = self.questNameText.text;
     info.questDetails = self.detailTextView.text;
@@ -90,6 +80,15 @@
     [self.navigationController popViewControllerAnimated:NO];
     
 }
+
+- (IBAction)chooseLocation:(id)sender
+{
+    LocationPickerViewController *locationPickerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LocationPicker"];
+    locationPickerViewController.delegate = self;
+    [self.navigationController showViewController:locationPickerViewController sender:sender];
+}
+
+#pragma mark - Navigation Methods
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -106,4 +105,19 @@
         }
     
 }
+
+#pragma mark - Instance Method
+
+-(void) validateQuestInfo
+{
+    if ((self.questNameText.text.length > 0) && self.questLocation)
+    {
+        self.saveButton.enabled = YES;
+    }
+    else
+    {
+        self.saveButton.enabled = NO;
+    }
+}
+
 @end

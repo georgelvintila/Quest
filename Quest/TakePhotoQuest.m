@@ -11,14 +11,12 @@
 
 @implementation TakePhotoQuest
 
-#pragma mark -
-#pragma mark Properties
+#pragma mark - Properties
 
 @dynamic angle;
 @dynamic radius;
 
-#pragma mark -
-#pragma mark Class Methods
+#pragma mark - Class Methods
 
 + (void)load {
     [self registerSubclass];

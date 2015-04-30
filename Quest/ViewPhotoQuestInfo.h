@@ -12,6 +12,8 @@
 
 @interface ViewPhotoQuestInfo : QuestInfo
 
+#pragma mark - Properties
+
 @property (nonatomic) NSNumber *questPhotoViewRadius;
 @property (nonatomic) NSString *questPhotoMessage;
 @property (nonatomic) id questPhotoImageFile;

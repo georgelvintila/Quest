@@ -10,11 +10,17 @@
 
 @interface QuestInfo ()
 
+#pragma mark - Properties
+
 @property (nonatomic) NSMutableDictionary *dictionary;
+
+#pragma mark -
 
 @end
 
 @implementation TakePhotoQuestInfo
+
+#pragma mark - Property Methods
 
 - (NSNumber *)questPhotoAngle {
     return self.dictionary[kQuestColumnTakePhotoAngle];

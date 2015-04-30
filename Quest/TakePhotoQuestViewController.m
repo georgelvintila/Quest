@@ -10,22 +10,18 @@
 
 
 @interface TakePhotoQuestViewController ()
+
 @end
 
 @implementation TakePhotoQuestViewController
 
+#pragma mark - Base Methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
+#pragma mark - Action Methods
 
 - (IBAction)angleStepperValueChanged:(UIStepper*)sender {
     NSInteger intValue = sender.value;

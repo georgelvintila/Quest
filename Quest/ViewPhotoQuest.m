@@ -12,15 +12,13 @@
 
 @implementation ViewPhotoQuest
 
-#pragma mark -
-#pragma mark Properties
+#pragma mark - Properties
 
 @dynamic viewRadius;
 @dynamic imageFile;
 @dynamic message;
 
-#pragma mark -
-#pragma mark Property Methods
+#pragma mark - Property Methods
 
 -(UIImage *)image
 {
@@ -45,8 +43,7 @@
     [super saveQuestInformation:questInfo];
 }
 
-#pragma mark -
-#pragma mark Class Methods
+#pragma mark - Class Methods
 
 + (void)load {
     [self registerSubclass];
