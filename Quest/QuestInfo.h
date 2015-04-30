@@ -10,18 +10,8 @@
 
 @interface QuestInfo : NSObject
 
-// properties
-
-/*
- static NSString * const kQuestColumnName = @"name";
- static NSString * const kQuestColumnDetail = @"description";
- static NSString * const kQuestColumnLocation = @"location";
- static NSString * const kQuestColumnOwner = @"owner";
- static NSString * const kQuestColumnCreatedAt = @"createdAt";
- static NSString * const kQuestColumnUpdatedAt = @"updatedAt";
- static NSString * const kQuestColumnACL = @"ACL";
- static NSString * const kQuestColumnObjectId = @"objectId";
- */
+#pragma mark -
+#pragma mark Properties
 
 @property (nonatomic) NSString *questName;
 @property (nonatomic) NSString *questDetails;
@@ -33,7 +23,8 @@
 @property (nonatomic) NSString *questObjectId;
 
 
-// methods
+#pragma mark -
+#pragma mark Instance Methods
 
 - (NSDictionary *) questDictionary;
 

@@ -12,11 +12,14 @@
 {
     NSArray *typesList;
 }
-
+#pragma mark -
+#pragma mark Properties
 @property (atomic,readwrite) NSMutableDictionary *myQuests;
 @property (atomic,readwrite) NSMutableDictionary *otherQuests;
 
 @end
+
+#pragma mark -
 
 @implementation QuestManager
 
@@ -50,7 +53,7 @@
 }
 
 #pragma mark -
-#pragma mark Properties
+#pragma mark Property Methods
 
 -(NSMutableDictionary *)otherQuests
 {
@@ -85,6 +88,9 @@
             _myQuests = myQuests;
     }
 }
+
+#pragma mark -
+#pragma mark Methods
 
 -(NSArray *)allQuestTypesForOwner:(QuestOwnerType)owner
 {

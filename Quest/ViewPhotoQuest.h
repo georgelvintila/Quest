@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
 #import "PFObject+Quest.h"
 
 
 @interface ViewPhotoQuest : PFObject<PFSubclassing>
 
-+ (NSString *)parseClassName;
+#pragma mark -
+#pragma mark Properties
 
 @property (nonatomic,readonly) NSNumber *viewRadius;
 
@@ -22,5 +22,10 @@
 @property (nonatomic,readonly) PFFile *imageFile;
 
 @property (nonatomic,readonly) UIImage *image;
+
+#pragma mark -
+#pragma mark Class Methods
+
++ (NSString *)parseClassName;
 
 @end

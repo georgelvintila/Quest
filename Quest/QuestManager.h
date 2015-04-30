@@ -11,14 +11,23 @@
 
 @interface QuestManager : NSObject
 
+#pragma mark -
+#pragma mark Properties
+
 ///@brief Property that contains all quests of the curent user grouped by type
 @property (atomic,readonly) NSMutableDictionary *myQuests;
 
 ///@brief Property that contains all quests of the other users grouped by type
 @property (atomic,readonly) NSMutableDictionary *otherQuests;
 
+#pragma mark -
+#pragma mark Class Methods
+
 ///@brief Shared Instance of the Manager
 +(instancetype) sharedManager;
+
+#pragma mark -
+#pragma mark Instance Methods
 
 ///@brief Add a new Quest of a specific type
 -(void)addNewQuestWithType:(NSString *)type andInfo:(QuestInfo *)questInfo;
@@ -29,16 +38,19 @@
 ///@brief Update information for a certain quest
 -(void)updateQuestOfType:(NSString *)type atIndex:(NSUInteger) index withQuestInfo:(QuestInfo*)questInfo;
 
-///@brief Make a request for all the quests of a certain owner
+///@brief Make a request for all the quests of a specific type for a certain owner
 -(void)requestItemsOfType:(NSString *)questType forOwner:(QuestOwnerType)questOwner;
 
-///@brief Make a request for all the quests of a certain owner with item limit
+///@brief Make a request for all the quests of a specific type for a certain owner with item limit
 -(void)requestItemsOfType:(NSString *)questType forOwner:(QuestOwnerType)questOwner withLimit:(NSUInteger) limit;
 
-///@brief Make a request for all the quests of a certain owner with item limit and skiping first
+///@brief Make a request for all the quests of a specific type for a certain owner with item limit and skiping first
 -(void)requestItemsOfType:(NSString *)questType forOwner:(QuestOwnerType)questOwner withLimit:(NSUInteger) limit skipFirst:(NSUInteger) skip;
 
+///@brief Make a request for all the quests of a certain owner
 -(void)requestAllItemsForOwner:(QuestOwnerType)questOwner;
 
+///@brief Get all quest types for a certain owner
 -(NSArray *)allQuestTypesForOwner:(QuestOwnerType)owner;
+
 @end

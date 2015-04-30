@@ -10,6 +10,9 @@
 
 @interface PFObject (Quest)
 
+#pragma mark -
+#pragma mark Properties
+
 ///@brief Property that contains the name of the Quest
 @property (nonatomic,readonly,strong) NSString *name;
 
@@ -22,8 +25,13 @@
 ///@brief Property that contains the location of the Quest
 @property (nonatomic,readonly,strong) CLLocation *mapLocation;
 
+///@brief Property that contains the location of the Quest
 @property(nonatomic,readonly,strong) PFGeoPoint *location;
 
+#pragma mark -
+#pragma mark Instance Methods
+
+///@brief Method that saves Quest information
 -(void)saveQuestInformation:(QuestInfo *)questInfo;
 
 @end

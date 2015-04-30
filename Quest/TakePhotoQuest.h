@@ -13,10 +13,16 @@
 
 @interface TakePhotoQuest : PFObject<PFSubclassing>
 
-+ (NSString *)parseClassName;
+#pragma mark -
+#pragma mark Properties
 
 @property (nonatomic,readonly) NSNumber *radius;
 
 @property (nonatomic,readonly) NSNumber *angle;
+
+#pragma mark -
+#pragma mark Class Methods
+
++ (NSString *)parseClassName;
 
 @end

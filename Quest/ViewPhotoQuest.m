@@ -19,6 +19,9 @@
 @dynamic imageFile;
 @dynamic message;
 
+#pragma mark -
+#pragma mark Property Methods
+
 -(UIImage *)image
 {
     __block UIImage *image = nil;
@@ -41,6 +44,7 @@
     }
     [super saveQuestInformation:questInfo];
 }
+
 #pragma mark -
 #pragma mark Class Methods
 

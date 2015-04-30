@@ -166,12 +166,12 @@
 		BB6308E31AF109F9002DF589 /* QuestInfo */ = {
 			isa = PBXGroup;
 			children = (
+				BB6308E41AF10A0E002DF589 /* QuestInfo.h */,
+				BB6308E51AF10A0E002DF589 /* QuestInfo.m */,
 				BB18DC281AF119E5005B2AB2 /* TakePhotoQuestInfo.h */,
 				BB18DC291AF119E5005B2AB2 /* TakePhotoQuestInfo.m */,
 				BB18DC251AF11739005B2AB2 /* ViewPhotoQuestInfo.h */,
 				BB18DC261AF11739005B2AB2 /* ViewPhotoQuestInfo.m */,
-				BB6308E41AF10A0E002DF589 /* QuestInfo.h */,
-				BB6308E51AF10A0E002DF589 /* QuestInfo.m */,
 			);
 			name = QuestInfo;
 			sourceTree = "<group>";
@@ -197,27 +197,16 @@
 		E1D705041AEA7B8900525E19 /* Quest */ = {
 			isa = PBXGroup;
 			children = (
-				BB6308E31AF109F9002DF589 /* QuestInfo */,
 				E1EFDF921AF0F33F00894032 /* Categories */,
-				E1EBEBBE1AEF7A0A000A3790 /* model */,
-				E1D705091AEA7B8900525E19 /* AppDelegate.h */,
-				E1D7050A1AEA7B8900525E19 /* AppDelegate.m */,
-				E1D7050C1AEA7B8900525E19 /* QuestLoginViewController.h */,
-				E1D7050D1AEA7B8900525E19 /* QuestLoginViewController.m */,
-				E1D8FAB11AEE906000F78777 /* QuestTableViewController.h */,
-				E1D8FAB21AEE906000F78777 /* QuestTableViewController.m */,
-				212D2C241AF22231004991BA /* QuestViewController.h */,
-				212D2C251AF22231004991BA /* QuestViewController.m */,
-				212D2C201AEFCABC004991BA /* TakePhotoQuestViewController.h */,
-				212D2C211AEFCABC004991BA /* TakePhotoQuestViewController.m */,
-				212D2C1E1AEFCABC004991BA /* LocationPickerViewController.h */,
-				212D2C1F1AEFCABC004991BA /* LocationPickerViewController.m */,
-				E1EBEBC21AEF9305000A3790 /* Constants.h */,
-				E1D7050F1AEA7B8900525E19 /* Main.storyboard */,
-				E1D705121AEA7B8900525E19 /* Images.xcassets */,
-				E1D705141AEA7B8900525E19 /* LaunchScreen.xib */,
+				E1EBEBBE1AEF7A0A000A3790 /* Model */,
+				E1F45C951AF21D5E00ACAE6D /* Controllers */,
+				E1F45C961AF21D9E00ACAE6D /* Views */,
+				E1F45C981AF21DEE00ACAE6D /* Assets */,
 				E1D7052B1AEA7C9E00525E19 /* Frameworks */,
 				E1D705051AEA7B8900525E19 /* Supporting Files */,
+				E1D705091AEA7B8900525E19 /* AppDelegate.h */,
+				E1D7050A1AEA7B8900525E19 /* AppDelegate.m */,
+				E1EBEBC21AEF9305000A3790 /* Constants.h */,
 			);
 			path = Quest;
 			sourceTree = "<group>";
@@ -278,17 +267,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E1EBEBBE1AEF7A0A000A3790 /* model */ = {
+		E1EBEBBE1AEF7A0A000A3790 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E1EFDF8F1AF0F12E00894032 /* ViewPhotoQuest.h */,
-				E1EFDF901AF0F12E00894032 /* ViewPhotoQuest.m */,
-				E1EBEBBF1AEF7AED000A3790 /* TakePhotoQuest.h */,
-				E1EBEBC01AEF7AED000A3790 /* TakePhotoQuest.m */,
-				E1EBEBBB1AEF79FD000A3790 /* QuestManager.h */,
+				BB6308E31AF109F9002DF589 /* QuestInfo */,
+				E1F45C991AF21E4E00ACAE6D /* Quests */,
 				E1EBEBBC1AEF79FD000A3790 /* QuestManager.m */,
+				E1EBEBBB1AEF79FD000A3790 /* QuestManager.h */,
 			);
-			name = model;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		E1EFDF921AF0F33F00894032 /* Categories */ = {
@@ -298,6 +285,51 @@
 				E1EFDF8D1AF0C3CA00894032 /* PFObject+Quest.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		E1F45C951AF21D5E00ACAE6D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E1D7050C1AEA7B8900525E19 /* QuestLoginViewController.h */,
+				E1D7050D1AEA7B8900525E19 /* QuestLoginViewController.m */,
+				E1D8FAB11AEE906000F78777 /* QuestTableViewController.h */,
+				E1D8FAB21AEE906000F78777 /* QuestTableViewController.m */,
+				212D2C241AF22231004991BA /* QuestViewController.h */,
+				212D2C251AF22231004991BA /* QuestViewController.m */,
+				212D2C201AEFCABC004991BA /* TakePhotoQuestViewController.h */,
+				212D2C211AEFCABC004991BA /* TakePhotoQuestViewController.m */,
+				212D2C1E1AEFCABC004991BA /* LocationPickerViewController.h */,
+				212D2C1F1AEFCABC004991BA /* LocationPickerViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		E1F45C961AF21D9E00ACAE6D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E1D7050F1AEA7B8900525E19 /* Main.storyboard */,
+				E1D705141AEA7B8900525E19 /* LaunchScreen.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		E1F45C981AF21DEE00ACAE6D /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				E1D705121AEA7B8900525E19 /* Images.xcassets */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		E1F45C991AF21E4E00ACAE6D /* Quests */ = {
+			isa = PBXGroup;
+			children = (
+				E1EFDF8F1AF0F12E00894032 /* ViewPhotoQuest.h */,
+				E1EFDF901AF0F12E00894032 /* ViewPhotoQuest.m */,
+				E1EBEBBF1AEF7AED000A3790 /* TakePhotoQuest.h */,
+				E1EBEBC01AEF7AED000A3790 /* TakePhotoQuest.m */,
+			);
+			name = Quests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
