@@ -27,6 +27,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self validateTextFields];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)chooseLocation:(id)sender {
+    LocationPickerViewController *locationPickerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LocationPicker"];
+    locationPickerViewController.delegate = self;
+    [self.navigationController showViewController:locationPickerViewController sender:sender];
 }
 
 #pragma mark - Location Picker View Controller Delegate Methods
@@ -71,6 +83,7 @@
     
     QuestManager *qmanager = [QuestManager sharedManager];
     [qmanager addNewQuestWithType:kQuestTypeTakePhotoQuest andInfo:info];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 - (IBAction)chooseLocation:(id)sender
@@ -85,7 +98,7 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSString * segueName = segue.identifier;
-    if ([segueName isEqualToString: @"alertview_embed"]) {
+    if ([segueName isEqualToString: @"TakePhotoSegue"]) {
         self.takePhotoQuestViewController = (TakePhotoQuestViewController *) [segue destinationViewController];
     }
 }
