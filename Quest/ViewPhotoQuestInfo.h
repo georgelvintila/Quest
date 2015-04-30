@@ -12,7 +12,8 @@
 
 @interface ViewPhotoQuestInfo : QuestInfo
 
-@property (nonatomic) NSString *questPhotoAngle;
-@property (nonatomic) NSString *questPhotoRadius;
+@property (nonatomic) NSNumber *questPhotoViewRadius;
+@property (nonatomic) NSString *questPhotoMessage;
+@property (nonatomic) id questPhotoImageFile;
 
 @end

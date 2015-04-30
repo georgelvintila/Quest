@@ -8,6 +8,7 @@
 
 #import "ViewPhotoQuest.h"
 #import <Parse/PFObject+Subclass.h>
+#import "ViewPhotoQuestInfo.h"
 
 @implementation ViewPhotoQuest
 
@@ -30,15 +31,13 @@
     return image;
 }
 
--(void)saveQuestInformation:(NSDictionary *)questInfo
+-(void)saveQuestInformation:(QuestInfo *)questInfo
 {
-    UIImage *image = [questInfo objectForKey:kQuestColumnViewPhotoImageFile];
+    UIImage *image = [[questInfo questDictionary] objectForKey:kQuestColumnViewPhotoImageFile];
     if(image)
     {
         NSData *imageData = UIImagePNGRepresentation(image);
-        NSMutableDictionary *tempInfo = [questInfo mutableCopy];
-        [tempInfo setValue:[PFFile fileWithData:imageData] forKey:kQuestColumnViewPhotoImageFile];
-        questInfo = tempInfo;
+        ((ViewPhotoQuestInfo*)questInfo).questPhotoImageFile = [PFFile fileWithData:imageData];
     }
     [super saveQuestInformation:questInfo];
 }

@@ -24,6 +24,6 @@
 
 @property(nonatomic,readonly,strong) PFGeoPoint *location;
 
--(void)saveQuestInformation:(NSDictionary *)questInfo;
+-(void)saveQuestInformation:(QuestInfo *)questInfo;
 
 @end

@@ -22,12 +22,12 @@
 }
 
 
--(void)saveQuestInformation:(NSDictionary *)questInfo
+-(void)saveQuestInformation:(QuestInfo *)questInfo
 {
-    for (NSString *key in questInfo.allKeys) {
+    for (NSString *key in [questInfo questDictionary].allKeys) {
         if([key isEqualToString:kQuestColumnLocation])
         {
-            CLLocation *loc = [questInfo objectForKey:key];
+            CLLocation *loc = [[questInfo questDictionary] objectForKey:key];
             PFGeoPoint *geoPoint = [self objectForKey:key];
             if(!geoPoint)
             {
@@ -39,7 +39,7 @@
         }
         else
         {
-            [self setObject:[questInfo objectForKey:key]  forKey:key];
+            [self setObject:[[questInfo questDictionary] objectForKey:key]  forKey:key];
         }
     }
     [self save];

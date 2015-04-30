@@ -16,20 +16,28 @@
 
 @implementation ViewPhotoQuestInfo
 
-- (NSString *)questPhotoAngle {
-    return self.dictionary[kQuestColumnTakePhotoAngle];
+- (NSNumber *)questPhotoViewRadius {
+    return self.dictionary[kQuestColumnViewPhotoViewRadius];
 }
 
-- (NSString *)questPhotoRadius {
-    return self.dictionary[kQuestColumnTakePhotoRadius];
+- (NSString *)questPhotoMessage {
+    return self.dictionary[kQuestColumnViewPhotoMessage];
 }
 
-- (void)setQuestPhotoAngle:(NSString *)questPhotoAngle {
-    self.dictionary[kQuestColumnTakePhotoAngle] = questPhotoAngle;
+- (id)questPhotoImageFile {
+    return self.dictionary[kQuestColumnViewPhotoImageFile];
 }
 
-- (void)setQuestPhotoRadius:(NSString *)questPhotoRadius {
-    self.dictionary[kQuestColumnTakePhotoRadius] = questPhotoRadius;
+- (void)setQuestPhotoViewRadius:(NSNumber *)questPhotoViewRadius {
+    self.dictionary[kQuestColumnViewPhotoViewRadius] = questPhotoViewRadius;
+}
+
+- (void)setQuestPhotoMessage:(NSString *)questPhotoMessage {
+    self.dictionary[kQuestColumnViewPhotoMessage] = questPhotoMessage;
+}
+
+- (void)setQuestPhotoImageFile:(id)questPhotoImageFile {
+    self.dictionary[kQuestColumnViewPhotoImageFile] = questPhotoImageFile;
 }
 
 @end

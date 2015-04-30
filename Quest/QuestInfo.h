@@ -24,12 +24,12 @@
  */
 
 @property (nonatomic) NSString *questName;
-@property (nonatomic) NSString *questDetail;
-@property (nonatomic) NSString *questLocation;
-@property (nonatomic) NSString *questOwner;
-@property (nonatomic) NSString *questCreatedAt;
-@property (nonatomic) NSString *questUpdatedAt;
-@property (nonatomic) NSString *questACL;
+@property (nonatomic) NSString *questDetails;
+@property (nonatomic) CLLocation* questLocation;
+@property (nonatomic) PFUser *questOwner;
+@property (nonatomic) NSDate *questCreatedAt;
+@property (nonatomic) NSDate *questUpdatedAt;
+@property (nonatomic) PFACL *questACL;
 @property (nonatomic) NSString *questObjectId;
 
 

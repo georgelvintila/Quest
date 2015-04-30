@@ -105,7 +105,7 @@
 #pragma mark -
 #pragma mark Edit Methods
 
--(void)addNewQuestWithType:(NSString *)type andInfo:(NSDictionary *)questInfo
+-(void)addNewQuestWithType:(NSString *)type andInfo:(QuestInfo *)questInfo
 {
     NSMutableArray *array = [self.myQuests objectForKey:type];
     
@@ -124,7 +124,7 @@
     [quest delete];
 }
 
--(void) updateQuestOfType:(NSString *)type atIndex:(NSUInteger) index withQuestInfo:(NSDictionary*)questInfo
+-(void) updateQuestOfType:(NSString *)type atIndex:(NSUInteger) index withQuestInfo:(QuestInfo*)questInfo
 {
     NSMutableArray *array = [self.myQuests objectForKey:type];
     PFObject *quest = [array objectAtIndex:index];
