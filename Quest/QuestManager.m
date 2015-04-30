@@ -103,6 +103,29 @@
     return  nil;
 }
 
+-(NSArray *)questListOfType:(NSString *)type forOwner:(QuestOwnerType)owner
+{
+    switch (owner) {
+        case QuestOwnerTypeCurrent:
+            return self.myQuests[type];
+        case QuestOwnerTypeOthers:
+            return self.otherQuests[type];
+        case QuestOwnerTypeAll:
+        {
+            //lets hope we don't get to this
+            NSArray *array  = [[self.myQuests[type] arrayByAddingObjectsFromArray:self.otherQuests[type]] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+                Quest *first = (Quest*)obj1;
+                Quest *second = (Quest*)obj2;
+                return  ([first.updatedAt compare:second.updatedAt]);
+            }];
+            return array;
+        }
+        default:
+            break;
+    }
+    return nil;
+}
+
 
 #pragma mark - Edit Methods
 

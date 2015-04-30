@@ -8,6 +8,8 @@
 
 #import <Parse/Parse.h>
 
+typedef PFObject Quest;
+
 @interface PFObject (Quest)
 
 #pragma mark - Properties

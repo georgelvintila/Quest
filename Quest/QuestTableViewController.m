@@ -102,17 +102,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    switch (self.owner) {
-        case QuestOwnerTypeCurrent:
-            return [[self.questManager.myQuests objectForKey:[self.allQuestTypes objectAtIndex:section]] count];
-            break;
-        case QuestOwnerTypeOthers:
-            return [[self.questManager.otherQuests objectForKey:[self.allQuestTypes objectAtIndex:section]] count];
-            break;
-        default:
-            break;
-    }
-    return 0;
+    return [[self.questManager questListOfType:self.allQuestTypes[section] forOwner:self.owner] count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -123,18 +113,7 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    PFObject *quest = nil;
-    
-    switch (self.owner) {
-        case QuestOwnerTypeCurrent:
-            quest = [((NSArray *)[self.questManager.myQuests objectForKey:[self.allQuestTypes objectAtIndex:indexPath.section]]) objectAtIndex:indexPath.row];
-            break;
-        case QuestOwnerTypeOthers:
-            quest = [((NSArray *)[self.questManager.otherQuests objectForKey:[self.allQuestTypes objectAtIndex:indexPath.section]]) objectAtIndex:indexPath.row];
-            break;
-        default:
-            break;
-    }
+    Quest *quest = [((NSArray *)[self.questManager questListOfType:self.allQuestTypes[indexPath.section] forOwner:self.owner]) objectAtIndex:indexPath.row];
 
     cell.textLabel.text = quest.name;
     cell.detailTextLabel.text = quest.details;
