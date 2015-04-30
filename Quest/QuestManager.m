@@ -126,7 +126,6 @@
     return nil;
 }
 
-
 #pragma mark - Edit Methods
 
 -(void)addNewQuestWithType:(NSString *)type andInfo:(QuestInfo *)questInfo
@@ -135,7 +134,7 @@
     
     Class typeClass = NSClassFromString(type);
     
-    PFObject *quest = [[typeClass alloc] init];
+    Quest *quest = [[typeClass alloc] init];
     [quest saveQuestInformation:questInfo];
     [array addObject:quest];
     [[NSNotificationCenter defaultCenter] postNotificationName:kQuestDataChangedNotification object:nil];
@@ -144,7 +143,7 @@
 -(void)deleteQuestOfType:(NSString *)type atIndex:(NSUInteger) index
 {
     NSMutableArray *array = [self.myQuests objectForKey:type];
-    PFObject *quest = [array objectAtIndex:index];
+    Quest *quest = [array objectAtIndex:index];
     [array removeObjectAtIndex:index];
     [quest delete];
 }
@@ -152,7 +151,7 @@
 -(void) updateQuestOfType:(NSString *)type atIndex:(NSUInteger) index withQuestInfo:(QuestInfo*)questInfo
 {
     NSMutableArray *array = [self.myQuests objectForKey:type];
-    PFObject *quest = [array objectAtIndex:index];
+    Quest *quest = [array objectAtIndex:index];
     [quest saveQuestInformation:questInfo];
 }
 

@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *questNameText;
 @property (weak, nonatomic) IBOutlet UITextView *detailTextView;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
+@property (weak, nonatomic) IBOutlet UIButton *mapButton;
 @property (weak, nonatomic) IBOutlet UIView *takePhotoContainer;
 
 @end

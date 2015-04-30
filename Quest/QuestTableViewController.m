@@ -88,7 +88,7 @@
     }
     UILabel *label = [[UILabel alloc] init];
     
-    view.backgroundColor = [UIColor grayColor];
+    view.backgroundColor = [UIColor lightGrayColor];
     label.text = [self.allQuestTypes objectAtIndex:section];
     [view addSubview:label];
     [label sizeToFit];
@@ -107,7 +107,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellIdentifier = @"cellId";
+    NSString *cellIdentifier = @"kQuestCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if(!cell)
     {

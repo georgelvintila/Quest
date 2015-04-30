@@ -41,6 +41,7 @@
 {
     self.questLocation = location;
     [viewController.navigationController popViewControllerAnimated:YES];
+    [self.mapButton setSelected:YES];
     [self validateQuestInfo];
 }
 

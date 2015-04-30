@@ -49,6 +49,7 @@
 		E1EFDF8E1AF0C3CA00894032 /* PFObject+Quest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EFDF8D1AF0C3CA00894032 /* PFObject+Quest.m */; };
 		E1EFDF911AF0F12E00894032 /* ViewPhotoQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EFDF901AF0F12E00894032 /* ViewPhotoQuest.m */; };
 		E1EFDF931AF0F88C00894032 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1D705121AEA7B8900525E19 /* Images.xcassets */; };
+		E1F45C9C1AF27BD200ACAE6D /* UIColor+Quest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F45C9B1AF27BD200ACAE6D /* UIColor+Quest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,8 @@
 		E1EFDF8F1AF0F12E00894032 /* ViewPhotoQuest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPhotoQuest.h; sourceTree = "<group>"; };
 		E1EFDF901AF0F12E00894032 /* ViewPhotoQuest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPhotoQuest.m; sourceTree = "<group>"; };
 		E1EFDF971AF1188B00894032 /* QuestTestsPrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestTestsPrefixHeader.pch; path = Quest/QuestTestsPrefixHeader.pch; sourceTree = SOURCE_ROOT; };
+		E1F45C9A1AF27BD200ACAE6D /* UIColor+Quest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Quest.h"; sourceTree = "<group>"; };
+		E1F45C9B1AF27BD200ACAE6D /* UIColor+Quest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Quest.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +286,8 @@
 			children = (
 				E1EFDF8C1AF0C3CA00894032 /* PFObject+Quest.h */,
 				E1EFDF8D1AF0C3CA00894032 /* PFObject+Quest.m */,
+				E1F45C9A1AF27BD200ACAE6D /* UIColor+Quest.h */,
+				E1F45C9B1AF27BD200ACAE6D /* UIColor+Quest.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -433,6 +438,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1F45C9C1AF27BD200ACAE6D /* UIColor+Quest.m in Sources */,
 				E1EBEBC11AEF7AED000A3790 /* TakePhotoQuest.m in Sources */,
 				E1EFDF8E1AF0C3CA00894032 /* PFObject+Quest.m in Sources */,
 				212D2C231AEFCABC004991BA /* TakePhotoQuestViewController.m in Sources */,
