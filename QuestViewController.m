@@ -27,18 +27,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self validateTextFields];
+    [self validateQuestInfo];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)chooseLocation:(id)sender {
-    LocationPickerViewController *locationPickerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LocationPicker"];
-    locationPickerViewController.delegate = self;
-    [self.navigationController showViewController:locationPickerViewController sender:sender];
 }
 
 #pragma mark - Location Picker View Controller Delegate Methods
