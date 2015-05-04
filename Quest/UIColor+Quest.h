@@ -12,4 +12,5 @@
 
 +(UIColor*) tintGreenColor;
 +(UIColor*) headerBackgroundColor;
++(UIColor*) subtitleBlueColor;
 @end

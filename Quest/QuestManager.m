@@ -204,7 +204,12 @@
        {
            if([results count])
            {
-               [source setObject:[results mutableCopy] forKey:questType];
+               NSMutableArray *quests = [NSMutableArray new];
+               for (Quest *item  in results) {
+                   QuestInfo *info = [item questInfo];
+                   [quests addObject:info];
+               }
+               [source setObject:quests forKey:questType];
                [[NSNotificationCenter defaultCenter] postNotificationName:kQuestDataChangedNotification object:nil];
            }
        }
