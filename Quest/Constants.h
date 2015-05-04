@@ -25,6 +25,17 @@ static NSString * const kQuestSelectedFilterType = @"kQuestSelectedFilterType";
 static NSString * const kCellIdentifier = @"kCellIdentifier";
 static NSString * const kCellIdentifierQuest = @"kQuestCellIdentifier";
 static NSString * const kCellHeaderIdentifier = @"kCellHeaderIdentifier";
+static NSString * const kTakePhotoSegue = @"TakePhotoSegue";
+static NSString * const kViewPhotoSegue = @"ViewPhotoSegue";
+static NSString * const kQuestSegue = @"QuestSegue";
+
+typedef enum
+{
+    TakePhoto = 0,
+    ViewPhoto = 1
+} questTypeNo;
+
+
 
 //General Quest Property Keys
 

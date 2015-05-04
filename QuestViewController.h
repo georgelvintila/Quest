@@ -10,6 +10,7 @@
 #import "LocationPickerViewController.h"
 #import "QuestManager.h"
 #import "TakePhotoQuestInfo.h"
+#import "ContainerViewController.h"
 #import "TakePhotoQuestViewController.h"
 
 @interface QuestViewController : UIViewController<LocationPickerViewControllerDelegate,UITextFieldDelegate>
@@ -22,6 +23,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *mapButton;
 @property (weak, nonatomic) IBOutlet UIView *takePhotoContainer;
 
-@property (strong, nonatomic) NSString *questType;
+@property (nonatomic) NSInteger questType;
 
 @end

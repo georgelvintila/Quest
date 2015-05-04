@@ -14,7 +14,8 @@
 
 @property (nonatomic, strong) CLLocation *questLocation;
 @property (nonatomic, strong) NSCharacterSet *blockedCharacterSet;
-@property (nonatomic, strong) TakePhotoQuestViewController *takePhotoQuestViewController;
+
+@property (nonatomic, strong) ContainerViewController *containerViewController;
 
 @end
 
@@ -73,11 +74,18 @@
     info.questDetails = self.detailTextView.text;
     info.questLocation = self.questLocation;
 
-    info.questPhotoAngle = [NSNumber numberWithInteger:self.takePhotoQuestViewController.angleStepper.value];
-    info.questPhotoRadius = [NSNumber numberWithInteger:self.takePhotoQuestViewController.radiusSlider.value];
+    info.questPhotoAngle = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.angleStepper.value];
+    info.questPhotoRadius = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.radiusSlider.value];
     
     QuestManager *qmanager = [QuestManager sharedManager];
     [qmanager addNewQuestWithType:kQuestTypeTakePhotoQuest andInfo:info];
+    if (self.questType == TakePhoto)
+    {
+        info.questPhotoAngle = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.angleStepper.value];
+        info.questPhotoRadius = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.radiusSlider.value];
+        QuestManager *qmanager = [QuestManager sharedManager];
+        [qmanager addNewQuestWithType:kQuestTypeTakePhotoQuest andInfo:info];
+    }
     [self.navigationController popViewControllerAnimated:NO];
     
 }
@@ -94,9 +102,10 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSString * segueName = segue.identifier;
-    if ([segueName isEqualToString: @"TakePhotoSegue"])
+    if ([segueName isEqualToString: @"ContainerSegue"])
     {
-     self.takePhotoQuestViewController = (TakePhotoQuestViewController *) [segue destinationViewController];
+        self.containerViewController = (ContainerViewController *) [segue destinationViewController];
+        self.containerViewController.questType = self.questType;
     }
     else
         if ([segueName isEqualToString: @"QuestToMapSegue"])

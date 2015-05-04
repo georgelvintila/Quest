@@ -17,10 +17,13 @@
 @property(nonatomic,strong) QuestManager *questManager;
 @property(nonatomic,strong) NSArray *allQuestTypes;
 @property(nonatomic) QuestOwnerType owner;
+
+@property(nonatomic) NSInteger questType;
 @property(nonatomic,strong) UISearchController *searchController;
 @property(nonatomic,strong) NSMutableArray *questItems;
 @property (nonatomic, strong) QuestResultTableViewController *resultsTableController;
-@property(nonatomic) NSString *questType;
+
+
 
 @end
 
@@ -154,7 +157,7 @@
 
 - (IBAction)showQuestSheet:(id)sender {
     
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Quest Types" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Quest Types" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"View Photo", nil];
    // actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [actionSheet showInView:self.view];    
 }
@@ -169,19 +172,20 @@
     {
         case 0:
         {
-            self.questType = kQuestTypeTakePhotoQuest;
-            [self performSegueWithIdentifier: @"QuestSegue" sender: self];
-            break;
+            self.questType = TakePhoto;
+            [self performSegueWithIdentifier:kQuestSegue sender: self];
         }
+            break;
         case 1:
         {
-            self.questType = kQuestTypeViewPhotoQuest;
-            [self performSegueWithIdentifier: @"QuestSegue" sender: self];
+            self.questType = ViewPhoto;
+            [self performSegueWithIdentifier:kQuestSegue sender: self];
         }
             break;
         default:
             break;
     }
+    
 }
 
 #pragma mark - Search Results Updating Methods
@@ -233,15 +237,13 @@
         [NSCompoundPredicate andPredicateWithSubpredicates:andMatchPredicates];
         searchResults = [[searchResults filteredArrayUsingPredicate:finalCompoundPredicate] mutableCopy];
         [allFilteredItems addObject: searchResults];
+        
     }
     // hand over the filtered results to our search results table
     QuestResultTableViewController *tableController = (QuestResultTableViewController *)self.searchController.searchResultsController;
     tableController.questItems = allFilteredItems;
     [tableController.tableView reloadData];
 }
-
-#pragma mark - Navigation Methods
-
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     QuestViewController *destination = (QuestViewController *)[segue destinationViewController];

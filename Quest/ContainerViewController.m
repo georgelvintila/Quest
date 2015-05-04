@@ -10,13 +10,68 @@
 
 @interface ContainerViewController ()
 
+@property (strong, nonatomic) NSString *currentSegueIdentifier;
+
+
 @end
 
 @implementation ContainerViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    //switch (((QuestViewController *)self.parentViewController).questType)
+    switch (self.questType)
+    {
+        case TakePhoto:
+        {
+            [self performSegueWithIdentifier:kTakePhotoSegue sender:self];
+        }
+            break;
+        case ViewPhoto:
+        {
+            [self performSegueWithIdentifier:kViewPhotoSegue sender:self];
+        }
+        break;
+    default:
+        break;
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:kTakePhotoSegue]) {
+        self.takePhotoQuestViewController = segue.destinationViewController;
+        if (self.childViewControllers.count > 0) {
+            [self swapFromViewController:[self.childViewControllers objectAtIndex:0] toViewController:self.takePhotoQuestViewController];
+        }
+        else
+        {
+            [self addChildViewController:segue.destinationViewController];
+            UIView* destView = ((UIViewController *)segue.destinationViewController).view;
+            destView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            destView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+            [self.view addSubview:destView];
+            [segue.destinationViewController didMoveToParentViewController:self];
+        }        
+    }
+    
+    else if ([segue.identifier isEqualToString:kViewPhotoSegue])
+    {
+        self.viewPhotoViewController = segue.destinationViewController;
+        if (self.childViewControllers.count > 0) {
+            [self swapFromViewController:[self.childViewControllers objectAtIndex:0] toViewController:self.viewPhotoViewController];
+        }
+        else
+        {
+            [self addChildViewController:segue.destinationViewController];
+            UIView* destView = ((UIViewController *)segue.destinationViewController).view;
+            destView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            destView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+            [self.view addSubview:destView];
+            [segue.destinationViewController didMoveToParentViewController:self];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +79,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)swapFromViewController:(UIViewController *)fromViewController toViewController:(UIViewController *)toViewController
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    toViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [fromViewController willMoveToParentViewController:nil];
+    [self addChildViewController:toViewController];    
+    [self transitionFromViewController:fromViewController toViewController:toViewController duration:1.0 options:UIViewAnimationOptionTransitionCrossDissolve animations:nil completion:^(BOOL finished) {
+        [fromViewController removeFromParentViewController];
+        [toViewController didMoveToParentViewController:self];
+    }];
 }
-*/
 
 @end
