@@ -22,4 +22,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *mapButton;
 @property (weak, nonatomic) IBOutlet UIView *takePhotoContainer;
 
+@property (strong, nonatomic) NSString *questType;
+
 @end

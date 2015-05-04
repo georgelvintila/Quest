@@ -9,6 +9,7 @@
 #import "QuestTableViewController.h"
 #import "QuestManager.h"
 #import "QuestResultTableViewController.h"
+#import "QuestViewController.h"
 
 @interface QuestTableViewController ()<UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating>
 #pragma mark - Properties
@@ -19,6 +20,7 @@
 @property(nonatomic,strong) UISearchController *searchController;
 @property(nonatomic,strong) NSMutableArray *questItems;
 @property (nonatomic, strong) QuestResultTableViewController *resultsTableController;
+@property(nonatomic) NSString *questType;
 
 @end
 
@@ -166,9 +168,16 @@
     switch (buttonIndex)
     {
         case 0:
-        [self performSegueWithIdentifier: @"TakePhotoSegue" sender: self];
+        {
+            self.questType = kQuestTypeTakePhotoQuest;
+            [self performSegueWithIdentifier: @"QuestSegue" sender: self];
             break;
+        }
         case 1:
+        {
+            self.questType = kQuestTypeViewPhotoQuest;
+            [self performSegueWithIdentifier: @"QuestSegue" sender: self];
+        }
             break;
         default:
             break;
@@ -233,4 +242,10 @@
     tableController.questItems = allFilteredItems;
     [tableController.tableView reloadData];
 }
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    QuestViewController *destination = (QuestViewController *)[segue destinationViewController];
+    destination.questType = self.questType;
+}
+
 @end
