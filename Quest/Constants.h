@@ -13,9 +13,18 @@
 
 static NSString * const kQuestTypeTakePhotoQuest = @"TakePhotoQuest";
 static NSString * const kQuestTypeViewPhotoQuest = @"ViewPhotoQuest";
+static NSString * const kQuestTypeAllQuests = @"AllQuests";
 
 static NSString * const kQuestTableViewControllerTitleOtherQuests = @"OtherQuests";
 static NSString * const kQuestTableViewControllerTitleMyQuests = @"MyQuests";
+
+static NSString * const kQuestSelectedFilterType = @"kQuestSelectedFilterType";
+
+//Cell Identifiers
+
+static NSString * const kCellIdentifier = @"kCellIdentifier";
+static NSString * const kCellIdentifierQuest = @"kQuestCellIdentifier";
+static NSString * const kCellHeaderIdentifier = @"kCellHeaderIdentifier";
 
 //General Quest Property Keys
 
@@ -42,5 +51,6 @@ static NSString * const kQuestColumnViewPhotoImageFile = @"imageFile";
 static NSString * const kMyQuestQuerySuccesNotification = @"kMyQuestQuerySuccesNotification";
 static NSString * const kMyQuestQueryFailureNotification = @"kMyQuestQueryFailureNotification";
 static NSString * const kQuestDataChangedNotification = @"kQuestDataChangedNotification";
+
 
 #endif

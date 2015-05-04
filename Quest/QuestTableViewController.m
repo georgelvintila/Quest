@@ -107,7 +107,7 @@
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"headerId"];
+    UIView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kCellHeaderIdentifier];
     if(!view)
     {
         view = [[UIView alloc] init];
@@ -134,7 +134,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellIdentifier = @"kQuestCell";
+    NSString *cellIdentifier = kCellIdentifier;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if(!cell)
     {
