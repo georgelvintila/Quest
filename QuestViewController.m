@@ -96,7 +96,7 @@
     NSString * segueName = segue.identifier;
     if ([segueName isEqualToString: @"TakePhotoSegue"])
     {
-        self.takePhotoQuestViewController = (TakePhotoQuestViewController *) [segue destinationViewController];
+     self.takePhotoQuestViewController = (TakePhotoQuestViewController *) [segue destinationViewController];
     }
     else
         if ([segueName isEqualToString: @"QuestToMapSegue"])
@@ -104,7 +104,6 @@
             LocationPickerViewController *locationPickerViewController = (LocationPickerViewController *) [segue destinationViewController];
             locationPickerViewController.delegate = self;
         }
-    
 }
 
 #pragma mark - Instance Method

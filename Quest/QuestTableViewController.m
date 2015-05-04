@@ -8,6 +8,7 @@
 
 #import "QuestTableViewController.h"
 #import "QuestManager.h"
+#import "QuestViewController.h"
 
 @interface QuestTableViewController ()
 
@@ -16,6 +17,7 @@
 @property(nonatomic,strong) QuestManager *questManager;
 @property(nonatomic,strong) NSArray *allQuestTypes;
 @property(nonatomic) QuestOwnerType owner;
+@property(nonatomic) NSString *questType;
 
 @end
 
@@ -140,13 +142,26 @@
     switch (buttonIndex)
     {
         case 0:
-        [self performSegueWithIdentifier: @"TakePhotoSegue" sender: self];
+        {
+            self.questType = kQuestTypeTakePhotoQuest;
+            [self performSegueWithIdentifier: @"QuestSegue" sender: self];
             break;
+        }
         case 1:
+        {
+            self.questType = kQuestTypeViewPhotoQuest;
+            [self performSegueWithIdentifier: @"QuestSegue" sender: self];
+        }
             break;
         default:
             break;
     }
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    QuestViewController *destination = (QuestViewController *)[segue destinationViewController];
+    destination.questType = self.questType;
 }
 
 @end
