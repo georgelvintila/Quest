@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Stefanini. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "TakePhotoQuest.h"
 
 @interface QuestManager : NSObject
 

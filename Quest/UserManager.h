@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Stefanini. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface UserManager : NSObject
 
 #pragma mark - Class Methods

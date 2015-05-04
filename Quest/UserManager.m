@@ -7,6 +7,7 @@
 //
 
 #import "UserManager.h"
+#import <Parse/Parse.h>
 
 @implementation UserManager
 

@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Stefanini. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "PFObject+Quest.h"
+#import <Parse/Parse.h>
+
 
 
 @interface ViewPhotoQuest : PFObject<PFSubclassing>

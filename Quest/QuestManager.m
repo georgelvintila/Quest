@@ -7,6 +7,8 @@
 //
 
 #import "QuestManager.h"
+#import "PFObject+Quest.h"
+
 
 @interface QuestManager ()
 {

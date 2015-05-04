@@ -9,6 +9,7 @@
 #import "TakePhotoQuest.h"
 #import "TakePhotoQuestInfo.h"
 #import <Parse/PFObject+Subclass.h>
+#import "PFObject+Quest.h"
 
 @interface TakePhotoQuest ()
 {
