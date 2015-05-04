@@ -56,7 +56,7 @@
         }        
     }
     
-    else if ([segue.identifier isEqualToString:kTakePhotoSegue])
+    else if ([segue.identifier isEqualToString:kViewPhotoSegue])
     {
         self.viewPhotoViewController = segue.destinationViewController;
         if (self.childViewControllers.count > 0) {
