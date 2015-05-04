@@ -224,8 +224,6 @@
         
         NSCompoundPredicate *orMatchPredicates = [NSCompoundPredicate orPredicateWithSubpredicates:searchItemsPredicate];
         [andMatchPredicates addObject:orMatchPredicates];
-        
-        
     }
     
     for (NSUInteger index = 0; index <[self.questItems count]; index ++)
@@ -235,13 +233,15 @@
         [NSCompoundPredicate andPredicateWithSubpredicates:andMatchPredicates];
         searchResults = [[searchResults filteredArrayUsingPredicate:finalCompoundPredicate] mutableCopy];
         [allFilteredItems addObject: searchResults];
-        
     }
     // hand over the filtered results to our search results table
     QuestResultTableViewController *tableController = (QuestResultTableViewController *)self.searchController.searchResultsController;
     tableController.questItems = allFilteredItems;
     [tableController.tableView reloadData];
 }
+
+#pragma mark - Navigation Methods
+
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     QuestViewController *destination = (QuestViewController *)[segue destinationViewController];
