@@ -8,7 +8,7 @@
 
 #import "QuestDetailsViewController.h"
 #import <MapKit/MapKit.h>
-#import "TakePhotoQuestInfo.h"
+#import "QuestInfo.h"
 
 @interface QuestDetailsViewController () <MKMapViewDelegate>
 {
@@ -33,11 +33,11 @@
     // Do any additional setup after loading the view.
     if (self.questInfo == nil) {
         DLog(@"WARNING! NO QUEST INFO!");
-        self.questInfo = [[TakePhotoQuestInfo alloc] init];
+        self.questInfo = [[QuestInfo alloc] init];
         self.questInfo.questName = @"NO QUEST NAME";
         self.questInfo.questDetails = @"quest details\nare totally missing\n\n\n\n\n...\n\n\n...\n\n\nbummer";
         self.questInfo.questLocation = [[CLLocation alloc] initWithLatitude: 47.0 longitude:24.4];
-        self.questInfo.questPhotoRadius = @150000.0; // 150km
+//        self.questInfo.questPhotoRadius = @150000.0; // 150km
 
     }
     self.titleText.text = self.questInfo.questName;
@@ -55,7 +55,7 @@
     
     // the radius
     
-    MKCircle *circle = [MKCircle circleWithCenterCoordinate:self.questInfo.questLocation.coordinate radius:self.questInfo.questPhotoRadius.doubleValue];
+    MKCircle *circle = [MKCircle circleWithCenterCoordinate:self.questInfo.questLocation.coordinate radius: 150];
     
     [self.map addOverlay:circle];
     
@@ -73,7 +73,7 @@
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
     MKCircleRenderer *renderer = [[MKCircleRenderer alloc] initWithOverlay: overlay];
-    renderer.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.5];
+//    renderer.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.5];
     renderer.fillColor = [[UIColor redColor] colorWithAlphaComponent: 0.3];
     return renderer;
 }

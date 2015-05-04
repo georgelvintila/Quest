@@ -76,7 +76,7 @@
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="860" y="535"/>
+            <point key="canvasLocation" x="883" y="549"/>
         </view>
     </objects>
 </document>

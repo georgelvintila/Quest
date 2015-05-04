@@ -25,6 +25,10 @@ static NSString * const kQuestSelectedFilterType = @"kQuestSelectedFilterType";
 static NSString * const kCellIdentifier = @"kCellIdentifier";
 static NSString * const kCellIdentifierQuest = @"kQuestCellIdentifier";
 static NSString * const kCellHeaderIdentifier = @"kCellHeaderIdentifier";
+
+// Segues
+
+static NSString * const kQuestDetailsSegue = @"QuestDetailsSegue";
 static NSString * const kTakePhotoSegue = @"TakePhotoSegue";
 static NSString * const kViewPhotoSegue = @"ViewPhotoSegue";
 static NSString * const kQuestSegue = @"QuestSegue";

@@ -12,6 +12,6 @@
 
 @interface QuestDetailsViewController : UIViewController
 
-@property (nonatomic) TakePhotoQuestInfo* questInfo;
+@property (nonatomic) QuestInfo* questInfo;
 
 @end

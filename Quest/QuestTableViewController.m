@@ -10,6 +10,7 @@
 #import "QuestManager.h"
 #import "QuestResultTableViewController.h"
 #import "QuestViewController.h"
+#import "QuestDetailsViewController.h"
 
 @interface QuestTableViewController ()<UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating>
 #pragma mark - Properties
@@ -23,6 +24,8 @@
 @property(nonatomic,strong) NSMutableArray *questItems;
 @property (nonatomic, strong) QuestResultTableViewController *resultsTableController;
 
+
+@property (nonatomic, strong) QuestDetailsViewController *questDetailsViewController;
 
 
 @end
@@ -123,6 +126,16 @@
     [view addSubview:label];
     [label sizeToFit];
     return view;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier: kQuestDetailsSegue sender:self];
+    NSArray *quests = [self.questItems objectAtIndex:indexPath.section];
+    QuestInfo *quest = [quests objectAtIndex:indexPath.row];
+
+    self.questDetailsViewController.questInfo = quest;
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -246,8 +259,13 @@
 }
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    QuestViewController *destination = (QuestViewController *)[segue destinationViewController];
-    destination.questType = self.questType;
+    if ([segue.destinationViewController isMemberOfClass: [QuestDetailsViewController class]]) {
+        self.questDetailsViewController = (QuestDetailsViewController*)segue.destinationViewController;
+        
+    } else {
+        QuestViewController *destination = (QuestViewController *)[segue destinationViewController];
+        destination.questType = self.questType;
+    }
 }
 
 @end

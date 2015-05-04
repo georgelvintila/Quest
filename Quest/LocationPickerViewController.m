@@ -33,7 +33,14 @@ static CGFloat const filterDistance = 1000.0;
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     
     [self.locationManager startUpdatingLocation];
+ 
+    self.tabBarController.tabBar.userInteractionEnabled = NO;
 }
+
+- (void)viewWillDisappear:(BOOL)animated {
+    self.tabBarController.tabBar.userInteractionEnabled = YES;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

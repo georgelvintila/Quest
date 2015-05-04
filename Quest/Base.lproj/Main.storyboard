@@ -29,7 +29,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EmU-Jb-ELm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="220" y="-166"/>
+            <point key="canvasLocation" x="138" y="-176"/>
         </scene>
         <!--MyQuests-->
         <scene sceneID="bsS-bb-Ouh">
@@ -59,6 +59,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="AF7-y9-bAk" kind="show" identifier="QuestDetailsSegue" id="EoL-DR-zKb"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -210,7 +213,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G1e-J1-wRv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1094" y="-166"/>
+            <point key="canvasLocation" x="1082" y="-518"/>
         </scene>
         <!--Location Picker-->
         <scene sceneID="vKc-h6-5lJ">
@@ -299,7 +302,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lOt-ZG-hPj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1094" y="504"/>
+            <point key="canvasLocation" x="1550" y="-166"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8H7-pe-9sX">
@@ -326,7 +329,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fhq-xD-chi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-319" y="134"/>
+            <point key="canvasLocation" x="-293" y="360"/>
         </scene>
         <!--TestController-->
         <scene sceneID="QKI-5h-jVU">
@@ -394,6 +397,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="AF7-y9-bAk" kind="show" identifier="QuestDetailsSegue" id="meq-tZ-mI4"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -407,7 +413,87 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Yn-Kx-Ohs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="684" y="504"/>
+            <point key="canvasLocation" x="633" y="510"/>
+        </scene>
+        <!--Quest Details-->
+        <scene sceneID="tZh-Ei-6Yr">
+            <objects>
+                <viewController title="Quest Details" id="AF7-y9-bAk" customClass="QuestDetailsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7Xc-1O-CBc"/>
+                        <viewControllerLayoutGuide type="bottom" id="ogq-Qx-b0e"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Z2n-hZ-JPk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qEh-Yy-1pT">
+                                <rect key="frame" x="8" y="215" width="304" height="227"/>
+                                <connections>
+                                    <outlet property="delegate" destination="AF7-y9-bAk" id="QIe-yF-Sht"/>
+                                </connections>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THE BIGGEST QUEST EVAR" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="j99-8g-DqF">
+                                <rect key="frame" x="8" y="52" width="304" height="27"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oV4-n2-Vnm">
+                                <rect key="frame" x="8" y="450" width="304" height="61"/>
+                                <color key="backgroundColor" red="0.94945583219999996" green="0.87875039909999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="76r-2K-Iox"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <state key="normal" title="START QUEST">
+                                    <color key="titleColor" red="0.094117647060000004" green="0.29411764709999999" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startQuestButtonClick:" destination="AF7-y9-bAk" eventType="touchUpInside" id="ytA-7x-Rdb"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnU-de-5Ah">
+                                <rect key="frame" x="8" y="87" width="304" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="pjr-Hw-KsR"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ogq-Qx-b0e" firstAttribute="top" secondItem="oV4-n2-Vnm" secondAttribute="bottom" constant="8" id="2mz-Do-WCq"/>
+                            <constraint firstAttribute="centerX" secondItem="qEh-Yy-1pT" secondAttribute="centerX" id="4kY-fu-0D4"/>
+                            <constraint firstItem="qEh-Yy-1pT" firstAttribute="top" secondItem="vnU-de-5Ah" secondAttribute="bottom" constant="8" id="6f5-yp-05p"/>
+                            <constraint firstAttribute="trailing" secondItem="oV4-n2-Vnm" secondAttribute="trailing" constant="8" id="Awv-SG-ipS"/>
+                            <constraint firstItem="vnU-de-5Ah" firstAttribute="top" secondItem="j99-8g-DqF" secondAttribute="bottom" constant="8" id="HM6-wN-e7o"/>
+                            <constraint firstItem="j99-8g-DqF" firstAttribute="leading" secondItem="Z2n-hZ-JPk" secondAttribute="leading" constant="8" id="LjY-QP-QF2"/>
+                            <constraint firstAttribute="trailing" secondItem="qEh-Yy-1pT" secondAttribute="trailing" constant="8" id="MOu-ih-9xx"/>
+                            <constraint firstItem="j99-8g-DqF" firstAttribute="top" secondItem="7Xc-1O-CBc" secondAttribute="bottom" constant="8" id="PXi-5l-71U"/>
+                            <constraint firstAttribute="trailing" secondItem="j99-8g-DqF" secondAttribute="trailing" constant="8" id="QWq-AP-Rzo"/>
+                            <constraint firstItem="qEh-Yy-1pT" firstAttribute="leading" secondItem="Z2n-hZ-JPk" secondAttribute="leading" constant="8" id="YkD-jH-6Jr"/>
+                            <constraint firstItem="vnU-de-5Ah" firstAttribute="leading" secondItem="Z2n-hZ-JPk" secondAttribute="leading" constant="8" id="ZS9-vc-guz"/>
+                            <constraint firstItem="oV4-n2-Vnm" firstAttribute="leading" secondItem="Z2n-hZ-JPk" secondAttribute="leading" constant="8" id="i45-uF-TzK"/>
+                            <constraint firstAttribute="trailing" secondItem="vnU-de-5Ah" secondAttribute="trailing" constant="8" id="ubx-dR-QRf"/>
+                            <constraint firstAttribute="centerX" secondItem="j99-8g-DqF" secondAttribute="centerX" id="xfn-h0-e0u"/>
+                            <constraint firstItem="oV4-n2-Vnm" firstAttribute="top" secondItem="qEh-Yy-1pT" secondAttribute="bottom" constant="8" id="ykY-Qh-GjD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionText" destination="vnU-de-5Ah" id="atV-P1-4bo"/>
+                        <outlet property="map" destination="qEh-Yy-1pT" id="zrO-et-2a1"/>
+                        <outlet property="startButton" destination="oV4-n2-Vnm" id="x3I-HG-uUT"/>
+                        <outlet property="titleText" destination="j99-8g-DqF" id="C6b-c9-QzE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v4u-XX-8aN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1135" y="182"/>
         </scene>
         <!--Container View Controller-->
         <scene sceneID="ROm-25-ORC">
@@ -430,7 +516,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ac-oa-zn4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1572" y="-166.5"/>
+            <point key="canvasLocation" x="1550" y="-620.5"/>
         </scene>
         <!--Take Photo Quest View Controller-->
         <scene sceneID="0Wn-nC-0sZ">
@@ -535,7 +621,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nZM-6f-y9L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2082" y="-340.5"/>
+            <point key="canvasLocation" x="2044" y="-786.5"/>
         </scene>
         <!--View Photo View Controller-->
         <scene sceneID="nuy-U6-Dwg">
@@ -564,7 +650,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4tG-ek-0yP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2082" y="-27.5"/>
+            <point key="canvasLocation" x="2044" y="-473.5"/>
         </scene>
         <!--Item-->
         <scene sceneID="t2U-3N-pto">
@@ -589,7 +675,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="bTN-r0-zKg">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="P0F-kv-Pla" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="testController" automaticallyAdjustsScrollViewInsets="NO" id="P0F-kv-Pla" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="kUK-By-heJ"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -607,4 +693,7 @@
             <point key="canvasLocation" x="-211" y="1184"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="EoL-DR-zKb"/>
+    </inferredMetricsTieBreakers>
 </document>
