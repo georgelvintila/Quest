@@ -52,6 +52,7 @@
 		E1E3EED01AF79DA10095A6EC /* FilterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E3EECE1AF79DA10095A6EC /* FilterTableViewController.m */; };
 		E1E3EED11AF79DA10095A6EC /* FilterTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E3EECF1AF79DA10095A6EC /* FilterTableViewController.xib */; };
 		E1E3EED51AF7A5B70095A6EC /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E3EED41AF7A5B70095A6EC /* UserManager.m */; };
+		E1E3EEDD1AF7B9990095A6EC /* Bucharest.gpx in Resources */ = {isa = PBXBuildFile; fileRef = E1E3EEDC1AF7B9990095A6EC /* Bucharest.gpx */; };
 		E1EBEBBD1AEF79FD000A3790 /* QuestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EBEBBC1AEF79FD000A3790 /* QuestManager.m */; };
 		E1EBEBC11AEF7AED000A3790 /* TakePhotoQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EBEBC01AEF7AED000A3790 /* TakePhotoQuest.m */; };
 		E1EFDF8E1AF0C3CA00894032 /* PFObject+Quest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EFDF8D1AF0C3CA00894032 /* PFObject+Quest.m */; };
@@ -135,6 +136,7 @@
 		E1E3EECF1AF79DA10095A6EC /* FilterTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterTableViewController.xib; sourceTree = "<group>"; };
 		E1E3EED31AF7A5B70095A6EC /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
 		E1E3EED41AF7A5B70095A6EC /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
+		E1E3EEDC1AF7B9990095A6EC /* Bucharest.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Bucharest.gpx; path = Quest/Bucharest.gpx; sourceTree = "<group>"; };
 		E1EBEBBB1AEF79FD000A3790 /* QuestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestManager.h; sourceTree = "<group>"; };
 		E1EBEBBC1AEF79FD000A3790 /* QuestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestManager.m; sourceTree = "<group>"; };
 		E1EBEBBF1AEF7AED000A3790 /* TakePhotoQuest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePhotoQuest.h; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 		E1D704F91AEA7B8900525E19 = {
 			isa = PBXGroup;
 			children = (
+				E1E3EEDC1AF7B9990095A6EC /* Bucharest.gpx */,
 				E1D705041AEA7B8900525E19 /* Quest */,
 				E1D7051E1AEA7B8900525E19 /* QuestTests */,
 				E1D705031AEA7B8900525E19 /* Products */,
@@ -475,6 +478,7 @@
 				E1D705161AEA7B8900525E19 /* LaunchScreen.xib in Resources */,
 				E1D705131AEA7B8900525E19 /* Images.xcassets in Resources */,
 				E1E3EED11AF79DA10095A6EC /* FilterTableViewController.xib in Resources */,
+				E1E3EEDD1AF7B9990095A6EC /* Bucharest.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
