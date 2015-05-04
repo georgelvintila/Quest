@@ -47,11 +47,6 @@
         self.dictionary[kQuestColumnLocation] = questLocation;
 }
 
-- (void)setQuestOwner:(PFUser *)questOwner {
-    if(questOwner)
-        self.dictionary[kQuestColumnOwner] = questOwner;
-}
-
 - (void)setQuestCreatedAt:(NSDate *)questCreatedAt {
     if(questCreatedAt)
         self.dictionary[kQuestColumnCreatedAt] = questCreatedAt;
@@ -60,11 +55,6 @@
 - (void)setQuestUpdatedAt:(NSDate *)questUpdatedAt {
     if(questUpdatedAt)
         self.dictionary[kQuestColumnUpdatedAt] = questUpdatedAt;
-}
-
-- (void)setQuestACL:(PFACL *)questACL {
-    if(questACL)
-        self.dictionary[kQuestColumnACL] = questACL;
 }
 
 - (void)setQuestObjectId:(NSString *)questObjectId {
@@ -84,20 +74,12 @@
     return self.dictionary[kQuestColumnLocation];
 }
 
-- (PFUser *)questOwner {
-    return self.dictionary[kQuestColumnOwner];
-}
-
 - (NSDate *)questCreatedAt {
     return self.dictionary[kQuestColumnCreatedAt];
 }
 
 - (NSDate *)questUpdatedAt {
     return self.dictionary[kQuestColumnUpdatedAt];
-}
-
-- (PFACL *)questACL {
-    return self.dictionary[kQuestColumnACL];
 }
 
 - (NSString *)questObjectId {

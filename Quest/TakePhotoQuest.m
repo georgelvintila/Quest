@@ -35,7 +35,7 @@
     _questInfo.questLocation = self.mapLocation;
     _questInfo.questName = self.name;
     _questInfo.questDetails = self.details;
-    _questInfo.questOwner = self.owner;
+//    _questInfo.questOwner = self.owner;
     _questInfo.questPhotoAngle = self.angle;
     _questInfo.questPhotoRadius = self.radius;
     

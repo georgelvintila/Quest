@@ -60,7 +60,7 @@
     _questInfo.questLocation = self.mapLocation;
     _questInfo.questName = self.name;
     _questInfo.questDetails = self.details;
-    _questInfo.questOwner = self.owner;
+//    _questInfo.questOwner = self.owner;
     _questInfo.questPhotoImageFile = [self image];
     _questInfo.questPhotoMessage = self.message;
     _questInfo.questPhotoViewRadius = self.viewRadius;

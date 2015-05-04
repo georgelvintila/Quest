@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface QuestInfo : NSObject
 
@@ -15,10 +16,8 @@
 @property (nonatomic) NSString *questName;
 @property (nonatomic) NSString *questDetails;
 @property (nonatomic) CLLocation* questLocation;
-@property (nonatomic) PFUser *questOwner;
 @property (nonatomic) NSDate *questCreatedAt;
 @property (nonatomic) NSDate *questUpdatedAt;
-@property (nonatomic) PFACL *questACL;
 @property (nonatomic) NSString *questObjectId;
 
 

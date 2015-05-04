@@ -72,7 +72,7 @@
     info.questName = self.questNameText.text;
     info.questDetails = self.detailTextView.text;
     info.questLocation = self.questLocation;
-    info.questOwner = [PFUser currentUser];
+
     info.questPhotoAngle = [NSNumber numberWithInteger:self.takePhotoQuestViewController.angleStepper.value];
     info.questPhotoRadius = [NSNumber numberWithInteger:self.takePhotoQuestViewController.radiusSlider.value];
     

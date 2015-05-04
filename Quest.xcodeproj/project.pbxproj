@@ -50,6 +50,7 @@
 		E1E3EECA1AF7813A0095A6EC /* QuestResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E3EEC91AF7813A0095A6EC /* QuestResultTableViewController.m */; };
 		E1E3EED01AF79DA10095A6EC /* FilterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E3EECE1AF79DA10095A6EC /* FilterTableViewController.m */; };
 		E1E3EED11AF79DA10095A6EC /* FilterTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E3EECF1AF79DA10095A6EC /* FilterTableViewController.xib */; };
+		E1E3EED51AF7A5B70095A6EC /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E3EED41AF7A5B70095A6EC /* UserManager.m */; };
 		E1EBEBBD1AEF79FD000A3790 /* QuestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EBEBBC1AEF79FD000A3790 /* QuestManager.m */; };
 		E1EBEBC11AEF7AED000A3790 /* TakePhotoQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EBEBC01AEF7AED000A3790 /* TakePhotoQuest.m */; };
 		E1EFDF8E1AF0C3CA00894032 /* PFObject+Quest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EFDF8D1AF0C3CA00894032 /* PFObject+Quest.m */; };
@@ -129,6 +130,8 @@
 		E1E3EECD1AF79DA10095A6EC /* FilterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterTableViewController.h; sourceTree = "<group>"; };
 		E1E3EECE1AF79DA10095A6EC /* FilterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterTableViewController.m; sourceTree = "<group>"; };
 		E1E3EECF1AF79DA10095A6EC /* FilterTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterTableViewController.xib; sourceTree = "<group>"; };
+		E1E3EED31AF7A5B70095A6EC /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
+		E1E3EED41AF7A5B70095A6EC /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		E1EBEBBB1AEF79FD000A3790 /* QuestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestManager.h; sourceTree = "<group>"; };
 		E1EBEBBC1AEF79FD000A3790 /* QuestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestManager.m; sourceTree = "<group>"; };
 		E1EBEBBF1AEF7AED000A3790 /* TakePhotoQuest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePhotoQuest.h; sourceTree = "<group>"; };
@@ -287,13 +290,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E1EBEBBE1AEF7A0A000A3790 /* Model */ = {
+		E1E3EED61AF7A5DA0095A6EC /* Quests */ = {
 			isa = PBXGroup;
 			children = (
 				BB6308E31AF109F9002DF589 /* QuestInfo */,
-				E1F45C991AF21E4E00ACAE6D /* Quests */,
+				E1F45C991AF21E4E00ACAE6D /* QuestTypes */,
 				E1EBEBBB1AEF79FD000A3790 /* QuestManager.h */,
 				E1EBEBBC1AEF79FD000A3790 /* QuestManager.m */,
+			);
+			name = Quests;
+			sourceTree = "<group>";
+		};
+		E1E3EED71AF7A5EE0095A6EC /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				E1E3EED31AF7A5B70095A6EC /* UserManager.h */,
+				E1E3EED41AF7A5B70095A6EC /* UserManager.m */,
+			);
+			name = Users;
+			sourceTree = "<group>";
+		};
+		E1EBEBBE1AEF7A0A000A3790 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E1E3EED61AF7A5DA0095A6EC /* Quests */,
+				E1E3EED71AF7A5EE0095A6EC /* Users */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -354,7 +375,7 @@
 			name = Assets;
 			sourceTree = "<group>";
 		};
-		E1F45C991AF21E4E00ACAE6D /* Quests */ = {
+		E1F45C991AF21E4E00ACAE6D /* QuestTypes */ = {
 			isa = PBXGroup;
 			children = (
 				E1EFDF8F1AF0F12E00894032 /* ViewPhotoQuest.h */,
@@ -362,7 +383,7 @@
 				E1EBEBBF1AEF7AED000A3790 /* TakePhotoQuest.h */,
 				E1EBEBC01AEF7AED000A3790 /* TakePhotoQuest.m */,
 			);
-			name = Quests;
+			name = QuestTypes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -468,6 +489,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1F45C9C1AF27BD200ACAE6D /* UIColor+Quest.m in Sources */,
+				E1E3EED51AF7A5B70095A6EC /* UserManager.m in Sources */,
 				E1EBEBC11AEF7AED000A3790 /* TakePhotoQuest.m in Sources */,
 				E1EFDF8E1AF0C3CA00894032 /* PFObject+Quest.m in Sources */,
 				212D2C2C1AF78834004991BA /* ContainerViewController.m in Sources */,

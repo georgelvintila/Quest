@@ -34,6 +34,7 @@
 
 -(void)saveQuestInformation:(QuestInfo *)questInfo
 {
+    [self setObject:[PFUser currentUser] forKey:kQuestColumnOwner];
     for (NSString *key in [questInfo questDictionary].allKeys) {
         if([key isEqualToString:kQuestColumnLocation])
         {
