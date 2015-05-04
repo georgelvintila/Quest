@@ -68,7 +68,7 @@
     return self.dictionary[kQuestColumnName];
 }
 
-- (NSString *)questDetail {
+- (NSString *)questDetails {
     return self.dictionary[kQuestColumnDetails];
 }
 

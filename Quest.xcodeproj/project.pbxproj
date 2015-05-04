@@ -13,6 +13,8 @@
 		212D2C291AF7879E004991BA /* EmptySegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 212D2C281AF7879E004991BA /* EmptySegue.m */; };
 		212D2C2C1AF78834004991BA /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212D2C2B1AF78834004991BA /* ContainerViewController.m */; };
 		212D2C2F1AF78926004991BA /* ViewPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212D2C2E1AF78926004991BA /* ViewPhotoViewController.m */; };
+		BB01334C1AF792E400E5785F /* QuestDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB01334B1AF792E400E5785F /* QuestDetailsView.xib */; };
+		BB01334F1AF7940D00E5785F /* QuestDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB01334E1AF7940D00E5785F /* QuestDetailsViewController.m */; };
 		BB18DC271AF11739005B2AB2 /* ViewPhotoQuestInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB18DC261AF11739005B2AB2 /* ViewPhotoQuestInfo.m */; };
 		BB18DC2A1AF119E5005B2AB2 /* TakePhotoQuestInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB18DC291AF119E5005B2AB2 /* TakePhotoQuestInfo.m */; };
 		BB6308E61AF10A0E002DF589 /* QuestInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6308E51AF10A0E002DF589 /* QuestInfo.m */; };
@@ -78,6 +80,9 @@
 		212D2C2B1AF78834004991BA /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
 		212D2C2D1AF78926004991BA /* ViewPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPhotoViewController.h; sourceTree = "<group>"; };
 		212D2C2E1AF78926004991BA /* ViewPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPhotoViewController.m; sourceTree = "<group>"; };
+		BB01334B1AF792E400E5785F /* QuestDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestDetailsView.xib; sourceTree = "<group>"; };
+		BB01334D1AF7940D00E5785F /* QuestDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestDetailsViewController.h; sourceTree = "<group>"; };
+		BB01334E1AF7940D00E5785F /* QuestDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestDetailsViewController.m; sourceTree = "<group>"; };
 		BB18DC251AF11739005B2AB2 /* ViewPhotoQuestInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPhotoQuestInfo.h; sourceTree = "<group>"; };
 		BB18DC261AF11739005B2AB2 /* ViewPhotoQuestInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPhotoQuestInfo.m; sourceTree = "<group>"; };
 		BB18DC281AF119E5005B2AB2 /* TakePhotoQuestInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePhotoQuestInfo.h; sourceTree = "<group>"; };
@@ -304,6 +309,8 @@
 		E1F45C951AF21D5E00ACAE6D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BB01334D1AF7940D00E5785F /* QuestDetailsViewController.h */,
+				BB01334E1AF7940D00E5785F /* QuestDetailsViewController.m */,
 				E1D7050C1AEA7B8900525E19 /* QuestLoginViewController.h */,
 				E1D7050D1AEA7B8900525E19 /* QuestLoginViewController.m */,
 				E1D8FAB11AEE906000F78777 /* QuestTableViewController.h */,
@@ -329,6 +336,7 @@
 			children = (
 				E1D7050F1AEA7B8900525E19 /* Main.storyboard */,
 				E1D705141AEA7B8900525E19 /* LaunchScreen.xib */,
+				BB01334B1AF792E400E5785F /* QuestDetailsView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -432,6 +440,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB01334C1AF792E400E5785F /* QuestDetailsView.xib in Resources */,
 				E1D705111AEA7B8900525E19 /* Main.storyboard in Resources */,
 				E1D705161AEA7B8900525E19 /* LaunchScreen.xib in Resources */,
 				E1D705131AEA7B8900525E19 /* Images.xcassets in Resources */,
@@ -469,6 +478,7 @@
 				E1EFDF911AF0F12E00894032 /* ViewPhotoQuest.m in Sources */,
 				E1EBEBBD1AEF79FD000A3790 /* QuestManager.m in Sources */,
 				E1D705081AEA7B8900525E19 /* main.m in Sources */,
+				BB01334F1AF7940D00E5785F /* QuestDetailsViewController.m in Sources */,
 				212D2C221AEFCABC004991BA /* LocationPickerViewController.m in Sources */,
 				212D2C291AF7879E004991BA /* EmptySegue.m in Sources */,
 			);
