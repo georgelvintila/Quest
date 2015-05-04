@@ -17,14 +17,13 @@
 @property(nonatomic,strong) QuestManager *questManager;
 @property(nonatomic,strong) NSArray *allQuestTypes;
 @property(nonatomic) QuestOwnerType owner;
-<<<<<<< HEAD
+
 @property(nonatomic) NSInteger questType;
-=======
 @property(nonatomic,strong) UISearchController *searchController;
 @property(nonatomic,strong) NSMutableArray *questItems;
 @property (nonatomic, strong) QuestResultTableViewController *resultsTableController;
-@property(nonatomic) NSString *questType;
->>>>>>> 842a1a9e9e308782db1d170a067a6b1619aaac67
+
+
 
 @end
 
