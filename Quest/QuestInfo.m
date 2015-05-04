@@ -33,35 +33,43 @@
 }
 
 - (void)setQuestName:(NSString *)questName {
-    self.dictionary[kQuestColumnName] = questName;
+    if(questName)
+        self.dictionary[kQuestColumnName] = questName;
 }
 
 - (void)setQuestDetails:(NSString *)questDetails {
-    self.dictionary[kQuestColumnDetails] = questDetails;
+    if(questDetails)
+        self.dictionary[kQuestColumnDetails] = questDetails;
 }
 
 - (void)setQuestLocation:(CLLocation*)questLocation {
-    self.dictionary[kQuestColumnLocation] = questLocation;
+    if(questLocation)
+        self.dictionary[kQuestColumnLocation] = questLocation;
 }
 
 - (void)setQuestOwner:(PFUser *)questOwner {
-     self.dictionary[kQuestColumnOwner] = questOwner;
+    if(questOwner)
+        self.dictionary[kQuestColumnOwner] = questOwner;
 }
 
 - (void)setQuestCreatedAt:(NSDate *)questCreatedAt {
-     self.dictionary[kQuestColumnCreatedAt] = questCreatedAt;
+    if(questCreatedAt)
+        self.dictionary[kQuestColumnCreatedAt] = questCreatedAt;
 }
 
 - (void)setQuestUpdatedAt:(NSDate *)questUpdatedAt {
-     self.dictionary[kQuestColumnUpdatedAt] = questUpdatedAt;
+    if(questUpdatedAt)
+        self.dictionary[kQuestColumnUpdatedAt] = questUpdatedAt;
 }
 
 - (void)setQuestACL:(PFACL *)questACL {
-     self.dictionary[kQuestColumnACL] = questACL;
+    if(questACL)
+        self.dictionary[kQuestColumnACL] = questACL;
 }
 
 - (void)setQuestObjectId:(NSString *)questObjectId {
-     self.dictionary[kQuestColumnObjectId] = questObjectId;
+    if(questObjectId)
+        self.dictionary[kQuestColumnObjectId] = questObjectId;
 }
 
 - (NSString *)questName {
