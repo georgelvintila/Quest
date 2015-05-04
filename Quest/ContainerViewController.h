@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TakePhotoQuestViewController.h"
+#import "ViewPhotoViewController.h"
+#import "QuestViewController.h"
+
 
 @interface ContainerViewController : UIViewController
+
+@property (nonatomic, strong) TakePhotoQuestViewController *takePhotoQuestViewController;
+@property (nonatomic, strong) ViewPhotoViewController *viewPhotoViewController;
+
+@property (nonatomic) NSInteger questType;
 
 @end

@@ -310,6 +310,8 @@
 				E1D8FAB21AEE906000F78777 /* QuestTableViewController.m */,
 				212D2C241AF22231004991BA /* QuestViewController.h */,
 				212D2C251AF22231004991BA /* QuestViewController.m */,
+				212D2C2A1AF78834004991BA /* ContainerViewController.h */,
+				212D2C2B1AF78834004991BA /* ContainerViewController.m */,
 				212D2C201AEFCABC004991BA /* TakePhotoQuestViewController.h */,
 				212D2C211AEFCABC004991BA /* TakePhotoQuestViewController.m */,
 				212D2C2D1AF78926004991BA /* ViewPhotoViewController.h */,
@@ -318,8 +320,6 @@
 				212D2C1F1AEFCABC004991BA /* LocationPickerViewController.m */,
 				212D2C271AF7879E004991BA /* EmptySegue.h */,
 				212D2C281AF7879E004991BA /* EmptySegue.m */,
-				212D2C2A1AF78834004991BA /* ContainerViewController.h */,
-				212D2C2B1AF78834004991BA /* ContainerViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

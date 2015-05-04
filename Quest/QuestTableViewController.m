@@ -17,7 +17,7 @@
 @property(nonatomic,strong) QuestManager *questManager;
 @property(nonatomic,strong) NSArray *allQuestTypes;
 @property(nonatomic) QuestOwnerType owner;
-@property(nonatomic) NSString *questType;
+@property(nonatomic) NSInteger questType;
 
 @end
 
@@ -128,7 +128,7 @@
 
 - (IBAction)showQuestSheet:(id)sender {
     
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Quest Types" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Quest Types" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"View Photo", nil];
    // actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [actionSheet showInView:self.view];    
 }
@@ -143,19 +143,20 @@
     {
         case 0:
         {
-            self.questType = kQuestTypeTakePhotoQuest;
-            [self performSegueWithIdentifier: @"QuestSegue" sender: self];
-            break;
+            self.questType = TakePhoto;
+            [self performSegueWithIdentifier:kQuestSegue sender: self];
         }
+            break;
         case 1:
         {
-            self.questType = kQuestTypeViewPhotoQuest;
-            [self performSegueWithIdentifier: @"QuestSegue" sender: self];
+            self.questType = ViewPhoto;
+            [self performSegueWithIdentifier:kQuestSegue sender: self];
         }
             break;
         default:
             break;
     }
+    
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

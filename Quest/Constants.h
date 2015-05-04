@@ -17,6 +17,18 @@ static NSString * const kQuestTypeViewPhotoQuest = @"ViewPhotoQuest";
 static NSString * const kQuestTableViewControllerTitleOtherQuests = @"OtherQuests";
 static NSString * const kQuestTableViewControllerTitleMyQuests = @"MyQuests";
 
+static NSString * const kTakePhotoSegue = @"TakePhotoSegue";
+static NSString * const kViewPhotoSegue = @"ViewPhotoSegue";
+static NSString * const kQuestSegue = @"QuestSegue";
+
+typedef enum
+{
+    TakePhoto = 0,
+    ViewPhoto = 1
+} questTypeNo;
+
+
+
 //General Quest Property Keys
 
 static NSString * const kQuestColumnName = @"name";
