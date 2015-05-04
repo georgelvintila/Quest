@@ -11,5 +11,5 @@
 @interface UIColor (Quest)
 
 +(UIColor*) tintGreenColor;
-
++(UIColor*) headerBackgroundColor;
 @end

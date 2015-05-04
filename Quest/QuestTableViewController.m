@@ -87,9 +87,10 @@
         view = [[UIView alloc] init];
     }
     UILabel *label = [[UILabel alloc] init];
-    
-    view.backgroundColor = [UIColor lightGrayColor];
+    view.backgroundColor = [UIColor headerBackgroundColor];
     label.text = [self.allQuestTypes objectAtIndex:section];
+    label.font = [UIFont systemFontOfSize:15];
+    label.textColor = [UIColor tintGreenColor];
     [view addSubview:label];
     [label sizeToFit];
     return view;

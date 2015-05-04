@@ -205,8 +205,7 @@
            if([results count])
            {
                [source setObject:[results mutableCopy] forKey:questType];
-               NSDictionary *userInfo = @{@"owner":[NSNumber numberWithInteger:questOwner]};
-               [[NSNotificationCenter defaultCenter] postNotificationName:kQuestDataChangedNotification object:nil userInfo:userInfo];
+               [[NSNotificationCenter defaultCenter] postNotificationName:kQuestDataChangedNotification object:nil];
            }
        }
     }];
