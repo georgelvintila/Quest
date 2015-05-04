@@ -25,6 +25,11 @@
     return loc;
 }
 
+-(QuestInfo *)questInfo
+{
+    return nil;
+}
+
 #pragma mark - Instance Methods
 
 -(void)saveQuestInformation:(QuestInfo *)questInfo

@@ -49,6 +49,7 @@
 		E1DBE7181AEFCF15005026EB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1DBE7171AEFCF15005026EB /* MapKit.framework */; };
 		E1DBE7191AEFD618005026EB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D7052C1AEA7CBB00525E19 /* Parse.framework */; };
 		E1DBE71A1AEFD61C005026EB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D7052E1AEA7CE900525E19 /* Bolts.framework */; };
+		E1E3EECA1AF7813A0095A6EC /* QuestResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E3EEC91AF7813A0095A6EC /* QuestResultTableViewController.m */; };
 		E1EBEBBD1AEF79FD000A3790 /* QuestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EBEBBC1AEF79FD000A3790 /* QuestManager.m */; };
 		E1EBEBC11AEF7AED000A3790 /* TakePhotoQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EBEBC01AEF7AED000A3790 /* TakePhotoQuest.m */; };
 		E1EFDF8E1AF0C3CA00894032 /* PFObject+Quest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EFDF8D1AF0C3CA00894032 /* PFObject+Quest.m */; };
@@ -126,6 +127,8 @@
 		E1D8FAB11AEE906000F78777 /* QuestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestTableViewController.h; sourceTree = "<group>"; };
 		E1D8FAB21AEE906000F78777 /* QuestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestTableViewController.m; sourceTree = "<group>"; };
 		E1DBE7171AEFCF15005026EB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E1E3EEC81AF7813A0095A6EC /* QuestResultTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestResultTableViewController.h; sourceTree = "<group>"; };
+		E1E3EEC91AF7813A0095A6EC /* QuestResultTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestResultTableViewController.m; sourceTree = "<group>"; };
 		E1EBEBBB1AEF79FD000A3790 /* QuestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestManager.h; sourceTree = "<group>"; };
 		E1EBEBBC1AEF79FD000A3790 /* QuestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestManager.m; sourceTree = "<group>"; };
 		E1EBEBBF1AEF7AED000A3790 /* TakePhotoQuest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePhotoQuest.h; sourceTree = "<group>"; };
@@ -317,16 +320,18 @@
 				E1D8FAB21AEE906000F78777 /* QuestTableViewController.m */,
 				212D2C241AF22231004991BA /* QuestViewController.h */,
 				212D2C251AF22231004991BA /* QuestViewController.m */,
+				212D2C2A1AF78834004991BA /* ContainerViewController.h */,
+				212D2C2B1AF78834004991BA /* ContainerViewController.m */,
 				212D2C201AEFCABC004991BA /* TakePhotoQuestViewController.h */,
 				212D2C211AEFCABC004991BA /* TakePhotoQuestViewController.m */,
 				212D2C2D1AF78926004991BA /* ViewPhotoViewController.h */,
 				212D2C2E1AF78926004991BA /* ViewPhotoViewController.m */,
 				212D2C1E1AEFCABC004991BA /* LocationPickerViewController.h */,
 				212D2C1F1AEFCABC004991BA /* LocationPickerViewController.m */,
+				E1E3EEC81AF7813A0095A6EC /* QuestResultTableViewController.h */,
+				E1E3EEC91AF7813A0095A6EC /* QuestResultTableViewController.m */,
 				212D2C271AF7879E004991BA /* EmptySegue.h */,
 				212D2C281AF7879E004991BA /* EmptySegue.m */,
-				212D2C2A1AF78834004991BA /* ContainerViewController.h */,
-				212D2C2B1AF78834004991BA /* ContainerViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -470,6 +475,7 @@
 				212D2C261AF22231004991BA /* QuestViewController.m in Sources */,
 				212D2C2F1AF78926004991BA /* ViewPhotoViewController.m in Sources */,
 				BB6308E61AF10A0E002DF589 /* QuestInfo.m in Sources */,
+				E1E3EECA1AF7813A0095A6EC /* QuestResultTableViewController.m in Sources */,
 				E1D7050E1AEA7B8900525E19 /* QuestLoginViewController.m in Sources */,
 				E1D7050B1AEA7B8900525E19 /* AppDelegate.m in Sources */,
 				BB18DC271AF11739005B2AB2 /* ViewPhotoQuestInfo.m in Sources */,

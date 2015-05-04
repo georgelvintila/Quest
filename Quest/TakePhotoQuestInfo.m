@@ -31,11 +31,13 @@
 }
 
 - (void)setQuestPhotoAngle:(NSNumber *)questPhotoAngle {
-    self.dictionary[kQuestColumnTakePhotoAngle] = questPhotoAngle;
+    if(questPhotoAngle)
+        self.dictionary[kQuestColumnTakePhotoAngle] = questPhotoAngle;
 }
 
 - (void)setQuestPhotoRadius:(NSNumber *)questPhotoRadius {
-    self.dictionary[kQuestColumnTakePhotoRadius] = questPhotoRadius;
+    if(questPhotoRadius)
+        self.dictionary[kQuestColumnTakePhotoRadius] = questPhotoRadius;
 }
 
 @end
