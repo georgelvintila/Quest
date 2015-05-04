@@ -114,10 +114,10 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    Quest *quest = [((NSArray *)[self.questManager questListOfType:self.allQuestTypes[indexPath.section] forOwner:self.owner]) objectAtIndex:indexPath.row];
+    QuestInfo *quest = [((NSArray *)[self.questManager questListOfType:self.allQuestTypes[indexPath.section] forOwner:self.owner]) objectAtIndex:indexPath.row];
 
-    cell.textLabel.text = quest.name;
-    cell.detailTextLabel.text = quest.details;
+    cell.textLabel.text = quest.questName;
+    cell.detailTextLabel.text = quest.questDetails;
     
     return  cell;
 }  

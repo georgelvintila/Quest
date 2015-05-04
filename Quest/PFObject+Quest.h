@@ -29,6 +29,9 @@ typedef PFObject Quest;
 ///@brief Property that contains the location of the Quest
 @property(nonatomic,readonly,strong) PFGeoPoint *location;
 
+///@brief Property that contains the all of the Quest Information. Should be implemented in child class
+@property(nonatomic, readonly,strong) QuestInfo *questInfo;
+
 #pragma mark - Instance Methods
 
 ///@brief Method that saves Quest information

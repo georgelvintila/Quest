@@ -10,6 +10,15 @@
 #import <Parse/PFObject+Subclass.h>
 #import "ViewPhotoQuestInfo.h"
 
+@interface ViewPhotoQuest ()
+{
+    ViewPhotoQuestInfo *_questInfo;
+}
+
+@end
+
+#pragma mark -
+
 @implementation ViewPhotoQuest
 
 #pragma mark - Properties
@@ -41,6 +50,22 @@
         ((ViewPhotoQuestInfo*)questInfo).questPhotoImageFile = [PFFile fileWithData:imageData];
     }
     [super saveQuestInformation:questInfo];
+}
+
+-(QuestInfo *)questInfo
+{
+    if(!_questInfo)
+        _questInfo = [ViewPhotoQuestInfo new];
+    
+    _questInfo.questLocation = self.mapLocation;
+    _questInfo.questName = self.name;
+    _questInfo.questDetails = self.details;
+    _questInfo.questOwner = self.owner;
+    _questInfo.questPhotoImageFile = [self image];
+    _questInfo.questPhotoMessage = self.message;
+    _questInfo.questPhotoViewRadius = self.viewRadius;
+    
+    return _questInfo;
 }
 
 #pragma mark - Class Methods
