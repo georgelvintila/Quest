@@ -66,7 +66,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self requestData];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:kQuestDataChangedNotification object:nil];
     
     _resultsTableController = [[QuestResultTableViewController alloc] init];
@@ -84,6 +84,7 @@
     self.searchController.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.searchController.searchBar.autocorrectionType =  UITextAutocorrectionTypeNo;
     self.searchController.searchBar.spellCheckingType = UITextSpellCheckingTypeNo;
+    [self requestData];
 }
 
 -(void)dealloc
@@ -130,12 +131,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier: kQuestDetailsSegue sender:self];
-    NSArray *quests = [self.questItems objectAtIndex:indexPath.section];
-    QuestInfo *quest = [quests objectAtIndex:indexPath.row];
+    if(self.owner == QuestOwnerTypeOthers)
+    {
+        [self performSegueWithIdentifier: kQuestDetailsSegue sender:self];
+        NSArray *quests = [self.questItems objectAtIndex:indexPath.section];
+        QuestInfo *quest = [quests objectAtIndex:indexPath.row];
 
-    self.questDetailsViewController.questInfo = quest;
-    
+        self.questDetailsViewController.questInfo = quest;
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

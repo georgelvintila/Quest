@@ -136,7 +136,7 @@
 		E1E3EECF1AF79DA10095A6EC /* FilterTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterTableViewController.xib; sourceTree = "<group>"; };
 		E1E3EED31AF7A5B70095A6EC /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
 		E1E3EED41AF7A5B70095A6EC /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
-		E1E3EEDC1AF7B9990095A6EC /* Bucharest.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Bucharest.gpx; path = Quest/Bucharest.gpx; sourceTree = "<group>"; };
+		E1E3EEDC1AF7B9990095A6EC /* Bucharest.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Bucharest.gpx; sourceTree = "<group>"; };
 		E1EBEBBB1AEF79FD000A3790 /* QuestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestManager.h; sourceTree = "<group>"; };
 		E1EBEBBC1AEF79FD000A3790 /* QuestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestManager.m; sourceTree = "<group>"; };
 		E1EBEBBF1AEF7AED000A3790 /* TakePhotoQuest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePhotoQuest.h; sourceTree = "<group>"; };
@@ -207,7 +207,6 @@
 		E1D704F91AEA7B8900525E19 = {
 			isa = PBXGroup;
 			children = (
-				E1E3EEDC1AF7B9990095A6EC /* Bucharest.gpx */,
 				E1D705041AEA7B8900525E19 /* Quest */,
 				E1D7051E1AEA7B8900525E19 /* QuestTests */,
 				E1D705031AEA7B8900525E19 /* Products */,
@@ -236,6 +235,7 @@
 				E1D705091AEA7B8900525E19 /* AppDelegate.h */,
 				E1D7050A1AEA7B8900525E19 /* AppDelegate.m */,
 				E1EBEBC21AEF9305000A3790 /* Constants.h */,
+				E1E3EEDC1AF7B9990095A6EC /* Bucharest.gpx */,
 			);
 			path = Quest;
 			sourceTree = "<group>";

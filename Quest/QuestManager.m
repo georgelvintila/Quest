@@ -138,7 +138,7 @@
     
     Quest *quest = [[typeClass alloc] init];
     [quest saveQuestInformation:questInfo];
-    [array addObject:quest];
+    [array addObject:questInfo];
     [[NSNotificationCenter defaultCenter] postNotificationName:kQuestDataChangedNotification object:nil];
 }
 

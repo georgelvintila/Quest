@@ -24,7 +24,7 @@
                         <outlet property="delegate" destination="-1" id="Cpo-gn-2Ko"/>
                     </connections>
                 </mapView>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqR-xq-GnD">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqR-xq-GnD">
                     <rect key="frame" x="8" y="63" width="304" height="168"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
