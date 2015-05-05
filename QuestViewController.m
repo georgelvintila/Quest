@@ -32,24 +32,13 @@
     [self validateQuestInfo];
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.tabBarController.tabBar setHidden:YES];
-}
 
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.tabBarController.tabBar setHidden:NO];
-}
 
 #pragma mark - Location Picker View Controller Delegate Methods
 
 -(void)locationPickerViewController:(LocationPickerViewController *)viewController saveLocation:(CLLocation *)location
 {
     self.questLocation = location;
-    [viewController.navigationController popViewControllerAnimated:YES];
     [self.mapButton setSelected:YES];
     [self validateQuestInfo];
 }
@@ -86,7 +75,7 @@
     info.questPhotoRadius = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.radiusSlider.value];
     
     QuestManager *qmanager = [QuestManager sharedManager];
-    if (self.questType == TakePhoto)
+    if (self.questType == QuestTypeTakePhoto)
     {
         info.questPhotoAngle = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.angleStepper.value];
         info.questPhotoRadius = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.radiusSlider.value];
@@ -95,13 +84,6 @@
     }
     [self.navigationController popViewControllerAnimated:NO];
     
-}
-
-- (IBAction)chooseLocation:(id)sender
-{
-    LocationPickerViewController *locationPickerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LocationPicker"];
-    locationPickerViewController.delegate = self;
-    [self.navigationController showViewController:locationPickerViewController sender:sender];
 }
 
 #pragma mark - Navigation Methods
@@ -118,6 +100,8 @@
         if ([segueName isEqualToString: @"QuestToMapSegue"])
         {
             LocationPickerViewController *locationPickerViewController = (LocationPickerViewController *) [segue destinationViewController];
+            if(self.questLocation)
+                [locationPickerViewController setSavedLocation:self.questLocation];
             locationPickerViewController.delegate = self;
         }
 }

@@ -17,9 +17,11 @@
 #pragma mark - Properties
 
 @property (weak, nonatomic) IBOutlet UISwitch *locationSwitch;
-@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+@property (weak, nonatomic) IBOutlet UIButton *clearButton;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) CLLocation *savedLocation;
+
 @property (nonatomic, weak) id<LocationPickerViewControllerDelegate> delegate;
-@property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 @end
 

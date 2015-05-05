@@ -60,18 +60,6 @@
     self.map.userTrackingMode = MKUserTrackingModeFollow;
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.tabBarController.tabBar setHidden:YES];
-}
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.tabBarController.tabBar setHidden:NO];
-}
-
 #pragma mark - MapView Delegate Methods
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay

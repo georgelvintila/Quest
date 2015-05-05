@@ -33,13 +33,6 @@ static NSString * const kTakePhotoSegue = @"TakePhotoSegue";
 static NSString * const kViewPhotoSegue = @"ViewPhotoSegue";
 static NSString * const kQuestSegue = @"QuestSegue";
 
-typedef enum
-{
-    TakePhoto = 0,
-    ViewPhoto = 1
-} questTypeNo;
-
-
 
 //General Quest Property Keys
 
@@ -66,6 +59,9 @@ static NSString * const kQuestColumnViewPhotoImageFile = @"imageFile";
 static NSString * const kMyQuestQuerySuccesNotification = @"kMyQuestQuerySuccesNotification";
 static NSString * const kMyQuestQueryFailureNotification = @"kMyQuestQueryFailureNotification";
 static NSString * const kQuestDataChangedNotification = @"kQuestDataChangedNotification";
+
+
+static CGFloat const kFilterDistance = 1000.0;
 
 
 #endif

@@ -23,6 +23,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *mapButton;
 @property (weak, nonatomic) IBOutlet UIView *takePhotoContainer;
 
-@property (nonatomic) NSInteger questType;
+@property (nonatomic) QuestType questType;
 
 @end

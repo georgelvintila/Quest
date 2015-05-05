@@ -92,6 +92,12 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestDataChangedNotification object:nil];
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.tabBarController.tabBar setHidden:NO];
+}
+
 #pragma mark - Data Methods
 
 -(void) requestData
@@ -188,13 +194,13 @@
     {
         case 0:
         {
-            self.questType = TakePhoto;
+            self.questType = QuestTypeTakePhoto;
             [self performSegueWithIdentifier:kQuestSegue sender: self];
         }
             break;
         case 1:
         {
-            self.questType = ViewPhoto;
+            self.questType = QuestTypeViewPhoto;
             [self performSegueWithIdentifier:kQuestSegue sender: self];
         }
             break;
@@ -269,6 +275,7 @@
         QuestViewController *destination = (QuestViewController *)[segue destinationViewController];
         destination.questType = self.questType;
     }
+    [self.tabBarController.tabBar setHidden:YES];
 }
 
 @end

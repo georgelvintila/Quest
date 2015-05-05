@@ -28,12 +28,12 @@
     //switch (((QuestViewController *)self.parentViewController).questType)
     switch (self.questType)
     {
-        case TakePhoto:
+        case QuestTypeTakePhoto:
         {
             [self performSegueWithIdentifier:kTakePhotoSegue sender:self];
         }
             break;
-        case ViewPhoto:
+        case QuestTypeViewPhoto:
         {
             [self performSegueWithIdentifier:kViewPhotoSegue sender:self];
         }
