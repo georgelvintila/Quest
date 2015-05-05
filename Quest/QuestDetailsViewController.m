@@ -58,8 +58,18 @@
     self.map.showsUserLocation = YES;
     [self.map showAnnotations:@[point] animated:YES];
     self.map.userTrackingMode = MKUserTrackingModeFollow;
-    
-    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tabBarController.tabBar setHidden:YES];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tabBarController.tabBar setHidden:NO];
 }
 
 #pragma mark - MapView Delegate Methods

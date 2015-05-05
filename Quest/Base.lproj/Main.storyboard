@@ -9,6 +9,7 @@
         <!--My Quests-->
         <scene sceneID="jIB-8U-bvs">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EmU-Jb-ELm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController title="My Quests" automaticallyAdjustsScrollViewInsets="NO" id="EDU-Ti-Gp3" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Quests" id="Wjk-36-1Q2"/>
                     <toolbarItems/>
@@ -28,7 +29,6 @@
                         <segue destination="GWF-7b-0Co" kind="relationship" relationship="rootViewController" id="oj2-gi-mYO"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EmU-Jb-ELm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="138" y="-176"/>
         </scene>
@@ -344,6 +344,7 @@
         <!--Other Quests-->
         <scene sceneID="amg-ON-Nhm">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="whs-7K-lI6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BlC-Fo-637" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Other Quests" id="1j7-SH-rjP"/>
                     <toolbarItems/>
@@ -361,7 +362,6 @@
                         <segue destination="btl-f7-gAh" kind="relationship" relationship="rootViewController" id="Z9K-RK-dh8"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="whs-7K-lI6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="138" y="504"/>
         </scene>

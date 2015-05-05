@@ -296,6 +296,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E1DDE1321AF8A5EC00EB95B9 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E1D7050C1AEA7B8900525E19 /* QuestLoginViewController.h */,
+				E1D7050D1AEA7B8900525E19 /* QuestLoginViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		E1E3EED61AF7A5DA0095A6EC /* Quests */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,10 +348,9 @@
 		E1F45C951AF21D5E00ACAE6D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E1DDE1321AF8A5EC00EB95B9 /* Login */,
 				BB01334D1AF7940D00E5785F /* QuestDetailsViewController.h */,
 				BB01334E1AF7940D00E5785F /* QuestDetailsViewController.m */,
-				E1D7050C1AEA7B8900525E19 /* QuestLoginViewController.h */,
-				E1D7050D1AEA7B8900525E19 /* QuestLoginViewController.m */,
 				E1D8FAB11AEE906000F78777 /* QuestTableViewController.h */,
 				E1D8FAB21AEE906000F78777 /* QuestTableViewController.m */,
 				212D2C241AF22231004991BA /* QuestViewController.h */,
