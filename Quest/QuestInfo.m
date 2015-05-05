@@ -20,9 +20,11 @@
 @implementation QuestInfo
 
 #pragma mark - Properties
+
 @synthesize dictionary = _dictionary;
 
-#pragma mark - Instance Methods
+#pragma mark - Instantiation Methods
+
 - (instancetype)init
 {
     self = [super init];
@@ -31,6 +33,8 @@
     }
     return self;
 }
+
+#pragma mark - Property Methods
 
 - (void)setQuestName:(NSString *)questName {
     if(questName)
@@ -62,6 +66,11 @@
         self.dictionary[kQuestColumnObjectId] = questObjectId;
 }
 
+-(void)setQuestComplete:(BOOL)questComplete
+{
+    self.dictionary[kQuestColumnComplete] = [NSNumber numberWithBool:questComplete];
+}
+
 - (NSString *)questName {
     return self.dictionary[kQuestColumnName];
 }
@@ -85,6 +94,13 @@
 - (NSString *)questObjectId {
     return self.dictionary[kQuestColumnObjectId];
 }
+
+-(BOOL)questComplete
+{
+    return [self.dictionary[kQuestColumnComplete] boolValue];
+}
+
+#pragma mark - Instance Methods
 
 - (NSDictionary *)questDictionary {
     return [NSDictionary dictionaryWithDictionary:self.dictionary];

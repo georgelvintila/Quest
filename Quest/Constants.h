@@ -44,6 +44,7 @@ static NSString * const kQuestColumnCreatedAt = @"createdAt";
 static NSString * const kQuestColumnUpdatedAt = @"updatedAt";
 static NSString * const kQuestColumnACL = @"ACL";
 static NSString * const kQuestColumnObjectId = @"objectId";
+static NSString * const kQuestColumnComplete = @"complete";
 
 //Specific Quest Property Keys
 //Take Photo Quest

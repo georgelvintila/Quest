@@ -187,6 +187,7 @@
             break;
         case QuestOwnerTypeOthers:
             [query whereKey:kQuestColumnOwner notEqualTo:[PFUser currentUser]];
+            [query whereKey:kQuestColumnComplete notEqualTo:@0];
             source = self.otherQuests;
             break;
         default:

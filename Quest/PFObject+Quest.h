@@ -29,8 +29,11 @@ typedef PFObject Quest;
 ///@brief Property that contains the location of the Quest
 @property(nonatomic,readonly,strong) PFGeoPoint *location;
 
+///@brief Property that tell if the Quest is complete
+@property(nonatomic,readonly,assign) NSNumber* complete;
+
 ///@brief Property that contains the all of the Quest Information. Should be implemented in child class
-@property(nonatomic, readonly,strong) QuestInfo *questInfo;
+@property(nonatomic,readonly,strong) QuestInfo *questInfo;
 
 #pragma mark - Instance Methods
 

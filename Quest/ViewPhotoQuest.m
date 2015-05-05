@@ -64,6 +64,7 @@
     _questInfo.questPhotoImageFile = [self image];
     _questInfo.questPhotoMessage = self.message;
     _questInfo.questPhotoViewRadius = self.viewRadius;
+    _questInfo.questComplete = [self.complete boolValue];
     
     return _questInfo;
 }

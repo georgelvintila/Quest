@@ -92,7 +92,6 @@
 - (void)addLongPressGestureRecognizer
 {
     UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-//    lpgr.minimumPressDuration = 1;
     [self.mapView addGestureRecognizer:lpgr];
 }
 
@@ -168,7 +167,6 @@
     return nil;
 }
 
-
 #pragma mark - Location Manager Delegate Methods
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
@@ -228,12 +226,10 @@
         }
         else
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error retrieving location"
-                                                        message:[error localizedDescription]
-                                                       delegate:nil
-                                              cancelButtonTitle:nil
-                                              otherButtonTitles:@"OK", nil];
-            [alert show];
+            UIAlertController *controller = [UIAlertController  alertControllerWithTitle: @"Error retrieving location" message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+            [controller addAction:action];
+            [self presentViewController:controller animated:YES completion:nil];
         }
     }
 }

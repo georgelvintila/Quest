@@ -28,11 +28,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        
-    [self validateQuestInfo];
 }
 
-
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self saveQuest];
+    [super viewWillDisappear:animated];
+}
 
 #pragma mark - Location Picker View Controller Delegate Methods
 
@@ -40,7 +42,6 @@
 {
     self.questLocation = location;
     [self.mapButton setSelected:YES];
-    [self validateQuestInfo];
 }
 
 #pragma mark - TextField Delegate Methods
@@ -57,20 +58,18 @@
     return YES;
 }
 
--(void)textFieldDidEndEditing:(UITextField *)textField
-{
-    [self validateQuestInfo];
-}
-
 #pragma mark - Action Methods
 
-- (IBAction)saveQuest:(id)sender
+- (void)saveQuest
 {
     TakePhotoQuestInfo *info = [[TakePhotoQuestInfo alloc] init];
     info.questName = self.questNameText.text;
     info.questDetails = self.detailTextView.text;
     info.questLocation = self.questLocation;
-
+    
+    BOOL complete = (info.questName.length && info.questDetails.length && info.questLocation != nil);
+    info.questComplete = complete;
+    
     info.questPhotoAngle = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.angleStepper.value];
     info.questPhotoRadius = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.radiusSlider.value];
     
@@ -82,8 +81,6 @@
         qmanager = [QuestManager sharedManager];
         [qmanager addNewQuestWithType:kQuestTypeTakePhotoQuest andInfo:info];
     }
-    [self.navigationController popViewControllerAnimated:NO];
-    
 }
 
 #pragma mark - Navigation Methods
@@ -108,16 +105,5 @@
 
 #pragma mark - Instance Method
 
--(void) validateQuestInfo
-{
-    if ((self.questNameText.text.length > 0) && self.questLocation)
-    {
-        self.saveButton.enabled = YES;
-    }
-    else
-    {
-        self.saveButton.enabled = NO;
-    }
-}
 
 @end

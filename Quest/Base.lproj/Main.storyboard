@@ -41,7 +41,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="kQuestCellIdentifier" textLabel="kl1-te-qim" detailTextLabel="g3H-UG-N37" style="IBUITableViewCellStyleSubtitle" id="XaF-s2-XbR">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="kQuestCellIdentifier" textLabel="kl1-te-qim" detailTextLabel="g3H-UG-N37" style="IBUITableViewCellStyleSubtitle" id="XaF-s2-XbR">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XaF-s2-XbR" id="UVO-Aq-mds">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -58,7 +58,21 @@
                                             <color key="textColor" red="0.10274835409999999" green="0.2202399273" blue="0.31904987369999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="incomplete" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbk-Vi-IVP">
+                                            <rect key="frame" x="195" y="11" width="84" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="84" id="boB-oS-IIp"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="1" green="0.09416763383" blue="0.17446243359999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="xbk-Vi-IVP" firstAttribute="top" secondItem="UVO-Aq-mds" secondAttribute="topMargin" constant="3" id="9CR-ks-NYz"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="xbk-Vi-IVP" secondAttribute="trailing" id="K0u-1Y-3sz"/>
+                                        <constraint firstItem="xbk-Vi-IVP" firstAttribute="centerY" secondItem="UVO-Aq-mds" secondAttribute="centerY" id="aXd-UG-Quj"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>

@@ -19,6 +19,7 @@
 @property (nonatomic) NSDate *questCreatedAt;
 @property (nonatomic) NSDate *questUpdatedAt;
 @property (nonatomic) NSString *questObjectId;
+@property (nonatomic) BOOL questComplete;
 
 
 #pragma mark - Instance Methods

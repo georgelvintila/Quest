@@ -16,6 +16,7 @@
 @dynamic details;
 @dynamic owner;
 @dynamic location;
+@dynamic complete;
 
 #pragma mark - Property Methods
 
