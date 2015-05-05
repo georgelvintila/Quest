@@ -41,7 +41,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="kQuestCellIdentifier" textLabel="kl1-te-qim" detailTextLabel="g3H-UG-N37" style="IBUITableViewCellStyleSubtitle" id="XaF-s2-XbR">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="kCellIdentifier" textLabel="kl1-te-qim" detailTextLabel="g3H-UG-N37" style="IBUITableViewCellStyleSubtitle" id="XaF-s2-XbR">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XaF-s2-XbR" id="UVO-Aq-mds">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -58,7 +58,17 @@
                                             <color key="textColor" red="0.10274835409999999" green="0.2202399273" blue="0.31904987369999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="incomplete" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmf-iC-mQp">
+                                            <rect key="frame" x="207" y="13" width="72" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Bmf-iC-mQp" firstAttribute="centerY" secondItem="UVO-Aq-mds" secondAttribute="centerY" id="frR-el-p97"/>
+                                        <constraint firstItem="Bmf-iC-mQp" firstAttribute="trailing" secondItem="UVO-Aq-mds" secondAttribute="trailingMargin" id="uyO-fd-wzW"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -373,7 +383,7 @@
                         <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="kQuestCellIdentifier" textLabel="pJz-ar-LaC" detailTextLabel="bEH-Wt-P1Q" style="IBUITableViewCellStyleSubtitle" id="NUQ-Q8-iX1">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="kCellIdentifier" textLabel="pJz-ar-LaC" detailTextLabel="bEH-Wt-P1Q" style="IBUITableViewCellStyleSubtitle" id="NUQ-Q8-iX1">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NUQ-Q8-iX1" id="zYW-2Q-hSV">
                                     <autoresizingMask key="autoresizingMask"/>
