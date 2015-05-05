@@ -27,6 +27,8 @@
 
 @property (nonatomic, strong) QuestDetailsViewController *questDetailsViewController;
 
+@property (nonatomic, weak) id destinationViewController;
+
 
 @end
 
@@ -87,15 +89,37 @@
     [self requestData];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+//    NSLog(@"appear: %@", self.destinationViewController);
+    // if we have a segue and we're not segueing into ourselves
+    if (self.destinationViewController && ![self.destinationViewController isMemberOfClass:[QuestTableViewController class]]) {
+        // show it
+        [self.tabBarController.tabBar setHidden:NO];
+        
+        // move the tab bar down
+        CGRect frameOld = self.tabBarController.tabBar.frame;
+        CGRect frameNew = CGRectMake(frameOld.origin.x, frameOld.origin.y + frameOld.size.height, frameOld.size.width, frameOld.size.height);
+        
+        self.tabBarController.tabBar.frame = frameNew;
+        
+        // animate the tab bar coming up
+        [UIView animateWithDuration:0.3 animations:^{
+            self.tabBarController.tabBar.frame = frameOld;
+        }];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+//    NSLog(@"dissapear: %@", self.destinationViewController);
+    if (self.destinationViewController && ![self.destinationViewController isMemberOfClass:[QuestTableViewController class]]) {
+        [self.tabBarController.tabBar setHidden:YES];
+    }
+    
+}
+
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestDataChangedNotification object:nil];
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [self.tabBarController.tabBar setHidden:NO];
 }
 
 #pragma mark - Data Methods
@@ -275,7 +299,7 @@
         QuestViewController *destination = (QuestViewController *)[segue destinationViewController];
         destination.questType = self.questType;
     }
-    [self.tabBarController.tabBar setHidden:YES];
+    self.destinationViewController = segue.destinationViewController;
 }
 
 @end
