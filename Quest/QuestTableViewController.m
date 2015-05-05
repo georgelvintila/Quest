@@ -24,8 +24,10 @@
 @property(nonatomic,strong) NSMutableArray *questItems;
 @property (nonatomic, strong) QuestResultTableViewController *resultsTableController;
 
-
 @property (nonatomic, strong) QuestDetailsViewController *questDetailsViewController;
+@property (nonatomic, strong) QuestViewController *questViewController;
+
+@property (nonatomic, weak) id destinationViewController;
 
 
 @end
@@ -87,15 +89,45 @@
     [self requestData];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+//    NSLog(@"appear: %@", self.destinationViewController);
+    
+    // if we had a segue
+    if (self.destinationViewController) {
+        // show it
+        NSLog(@"showing: %@", self.destinationViewController);
+
+        self.destinationViewController = nil;
+        
+        // it's not hidden
+        [self.tabBarController.tabBar setHidden:NO];
+        
+        // move the tab bar down
+        CGRect frameOld = self.tabBarController.tabBar.frame;
+        CGRect frameNew = CGRectMake(frameOld.origin.x, frameOld.origin.y + frameOld.size.height, frameOld.size.width, frameOld.size.height);
+        
+        self.tabBarController.tabBar.frame = frameNew;
+        
+        // animate the tab bar coming up
+        [UIView animateWithDuration:0.3 animations:^{
+            self.tabBarController.tabBar.frame = frameOld;
+        }];
+    }
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+//    NSLog(@"dissapear: %@", self.destinationViewController);
+    if (self.destinationViewController) {
+       [self.tabBarController.tabBar setHidden:YES];
+    }
+}
+
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestDataChangedNotification object:nil];
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [self.tabBarController.tabBar setHidden:NO];
 }
 
 #pragma mark - Data Methods
@@ -111,7 +143,7 @@
     self.allQuestTypes = [self.questManager allQuestTypesForOwner:self.owner];
     [self.questItems removeAllObjects];
     for (NSString *type in self.allQuestTypes) {
-        [self.questItems addObject:[self.questManager questListOfType:type forOwner:self.owner]];
+    [self.questItems addObject:[self.questManager questListOfType:type forOwner:self.owner]];
     }
     [self.tableView reloadData];
 }
@@ -142,8 +174,39 @@
         [self performSegueWithIdentifier: kQuestDetailsSegue sender:self];
         NSArray *quests = [self.questItems objectAtIndex:indexPath.section];
         QuestInfo *quest = [quests objectAtIndex:indexPath.row];
-
         self.questDetailsViewController.questInfo = quest;
+    }
+    else if(self.owner == QuestOwnerTypeCurrent)
+    {
+        NSString *questTypeString = [self.allQuestTypes objectAtIndex:indexPath.section];
+        if (questTypeString == kQuestTypeTakePhotoQuest) {
+            self.questType = QuestTypeTakePhoto;
+        }
+        else
+            if (questTypeString == kQuestTypeViewPhotoQuest) {
+                self.questType = QuestTypeViewPhoto;
+            }
+        
+        
+        
+        
+        
+        [self performSegueWithIdentifier: kQuestSegue sender:self];
+        NSArray *quests = [self.questItems objectAtIndex:indexPath.section];
+        
+        self.questViewController.questIndex = indexPath.row;
+        self.questViewController.editMode = YES;
+        switch (self.questType) {
+            case QuestTypeTakePhoto:
+            {
+                TakePhotoQuestInfo *quest = [quests objectAtIndex:indexPath.row];
+                self.questViewController.takePhotoQuestInfo = quest;
+            }
+                break;
+                
+            default:
+                break;
+        }
     }
 }
 
@@ -174,6 +237,7 @@
     
     return  cell;
 }  
+
 
 #pragma mark - Action Methods
 
@@ -272,10 +336,10 @@
         self.questDetailsViewController = (QuestDetailsViewController*)segue.destinationViewController;
         
     } else {
-        QuestViewController *destination = (QuestViewController *)[segue destinationViewController];
-        destination.questType = self.questType;
+        self.questViewController = (QuestViewController *)[segue destinationViewController];
+        self.questViewController.questType = self.questType;
     }
-    [self.tabBarController.tabBar setHidden:YES];
+    self.destinationViewController = segue.destinationViewController;
 }
 
 @end

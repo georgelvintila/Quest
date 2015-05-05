@@ -24,5 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIView *takePhotoContainer;
 
 @property (nonatomic) QuestType questType;
+@property (nonatomic) NSInteger questIndex;
+@property (nonatomic) BOOL editMode;
+@property (nonatomic) TakePhotoQuestInfo* takePhotoQuestInfo;
 
 @end
