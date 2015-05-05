@@ -24,8 +24,8 @@
 @property(nonatomic,strong) NSMutableArray *questItems;
 @property (nonatomic, strong) QuestResultTableViewController *resultsTableController;
 
-
 @property (nonatomic, strong) QuestDetailsViewController *questDetailsViewController;
+@property (nonatomic, strong) QuestViewController *questViewController;
 
 @property (nonatomic, weak) id destinationViewController;
 
@@ -143,7 +143,7 @@
     self.allQuestTypes = [self.questManager allQuestTypesForOwner:self.owner];
     [self.questItems removeAllObjects];
     for (NSString *type in self.allQuestTypes) {
-        [self.questItems addObject:[self.questManager questListOfType:type forOwner:self.owner]];
+    [self.questItems addObject:[self.questManager questListOfType:type forOwner:self.owner]];
     }
     [self.tableView reloadData];
 }
@@ -174,10 +174,44 @@
         [self performSegueWithIdentifier: kQuestDetailsSegue sender:self];
         NSArray *quests = [self.questItems objectAtIndex:indexPath.section];
         QuestInfo *quest = [quests objectAtIndex:indexPath.row];
-
         self.questDetailsViewController.questInfo = quest;
     }
+<<<<<<< Updated upstream
 
+=======
+    else if(self.owner == QuestOwnerTypeCurrent)
+    {
+        NSString *questTypeString = [self.allQuestTypes objectAtIndex:indexPath.section];
+        if (questTypeString == kQuestTypeTakePhotoQuest) {
+            self.questType = TakePhoto;
+        }
+        else
+            if (questTypeString == kQuestTypeViewPhotoQuest) {
+                self.questType = ViewPhoto;
+            }
+        
+        
+        
+        
+        
+        [self performSegueWithIdentifier: kQuestSegue sender:self];
+        NSArray *quests = [self.questItems objectAtIndex:indexPath.section];
+        
+        self.questViewController.questIndex = indexPath.row;
+        self.questViewController.editMode = YES;
+        switch (self.questType) {
+            case TakePhoto:
+            {
+                TakePhotoQuestInfo *quest = [quests objectAtIndex:indexPath.row];
+                self.questViewController.takePhotoQuestInfo = quest;
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
+>>>>>>> Stashed changes
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -306,8 +340,8 @@
         self.questDetailsViewController = (QuestDetailsViewController*)segue.destinationViewController;
         
     } else {
-        QuestViewController *destination = (QuestViewController *)[segue destinationViewController];
-        destination.questType = self.questType;
+        self.questViewController = (QuestViewController *)[segue destinationViewController];
+        self.questViewController.questType = self.questType;
     }
     self.destinationViewController = segue.destinationViewController;
 }
