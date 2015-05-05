@@ -90,10 +90,17 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 //    NSLog(@"appear: %@", self.destinationViewController);
-    // if we have a segue and we're not segueing into ourselves
-    if (self.destinationViewController && ![self.destinationViewController isMemberOfClass:[QuestTableViewController class]]) {
+    
+    // if we had a segue
+    if (self.destinationViewController) {
         // show it
+        NSLog(@"showing: %@", self.destinationViewController);
+
+        self.destinationViewController = nil;
+        
+        // it's not hidden
         [self.tabBarController.tabBar setHidden:NO];
         
         // move the tab bar down
@@ -109,12 +116,13 @@
     }
 }
 
+
 - (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
 //    NSLog(@"dissapear: %@", self.destinationViewController);
-    if (self.destinationViewController && ![self.destinationViewController isMemberOfClass:[QuestTableViewController class]]) {
-        [self.tabBarController.tabBar setHidden:YES];
+    if (self.destinationViewController) {
+       [self.tabBarController.tabBar setHidden:YES];
     }
-    
 }
 
 -(void)dealloc
@@ -169,6 +177,7 @@
 
         self.questDetailsViewController.questInfo = quest;
     }
+
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -198,6 +207,7 @@
     
     return  cell;
 }  
+
 
 #pragma mark - Action Methods
 

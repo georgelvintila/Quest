@@ -444,14 +444,14 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Details" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnU-de-5Ah">
-                                <rect key="frame" x="8" y="322" width="304" height="120"/>
+                                <rect key="frame" x="8" y="334" width="304" height="108"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.10274835409999999" green="0.2202399273" blue="0.31904987369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qEh-Yy-1pT">
-                                <rect key="frame" x="8" y="87" width="304" height="227"/>
+                                <rect key="frame" x="0.0" y="87" width="320" height="239"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="qEh-Yy-1pT" secondAttribute="height" multiplier="304:227" id="pg5-Ih-Qde"/>
                                 </constraints>
@@ -467,11 +467,11 @@
                             <constraint firstItem="ogq-Qx-b0e" firstAttribute="top" secondItem="oV4-n2-Vnm" secondAttribute="bottom" constant="8" id="AiQ-rg-fnd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="j99-8g-DqF" secondAttribute="trailing" constant="-8" id="Do3-P7-4gS"/>
                             <constraint firstItem="j99-8g-DqF" firstAttribute="leading" secondItem="Z2n-hZ-JPk" secondAttribute="leadingMargin" constant="-8" id="FFH-65-qGB"/>
-                            <constraint firstItem="qEh-Yy-1pT" firstAttribute="leading" secondItem="Z2n-hZ-JPk" secondAttribute="leadingMargin" constant="-8" id="J1b-jN-GLo"/>
+                            <constraint firstItem="qEh-Yy-1pT" firstAttribute="leading" secondItem="Z2n-hZ-JPk" secondAttribute="leadingMargin" constant="-16" id="J1b-jN-GLo"/>
                             <constraint firstItem="vnU-de-5Ah" firstAttribute="top" secondItem="qEh-Yy-1pT" secondAttribute="bottom" constant="8" id="NwL-61-fRu"/>
                             <constraint firstItem="oV4-n2-Vnm" firstAttribute="leading" secondItem="Z2n-hZ-JPk" secondAttribute="leadingMargin" constant="-8" id="arO-Zd-0np"/>
                             <constraint firstItem="vnU-de-5Ah" firstAttribute="leading" secondItem="Z2n-hZ-JPk" secondAttribute="leadingMargin" constant="-8" id="icI-nx-hm0"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="qEh-Yy-1pT" secondAttribute="trailing" constant="-8" id="jeA-O5-Yqy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qEh-Yy-1pT" secondAttribute="trailing" constant="-16" id="jeA-O5-Yqy"/>
                             <constraint firstItem="oV4-n2-Vnm" firstAttribute="top" secondItem="vnU-de-5Ah" secondAttribute="bottom" constant="8" id="jiO-DZ-7QD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vnU-de-5Ah" secondAttribute="trailing" constant="-8" id="qfb-2T-cz6"/>
                             <constraint firstItem="qEh-Yy-1pT" firstAttribute="top" secondItem="j99-8g-DqF" secondAttribute="bottom" constant="8" id="wFd-UM-ZVG"/>
