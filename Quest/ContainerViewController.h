@@ -14,9 +14,10 @@
 
 @interface ContainerViewController : UIViewController
 
+#pragma mark - Properties
+
 @property (nonatomic, strong) TakePhotoQuestViewController *takePhotoQuestViewController;
 @property (nonatomic, strong) ViewPhotoViewController *viewPhotoViewController;
-
 @property (nonatomic) NSInteger questType;
 
 @end

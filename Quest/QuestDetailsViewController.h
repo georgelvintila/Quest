@@ -12,6 +12,8 @@
 
 @interface QuestDetailsViewController : UIViewController
 
+#pragma mark - Properties
+
 @property (nonatomic) QuestInfo* questInfo;
 
 @end

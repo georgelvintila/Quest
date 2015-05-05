@@ -10,12 +10,17 @@
 
 @interface ContainerViewController ()
 
-@property (strong, nonatomic) NSString *currentSegueIdentifier;
+#pragma mark - Properties
 
+@property (strong, nonatomic) NSString *currentSegueIdentifier;
 
 @end
 
+#pragma mark -
+
 @implementation ContainerViewController
+
+#pragma mark - Base Class Methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,6 +42,8 @@
         break;
     }
 }
+
+#pragma mark - Navigation Methods
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -72,11 +79,6 @@
             [segue.destinationViewController didMoveToParentViewController:self];
         }
     }
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)swapFromViewController:(UIViewController *)fromViewController toViewController:(UIViewController *)toViewController

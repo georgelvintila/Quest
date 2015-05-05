@@ -10,11 +10,17 @@
 
 @interface FilterTableViewController ()
 
+#pragma mark - Properties
+
 @property (nonatomic, strong) NSArray *filterTypes;
 
 @end
 
+#pragma mark -
+
 @implementation FilterTableViewController
+
+#pragma mark - Base Class Methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,7 +28,7 @@
 }
 
 
-#pragma mark - Table view data source
+#pragma mark - TableView Data Source Methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
