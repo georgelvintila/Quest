@@ -305,6 +305,85 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		E1DDE1331AF8B36F00EB95B9 /* QuestEdit */ = {
+			isa = PBXGroup;
+			children = (
+				E1DDE13A1AF8B53A00EB95B9 /* Container */,
+				E1DDE1361AF8B4A800EB95B9 /* Location */,
+				E1DDE1371AF8B4B900EB95B9 /* QuestTypes */,
+				212D2C241AF22231004991BA /* QuestViewController.h */,
+				212D2C251AF22231004991BA /* QuestViewController.m */,
+			);
+			name = QuestEdit;
+			sourceTree = "<group>";
+		};
+		E1DDE1341AF8B40500EB95B9 /* TableDetails */ = {
+			isa = PBXGroup;
+			children = (
+				E1DDE1391AF8B52100EB95B9 /* Details */,
+				E1DDE1381AF8B51400EB95B9 /* Results */,
+				E1D8FAB11AEE906000F78777 /* QuestTableViewController.h */,
+				E1D8FAB21AEE906000F78777 /* QuestTableViewController.m */,
+			);
+			name = TableDetails;
+			sourceTree = "<group>";
+		};
+		E1DDE1351AF8B44C00EB95B9 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E1E3EECD1AF79DA10095A6EC /* FilterTableViewController.h */,
+				E1E3EECE1AF79DA10095A6EC /* FilterTableViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		E1DDE1361AF8B4A800EB95B9 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				212D2C1E1AEFCABC004991BA /* LocationPickerViewController.h */,
+				212D2C1F1AEFCABC004991BA /* LocationPickerViewController.m */,
+			);
+			name = Location;
+			sourceTree = "<group>";
+		};
+		E1DDE1371AF8B4B900EB95B9 /* QuestTypes */ = {
+			isa = PBXGroup;
+			children = (
+				212D2C201AEFCABC004991BA /* TakePhotoQuestViewController.h */,
+				212D2C211AEFCABC004991BA /* TakePhotoQuestViewController.m */,
+				212D2C2D1AF78926004991BA /* ViewPhotoViewController.h */,
+				212D2C2E1AF78926004991BA /* ViewPhotoViewController.m */,
+			);
+			name = QuestTypes;
+			sourceTree = "<group>";
+		};
+		E1DDE1381AF8B51400EB95B9 /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				E1E3EEC81AF7813A0095A6EC /* QuestResultTableViewController.h */,
+				E1E3EEC91AF7813A0095A6EC /* QuestResultTableViewController.m */,
+			);
+			name = Results;
+			sourceTree = "<group>";
+		};
+		E1DDE1391AF8B52100EB95B9 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				BB01334D1AF7940D00E5785F /* QuestDetailsViewController.h */,
+				BB01334E1AF7940D00E5785F /* QuestDetailsViewController.m */,
+			);
+			name = Details;
+			sourceTree = "<group>";
+		};
+		E1DDE13A1AF8B53A00EB95B9 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				212D2C2A1AF78834004991BA /* ContainerViewController.h */,
+				212D2C2B1AF78834004991BA /* ContainerViewController.m */,
+			);
+			name = Container;
+			sourceTree = "<group>";
+		};
 		E1E3EED61AF7A5DA0095A6EC /* Quests */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,26 +428,9 @@
 			isa = PBXGroup;
 			children = (
 				E1DDE1321AF8A5EC00EB95B9 /* Login */,
-				BB01334D1AF7940D00E5785F /* QuestDetailsViewController.h */,
-				BB01334E1AF7940D00E5785F /* QuestDetailsViewController.m */,
-				E1D8FAB11AEE906000F78777 /* QuestTableViewController.h */,
-				E1D8FAB21AEE906000F78777 /* QuestTableViewController.m */,
-				212D2C241AF22231004991BA /* QuestViewController.h */,
-				212D2C251AF22231004991BA /* QuestViewController.m */,
-				212D2C201AEFCABC004991BA /* TakePhotoQuestViewController.h */,
-				212D2C211AEFCABC004991BA /* TakePhotoQuestViewController.m */,
-				212D2C2D1AF78926004991BA /* ViewPhotoViewController.h */,
-				212D2C2E1AF78926004991BA /* ViewPhotoViewController.m */,
-				212D2C1E1AEFCABC004991BA /* LocationPickerViewController.h */,
-				212D2C1F1AEFCABC004991BA /* LocationPickerViewController.m */,
-				E1E3EEC81AF7813A0095A6EC /* QuestResultTableViewController.h */,
-				E1E3EEC91AF7813A0095A6EC /* QuestResultTableViewController.m */,
-				212D2C271AF7879E004991BA /* EmptySegue.h */,
-				212D2C281AF7879E004991BA /* EmptySegue.m */,
-				212D2C2A1AF78834004991BA /* ContainerViewController.h */,
-				212D2C2B1AF78834004991BA /* ContainerViewController.m */,
-				E1E3EECD1AF79DA10095A6EC /* FilterTableViewController.h */,
-				E1E3EECE1AF79DA10095A6EC /* FilterTableViewController.m */,
+				E1DDE1331AF8B36F00EB95B9 /* QuestEdit */,
+				E1DDE1341AF8B40500EB95B9 /* TableDetails */,
+				E1DDE1351AF8B44C00EB95B9 /* Settings */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -376,6 +438,8 @@
 		E1F45C961AF21D9E00ACAE6D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				212D2C271AF7879E004991BA /* EmptySegue.h */,
+				212D2C281AF7879E004991BA /* EmptySegue.m */,
 				E1E3EECF1AF79DA10095A6EC /* FilterTableViewController.xib */,
 				E1D7050F1AEA7B8900525E19 /* Main.storyboard */,
 				E1D705141AEA7B8900525E19 /* LaunchScreen.xib */,
