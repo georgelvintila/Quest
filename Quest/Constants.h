@@ -64,5 +64,12 @@ static NSString * const kQuestDataChangedNotification = @"kQuestDataChangedNotif
 
 static CGFloat const kFilterDistance = 1000.0;
 
+typedef enum
+{
+    TakePhoto = 0,
+    ViewPhoto = 1
+} questTypeNo;
+
+
 
 #endif

@@ -23,6 +23,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *mapButton;
 @property (weak, nonatomic) IBOutlet UIView *takePhotoContainer;
 
+<<<<<<< Updated upstream
 @property (nonatomic) QuestType questType;
+=======
+@property (nonatomic) NSInteger questType;
+@property (nonatomic) NSInteger questIndex;
+@property (nonatomic) BOOL editMode;
+@property (nonatomic) TakePhotoQuestInfo* takePhotoQuestInfo;
+>>>>>>> Stashed changes
 
 @end
