@@ -25,6 +25,7 @@ static NSString * const kQuestSelectedFilterType = @"kQuestSelectedFilterType";
 static NSString * const kCellIdentifier = @"kCellIdentifier";
 static NSString * const kCellIdentifierQuest = @"kQuestCellIdentifier";
 static NSString * const kCellHeaderIdentifier = @"kCellHeaderIdentifier";
+static NSUInteger const kCellIncompleteTag = 2;
 
 // Segues
 

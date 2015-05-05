@@ -222,18 +222,20 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellIdentifier = kCellIdentifier;
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if(!cell)
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-    }
-    
+    NSString *cellIdentifier = kCellIdentifierQuest;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+   
     NSArray *quests = [self.questItems objectAtIndex:indexPath.section];
     QuestInfo *quest = [quests objectAtIndex:indexPath.row];
 
     cell.textLabel.text = quest.questName;
     cell.detailTextLabel.text = quest.questDetails;
+    
+    // TODO: modify code to use "questCompleted" BOOL
+    if (indexPath.item % 2 == 1)
+        [cell viewWithTag:kCellIncompleteTag].hidden = YES;
+    else
+        [cell viewWithTag:kCellIncompleteTag].hidden = NO;
     
     return  cell;
 }  

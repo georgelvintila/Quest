@@ -58,20 +58,16 @@
                                             <color key="textColor" red="0.10274835409999999" green="0.2202399273" blue="0.31904987369999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="incomplete" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbk-Vi-IVP">
-                                            <rect key="frame" x="195" y="11" width="84" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="84" id="boB-oS-IIp"/>
-                                            </constraints>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="incomplete" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmf-iC-mQp">
+                                            <rect key="frame" x="207" y="13" width="72" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="1" green="0.09416763383" blue="0.17446243359999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="xbk-Vi-IVP" firstAttribute="top" secondItem="UVO-Aq-mds" secondAttribute="topMargin" constant="3" id="9CR-ks-NYz"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="xbk-Vi-IVP" secondAttribute="trailing" id="K0u-1Y-3sz"/>
-                                        <constraint firstItem="xbk-Vi-IVP" firstAttribute="centerY" secondItem="UVO-Aq-mds" secondAttribute="centerY" id="aXd-UG-Quj"/>
+                                        <constraint firstItem="Bmf-iC-mQp" firstAttribute="centerY" secondItem="UVO-Aq-mds" secondAttribute="centerY" id="frR-el-p97"/>
+                                        <constraint firstItem="Bmf-iC-mQp" firstAttribute="trailing" secondItem="UVO-Aq-mds" secondAttribute="trailingMargin" id="uyO-fd-wzW"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
