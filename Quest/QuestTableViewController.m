@@ -176,9 +176,6 @@
         QuestInfo *quest = [quests objectAtIndex:indexPath.row];
         self.questDetailsViewController.questInfo = quest;
     }
-<<<<<<< Updated upstream
-
-=======
     else if(self.owner == QuestOwnerTypeCurrent)
     {
         NSString *questTypeString = [self.allQuestTypes objectAtIndex:indexPath.section];
@@ -211,7 +208,6 @@
                 break;
         }
     }
->>>>>>> Stashed changes
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

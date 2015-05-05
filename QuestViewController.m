@@ -139,19 +139,9 @@
     info.questPhotoRadius = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.radiusSlider.value];
     
     QuestManager *qmanager = [QuestManager sharedManager];
-<<<<<<< Updated upstream
-    if (self.questType == QuestTypeTakePhoto)
-    {
-        info.questPhotoAngle = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.angleStepper.value];
-        info.questPhotoRadius = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.radiusSlider.value];
-        qmanager = [QuestManager sharedManager];
-        [qmanager addNewQuestWithType:kQuestTypeTakePhotoQuest andInfo:info];
-    }
-=======
     qmanager = [QuestManager sharedManager];
     [qmanager addNewQuestWithType:kQuestTypeTakePhotoQuest andInfo:info];
     */
->>>>>>> Stashed changes
     [self.navigationController popViewControllerAnimated:NO];
     
 }
