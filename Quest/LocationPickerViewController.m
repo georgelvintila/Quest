@@ -46,6 +46,7 @@
     if(self.savedLocation)
     {
         [self addAnnotationForSavedLocation];
+        [self gotoLocation:self.savedLocation];
     }
 }
 

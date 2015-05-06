@@ -75,7 +75,8 @@
 -(void)locationPickerViewController:(LocationPickerViewController *)viewController saveLocation:(CLLocation *)location
 {
     self.questLocation = location;
-    [self.mapButton setSelected:YES];
+    if(location)
+        [self.mapButton setSelected:YES];
 }
 
 #pragma mark - TextField Delegate Methods

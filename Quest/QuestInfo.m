@@ -38,12 +38,12 @@
 
 - (void)setQuestName:(NSString *)questName {
     if(questName)
-        self.dictionary[kQuestColumnName] = questName;
+        self.dictionary[kQuestColumnName] = [questName copy];
 }
 
 - (void)setQuestDetails:(NSString *)questDetails {
     if(questDetails)
-        self.dictionary[kQuestColumnDetails] = questDetails;
+        self.dictionary[kQuestColumnDetails] = [questDetails copy];
 }
 
 - (void)setQuestLocation:(CLLocation*)questLocation {
@@ -53,17 +53,17 @@
 
 - (void)setQuestCreatedAt:(NSDate *)questCreatedAt {
     if(questCreatedAt)
-        self.dictionary[kQuestColumnCreatedAt] = questCreatedAt;
+        self.dictionary[kQuestColumnCreatedAt] = [questCreatedAt copy];
 }
 
 - (void)setQuestUpdatedAt:(NSDate *)questUpdatedAt {
     if(questUpdatedAt)
-        self.dictionary[kQuestColumnUpdatedAt] = questUpdatedAt;
+        self.dictionary[kQuestColumnUpdatedAt] = [questUpdatedAt copy];
 }
 
 - (void)setQuestObjectId:(NSString *)questObjectId {
     if(questObjectId)
-        self.dictionary[kQuestColumnObjectId] = questObjectId;
+        self.dictionary[kQuestColumnObjectId] = [questObjectId copy];
 }
 
 -(void)setQuestComplete:(BOOL)questComplete

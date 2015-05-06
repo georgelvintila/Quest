@@ -32,12 +32,12 @@
 
 - (void)setQuestPhotoAngle:(NSNumber *)questPhotoAngle {
     if(questPhotoAngle)
-        self.dictionary[kQuestColumnTakePhotoAngle] = questPhotoAngle;
+        self.dictionary[kQuestColumnTakePhotoAngle] = [questPhotoAngle copy];
 }
 
 - (void)setQuestPhotoRadius:(NSNumber *)questPhotoRadius {
     if(questPhotoRadius)
-        self.dictionary[kQuestColumnTakePhotoRadius] = questPhotoRadius;
+        self.dictionary[kQuestColumnTakePhotoRadius] = [questPhotoRadius copy];
 }
 
 @end

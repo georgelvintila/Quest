@@ -7,6 +7,7 @@
 //
 
 #import "PFObject+Quest.h"
+#import "PFGeoPoint+Addition.h"
 
 @implementation PFObject (Quest)
 
@@ -46,24 +47,23 @@
         save = YES;
     }
     for (NSString *key in [questInfo questDictionary].allKeys) {
+        if([key isEqualToString:kQuestColumnObjectId])
+            continue;
         if([key isEqualToString:kQuestColumnLocation])
         {
-            CLLocation *loc = [[questInfo questDictionary] objectForKey:key];
-            PFGeoPoint *geoPoint = [self objectForKey:key];
-            if(!geoPoint)
-            {
-                geoPoint =[PFGeoPoint geoPoint];
-                [self setObject:geoPoint forKey:key];
-            }
-            [geoPoint setLatitude:loc.coordinate.latitude];
-            [geoPoint setLongitude:loc.coordinate.longitude];
+            PFGeoPoint *  geoPoint =[PFGeoPoint geoPointWithLocation:[[questInfo questDictionary] objectForKey:key]];
             
+            if(![[self objectForKey:key] isSamePoint:geoPoint])
+            {
+                [self setObject:geoPoint forKey:key];
+                save = YES;
+            }
         }
         else
         {
-            if([[[questInfo questDictionary] objectForKey:key] isEqual:self[key]])
+            if(![[[questInfo questDictionary] objectForKey:key] isEqual:self[key]])
             {
-                [self setObject:[[questInfo questDictionary] objectForKey:key]  forKey:key];
+                [self setObject:[[questInfo questDictionary] objectForKey:key] forKey:key];
                 save = YES;
             }
         }
