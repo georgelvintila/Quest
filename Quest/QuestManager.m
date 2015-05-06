@@ -8,6 +8,8 @@
 
 #import "QuestManager.h"
 #import "PFObject+Quest.h"
+#import "QuestSaveOperation.h"
+#import "FetchQuestsOperation.h"
 
 
 @interface QuestManager ()
@@ -17,6 +19,8 @@
 #pragma mark - Properties
 @property (atomic,readwrite) NSMutableDictionary *myQuests;
 @property (atomic,readwrite) NSMutableDictionary *otherQuests;
+@property (nonatomic) NSOperationQueue* editOperationQueue;
+@property (nonatomic) NSOperationQueue* fetchOperationQueue;
 
 @end
 
@@ -48,6 +52,12 @@
         _myQuests = [NSMutableDictionary new];
         _otherQuests = [NSMutableDictionary new];
         typesList = @[kQuestTypeTakePhotoQuest,kQuestTypeViewPhotoQuest];
+        _editOperationQueue = [NSOperationQueue new];
+        _editOperationQueue.name = @"QuestQueue";
+        _fetchOperationQueue = [NSOperationQueue new];
+        _fetchOperationQueue.name = @"FetchQueue";
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataChanged:) name:kQuestQuerySuccesNotification object:nil];
     }
     return self;
 }
@@ -56,7 +66,7 @@
 
 -(NSMutableDictionary *)otherQuests
 {
-    @synchronized(_otherQuests)
+    @synchronized(self)
     {
         return _otherQuests;
     }
@@ -64,7 +74,7 @@
 
 -(void)setOtherQuests:(NSMutableDictionary *)otherQuests
 {
-    @synchronized(_otherQuests)
+    @synchronized(self)
     {
         if(_otherQuests != otherQuests)
             _otherQuests = otherQuests;
@@ -73,7 +83,7 @@
 
 -(NSMutableDictionary *)myQuests
 {
-    @synchronized(_myQuests)
+    @synchronized(self)
     {
         return _myQuests;
     }
@@ -81,7 +91,7 @@
 
 -(void)setMyQuests:(NSMutableDictionary *)myQuests
 {
-    @synchronized(_myQuests)
+    @synchronized(self)
     {
         if(_myQuests != myQuests)
             _myQuests = myQuests;
@@ -89,6 +99,26 @@
 }
 
 #pragma mark - Methods
+
+-(void)dataChanged:(NSNotification *)notification
+{
+    NSMutableDictionary *source = nil;
+    NSDictionary *userInfo =notification.userInfo;
+    switch ([userInfo[kFetchOwner] integerValue])
+    {
+        case QuestOwnerTypeCurrent:
+            source = self.myQuests;
+            break;
+        case QuestOwnerTypeOthers:
+            source = self.otherQuests;
+            break;
+        default:
+            break;
+    }
+    
+    [source setValue:userInfo[kFetchItems] forKey:userInfo[kFetchType]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kQuestDataChangedNotification object:nil];
+}
 
 -(NSArray *)allQuestTypesForOwner:(QuestOwnerType)owner
 {
@@ -137,24 +167,39 @@
     Class typeClass = NSClassFromString(type);
     
     Quest *quest = [[typeClass alloc] init];
-    [quest saveQuestInformation:questInfo];
-    [array addObject:questInfo];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kQuestDataChangedNotification object:nil];
+    QuestSaveOperation *saveOp = [[QuestSaveOperation alloc] initWithQuest:quest andQuestInfo:questInfo];
+    [saveOp setCompletionBlock:^{
+        [array insertObject:[quest questInfo] atIndex:0];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:kQuestDataChangedNotification object:nil];
+        });
+    }];
+    [self.editOperationQueue addOperation:saveOp];
+    
 }
 
 -(void)deleteQuestOfType:(NSString *)type atIndex:(NSUInteger) index
 {
     NSMutableArray *array = [self.myQuests objectForKey:type];
-    Quest *quest = [array objectAtIndex:index];
+    QuestInfo *info = [array objectAtIndex:index];
+    Quest *quest = [self questWithId:info.questObjectId andType:type];
     [array removeObjectAtIndex:index];
     [quest delete];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kQuestDataChangedNotification object:nil];
 }
 
 -(void) updateQuestOfType:(NSString *)type atIndex:(NSUInteger) index withQuestInfo:(QuestInfo*)questInfo
 {
     NSMutableArray *array = [self.myQuests objectForKey:type];
-    Quest *quest = [array objectAtIndex:index];
-    [quest saveQuestInformation:questInfo];
+    QuestInfo *info = [array objectAtIndex:index];
+    Quest *quest = [self questWithId:info.questObjectId andType:type];
+    QuestSaveOperation *saveOp = [[QuestSaveOperation alloc] initWithQuest:quest andQuestInfo:questInfo];
+    [saveOp setCompletionBlock:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:kQuestDataChangedNotification object:nil];
+        });
+    }];
+    [self.editOperationQueue addOperation:saveOp];
 }
 
 #pragma mark - Request Methods
@@ -162,61 +207,34 @@
 -(void)requestAllItemsForOwner:(QuestOwnerType)questOwner
 {
     for(NSString *type in typesList)
-        [self requestItemsOfType:type forOwner:questOwner withLimit:-1 skipFirst:0];
+    {
+        FetchQuestsOperation *fetch = [FetchQuestsOperation fetchQuestOperationWithType:type forOwner:questOwner];
+        [self.fetchOperationQueue addOperation:fetch];
+    }
 }
 
 -(void)requestItemsOfType:(NSString *)questType forOwner:(QuestOwnerType)questOwner
 {
-    [self requestItemsOfType:questType forOwner:questOwner withLimit:-1 skipFirst:0];
+    FetchQuestsOperation *fetch = [FetchQuestsOperation fetchQuestOperationWithType:questType forOwner:questOwner];
+    [self.fetchOperationQueue addOperation:fetch];
 }
 
 -(void)requestItemsOfType:(NSString *)questType forOwner:(QuestOwnerType)questOwner withLimit:(NSUInteger)limit
 {
-    [self requestItemsOfType:questType forOwner:questOwner withLimit:limit skipFirst:0];
+    FetchQuestsOperation *fetch = [FetchQuestsOperation fetchQuestOperationWithType:questType forOwner:questOwner withLimit:limit];
+    [self.fetchOperationQueue addOperation:fetch];
 }
 
 -(void)requestItemsOfType:(NSString *)questType forOwner:(QuestOwnerType)questOwner withLimit:(NSUInteger)limit skipFirst:(NSUInteger) skip
 {
-    PFQuery *query = [PFQuery queryWithClassName:questType];
-    __block NSMutableDictionary *source = nil;
-    switch (questOwner)
-    {
-        case QuestOwnerTypeCurrent:
-            [query whereKey:kQuestColumnOwner equalTo:[PFUser currentUser]];
-            source = self.myQuests;
-            break;
-        case QuestOwnerTypeOthers:
-            [query whereKey:kQuestColumnOwner notEqualTo:[PFUser currentUser]];
-            [query whereKey:kQuestColumnComplete notEqualTo:@0];
-            source = self.otherQuests;
-            break;
-        default:
-            break;
-    }
+    FetchQuestsOperation *fetch = [FetchQuestsOperation fetchQuestOperationWithType:questType forOwner:questOwner withLimit:limit skipFirst:skip];
+    [self.fetchOperationQueue addOperation:fetch];
+}
+
+-(Quest *)questWithId:(NSString *)questId andType:(NSString*)questType
+{
+   return [[PFQuery queryWithClassName:questType] getObjectWithId:questId];
     
-    [query orderByDescending:kQuestColumnUpdatedAt];
-    query.limit = limit;
-    query.skip = skip;
-    [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error) {
-       if(error)
-       {
-           DLog(@"%@",error);
-           [[NSNotificationCenter defaultCenter] postNotificationName:kMyQuestQueryFailureNotification object:nil];
-       }
-       else
-       {
-           if([results count])
-           {
-               NSMutableArray *quests = [NSMutableArray new];
-               for (Quest *item  in results) {
-                   QuestInfo *info = [item questInfo];
-                   [quests addObject:info];
-               }
-               [source setObject:quests forKey:questType];
-               [[NSNotificationCenter defaultCenter] postNotificationName:kQuestDataChangedNotification object:nil];
-           }
-       }
-    }];
 }
 
 @end

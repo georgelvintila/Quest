@@ -47,6 +47,10 @@
                     self.questNameText.text = self.takePhotoQuestInfo.questName;
                     self.detailTextView.text = self.takePhotoQuestInfo.questDetails;
                     self.questLocation = self.takePhotoQuestInfo.questLocation;
+                    if(self.questLocation)
+                    {
+                      [ self.mapButton setSelected:YES];
+                    }
                     self.containerViewController.takePhotoQuestViewController.angleStepper.value = [self.takePhotoQuestInfo.questPhotoAngle doubleValue];
                     self.containerViewController.takePhotoQuestViewController.angleValue.text = [self.takePhotoQuestInfo.questPhotoAngle stringValue];
                     self.containerViewController.takePhotoQuestViewController.radiusSlider.value = [self.takePhotoQuestInfo.questPhotoRadius doubleValue];
@@ -71,7 +75,8 @@
 -(void)locationPickerViewController:(LocationPickerViewController *)viewController saveLocation:(CLLocation *)location
 {
     self.questLocation = location;
-    [self.mapButton setSelected:YES];
+    if(location)
+        [self.mapButton setSelected:YES];
 }
 
 #pragma mark - TextField Delegate Methods
@@ -101,14 +106,16 @@
         {
             if (self.editMode)
             {
-                [qmanager updateQuestOfType:kQuestTypeTakePhotoQuest atIndex:self.questIndex withQuestInfo:self.takePhotoQuestInfo];
                 self.takePhotoQuestInfo.questName = self.questNameText.text;
                 self.takePhotoQuestInfo.questDetails = self.detailTextView.text;
                 self.takePhotoQuestInfo.questLocation = self.questLocation;
                 self.takePhotoQuestInfo.questPhotoAngle = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.angleStepper.value];
                 self.takePhotoQuestInfo.questPhotoRadius = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.radiusSlider.value];
+                BOOL complete = (self.takePhotoQuestInfo.questName.length && self.takePhotoQuestInfo.questDetails.length && self.takePhotoQuestInfo.questLocation != nil);
+                self.takePhotoQuestInfo.questComplete = complete;
+                [qmanager updateQuestOfType:kQuestTypeTakePhotoQuest atIndex:self.questIndex withQuestInfo:self.takePhotoQuestInfo];
+
             }
-            
             else
             {
                 self.takePhotoQuestInfo = [[TakePhotoQuestInfo alloc]init];
@@ -117,7 +124,10 @@
                 self.takePhotoQuestInfo.questLocation = self.questLocation;
                 self.takePhotoQuestInfo.questPhotoAngle = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.angleStepper.value];
                 self.takePhotoQuestInfo.questPhotoRadius = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.radiusSlider.value];
-                [qmanager addNewQuestWithType:kQuestTypeTakePhotoQuest andInfo:self.takePhotoQuestInfo];
+                BOOL complete = (self.takePhotoQuestInfo.questName.length && self.takePhotoQuestInfo.questDetails.length && self.takePhotoQuestInfo.questLocation != nil);
+                self.takePhotoQuestInfo.questComplete = complete;
+                if(self.takePhotoQuestInfo.questName.length || self.takePhotoQuestInfo.questDetails.length)
+                    [qmanager addNewQuestWithType:kQuestTypeTakePhotoQuest andInfo:self.takePhotoQuestInfo];
             }
         }
             break;
@@ -125,32 +135,6 @@
         default:
             break;
     }
-    
-    /*
-    TakePhotoQuestInfo *info = [[TakePhotoQuestInfo alloc] init];
-    info.questName = self.questNameText.text;
-    info.questDetails = self.detailTextView.text;
-    info.questLocation = self.questLocation;
-    
-    BOOL complete = (info.questName.length && info.questDetails.length && info.questLocation != nil);
-    info.questComplete = complete;
-    
-    info.questPhotoAngle = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.angleStepper.value];
-    info.questPhotoRadius = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.radiusSlider.value];
-    
-    QuestManager *qmanager = [QuestManager sharedManager];
-    if (self.questType == QuestTypeTakePhoto)
-    {
-        info.questPhotoAngle = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.angleStepper.value];
-        info.questPhotoRadius = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.radiusSlider.value];
-        qmanager = [QuestManager sharedManager];
-        [qmanager addNewQuestWithType:kQuestTypeTakePhotoQuest andInfo:info];
-    }
-    qmanager = [QuestManager sharedManager];
-    [qmanager addNewQuestWithType:kQuestTypeTakePhotoQuest andInfo:info];
-    */
-    [self.navigationController popViewControllerAnimated:NO];
-    
 }
 
 #pragma mark - Navigation Methods

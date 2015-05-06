@@ -34,17 +34,17 @@
 
 - (void)setQuestPhotoViewRadius:(NSNumber *)questPhotoViewRadius {
     if(questPhotoViewRadius)
-        self.dictionary[kQuestColumnViewPhotoViewRadius] = questPhotoViewRadius;
+        self.dictionary[kQuestColumnViewPhotoViewRadius] = [questPhotoViewRadius copy];
 }
 
 - (void)setQuestPhotoMessage:(NSString *)questPhotoMessage {
     if(questPhotoMessage)
-        self.dictionary[kQuestColumnViewPhotoMessage] = questPhotoMessage;
+        self.dictionary[kQuestColumnViewPhotoMessage] = [questPhotoMessage copy];
 }
 
 - (void)setQuestPhotoImageFile:(id)questPhotoImageFile {
     if(questPhotoImageFile)
-        self.dictionary[kQuestColumnViewPhotoImageFile] = questPhotoImageFile;
+        self.dictionary[kQuestColumnViewPhotoImageFile] = [questPhotoImageFile copy];
 }
 
 @end

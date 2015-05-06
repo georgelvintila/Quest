@@ -23,12 +23,13 @@
     [Parse setApplicationId:@"zsLL4nSzkLiIGI62Mjqw1QahRia34Bfw4iPwjmY6"
                   clientKey:@"h1BrX7BSL80ygzfR3mapuJElnhRaYMi5UTUniZQy"];
     
-    [PFUser enableAutomaticUser];
-    [[PFUser currentUser] saveInBackground];
-    
-    
+//    [PFUser enableAutomaticUser];
+//    [[PFUser currentUser] saveInBackground];
+
+    [PFUser logInWithUsername:@"testuser" password:@"pass"];
     PFACL *defaultACL = [PFACL ACL];
     [defaultACL setPublicReadAccess:YES];
+    [defaultACL setWriteAccess:YES forUser:[PFUser currentUser]];
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];

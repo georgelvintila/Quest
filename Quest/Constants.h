@@ -58,10 +58,14 @@ static NSString * const kQuestColumnViewPhotoMessage = @"message";
 static NSString * const kQuestColumnViewPhotoImageFile = @"imageFile";
 
 //Notification Strings
-static NSString * const kMyQuestQuerySuccesNotification = @"kMyQuestQuerySuccesNotification";
-static NSString * const kMyQuestQueryFailureNotification = @"kMyQuestQueryFailureNotification";
+static NSString * const kQuestQuerySuccesNotification = @"kQuestQuerySuccesNotification";
+static NSString * const kQuestQueryFailureNotification = @"kQuestQueryFailureNotification";
 static NSString * const kQuestDataChangedNotification = @"kQuestDataChangedNotification";
 
+
+static NSString * const kFetchOwner = @"kFetchOwner";
+static NSString * const kFetchItems= @"kFetchItems";
+static NSString * const kFetchType= @"kFetchType";
 
 static CGFloat const kFilterDistance = 1000.0;
 

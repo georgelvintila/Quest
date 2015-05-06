@@ -230,11 +230,7 @@
     cell.textLabel.text = quest.questName;
     cell.detailTextLabel.text = quest.questDetails;
     
-    // TODO: modify code to use "questCompleted" BOOL
-    if (indexPath.item % 2 == 1)
-        [cell viewWithTag:kCellIncompleteTag].hidden = YES;
-    else
-        [cell viewWithTag:kCellIncompleteTag].hidden = NO;
+    [cell viewWithTag:kCellIncompleteTag].hidden = quest.questComplete;
     
     return  cell;
 }  
