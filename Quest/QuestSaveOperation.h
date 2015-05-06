@@ -12,6 +12,8 @@
 
 @interface QuestSaveOperation : NSOperation
 
--(instancetype)initWithQuest:(id)quest andQuestInfo:(QuestInfo*)questInfo;
+- (instancetype)initWithOldQuestInfo:(QuestInfo *)oldInfo andNewQuestInfo:(QuestInfo *)newInfo forType:(NSString*)type;
+
+- (instancetype)initWithQuest:(id)quest andQuestInfo:(QuestInfo*)questInfo;
 
 @end

@@ -95,9 +95,6 @@
     
     // if we had a segue
     if (self.destinationViewController) {
-        // show it
-        NSLog(@"showing: %@", self.destinationViewController);
-
         self.destinationViewController = nil;
         
         // it's not hidden
