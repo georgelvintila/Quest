@@ -171,7 +171,6 @@
 {
     if(self.owner == QuestOwnerTypeOthers)
     {
-        [self performSegueWithIdentifier: kQuestDetailsSegue sender:self];
         NSArray *quests = [self.questItems objectAtIndex:indexPath.section];
         QuestInfo *quest = [quests objectAtIndex:indexPath.row];
         self.questDetailsViewController.questInfo = quest;
