@@ -26,7 +26,7 @@
 //    [PFUser enableAutomaticUser];
 //    [[PFUser currentUser] saveInBackground];
 
-    [PFUser logInWithUsername:@"testuser" password:@"pass"];
+    [PFUser logInWithUsernameInBackground:@"testuser" password:@"pass"];
     PFACL *defaultACL = [PFACL ACL];
     [defaultACL setPublicReadAccess:YES];
     [defaultACL setWriteAccess:YES forUser:[PFUser currentUser]];

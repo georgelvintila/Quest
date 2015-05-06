@@ -14,8 +14,7 @@
 
 #pragma mark - Properties
 
-@property (nonatomic) NSNumber *questPhotoViewRadius;
-@property (nonatomic) NSString *questPhotoMessage;
-@property (nonatomic) id questPhotoImageFile;
-
+@property (nonatomic) NSNumber *questPhotoViewRadius; // TODO: slider (asemantor cu TakePhoto)
+@property (nonatomic) NSString *questPhotoMessage; // TODO: textfieldview
+@property (nonatomic) id questPhotoImageFile; // TODO: button => add action picker (take photo & save / from gallery) (camera: popover controller)
 @end
