@@ -22,8 +22,12 @@
 
 -(CLLocation *)mapLocation
 {
-    CLLocation *loc = [[CLLocation alloc] initWithLatitude:self.location.latitude longitude:self.location.longitude];
-    return loc;
+    if(self.location)
+    {
+        CLLocation *loc = [[CLLocation alloc] initWithLatitude:self.location.latitude longitude:self.location.longitude];
+        return loc;
+    }
+    return nil;
 }
 
 -(QuestInfo *)questInfo
@@ -35,7 +39,12 @@
 
 -(void)saveQuestInformation:(QuestInfo *)questInfo
 {
-    [self setObject:[PFUser currentUser] forKey:kQuestColumnOwner];
+    BOOL save = NO;
+    if(!self[kQuestColumnOwner])
+    {
+        [self setObject:[PFUser currentUser] forKey:kQuestColumnOwner];
+        save = YES;
+    }
     for (NSString *key in [questInfo questDictionary].allKeys) {
         if([key isEqualToString:kQuestColumnLocation])
         {
@@ -52,9 +61,14 @@
         }
         else
         {
-            [self setObject:[[questInfo questDictionary] objectForKey:key]  forKey:key];
+            if([[[questInfo questDictionary] objectForKey:key] isEqual:self[key]])
+            {
+                [self setObject:[[questInfo questDictionary] objectForKey:key]  forKey:key];
+                save = YES;
+            }
         }
     }
-    [self save];
+    if(save)
+        [self saveEventually];
 }
 @end

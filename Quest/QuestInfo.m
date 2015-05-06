@@ -68,7 +68,7 @@
 
 -(void)setQuestComplete:(BOOL)questComplete
 {
-    self.dictionary[kQuestColumnComplete] = [NSNumber numberWithBool:questComplete];
+    self.dictionary[kQuestColumnComplete] = [NSNumber numberWithInt:questComplete];
 }
 
 - (NSString *)questName {

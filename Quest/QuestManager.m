@@ -56,7 +56,7 @@
 
 -(NSMutableDictionary *)otherQuests
 {
-    @synchronized(_otherQuests)
+    @synchronized(self)
     {
         return _otherQuests;
     }
@@ -64,7 +64,7 @@
 
 -(void)setOtherQuests:(NSMutableDictionary *)otherQuests
 {
-    @synchronized(_otherQuests)
+    @synchronized(self)
     {
         if(_otherQuests != otherQuests)
             _otherQuests = otherQuests;
@@ -73,7 +73,7 @@
 
 -(NSMutableDictionary *)myQuests
 {
-    @synchronized(_myQuests)
+    @synchronized(self)
     {
         return _myQuests;
     }
@@ -81,7 +81,7 @@
 
 -(void)setMyQuests:(NSMutableDictionary *)myQuests
 {
-    @synchronized(_myQuests)
+    @synchronized(self)
     {
         if(_myQuests != myQuests)
             _myQuests = myQuests;
@@ -138,23 +138,27 @@
     
     Quest *quest = [[typeClass alloc] init];
     [quest saveQuestInformation:questInfo];
-    [array addObject:questInfo];
+    [array insertObject:[quest questInfo] atIndex:0];
     [[NSNotificationCenter defaultCenter] postNotificationName:kQuestDataChangedNotification object:nil];
 }
 
 -(void)deleteQuestOfType:(NSString *)type atIndex:(NSUInteger) index
 {
     NSMutableArray *array = [self.myQuests objectForKey:type];
-    Quest *quest = [array objectAtIndex:index];
+    QuestInfo *info = [array objectAtIndex:index];
+    Quest *quest = [self questWithId:info.questObjectId andType:type];
     [array removeObjectAtIndex:index];
     [quest delete];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kQuestDataChangedNotification object:nil];
 }
 
 -(void) updateQuestOfType:(NSString *)type atIndex:(NSUInteger) index withQuestInfo:(QuestInfo*)questInfo
 {
     NSMutableArray *array = [self.myQuests objectForKey:type];
-    Quest *quest = [array objectAtIndex:index];
+    QuestInfo *info = [array objectAtIndex:index];
+    Quest *quest = [self questWithId:info.questObjectId andType:type];
     [quest saveQuestInformation:questInfo];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kQuestDataChangedNotification object:nil];
 }
 
 #pragma mark - Request Methods
@@ -217,6 +221,12 @@
            }
        }
     }];
+}
+
+-(Quest *)questWithId:(NSString *)questId andType:(NSString*)questType
+{
+   return [[PFQuery queryWithClassName:questType] getObjectWithId:questId];
+    
 }
 
 @end

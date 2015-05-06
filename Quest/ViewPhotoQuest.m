@@ -58,6 +58,7 @@
     if(!_questInfo)
         _questInfo = [ViewPhotoQuestInfo new];
     
+    _questInfo.questObjectId = self.objectId;
     _questInfo.questLocation = self.mapLocation;
     _questInfo.questName = self.name;
     _questInfo.questDetails = self.details;
