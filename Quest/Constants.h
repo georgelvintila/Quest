@@ -69,5 +69,4 @@ static NSString * const kFetchType= @"kFetchType";
 
 static CGFloat const kFilterDistance = 1000.0;
 
-
 #endif

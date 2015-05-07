@@ -27,7 +27,6 @@
 
 @property (strong, nonatomic) UIImagePickerController* imagePickerController;
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *buttonChoosePhoto;
 
 @end
@@ -43,7 +42,7 @@
     
     self.gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture)];
     
-    self.viewPhotoImageLocation = [NSURL URLWithString:@""];
+    self.viewPhotoImage = [UIImage new];
     self.viewPhotoMessage = @"";
     self.viewPhotoRadius = 0;
 }
@@ -145,17 +144,38 @@
     self.radiusTextField.text = [NSString stringWithFormat:@"%u", radius];
 }
 
-- (IBAction)choosePhotoTouched:(id)sender {
+- (void) photoFromCamera {
+    self.imagePickerController = [[UIImagePickerController alloc] init];
+    self.imagePickerController.delegate = self;
+    self.imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [self presentViewController:self.imagePickerController animated:YES completion:nil];
+}
+
+- (void) photoFromLibrary {
     self.imagePickerController = [[UIImagePickerController alloc] init];
     self.imagePickerController.allowsEditing = NO;
     self.imagePickerController.delegate = self;
+    self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     [self presentViewController:self.imagePickerController animated:YES completion:nil];
+}
+
+- (IBAction)choosePhotoTouched:(id)sender {
+    
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Choose Photo" message:@"You could take a photo, or select a photo from your library" preferredStyle: UIAlertControllerStyleActionSheet];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self photoFromCamera];
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"From Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self photoFromLibrary];
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     NSLog(@"image picked: %@", info);
     [self dismissViewControllerAnimated:YES completion:nil];
-    self.viewPhotoImageLocation = info[UIImagePickerControllerMediaURL];
-    self.imageView.image = info[UIImagePickerControllerOriginalImage];
+    self.viewPhotoImage = info[UIImagePickerControllerOriginalImage];
+    [self.buttonChoosePhoto setSelected:YES];
 }
 /*
 #pragma mark - Navigation
