@@ -150,6 +150,8 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(self.owner == QuestOwnerTypeOthers)
+        return NO;
     return YES;
 }
 
