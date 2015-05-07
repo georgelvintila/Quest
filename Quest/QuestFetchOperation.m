@@ -65,11 +65,15 @@
                 [query whereKey:kQuestColumnOwner notEqualTo:[PFUser currentUser]];
                 [query whereKey:kQuestColumnComplete notEqualTo:@0];
                 CLLocation *location = [UserManager sharedManager].location;
-                if(location)
+                if(!location)
                 {
-                    PFGeoPoint * point = [PFGeoPoint geoPointWithLocation:location];
-                    [query whereKey:kQuestColumnLocation nearGeoPoint:point withinKilometers:1];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [[NSNotificationCenter defaultCenter] postNotificationName:kQuestQueryNoLocationNotification object:self];
+                    });
+                    return;
                 }
+                PFGeoPoint * point = [PFGeoPoint geoPointWithLocation:location];
+                [query whereKey:kQuestColumnLocation nearGeoPoint:point withinKilometers:1];
                 break;
             }
             default:

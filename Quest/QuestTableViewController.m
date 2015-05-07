@@ -66,6 +66,7 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:kQuestDataChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:kQuestQueryNoLocationNotification object:nil];
     
     _resultsTableController = [[QuestResultTableViewController alloc] init];
     _searchController = [[UISearchController alloc] initWithSearchResultsController:self.resultsTableController];
@@ -137,6 +138,8 @@
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestDataChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestQueryNoLocationNotification object:nil];
+    
 }
 
 #pragma mark - Deletion of elements
@@ -279,6 +282,11 @@
 
 
 #pragma mark - Action Methods
+
+-(void)noLocation:(NSNotification*)notification
+{
+    
+}
 
 - (IBAction)showQuestSheet:(id)sender {
     
