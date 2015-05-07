@@ -95,6 +95,12 @@
 
 #pragma mark - Action Methods
 
+-(IBAction)dismissKeyboard:(id)sender
+{
+    [self.questNameText resignFirstResponder];
+    [self.detailTextView resignFirstResponder];
+}
+
 - (void)saveQuest
 {
     QuestManager *qmanager = [QuestManager sharedManager];

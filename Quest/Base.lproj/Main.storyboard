@@ -70,6 +70,9 @@
                                         <constraint firstItem="Bmf-iC-mQp" firstAttribute="trailing" secondItem="UVO-Aq-mds" secondAttribute="trailingMargin" id="uyO-fd-wzW"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="32d-ao-9PT" kind="show" id="H3l-VS-N2o"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -112,7 +115,7 @@
                                     <constraint firstAttribute="height" constant="30" id="cQy-Qu-wjz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                 <connections>
                                     <action selector="questTextChanged:" destination="32d-ao-9PT" eventType="valueChanged" id="PTy-YA-Ldj"/>
                                     <outlet property="delegate" destination="32d-ao-9PT" id="ekA-zu-T3r"/>
@@ -153,7 +156,7 @@
                                 </connections>
                             </textView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O80-Px-aOY">
-                                <rect key="frame" x="16" y="307" width="288" height="151"/>
+                                <rect key="frame" x="16" y="307" width="288" height="204"/>
                                 <connections>
                                     <segue destination="np2-LK-Oa9" kind="embed" identifier="ContainerSegue" id="GXw-QK-s7I"/>
                                 </connections>
@@ -168,37 +171,18 @@
                                 <color key="textColor" red="0.10274835409999999" green="0.2202399273" blue="0.31904987369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zo3-KQ-Zd1">
-                                <rect key="frame" x="16" y="465" width="288" height="46"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="zcn-na-TPc"/>
-                                </constraints>
-                                <state key="normal" title="Save Quest">
-                                    <color key="titleColor" red="0.092573540489999995" green="0.2925149936" blue="0.081826784639999997" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveQuest:" destination="32d-ao-9PT" eventType="touchUpInside" id="QFR-nX-e4S"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zCP-ge-q6P" firstAttribute="top" secondItem="b0a-gb-qY0" secondAttribute="bottom" constant="8" id="3Ef-O6-Phd"/>
+                            <constraint firstItem="NJf-BG-KzK" firstAttribute="top" secondItem="O80-Px-aOY" secondAttribute="bottom" constant="8" id="3U1-BW-h8t"/>
                             <constraint firstAttribute="centerY" secondItem="dXe-gg-fbC" secondAttribute="centerY" id="4C5-4d-Yqv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Zo3-KQ-Zd1" secondAttribute="trailing" id="4Im-h3-vjf"/>
                             <constraint firstItem="dXe-gg-fbC" firstAttribute="leading" secondItem="aoc-3q-ErD" secondAttribute="leadingMargin" id="4cL-nS-qMp"/>
                             <constraint firstItem="n0c-MQ-yym" firstAttribute="trailing" secondItem="aoc-3q-ErD" secondAttribute="trailingMargin" id="9ZO-G2-G8u"/>
                             <constraint firstItem="O80-Px-aOY" firstAttribute="leading" secondItem="aoc-3q-ErD" secondAttribute="leadingMargin" id="Aoa-tC-gr6"/>
                             <constraint firstItem="n0c-MQ-yym" firstAttribute="top" secondItem="zCP-ge-q6P" secondAttribute="bottom" constant="8" id="B2N-Fq-zwV"/>
-                            <constraint firstItem="NJf-BG-KzK" firstAttribute="top" secondItem="Zo3-KQ-Zd1" secondAttribute="bottom" constant="8" id="B2N-oC-2Ny"/>
-                            <constraint firstItem="Zo3-KQ-Zd1" firstAttribute="top" secondItem="O80-Px-aOY" secondAttribute="bottom" constant="7" id="CKr-gU-Nf6"/>
                             <constraint firstItem="O80-Px-aOY" firstAttribute="trailing" secondItem="aoc-3q-ErD" secondAttribute="trailingMargin" id="CmG-qZ-nw1"/>
                             <constraint firstItem="b0a-gb-qY0" firstAttribute="leading" secondItem="aoc-3q-ErD" secondAttribute="leadingMargin" id="K7v-v7-KOP"/>
-                            <constraint firstItem="Zo3-KQ-Zd1" firstAttribute="leading" secondItem="aoc-3q-ErD" secondAttribute="leadingMargin" id="Mnd-c1-wf8"/>
                             <constraint firstItem="zCP-ge-q6P" firstAttribute="leading" secondItem="aoc-3q-ErD" secondAttribute="leadingMargin" id="e8j-jf-Iiz"/>
                             <constraint firstAttribute="centerY" secondItem="rgC-fZ-ev1" secondAttribute="centerY" id="eTA-ih-xlb"/>
                             <constraint firstItem="rgC-fZ-ev1" firstAttribute="trailing" secondItem="aoc-3q-ErD" secondAttribute="trailingMargin" id="frH-3p-o6e"/>
@@ -208,6 +192,9 @@
                             <constraint firstItem="b0a-gb-qY0" firstAttribute="trailing" secondItem="aoc-3q-ErD" secondAttribute="trailingMargin" id="psG-Sq-fno"/>
                             <constraint firstItem="n0c-MQ-yym" firstAttribute="leading" secondItem="aoc-3q-ErD" secondAttribute="leadingMargin" id="smw-FK-8lR"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="pn1-BS-Sts" appends="YES" id="w88-lW-Ynb"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Quest" id="dBV-l5-gRN"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -215,11 +202,15 @@
                         <outlet property="detailTextView" destination="n0c-MQ-yym" id="hTI-a6-N1t"/>
                         <outlet property="mapButton" destination="rgC-fZ-ev1" id="go2-ZQ-QGh"/>
                         <outlet property="questNameText" destination="b0a-gb-qY0" id="yfl-xT-s51"/>
-                        <outlet property="saveButton" destination="Zo3-KQ-Zd1" id="B6j-I0-huC"/>
                         <outlet property="takePhotoContainer" destination="O80-Px-aOY" id="a0w-ZO-v7n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G1e-J1-wRv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="pn1-BS-Sts">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="32d-ao-9PT" id="1uS-S4-71Q"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1093" y="-176"/>
         </scene>
@@ -507,7 +498,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Orr-T6-kEJ"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Zoq-FA-ROf">
-                        <rect key="frame" x="0.0" y="0.0" width="288" height="151"/>
+                        <rect key="frame" x="0.0" y="0.0" width="288" height="204"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -696,4 +687,7 @@
             <point key="canvasLocation" x="-347" y="1200"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="H3l-VS-N2o"/>
+    </inferredMetricsTieBreakers>
 </document>

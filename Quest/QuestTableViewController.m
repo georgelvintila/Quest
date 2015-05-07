@@ -24,10 +24,7 @@
 @property(nonatomic,strong) NSMutableArray *questItems;
 @property (nonatomic, strong) QuestResultTableViewController *resultsTableController;
 
-@property (nonatomic, strong) QuestDetailsViewController *questDetailsViewController;
-@property (nonatomic, strong) QuestViewController *questViewController;
-
-@property (nonatomic, weak) id destinationViewController;
+@property (nonatomic, weak) UIViewController* destinationViewController;
 
 
 @end
@@ -152,29 +149,42 @@
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kCellHeaderIdentifier];
-    if(!view)
+    if([self.questItems[section] count])
     {
-        view = [[UIView alloc] init];
+        UIView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kCellHeaderIdentifier];
+        if(!view)
+        {
+            view = [[UIView alloc] init];
+        }
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 2, 0, 0)];
+        view.backgroundColor = [UIColor headerBackgroundColor];
+        label.text = [self.allQuestTypes objectAtIndex:section];
+        label.font = [UIFont systemFontOfSize:15];
+        label.textColor = [UIColor tintGreenColor];
+        [view addSubview:label];
+        [label sizeToFit];
+        return view;
     }
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 2, 0, 0)];
-    view.backgroundColor = [UIColor headerBackgroundColor];
-    label.text = [self.allQuestTypes objectAtIndex:section];
-    label.font = [UIFont systemFontOfSize:15];
-    label.textColor = [UIColor tintGreenColor];
-    [view addSubview:label];
-    [label sizeToFit];
-    return view;
+    return nil;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if([self.questItems[section] count])
+    {
+        return 25;
+    }
+    return 0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(self.owner == QuestOwnerTypeOthers)
     {
-        [self performSegueWithIdentifier: kQuestDetailsSegue sender:self];
         NSArray *quests = [self.questItems objectAtIndex:indexPath.section];
         QuestInfo *quest = [quests objectAtIndex:indexPath.row];
-        self.questDetailsViewController.questInfo = quest;
+        QuestDetailsViewController *questDetailsViewController = (QuestDetailsViewController*)self.destinationViewController;
+        questDetailsViewController.questInfo = quest;
     }
     else if(self.owner == QuestOwnerTypeCurrent)
     {
@@ -183,24 +193,23 @@
             self.questType = QuestTypeTakePhoto;
         }
         else
-            if (questTypeString == kQuestTypeViewPhotoQuest) {
+            if (questTypeString == kQuestTypeViewPhotoQuest)
+            {
                 self.questType = QuestTypeViewPhoto;
             }
-        
-        
-        
-        
-        
-        [self performSegueWithIdentifier: kQuestSegue sender:self];
+    
         NSArray *quests = [self.questItems objectAtIndex:indexPath.section];
         
-        self.questViewController.questIndex = indexPath.row;
-        self.questViewController.editMode = YES;
+        QuestViewController *questViewController = (QuestViewController *)self.destinationViewController;
+        questViewController.questType = self.questType;
+        
+        questViewController.questIndex = indexPath.row;
+        questViewController.editMode = YES;
         switch (self.questType) {
             case QuestTypeTakePhoto:
             {
                 TakePhotoQuestInfo *quest = [quests objectAtIndex:indexPath.row];
-                self.questViewController.takePhotoQuestInfo = quest;
+                questViewController.takePhotoQuestInfo = quest;
             }
                 break;
                 
@@ -210,12 +219,13 @@
     }
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return [self.questItems count];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
 
     return [[self.questItems objectAtIndex:section] count];
 }
@@ -328,15 +338,9 @@
     tableController.questItems = allFilteredItems;
     [tableController.tableView reloadData];
 }
+
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.destinationViewController isMemberOfClass: [QuestDetailsViewController class]]) {
-        self.questDetailsViewController = (QuestDetailsViewController*)segue.destinationViewController;
-        
-    } else {
-        self.questViewController = (QuestViewController *)[segue destinationViewController];
-        self.questViewController.questType = self.questType;
-    }
     self.destinationViewController = segue.destinationViewController;
 }
 

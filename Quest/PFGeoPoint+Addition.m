@@ -7,6 +7,7 @@
 //
 
 #import "PFGeoPoint+Addition.h"
+#import <CoreLocation/CoreLocation.h>
 
 @implementation PFGeoPoint (Addition)
 
@@ -15,5 +16,6 @@
 {
     return (self.latitude == point.latitude) && (self.longitude == point.longitude);
 }
+
 
 @end

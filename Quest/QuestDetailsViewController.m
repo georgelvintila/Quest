@@ -9,8 +9,9 @@
 #import "QuestDetailsViewController.h"
 #import <MapKit/MapKit.h>
 #import "QuestInfo.h"
+#import "CLLocationManager+Addition.h"
 
-@interface QuestDetailsViewController () <MKMapViewDelegate>
+@interface QuestDetailsViewController () <MKMapViewDelegate,CLLocationManagerDelegate>
 
 #pragma mark - Properties
 
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *descriptionText;
 @property (weak, nonatomic) IBOutlet MKMapView *map;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property (strong, nonatomic) CLLocationManager *manager;
 
 @end
 
@@ -29,6 +31,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
+        _manager = [CLLocationManager locationManagerWithDelegate:self];
     }
     return self;
 }
@@ -55,9 +58,9 @@
     [self.map addOverlay:circle];
     
     // the logic
-    self.map.showsUserLocation = YES;
     [self.map showAnnotations:@[point] animated:YES];
     self.map.userTrackingMode = MKUserTrackingModeFollow;
+    [self.manager startUpdatingLocation];
 }
 
 #pragma mark - MapView Delegate Methods
@@ -76,9 +79,13 @@
         return;
     DLog(@"updated user location: %@", userLocation);
     double distance = [userLocation.location distanceFromLocation:self.questInfo.questLocation] * 2.3;
-
-    [self.map setCenterCoordinate: userLocation.coordinate animated:YES];
-    [self.map setRegion: [self.map regionThatFits: MKCoordinateRegionMakeWithDistance(self.map.centerCoordinate, distance, distance)] animated: YES];
+    if(distance > 0)
+    {
+        [self.map setCenterCoordinate: userLocation.coordinate animated:YES];
+        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.map.centerCoordinate, distance, distance);
+        region = [self.map regionThatFits: region];
+        [self.map setRegion: region animated: YES];
+    }
 }
 
 #pragma mark - Action Methods

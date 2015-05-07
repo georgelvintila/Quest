@@ -7,6 +7,7 @@
 //
 
 #import "LocationPickerViewController.h"
+#import "CLLocationManager+Addition.h"
 
 @interface LocationPickerViewController ()
 
@@ -22,6 +23,15 @@
 #pragma mark -
 
 @implementation LocationPickerViewController
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        _locationManager = [CLLocationManager locationManagerWithDelegate:self];
+    }
+    return self;
+}
 
 #pragma mark - Base Class Methods
 
@@ -53,6 +63,7 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [self.delegate locationPickerViewController:self saveLocation:self.savedLocation];
+    [self.locationManager stopUpdatingLocation];
     [super viewWillDisappear:animated];
 }
 
@@ -73,19 +84,6 @@
         [self gotoLocation:_currentLocation];
         self.mapPannedSinceLocationUpdate = NO;
     } // else do nothing.
-}
-
-- (CLLocationManager *)locationManager
-{
-    if (_locationManager == nil)
-    {
-        _locationManager = [[CLLocationManager alloc] init];
-        _locationManager.delegate = self;
-        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        // Set a movement threshold for new events.
-        _locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters;
-    }
-    return _locationManager;
 }
 
 #pragma mark - Gesture Methods

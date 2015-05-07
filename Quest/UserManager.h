@@ -10,6 +10,8 @@
 
 #pragma mark - Class Methods
 
+@property(atomic,readonly) CLLocation *location;
+
 ///@brief Shared Instance of the Manager
 +(instancetype) sharedManager;
 

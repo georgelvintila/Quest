@@ -9,6 +9,7 @@
 #import "FetchQuestsOperation.h"
 #import <Parse/Parse.h>
 #import "PFObject+Quest.h"
+#import "UserManager.h"
 
 @interface FetchQuestsOperation ()
 
@@ -55,12 +56,22 @@
         switch (self.questOwner)
         {
             case QuestOwnerTypeCurrent:
+            {
                 [query whereKey:kQuestColumnOwner equalTo:[PFUser currentUser]];
                 break;
+            }
             case QuestOwnerTypeOthers:
+            {
                 [query whereKey:kQuestColumnOwner notEqualTo:[PFUser currentUser]];
                 [query whereKey:kQuestColumnComplete notEqualTo:@0];
+                CLLocation *location = [UserManager sharedManager].location;
+                if(location)
+                {
+                    PFGeoPoint * point = [PFGeoPoint geoPointWithLocation:location];
+                    [query whereKey:kQuestColumnLocation nearGeoPoint:point withinKilometers:1];
+                }
                 break;
+            }
             default:
                 break;
         }
@@ -70,19 +81,15 @@
         query.skip = self.skip;
         
         NSArray *results = [query findObjects];
-        if([results count])
-        {
-            NSMutableArray *quests = [NSMutableArray new];
-            for (Quest *item  in results) {
-                QuestInfo *info = [item questInfo];
-                [quests addObject:info];
-            }
-            NSDictionary *userInfo = @{kFetchType:self.questType,kFetchItems:quests, kFetchOwner:[NSNumber numberWithInteger:self.questOwner]};
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[NSNotificationCenter defaultCenter] postNotificationName:kQuestQuerySuccesNotification object:self userInfo:userInfo];
-            });
-            
+        NSMutableArray *quests = [NSMutableArray new];
+        for (Quest *item  in results) {
+            QuestInfo *info = [item questInfo];
+            [quests addObject:info];
         }
+        NSDictionary *userInfo = @{kFetchType:self.questType,kFetchItems:quests, kFetchOwner:[NSNumber numberWithInteger:self.questOwner]};
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:kQuestQuerySuccesNotification object:self userInfo:userInfo];
+        });
     }
 }
 
