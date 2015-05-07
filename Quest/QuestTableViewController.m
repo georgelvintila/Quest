@@ -110,9 +110,8 @@
         
         // move the tab bar down
         CGRect frameOld = self.tabBarController.tabBar.frame;
-        CGRect frameNew = CGRectMake(frameOld.origin.x, frameOld.origin.y + frameOld.size.height, frameOld.size.width, frameOld.size.height);
         
-        self.tabBarController.tabBar.frame = frameNew;
+        self.tabBarController.tabBar.frameTop = self.tabBarController.tabBar.frameBottom;
         
         // it's not hidden
         [self.tabBarController.tabBar setHidden:NO];

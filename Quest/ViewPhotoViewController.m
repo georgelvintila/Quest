@@ -60,10 +60,10 @@
 
 - (void) moveView: (BOOL) up {
     UIView *view = self.parentViewController.parentViewController.view;
-    CGRect frame = view.frame;
-    frame.origin.y += ((int)(!up) * 2 - 1) * (int)yMove;
-    if (frame.origin.y > 0)
-        frame.origin.y = 0;
+    CGFloat y = view.frameTop;
+    y += ((int)(!up) * 2 - 1) * (int)yMove;
+    if (y > 0)
+        y = 0;
 //    NSLog(@"trying animation %d", up);
     if (!runningAnimation) {
 //        NSLog(@"running animation %d", up);
@@ -72,7 +72,7 @@
                               delay:0
                             options:[[self.keyboardNotification userInfo][UIKeyboardAnimationCurveUserInfoKey] intValue] << 16
                          animations:^{
-            view.frame = frame;
+            view.frameTop = y;
         } completion:^(BOOL finished) {
             if (!finished)
                 return;
