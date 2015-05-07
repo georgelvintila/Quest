@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import "UserManager.h"
 
 @interface AppDelegate ()
 
@@ -33,6 +34,8 @@
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    [UserManager sharedManager].name =[PFUser currentUser].username ;
     return YES;
 }
 

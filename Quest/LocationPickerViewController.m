@@ -49,7 +49,7 @@
     if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
     {
         [self.locationManager requestWhenInUseAuthorization];
-    }    
+    }
     self.mapPannedSinceLocationUpdate = NO;
     [self addLongPressGestureRecognizer];
     [self startStandardUpdates];
@@ -202,11 +202,12 @@
         default:break;
     }
 }
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    [self setCurrentLocation: newLocation];
+     [self setCurrentLocation:[locations objectAtIndex:0]];
 }
+
+
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {

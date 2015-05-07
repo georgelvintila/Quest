@@ -38,8 +38,6 @@
     self = [super init];
     if (self) {
         _locationManager = [CLLocationManager locationManagerWithDelegate:self];
-        [_locationManager startUpdatingLocation];
-        _location = self.locationManager.location;
     }
     return self;
 }
@@ -84,12 +82,7 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    NSLog(@"%@",locations);
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
-    [self setLocation: newLocation];
+    [self setLocation:[locations objectAtIndex:0]];
 }
 
 -(void)setLocation:(CLLocation *)location
@@ -107,7 +100,7 @@
 {
     @synchronized(self)
     {
-        return self.locationManager.location;
+        return _location;
     }
 }
 

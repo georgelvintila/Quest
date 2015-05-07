@@ -97,22 +97,25 @@
 
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+
+- (void)viewWillAppear:(BOOL)animated
+{
+
     [super viewWillAppear:animated];
-//    NSLog(@"appear: %@", self.destinationViewController);
     
     // if we had a segue
-    if (self.destinationViewController) {
+    if (self.destinationViewController)
+    {
         self.destinationViewController = nil;
-        
-        // it's not hidden
-        [self.tabBarController.tabBar setHidden:NO];
         
         // move the tab bar down
         CGRect frameOld = self.tabBarController.tabBar.frame;
         CGRect frameNew = CGRectMake(frameOld.origin.x, frameOld.origin.y + frameOld.size.height, frameOld.size.width, frameOld.size.height);
         
         self.tabBarController.tabBar.frame = frameNew;
+        
+        // it's not hidden
+        [self.tabBarController.tabBar setHidden:NO];
         
         // animate the tab bar coming up
         [UIView animateWithDuration:0.3 animations:^{
@@ -121,14 +124,15 @@
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
 
+    if (self.destinationViewController)
+    {
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-//    NSLog(@"dissapear: %@", self.destinationViewController);
-    if (self.destinationViewController) {
        [self.tabBarController.tabBar setHidden:YES];
     }
+    [super viewWillDisappear:animated];
 }
 
 -(void)dealloc
@@ -165,8 +169,9 @@
 {
     self.allQuestTypes = [self.questManager allQuestTypesForOwner:self.owner];
     [self.questItems removeAllObjects];
-    for (NSString *type in self.allQuestTypes) {
-    [self.questItems addObject:[self.questManager questListOfType:type forOwner:self.owner]];
+    for (NSString *type in self.allQuestTypes)
+    {
+        [self.questItems addObject:[self.questManager questListOfType:type forOwner:self.owner]];
     }
     
     [self.tableView reloadData];
@@ -201,7 +206,7 @@
 {
     if([self.questItems[section] count])
     {
-        return 25;
+        return kHeaderHeight;
     }
     return 0;
 }
@@ -221,11 +226,10 @@
         if (questTypeString == kQuestTypeTakePhotoQuest) {
             self.questType = QuestTypeTakePhoto;
         }
-        else
-            if (questTypeString == kQuestTypeViewPhotoQuest)
-            {
-                self.questType = QuestTypeViewPhoto;
-            }
+        else if (questTypeString == kQuestTypeViewPhotoQuest)
+        {
+            self.questType = QuestTypeViewPhoto;
+        }
     
         NSArray *quests = [self.questItems objectAtIndex:indexPath.section];
         
@@ -234,14 +238,14 @@
         
         questViewController.questIndex = indexPath.row;
         questViewController.editMode = YES;
-        switch (self.questType) {
+        switch (self.questType)
+        {
             case QuestTypeTakePhoto:
             {
                 TakePhotoQuestInfo *quest = [quests objectAtIndex:indexPath.row];
                 questViewController.takePhotoQuestInfo = quest;
-            }
                 break;
-                
+            }
             default:
                 break;
         }
@@ -255,7 +259,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
     return [[self.questItems objectAtIndex:section] count];
 }
 
@@ -281,7 +284,6 @@
 - (IBAction)showQuestSheet:(id)sender {
     
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Quest Types" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"View Photo", nil];
-   // actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [actionSheet showInView:self.view];    
 }
 
@@ -319,7 +321,8 @@
     NSString *strippedString = [searchText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     NSMutableArray *allFilteredItems = [NSMutableArray new];
     NSArray *searchItems = nil;
-    if (strippedString.length > 0) {
+    if (strippedString.length > 0)
+    {
         searchItems = [strippedString componentsSeparatedByString:@" "];
     }
 

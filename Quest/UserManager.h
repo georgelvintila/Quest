@@ -11,6 +11,7 @@
 #pragma mark - Class Methods
 
 @property(atomic,readonly) CLLocation *location;
+@property(nonatomic) NSString *name;
 
 ///@brief Shared Instance of the Manager
 +(instancetype) sharedManager;

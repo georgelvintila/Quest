@@ -78,14 +78,12 @@
     if (self.map.userTrackingMode != MKUserTrackingModeFollow)
         return;
     DLog(@"updated user location: %@", userLocation);
-    double distance = [userLocation.location distanceFromLocation:self.questInfo.questLocation] * 2.3;
-    if(distance > 0)
-    {
-        [self.map setCenterCoordinate: userLocation.coordinate animated:YES];
-        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.map.centerCoordinate, distance, distance);
-        region = [self.map regionThatFits: region];
-        [self.map setRegion: region animated: YES];
-    }
+    double distance = [userLocation.location distanceFromLocation:self.questInfo.questLocation] * 2;
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, distance, distance);
+    MKCoordinateRegion regionInMap = [self.map regionThatFits: region];
+    [self.map setRegion: regionInMap animated: YES];
+    
+
 }
 
 #pragma mark - Action Methods

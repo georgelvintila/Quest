@@ -67,6 +67,7 @@ static NSString * const kFetchOwner = @"kFetchOwner";
 static NSString * const kFetchItems= @"kFetchItems";
 static NSString * const kFetchType= @"kFetchType";
 
-static CGFloat const kFilterDistance = 1000.0;
+static CGFloat const kFilterDistance = 1000.0f;
+static CGFloat const kHeaderHeight = 25.0f;
 
 #endif

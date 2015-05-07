@@ -141,7 +141,7 @@
 - (IBAction)radiusValueChanged:(UISlider*)sender {
     NSUInteger radius = sender.value;
     self.viewPhotoRadius = radius;
-    self.radiusTextField.text = [NSString stringWithFormat:@"%u", radius];
+    self.radiusTextField.text = [NSString stringWithFormat:@"%lu", (unsigned long)radius];
 }
 
 - (void) photoFromCamera {
