@@ -1,47 +1,36 @@
 //
-//  QuestSaveOperation.m
+//  QuestDeleteOperation.m
 //  Quest
 //
 //  Created by Georgel Vintila on 06/05/15.
 //  Copyright (c) 2015 Stefanini. All rights reserved.
 //
 
-#import "QuestSaveOperation.h"
+#import "QuestDeleteOperation.h"
 #import "PFObject+Quest.h"
 
 
-@interface QuestSaveOperation ()
+@interface QuestDeleteOperation ()
 
 @property (nonatomic) QuestInfo *oldInfo;
-@property (nonatomic) QuestInfo *questInfo;
 @property (nonatomic) NSString * questType;
 @property (nonatomic) Quest *quest;
 
 
 @end
 
-@implementation QuestSaveOperation
+@implementation QuestDeleteOperation
 
-- (instancetype)initWithOldQuestInfo:(QuestInfo *)oldInfo andNewQuestInfo:(QuestInfo *)newInfo forType:(NSString*)type
+- (instancetype)initWithOldQuestInfo:(QuestInfo *)oldInfo forType:(NSString*)type
 {
     self = [super init];
     if (self) {
         _oldInfo = oldInfo;
-        _questInfo = newInfo;
         _questType = type;
     }
     return self;
 }
 
--(instancetype)initWithQuest:(id)quest andQuestInfo:(QuestInfo *)questInfo
-{
-    self = [super init];
-    if (self) {
-        _quest = quest;
-        _questInfo = questInfo;
-    }
-    return self;
-}
 
 -(void)main
 {
@@ -52,10 +41,10 @@
             self.quest = [[PFQuery queryWithClassName:self.questType] getObjectWithId:self.oldInfo.questObjectId];
         }
         
-        
-        [self.quest saveQuestInformation:self.questInfo];
+        [self.quest delete];
         
     }
 }
+
 
 @end

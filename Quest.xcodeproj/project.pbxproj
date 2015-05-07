@@ -19,6 +19,7 @@
 		BB6308E61AF10A0E002DF589 /* QuestInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6308E51AF10A0E002DF589 /* QuestInfo.m */; };
 		BB8962581AF1216B0068D150 /* QuestInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8962571AF1216B0068D150 /* QuestInfoTests.m */; };
 		E1D64E261AFB58450061EB11 /* CLLocationManager+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D64E251AFB58450061EB11 /* CLLocationManager+Addition.m */; };
+		BBEC01781AFB91F2005BC759 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEC01771AFB91F2005BC759 /* UIView+Frame.m */; };
 		E1D705081AEA7B8900525E19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D705071AEA7B8900525E19 /* main.m */; };
 		E1D7050B1AEA7B8900525E19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D7050A1AEA7B8900525E19 /* AppDelegate.m */; };
 		E1D7050E1AEA7B8900525E19 /* QuestLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D7050D1AEA7B8900525E19 /* QuestLoginViewController.m */; };
@@ -50,8 +51,9 @@
 		E1DBE7191AEFD618005026EB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D7052C1AEA7CBB00525E19 /* Parse.framework */; };
 		E1DBE71A1AEFD61C005026EB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D7052E1AEA7CE900525E19 /* Bolts.framework */; };
 		E1DE76E31AFA053C0028E3D2 /* QuestSaveOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DE76E21AFA053C0028E3D2 /* QuestSaveOperation.m */; };
-		E1DE76E71AFA2CEA0028E3D2 /* FetchQuestsOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DE76E61AFA2CEA0028E3D2 /* FetchQuestsOperation.m */; };
+		E1DE76E71AFA2CEA0028E3D2 /* QuestFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DE76E61AFA2CEA0028E3D2 /* QuestFetchOperation.m */; };
 		E1DE76EA1AFA4EA60028E3D2 /* PFGeoPoint+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DE76E91AFA4EA60028E3D2 /* PFGeoPoint+Addition.m */; };
+		E1DE76ED1AFA5E980028E3D2 /* QuestDeleteOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DE76EC1AFA5E980028E3D2 /* QuestDeleteOperation.m */; };
 		E1E3EECA1AF7813A0095A6EC /* QuestResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E3EEC91AF7813A0095A6EC /* QuestResultTableViewController.m */; };
 		E1E3EED01AF79DA10095A6EC /* FilterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E3EECE1AF79DA10095A6EC /* FilterTableViewController.m */; };
 		E1E3EED11AF79DA10095A6EC /* FilterTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E3EECF1AF79DA10095A6EC /* FilterTableViewController.xib */; };
@@ -99,6 +101,8 @@
 		BB8962571AF1216B0068D150 /* QuestInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestInfoTests.m; sourceTree = "<group>"; };
 		E1D64E241AFB58450061EB11 /* CLLocationManager+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Addition.h"; sourceTree = "<group>"; };
 		E1D64E251AFB58450061EB11 /* CLLocationManager+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Addition.m"; sourceTree = "<group>"; };
+		BBEC01761AFB91F2005BC759 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		BBEC01771AFB91F2005BC759 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		E1D705021AEA7B8900525E19 /* Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D705061AEA7B8900525E19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1D705071AEA7B8900525E19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -137,10 +141,12 @@
 		E1DBE7171AEFCF15005026EB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E1DE76E11AFA053C0028E3D2 /* QuestSaveOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestSaveOperation.h; sourceTree = "<group>"; };
 		E1DE76E21AFA053C0028E3D2 /* QuestSaveOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestSaveOperation.m; sourceTree = "<group>"; };
-		E1DE76E51AFA2CEA0028E3D2 /* FetchQuestsOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchQuestsOperation.h; sourceTree = "<group>"; };
-		E1DE76E61AFA2CEA0028E3D2 /* FetchQuestsOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchQuestsOperation.m; sourceTree = "<group>"; };
+		E1DE76E51AFA2CEA0028E3D2 /* QuestFetchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestFetchOperation.h; sourceTree = "<group>"; };
+		E1DE76E61AFA2CEA0028E3D2 /* QuestFetchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestFetchOperation.m; sourceTree = "<group>"; };
 		E1DE76E81AFA4EA60028E3D2 /* PFGeoPoint+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFGeoPoint+Addition.h"; sourceTree = "<group>"; };
 		E1DE76E91AFA4EA60028E3D2 /* PFGeoPoint+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFGeoPoint+Addition.m"; sourceTree = "<group>"; };
+		E1DE76EB1AFA5E980028E3D2 /* QuestDeleteOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestDeleteOperation.h; sourceTree = "<group>"; };
+		E1DE76EC1AFA5E980028E3D2 /* QuestDeleteOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestDeleteOperation.m; sourceTree = "<group>"; };
 		E1E3EEC81AF7813A0095A6EC /* QuestResultTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestResultTableViewController.h; sourceTree = "<group>"; };
 		E1E3EEC91AF7813A0095A6EC /* QuestResultTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestResultTableViewController.m; sourceTree = "<group>"; };
 		E1E3EECD1AF79DA10095A6EC /* FilterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterTableViewController.h; sourceTree = "<group>"; };
@@ -402,8 +408,10 @@
 			children = (
 				E1DE76E11AFA053C0028E3D2 /* QuestSaveOperation.h */,
 				E1DE76E21AFA053C0028E3D2 /* QuestSaveOperation.m */,
-				E1DE76E51AFA2CEA0028E3D2 /* FetchQuestsOperation.h */,
-				E1DE76E61AFA2CEA0028E3D2 /* FetchQuestsOperation.m */,
+				E1DE76E51AFA2CEA0028E3D2 /* QuestFetchOperation.h */,
+				E1DE76E61AFA2CEA0028E3D2 /* QuestFetchOperation.m */,
+				E1DE76EB1AFA5E980028E3D2 /* QuestDeleteOperation.h */,
+				E1DE76EC1AFA5E980028E3D2 /* QuestDeleteOperation.m */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -448,6 +456,8 @@
 				E1DE76E91AFA4EA60028E3D2 /* PFGeoPoint+Addition.m */,
 				E1D64E241AFB58450061EB11 /* CLLocationManager+Addition.h */,
 				E1D64E251AFB58450061EB11 /* CLLocationManager+Addition.m */,
+				BBEC01761AFB91F2005BC759 /* UIView+Frame.h */,
+				BBEC01771AFB91F2005BC759 /* UIView+Frame.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -598,7 +608,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1F45C9C1AF27BD200ACAE6D /* UIColor+Quest.m in Sources */,
-				E1DE76E71AFA2CEA0028E3D2 /* FetchQuestsOperation.m in Sources */,
+				E1DE76E71AFA2CEA0028E3D2 /* QuestFetchOperation.m in Sources */,
 				E1E3EED51AF7A5B70095A6EC /* UserManager.m in Sources */,
 				E1EBEBC11AEF7AED000A3790 /* TakePhotoQuest.m in Sources */,
 				E1EFDF8E1AF0C3CA00894032 /* PFObject+Quest.m in Sources */,
@@ -618,11 +628,13 @@
 				E1EFDF911AF0F12E00894032 /* ViewPhotoQuest.m in Sources */,
 				E1EBEBBD1AEF79FD000A3790 /* QuestManager.m in Sources */,
 				E1D705081AEA7B8900525E19 /* main.m in Sources */,
+				BBEC01781AFB91F2005BC759 /* UIView+Frame.m in Sources */,
 				BB01334F1AF7940D00E5785F /* QuestDetailsViewController.m in Sources */,
 				E1DE76E31AFA053C0028E3D2 /* QuestSaveOperation.m in Sources */,
 				E1DE76EA1AFA4EA60028E3D2 /* PFGeoPoint+Addition.m in Sources */,
 				212D2C221AEFCABC004991BA /* LocationPickerViewController.m in Sources */,
 				212D2C291AF7879E004991BA /* EmptySegue.m in Sources */,
+				E1DE76ED1AFA5E980028E3D2 /* QuestDeleteOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

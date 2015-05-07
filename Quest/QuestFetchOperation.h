@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FetchQuestsOperation : NSOperation
+@interface QuestFetchOperation : NSOperation
 
 +(instancetype)fetchQuestOperationWithType:(NSString *)questType forOwner:(QuestOwnerType)questOwner;
 +(instancetype)fetchQuestOperationWithType:(NSString *)questType forOwner:(QuestOwnerType)questOwner withLimit:(NSUInteger)limit;

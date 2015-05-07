@@ -19,6 +19,7 @@
 #import "Constants.h"
 #import "QuestInfo.h"
 #import "UIColor+Quest.h"
+#import "UIView+Frame.h"
 
 typedef NS_ENUM(NSUInteger, QuestOwnerType) {
     QuestOwnerTypeAll = 0,

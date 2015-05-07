@@ -629,18 +629,76 @@
                         <rect key="frame" x="0.0" y="0.0" width="288" height="151"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Test Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slD-lG-AZK">
-                                <rect key="frame" x="63" y="65" width="78" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="ER1-74-fTe">
+                                <rect key="frame" x="82" y="61" width="124" height="31"/>
+                                <color key="minimumTrackTintColor" red="0.092573540489999995" green="0.2925149936" blue="0.081826784639999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="radiusSliderValueChanged:" destination="ULL-Ni-MLW" eventType="valueChanged" id="uCu-96-1Gd"/>
+                                    <action selector="radiusValueChanged:" destination="gYV-f3-ABZ" eventType="valueChanged" id="TG0-if-WhV"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cm0-eZ-cGA">
+                                <rect key="frame" x="263" y="67" width="9" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.10274835409999999" green="0.2202399273" blue="0.31904987369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="0.10274835409999999" green="0.2202399273" blue="0.31904987369999999" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Radius:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YG8-xy-Rp0">
+                                <rect key="frame" x="16" y="67" width="52" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.10274835409999999" green="0.2202399273" blue="0.31904987369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="0.10274835409999999" green="0.2202399273" blue="0.31904987369999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Message" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f6Q-qg-iZt">
+                                <rect key="frame" x="16" y="8" width="256" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ix4-mT-xeq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="gYV-f3-ABZ" id="aH6-rV-ALP"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sJ6-kn-ySr">
+                                <rect key="frame" x="16" y="99" width="256" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="tintColor" red="0.094117647058823528" green="0.29411764705882354" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Choose Photo">
+                                    <color key="titleColor" red="0.092573540489999995" green="0.2925149936" blue="0.081826784639999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="choosePhotoTouched:" destination="gYV-f3-ABZ" eventType="touchUpInside" id="gzL-xm-ZCN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YG8-xy-Rp0" firstAttribute="leading" secondItem="f6Q-qg-iZt" secondAttribute="leading" id="4uj-Yp-qbM"/>
+                            <constraint firstItem="sJ6-kn-ySr" firstAttribute="trailing" secondItem="cAX-xT-ifk" secondAttribute="trailingMargin" id="9Rn-4k-gJY"/>
+                            <constraint firstItem="sJ6-kn-ySr" firstAttribute="top" secondItem="ER1-74-fTe" secondAttribute="bottom" constant="8" id="IuZ-Dm-f1l"/>
+                            <constraint firstItem="ER1-74-fTe" firstAttribute="leading" secondItem="YG8-xy-Rp0" secondAttribute="trailing" constant="16" id="KRp-ea-Hqu"/>
+                            <constraint firstItem="ER1-74-fTe" firstAttribute="centerX" secondItem="sJ6-kn-ySr" secondAttribute="centerX" id="Urg-bk-EzF"/>
+                            <constraint firstItem="YG8-xy-Rp0" firstAttribute="leading" secondItem="cAX-xT-ifk" secondAttribute="leadingMargin" id="X6c-rO-qlL"/>
+                            <constraint firstItem="YG8-xy-Rp0" firstAttribute="leading" secondItem="sJ6-kn-ySr" secondAttribute="leading" id="Ydo-Aj-vQh"/>
+                            <constraint firstItem="cm0-eZ-cGA" firstAttribute="trailing" secondItem="sJ6-kn-ySr" secondAttribute="trailing" id="cwL-ti-fMY"/>
+                            <constraint firstItem="f6Q-qg-iZt" firstAttribute="top" secondItem="ENl-KK-x5x" secondAttribute="bottom" constant="8" symbolic="YES" id="dTp-8d-iLg"/>
+                            <constraint firstItem="YG8-xy-Rp0" firstAttribute="baseline" secondItem="cm0-eZ-cGA" secondAttribute="baseline" id="ghB-Lh-njE"/>
+                            <constraint firstItem="ER1-74-fTe" firstAttribute="centerY" secondItem="YG8-xy-Rp0" secondAttribute="centerY" id="iD4-DD-2ws"/>
+                            <constraint firstItem="ER1-74-fTe" firstAttribute="top" secondItem="f6Q-qg-iZt" secondAttribute="bottom" constant="23" id="sSY-iL-bbO"/>
+                            <constraint firstItem="cm0-eZ-cGA" firstAttribute="trailing" secondItem="f6Q-qg-iZt" secondAttribute="trailing" id="uls-df-bku"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="288" height="151"/>
+                    <connections>
+                        <outlet property="buttonChoosePhoto" destination="sJ6-kn-ySr" id="Mww-gz-Xhk"/>
+                        <outlet property="radiusSlider" destination="ER1-74-fTe" id="j7Y-TY-hNv"/>
+                        <outlet property="radiusTextField" destination="cm0-eZ-cGA" id="n0I-CK-76u"/>
+                        <outlet property="textField" destination="f6Q-qg-iZt" id="oTk-RP-04L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4tG-ek-0yP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

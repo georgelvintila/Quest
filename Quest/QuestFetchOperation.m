@@ -6,12 +6,12 @@
 //  Copyright (c) 2015 Stefanini. All rights reserved.
 //
 
-#import "FetchQuestsOperation.h"
+#import "QuestFetchOperation.h"
 #import <Parse/Parse.h>
 #import "PFObject+Quest.h"
 #import "UserManager.h"
 
-@interface FetchQuestsOperation ()
+@interface QuestFetchOperation ()
 
 @property(nonatomic) NSString *questType;
 @property(nonatomic) QuestOwnerType questOwner;
@@ -20,21 +20,21 @@
 
 @end
 
-@implementation FetchQuestsOperation
+@implementation QuestFetchOperation
 
 +(instancetype)fetchQuestOperationWithType:(NSString *)questType forOwner:(QuestOwnerType)questOwner
 {
-    return [[FetchQuestsOperation alloc]initWithType:questType forOwner:questOwner withLimit:-1 skipFirst:0];
+    return [[QuestFetchOperation alloc]initWithType:questType forOwner:questOwner withLimit:-1 skipFirst:0];
 }
 
 +(instancetype)fetchQuestOperationWithType:(NSString *)questType forOwner:(QuestOwnerType)questOwner withLimit:(NSUInteger)limit
 {
-    return [[FetchQuestsOperation alloc]initWithType:questType forOwner:questOwner withLimit:limit skipFirst:0];
+    return [[QuestFetchOperation alloc]initWithType:questType forOwner:questOwner withLimit:limit skipFirst:0];
 }
 
 +(instancetype)fetchQuestOperationWithType:(NSString *)questType forOwner:(QuestOwnerType)questOwner withLimit:(NSUInteger)limit skipFirst:(NSUInteger)skip
 {
-    return [[FetchQuestsOperation alloc]initWithType:questType forOwner:questOwner withLimit:limit skipFirst:skip];
+    return [[QuestFetchOperation alloc]initWithType:questType forOwner:questOwner withLimit:limit skipFirst:skip];
 }
 
 -(instancetype)initWithType:(NSString *)questType forOwner:(QuestOwnerType)questOwner withLimit:(NSUInteger)limit skipFirst:(NSUInteger)skip

@@ -9,6 +9,9 @@
 #import "QuestViewController.h"
 
 @interface QuestViewController ()
+{
+    BOOL isMapTransition;
+}
 
 #pragma mark - Properties
 
@@ -28,6 +31,7 @@
     self = [super initWithCoder:coder];
     if (self) {
         self.editMode = NO;
+        isMapTransition = NO;
     }
     return self;
 }
@@ -66,7 +70,8 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [self saveQuest];
+    if(!isMapTransition)
+        [self saveQuest];
     [super viewWillDisappear:animated];
 }
 
@@ -77,6 +82,7 @@
     self.questLocation = location;
     if(location)
         [self.mapButton setSelected:YES];
+    isMapTransition = NO;
 }
 
 #pragma mark - TextField Delegate Methods
@@ -156,6 +162,7 @@
     else
         if ([segueName isEqualToString: @"QuestToMapSegue"])
         {
+            isMapTransition = YES;
             LocationPickerViewController *locationPickerViewController = (LocationPickerViewController *) [segue destinationViewController];
             if(self.questLocation)
                 [locationPickerViewController setSavedLocation:self.questLocation];

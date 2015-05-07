@@ -69,6 +69,13 @@
         }
     }
     if(save)
-        [self saveEventually];
+    {
+        NSError *error = nil;
+        if(![self save:&error])
+        {
+            DLog(@"%@", error);
+            [self saveEventually];
+        }
+    }
 }
 @end

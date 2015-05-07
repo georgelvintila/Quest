@@ -26,7 +26,6 @@
 
 @property (nonatomic, weak) UIViewController* destinationViewController;
 
-
 @end
 
 #pragma mark -
@@ -83,7 +82,19 @@
     self.searchController.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.searchController.searchBar.autocorrectionType =  UITextAutocorrectionTypeNo;
     self.searchController.searchBar.spellCheckingType = UITextSpellCheckingTypeNo;
+    
+    // refresh controller
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refreshContent) forControlEvents:UIControlEventValueChanged];
+    
     [self requestData];
+}
+
+- (void)refreshContent {
+    [self requestData];
+    [self.tableView reloadData];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -92,9 +103,6 @@
     
     // if we had a segue
     if (self.destinationViewController) {
-        // show it
-        NSLog(@"showing: %@", self.destinationViewController);
-
         self.destinationViewController = nil;
         
         // it's not hidden
@@ -114,6 +122,7 @@
 }
 
 
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 //    NSLog(@"dissapear: %@", self.destinationViewController);
@@ -126,6 +135,23 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestDataChangedNotification object:nil];
 }
+
+#pragma mark - Deletion of elements
+
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.questManager deleteQuestOfType:self.allQuestTypes[indexPath.section] atIndex:indexPath.item];
+        [self reloadData:nil];
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(self.owner == QuestOwnerTypeOthers)
+        return NO;
+    return YES;
+}
+
 
 #pragma mark - Data Methods
 
@@ -142,7 +168,10 @@
     for (NSString *type in self.allQuestTypes) {
     [self.questItems addObject:[self.questManager questListOfType:type forOwner:self.owner]];
     }
+    
     [self.tableView reloadData];
+    
+    [self.refreshControl endRefreshing];
 }
 
 #pragma mark - Table View Data Source Methods
