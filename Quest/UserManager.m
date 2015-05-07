@@ -82,8 +82,14 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    [self setLocation:[locations objectAtIndex:0]];
-}
+    CLLocation *location =[locations objectAtIndex:0];
+    [self setLocation:location];
+    NSDictionary *userInfo = @{kQuestCurrentLocation:location};
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:kQuestUserLocationDidChangeNotification object:self userInfo:userInfo];
+
+    });
+   }
 
 -(void)setLocation:(CLLocation *)location
 {

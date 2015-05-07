@@ -14,7 +14,6 @@
 #pragma mark - Properties
 
 @property (nonatomic, strong) CLLocation *currentLocation;
-@property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, assign) BOOL mapPannedSinceLocationUpdate;
 @property (nonatomic, strong) MKPointAnnotation* annot;
 
@@ -28,7 +27,6 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-        _locationManager = [CLLocationManager locationManagerWithDelegate:self];
     }
     return self;
 }
@@ -38,32 +36,26 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    [self.locationManager startUpdatingLocation];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
-    {
-        [self.locationManager requestWhenInUseAuthorization];
-    }
     self.mapPannedSinceLocationUpdate = NO;
     [self addLongPressGestureRecognizer];
-    [self startStandardUpdates];
     if(self.savedLocation)
     {
         [self addAnnotationForSavedLocation];
         [self gotoLocation:self.savedLocation];
     }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationHasChanged:) name:kQuestUserLocationDidChangeNotification object:nil];
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [self.delegate locationPickerViewController:self saveLocation:self.savedLocation];
-    [self.locationManager stopUpdatingLocation];
     [super viewWillDisappear:animated];
 }
 
@@ -125,16 +117,6 @@
     }
 }
 
-- (void)startStandardUpdates
-{
-    [self.locationManager startUpdatingLocation];
-    CLLocation *currentLocation = self.locationManager.location;
-    if (currentLocation)
-    {
-        [self setCurrentLocation: currentLocation];
-    }
-}
-
 -(void)gotoLocation:(CLLocation *)location
 {
     MKCoordinateRegion newRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, kFilterDistance * 2.0f, kFilterDistance * 2.0f);
@@ -166,76 +148,12 @@
     return nil;
 }
 
-#pragma mark - Location Manager Delegate Methods
-
-- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
-{
-    switch (status)
-    {
-        case kCLAuthorizationStatusAuthorizedAlways:
-        {
-            DLog(@"kCLAuthorizationStatusAuthorized");
-            // Re-enable the post button if it was disabled before.
-            self.navigationItem.rightBarButtonItem.enabled = YES;
-            [self.locationManager startUpdatingLocation];
-        }
-            break;
-        case kCLAuthorizationStatusDenied:
-        {
-            DLog(@"kCLAuthorizationStatusDenied");
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Quest can’t access your current location." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-            [alertView show];
-            // Disable the post button.
-            self.navigationItem.rightBarButtonItem.enabled = NO;
-        }
-            break;
-        case kCLAuthorizationStatusNotDetermined:
-        {
-            DLog(@"kCLAuthorizationStatusNotDetermined");
-        }
-            break;
-        case kCLAuthorizationStatusRestricted:
-        {
-            DLog(@"kCLAuthorizationStatusRestricted");
-        }
-            break;
-        default:break;
-    }
-}
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
-     [self setCurrentLocation:[locations objectAtIndex:0]];
-}
-
-
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
-    DLog(@"Error: %@", [error description]);
-    
-    if (error.code == kCLErrorDenied)
-    {
-        [self.locationManager stopUpdatingLocation];
-    }
-    else
-    {
-        if (error.code == kCLErrorLocationUnknown)
-        {
-        // todo: retry?
-        // set a timer for five seconds to cycle location, and if it fails again, bail and tell the user.
-        }
-        else
-        {
-            UIAlertController *controller = [UIAlertController  alertControllerWithTitle: @"Error retrieving location" message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
-            [controller addAction:action];
-            [self presentViewController:controller animated:YES completion:nil];
-        }
-    }
-}
-
 #pragma mark - Action Methods
 
+-(void)locationHasChanged:(NSNotification*)notification
+{
+    [self setCurrentLocation:[notification.userInfo objectForKey:kQuestCurrentLocation]];
+}
 
 - (IBAction)deleteMarker:(id)sender
 {
