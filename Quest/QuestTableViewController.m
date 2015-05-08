@@ -240,17 +240,7 @@
         
         questViewController.questIndex = indexPath.row;
         questViewController.editMode = YES;
-        switch (self.questType)
-        {
-            case QuestTypeTakePhoto:
-            {
-                TakePhotoQuestInfo *quest = [quests objectAtIndex:indexPath.row];
-                questViewController.takePhotoQuestInfo = quest;
-                break;
-            }
-            default:
-                break;
-        }
+        questViewController.questInfo = [quests objectAtIndex:indexPath.row];
     }
 }
 

@@ -20,15 +20,12 @@
 
 @property (strong, nonatomic) NSNotification *keyboardNotification;
 
-@property (weak, nonatomic) IBOutlet UITextField *textField;
-
+@property (weak, nonatomic) IBOutlet UITextField *messageTextField;
 @property (strong, nonatomic) UITapGestureRecognizer *gesture;
-@property (weak, nonatomic) IBOutlet UILabel *radiusTextField;
+@property (weak, nonatomic) IBOutlet UILabel *radiusTextLabel;
 @property (weak, nonatomic) IBOutlet UISlider *radiusSlider;
-
 @property (strong, nonatomic) UIImagePickerController* imagePickerController;
-
-@property (weak, nonatomic) IBOutlet UIButton *buttonChoosePhoto;
+@property (weak, nonatomic) IBOutlet UIButton *choosePhotoButton;
 
 
 @end
@@ -44,13 +41,10 @@
     
     self.gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture)];
     
-    self.viewPhotoImage = [UIImage new];
-    self.viewPhotoMessage = @"";
-    self.viewPhotoRadius = 0;
 }
 
 - (void)tapGesture {
-    [self.textField resignFirstResponder];
+    [self.messageTextField resignFirstResponder];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
@@ -66,9 +60,7 @@
     y += ((int)(!up) * 2 - 1) * (int)yMove;
     if (y > 0)
         y = 0;
-//    NSLog(@"trying animation %d", up);
     if (!runningAnimation) {
-//        NSLog(@"running animation %d", up);
         runningAnimation = YES;
         [UIView animateWithDuration:[[self.keyboardNotification userInfo][UIKeyboardAnimationDurationUserInfoKey] doubleValue]
                               delay:0
@@ -79,10 +71,8 @@
             if (!finished)
                 return;
             runningAnimation = NO;
-//            NSLog(@"done animation %d", up);
         }];
     }
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -100,12 +90,39 @@
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [self.parentViewController.parentViewController.view removeGestureRecognizer: self.gesture];
-    [self.textField resignFirstResponder];
+    [self.messageTextField resignFirstResponder];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     runningAnimation = YES;
+}
+
+-(void)setViewPhotoRadius:(NSUInteger)viewPhotoRadius
+{
+    self.radiusSlider.value = viewPhotoRadius;
+    self.radiusTextLabel.text = [@(viewPhotoRadius) stringValue];
+}
+
+-(NSUInteger)viewPhotoRadius
+{
+    return self.radiusSlider.value;
+}
+
+-(void)setViewPhotoMessage:(NSString *)viewPhotoMessage
+{
+    self.messageTextField.text = viewPhotoMessage;
+}
+
+-(NSString *)viewPhotoMessage
+{
+    return self.messageTextField.text;
+}
+
+-(void)setViewPhotoImage:(NSData *)viewPhotoImage
+{
+    _viewPhotoImage = viewPhotoImage;
+    [self.choosePhotoButton setSelected:YES];
 }
 
 #pragma mark - keyboard movements
@@ -131,18 +148,17 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
-
     return YES;
 }
+
 - (IBAction)radiusValueChanged:(UISlider*)sender {
     NSUInteger radius = sender.value;
-    self.viewPhotoRadius = radius;
-    self.radiusTextField.text = [NSString stringWithFormat:@"%lu", (unsigned long)radius];
+    self.radiusTextLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)radius];
 }
 
 
 - (IBAction)choosePhotoTouched:(id)sender {
-    [self.textField resignFirstResponder];
+    [self.messageTextField resignFirstResponder];
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Choose Photo" message:@"You could take a photo, or select a photo from your library" preferredStyle: UIAlertControllerStyleActionSheet];
     [alertController addAction:[UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         pickerType = UIImagePickerControllerSourceTypeCamera;
@@ -156,9 +172,10 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+
     [self dismissViewControllerAnimated:YES completion:nil];
-    self.viewPhotoImage = info[UIImagePickerControllerOriginalImage];
-    [self.buttonChoosePhoto setSelected:YES];
+    self.viewPhotoImage = UIImagePNGRepresentation(info[UIImagePickerControllerOriginalImage]);
+    
 }
 
 #pragma mark - Navigation
