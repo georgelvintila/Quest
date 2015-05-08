@@ -142,7 +142,7 @@
 
 
 - (IBAction)choosePhotoTouched:(id)sender {
-    
+    [self.textField resignFirstResponder];
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Choose Photo" message:@"You could take a photo, or select a photo from your library" preferredStyle: UIAlertControllerStyleActionSheet];
     [alertController addAction:[UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         pickerType = UIImagePickerControllerSourceTypeCamera;
