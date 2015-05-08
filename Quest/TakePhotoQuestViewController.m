@@ -11,6 +11,12 @@
 
 @interface TakePhotoQuestViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *radiusValue;
+@property (weak, nonatomic) IBOutlet UILabel *angleValue;
+
+@property (weak, nonatomic) IBOutlet UISlider *radiusSlider;
+@property (weak, nonatomic) IBOutlet UIStepper *angleStepper;
+
 @end
 
 @implementation TakePhotoQuestViewController
@@ -25,12 +31,30 @@
 
 - (IBAction)angleStepperValueChanged:(UIStepper*)sender {
     NSInteger intValue = sender.value;
-    self.angleValue.text = [NSString stringWithFormat:@"%lu", (long)intValue];
+    self.angleValue.text = [@(intValue) stringValue];
 }
 
 - (IBAction)radiusSliderValueChanged:(UISlider*)sender {
     NSInteger intValue = sender.value;
-    self.radiusValue.text = [NSString stringWithFormat:@"%lu", (long)intValue];
+    self.radiusValue.text = [@(intValue) stringValue];
+}
+
+- (double)questRadius {
+    return self.angleStepper.value;
+}
+
+- (double)questAngle {
+    return self.radiusSlider.value;
+}
+
+- (void)setQuestAngle:(double)questAngle {
+    [self.angleStepper setValue:self.questAngle];
+    self.angleValue.text = [@(questAngle) stringValue];
+}
+
+- (void)setQuestRadius:(double)questRadius {
+    [self.radiusSlider setValue:questRadius animated:NO];
+    self.radiusValue.text = [@(questRadius) stringValue];
 }
 
 @end

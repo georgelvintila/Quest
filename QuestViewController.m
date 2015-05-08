@@ -55,10 +55,12 @@
                     {
                       [ self.mapButton setSelected:YES];
                     }
-                    self.containerViewController.takePhotoQuestViewController.angleStepper.value = [self.takePhotoQuestInfo.questPhotoAngle doubleValue];
-                    self.containerViewController.takePhotoQuestViewController.angleValue.text = [self.takePhotoQuestInfo.questPhotoAngle stringValue];
-                    self.containerViewController.takePhotoQuestViewController.radiusSlider.value = [self.takePhotoQuestInfo.questPhotoRadius doubleValue];
-                    self.containerViewController.takePhotoQuestViewController.radiusValue.text = [self.takePhotoQuestInfo.questPhotoRadius stringValue];
+                    self.containerViewController.takePhotoQuestViewController.questAngle = [self.takePhotoQuestInfo.questPhotoAngle doubleValue];
+                    self.containerViewController.takePhotoQuestViewController.questRadius = [self.takePhotoQuestInfo.questPhotoRadius doubleValue];
+//                    self.containerViewController.takePhotoQuestViewController.angleStepper.value = [self.takePhotoQuestInfo.questPhotoAngle doubleValue];
+//                    self.containerViewController.takePhotoQuestViewController.angleValue.text = [self.takePhotoQuestInfo.questPhotoAngle stringValue];
+//                    self.containerViewController.takePhotoQuestViewController.radiusSlider.value = [self.takePhotoQuestInfo.questPhotoRadius doubleValue];
+//                    self.containerViewController.takePhotoQuestViewController.radiusValue.text = [self.takePhotoQuestInfo.questPhotoRadius stringValue];
                 }
                 break;
                 
@@ -121,8 +123,12 @@
                 self.takePhotoQuestInfo.questName = self.questNameText.text;
                 self.takePhotoQuestInfo.questDetails = self.detailTextView.text;
                 self.takePhotoQuestInfo.questLocation = self.questLocation;
-                self.takePhotoQuestInfo.questPhotoAngle = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.angleStepper.value];
-                self.takePhotoQuestInfo.questPhotoRadius = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.radiusSlider.value];
+                
+                self.takePhotoQuestInfo.questPhotoAngle = [NSNumber numberWithInteger:(NSInteger)self.containerViewController.takePhotoQuestViewController.questAngle];
+                self.takePhotoQuestInfo.questPhotoRadius = [NSNumber numberWithInteger:(NSInteger)self.containerViewController.takePhotoQuestViewController.questRadius];
+                
+//                self.takePhotoQuestInfo.questPhotoAngle = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.angleStepper.value];
+//                self.takePhotoQuestInfo.questPhotoRadius = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.radiusSlider.value];
                 BOOL complete = (self.takePhotoQuestInfo.questName.length && self.takePhotoQuestInfo.questDetails.length && self.takePhotoQuestInfo.questLocation != nil);
                 self.takePhotoQuestInfo.questComplete = complete;
                 [qmanager updateQuestOfType:kQuestTypeTakePhotoQuest atIndex:self.questIndex withQuestInfo:self.takePhotoQuestInfo];
@@ -134,8 +140,12 @@
                 self.takePhotoQuestInfo.questName = self.questNameText.text;
                 self.takePhotoQuestInfo.questDetails = self.detailTextView.text;
                 self.takePhotoQuestInfo.questLocation = self.questLocation;
-                self.takePhotoQuestInfo.questPhotoAngle = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.angleStepper.value];
-                self.takePhotoQuestInfo.questPhotoRadius = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.radiusSlider.value];
+
+                self.takePhotoQuestInfo.questPhotoAngle = [NSNumber numberWithInteger:(NSInteger)self.containerViewController.takePhotoQuestViewController.questAngle];
+                self.takePhotoQuestInfo.questPhotoRadius = [NSNumber numberWithInteger:(NSInteger)self.containerViewController.takePhotoQuestViewController.questRadius];
+
+//                self.takePhotoQuestInfo.questPhotoAngle = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.angleStepper.value];
+//                self.takePhotoQuestInfo.questPhotoRadius = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.radiusSlider.value];
                 BOOL complete = (self.takePhotoQuestInfo.questName.length && self.takePhotoQuestInfo.questDetails.length && self.takePhotoQuestInfo.questLocation != nil);
                 self.takePhotoQuestInfo.questComplete = complete;
                 if(self.takePhotoQuestInfo.questName.length || self.takePhotoQuestInfo.questDetails.length)

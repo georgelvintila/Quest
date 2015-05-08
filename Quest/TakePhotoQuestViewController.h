@@ -13,10 +13,10 @@
 
 #pragma mark - Properties
 
-@property (weak, nonatomic) IBOutlet UILabel *radiusValue;
-@property (weak, nonatomic) IBOutlet UILabel *angleValue;
-@property (weak, nonatomic) IBOutlet UISlider *radiusSlider;
-@property (weak, nonatomic) IBOutlet UIStepper *angleStepper;
+
+@property (nonatomic) double questRadius;
+@property (nonatomic) double questAngle;
+
 
 
 @end
