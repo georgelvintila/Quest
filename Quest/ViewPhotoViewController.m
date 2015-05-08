@@ -14,6 +14,7 @@
     NSUInteger yMove;
     BOOL moveView;
     BOOL runningAnimation;
+    UIImagePickerControllerSourceType pickerType;
 
 }
 
@@ -28,6 +29,7 @@
 @property (strong, nonatomic) UIImagePickerController* imagePickerController;
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonChoosePhoto;
+
 
 @end
 
@@ -110,7 +112,6 @@
 - (void)keyboardWillShow:(NSNotification *)notification
 {
     yMove = [@([[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size.height) unsignedIntegerValue];
-//    NSLog(@"keyboard size: %@", @(yMove));
     
     self.keyboardNotification = notification;
     
@@ -124,13 +125,8 @@
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-//    NSLog(@"started");
     moveView = YES;
 
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -144,47 +140,36 @@
     self.radiusTextField.text = [NSString stringWithFormat:@"%lu", (unsigned long)radius];
 }
 
-- (void) photoFromCamera {
-    self.imagePickerController = [[UIImagePickerController alloc] init];
-    self.imagePickerController.delegate = self;
-    self.imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    [self presentViewController:self.imagePickerController animated:YES completion:nil];
-}
-
-- (void) photoFromLibrary {
-    self.imagePickerController = [[UIImagePickerController alloc] init];
-    self.imagePickerController.allowsEditing = NO;
-    self.imagePickerController.delegate = self;
-    self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    [self presentViewController:self.imagePickerController animated:YES completion:nil];
-}
 
 - (IBAction)choosePhotoTouched:(id)sender {
     
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Choose Photo" message:@"You could take a photo, or select a photo from your library" preferredStyle: UIAlertControllerStyleActionSheet];
     [alertController addAction:[UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [self photoFromCamera];
+        pickerType = UIImagePickerControllerSourceTypeCamera;
+        [self performSegueWithIdentifier:@"kPickPhoto" sender:nil];
     }]];
     [alertController addAction:[UIAlertAction actionWithTitle:@"From Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [self photoFromLibrary];
+        pickerType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self performSegueWithIdentifier:@"kPickPhoto" sender:nil];
     }]];
     [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alertController animated:YES completion:nil];
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    NSLog(@"image picked: %@", info);
     [self dismissViewControllerAnimated:YES completion:nil];
     self.viewPhotoImage = info[UIImagePickerControllerOriginalImage];
     [self.buttonChoosePhoto setSelected:YES];
 }
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    self.imagePickerController = [segue.destinationViewController init];
+    self.imagePickerController.allowsEditing = NO;
+    self.imagePickerController.delegate = self;
+    self.imagePickerController.sourceType = pickerType;
 }
-*/
+
 
 @end

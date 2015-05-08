@@ -698,11 +698,31 @@
                         <outlet property="radiusSlider" destination="ER1-74-fTe" id="j7Y-TY-hNv"/>
                         <outlet property="radiusTextField" destination="cm0-eZ-cGA" id="n0I-CK-76u"/>
                         <outlet property="textField" destination="f6Q-qg-iZt" id="oTk-RP-04L"/>
+                        <segue destination="Sd6-zA-m4d" kind="presentation" identifier="kPickPhoto" id="1or-iw-8t2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4tG-ek-0yP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2068" y="-589.5"/>
+        </scene>
+        <!--Image Picker Controller-->
+        <scene sceneID="XCY-Un-EhW">
+            <objects>
+                <viewController id="Sd6-zA-m4d" customClass="UIImagePickerController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1vg-nO-1yn"/>
+                        <viewControllerLayoutGuide type="bottom" id="j0P-kK-CH9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Lqt-BS-sXD" customClass="UIPickerView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rmM-02-ktk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2506" y="-589"/>
         </scene>
         <!--Item-->
         <scene sceneID="t2U-3N-pto">

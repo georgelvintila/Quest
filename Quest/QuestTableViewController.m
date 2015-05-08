@@ -305,13 +305,13 @@
         case 0:
         {
             self.questType = QuestTypeTakePhoto;
-            [self performSegueWithIdentifier:kQuestSegue sender: self];
+            [self performSegueWithIdentifier:kQuestSegue sender: nil];
         }
             break;
         case 1:
         {
             self.questType = QuestTypeViewPhoto;
-            [self performSegueWithIdentifier:kQuestSegue sender: self];
+            [self performSegueWithIdentifier:kQuestSegue sender: nil];
         }
             break;
         default:
@@ -381,6 +381,10 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     self.destinationViewController = segue.destinationViewController;
+    if([segue.identifier isEqualToString:kQuestSegue])
+    {
+        ((QuestViewController *)(self.destinationViewController)).questType = self.questType;
+    }
 }
 
 @end
