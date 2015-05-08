@@ -55,7 +55,7 @@ static NSString * const kQuestColumnTakePhotoRadius = @"radius";
 //View Photo Quest
 static NSString * const kQuestColumnViewPhotoViewRadius = @"viewRadius";
 static NSString * const kQuestColumnViewPhotoMessage = @"message";
-static NSString * const kQuestColumnViewPhotoImageFile = @"imageFile";
+static NSString * const kQuestColumnViewPhotoImage = @"imageFile";
 
 //Notification Strings
 static NSString * const kQuestQuerySuccesNotification = @"kQuestQuerySuccesNotification";

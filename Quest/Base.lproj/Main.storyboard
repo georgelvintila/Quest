@@ -694,10 +694,10 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="288" height="151"/>
                     <connections>
-                        <outlet property="buttonChoosePhoto" destination="sJ6-kn-ySr" id="Mww-gz-Xhk"/>
+                        <outlet property="choosePhotoButton" destination="sJ6-kn-ySr" id="wOQ-aF-XpF"/>
+                        <outlet property="messageTextField" destination="f6Q-qg-iZt" id="b3g-LN-UeK"/>
                         <outlet property="radiusSlider" destination="ER1-74-fTe" id="j7Y-TY-hNv"/>
-                        <outlet property="radiusTextField" destination="cm0-eZ-cGA" id="n0I-CK-76u"/>
-                        <outlet property="textField" destination="f6Q-qg-iZt" id="oTk-RP-04L"/>
+                        <outlet property="radiusTextLabel" destination="cm0-eZ-cGA" id="u8N-Vt-dtb"/>
                         <segue destination="Sd6-zA-m4d" kind="presentation" identifier="kPickPhoto" id="1or-iw-8t2"/>
                     </connections>
                 </viewController>

@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "LocationPickerViewController.h"
 #import "QuestManager.h"
-#import "TakePhotoQuestInfo.h"
 #import "ContainerViewController.h"
 #import "TakePhotoQuestViewController.h"
+
+@class QuestInfo;
 
 @interface QuestViewController : UIViewController<LocationPickerViewControllerDelegate,UITextFieldDelegate>
 
@@ -25,6 +26,6 @@
 @property (nonatomic) QuestType questType;
 @property (nonatomic) NSInteger questIndex;
 @property (nonatomic) BOOL editMode;
-@property (nonatomic) TakePhotoQuestInfo* takePhotoQuestInfo;
+@property (nonatomic) QuestInfo* questInfo;
 
 @end

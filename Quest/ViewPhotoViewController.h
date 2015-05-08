@@ -11,7 +11,7 @@
 @interface ViewPhotoViewController : UIViewController
 
 @property (assign, nonatomic) NSUInteger viewPhotoRadius;
-@property (strong, nonatomic) UIImage* viewPhotoImage;
+@property (strong, nonatomic) NSData* viewPhotoImage;
 @property (strong, nonatomic) NSString* viewPhotoMessage;
 
 @end

@@ -30,13 +30,13 @@
 
 #pragma mark - Property Methods
 
--(UIImage *)image
+-(NSData *)image
 {
-    __block UIImage *image = nil;
+    __block NSData *image = nil;
     
     [self.imageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {
-            image = [UIImage imageWithData:imageData];
+            image = imageData;
         }
     }];
     return image;
@@ -44,11 +44,10 @@
 
 -(void)saveQuestInformation:(QuestInfo *)questInfo
 {
-    UIImage *image = [[questInfo questDictionary] objectForKey:kQuestColumnViewPhotoImageFile];
+    NSData *image = [[questInfo questDictionary] objectForKey:kQuestColumnViewPhotoImage];
     if(image)
     {
-        NSData *imageData = UIImagePNGRepresentation(image);
-        ((ViewPhotoQuestInfo*)questInfo).questPhotoImageFile = [PFFile fileWithData:imageData];
+        ((ViewPhotoQuestInfo*)questInfo).questPhotoImage = [PFFile fileWithData:image];
     }
     [super saveQuestInformation:questInfo];
 }
@@ -62,7 +61,7 @@
     _questInfo.questLocation = self.mapLocation;
     _questInfo.questName = self.name;
     _questInfo.questDetails = self.details;
-    _questInfo.questPhotoImageFile = [self image];
+    _questInfo.questPhotoImage = self.image;
     _questInfo.questPhotoMessage = self.message;
     _questInfo.questPhotoViewRadius = self.viewRadius;
     _questInfo.questComplete = [self.complete boolValue];
