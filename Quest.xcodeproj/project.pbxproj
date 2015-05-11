@@ -18,8 +18,8 @@
 		BB18DC2A1AF119E5005B2AB2 /* TakePhotoQuestInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB18DC291AF119E5005B2AB2 /* TakePhotoQuestInfo.m */; };
 		BB6308E61AF10A0E002DF589 /* QuestInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6308E51AF10A0E002DF589 /* QuestInfo.m */; };
 		BB8962581AF1216B0068D150 /* QuestInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8962571AF1216B0068D150 /* QuestInfoTests.m */; };
-		E1D64E261AFB58450061EB11 /* CLLocationManager+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D64E251AFB58450061EB11 /* CLLocationManager+Addition.m */; };
 		BBEC01781AFB91F2005BC759 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEC01771AFB91F2005BC759 /* UIView+Frame.m */; };
+		E1D64E261AFB58450061EB11 /* CLLocationManager+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D64E251AFB58450061EB11 /* CLLocationManager+Addition.m */; };
 		E1D705081AEA7B8900525E19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D705071AEA7B8900525E19 /* main.m */; };
 		E1D7050B1AEA7B8900525E19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D7050A1AEA7B8900525E19 /* AppDelegate.m */; };
 		E1D7050E1AEA7B8900525E19 /* QuestLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D7050D1AEA7B8900525E19 /* QuestLoginViewController.m */; };
@@ -36,7 +36,6 @@
 		E1D7053E1AEA7DED00525E19 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D7053D1AEA7DED00525E19 /* MobileCoreServices.framework */; };
 		E1D705401AEA7DF600525E19 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D7053F1AEA7DF600525E19 /* QuartzCore.framework */; };
 		E1D705421AEA7DFD00525E19 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D705411AEA7DFD00525E19 /* Security.framework */; };
-		E1D705441AEA7E0300525E19 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D705431AEA7E0300525E19 /* StoreKit.framework */; };
 		E1D705461AEA7E0E00525E19 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D705451AEA7E0E00525E19 /* SystemConfiguration.framework */; };
 		E1D705481AEA7E1E00525E19 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D705471AEA7E1E00525E19 /* libz.dylib */; };
 		E1D7054A1AEA7E2C00525E19 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E1D705491AEA7E2C00525E19 /* libsqlite3.dylib */; };
@@ -59,6 +58,8 @@
 		E1E3EED11AF79DA10095A6EC /* FilterTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E3EECF1AF79DA10095A6EC /* FilterTableViewController.xib */; };
 		E1E3EED51AF7A5B70095A6EC /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E3EED41AF7A5B70095A6EC /* UserManager.m */; };
 		E1E3EEDD1AF7B9990095A6EC /* Bucharest.gpx in Resources */ = {isa = PBXBuildFile; fileRef = E1E3EEDC1AF7B9990095A6EC /* Bucharest.gpx */; };
+		E1E503981B00A080000C190A /* QuestImageFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E503971B00A080000C190A /* QuestImageFetchOperation.m */; };
+		E1E5039C1B00BD49000C190A /* QuestImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E5039B1B00BD49000C190A /* QuestImage.m */; };
 		E1EBEBBD1AEF79FD000A3790 /* QuestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EBEBBC1AEF79FD000A3790 /* QuestManager.m */; };
 		E1EBEBC11AEF7AED000A3790 /* TakePhotoQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EBEBC01AEF7AED000A3790 /* TakePhotoQuest.m */; };
 		E1EFDF8E1AF0C3CA00894032 /* PFObject+Quest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EFDF8D1AF0C3CA00894032 /* PFObject+Quest.m */; };
@@ -99,10 +100,10 @@
 		BB6308E41AF10A0E002DF589 /* QuestInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestInfo.h; sourceTree = "<group>"; };
 		BB6308E51AF10A0E002DF589 /* QuestInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestInfo.m; sourceTree = "<group>"; };
 		BB8962571AF1216B0068D150 /* QuestInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestInfoTests.m; sourceTree = "<group>"; };
-		E1D64E241AFB58450061EB11 /* CLLocationManager+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Addition.h"; sourceTree = "<group>"; };
-		E1D64E251AFB58450061EB11 /* CLLocationManager+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Addition.m"; sourceTree = "<group>"; };
 		BBEC01761AFB91F2005BC759 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		BBEC01771AFB91F2005BC759 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		E1D64E241AFB58450061EB11 /* CLLocationManager+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Addition.h"; sourceTree = "<group>"; };
+		E1D64E251AFB58450061EB11 /* CLLocationManager+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Addition.m"; sourceTree = "<group>"; };
 		E1D705021AEA7B8900525E19 /* Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D705061AEA7B8900525E19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1D705071AEA7B8900525E19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -125,7 +126,6 @@
 		E1D7053D1AEA7DED00525E19 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		E1D7053F1AEA7DF600525E19 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E1D705411AEA7DFD00525E19 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		E1D705431AEA7E0300525E19 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E1D705451AEA7E0E00525E19 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E1D705471AEA7E1E00525E19 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		E1D705491AEA7E2C00525E19 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -155,6 +155,10 @@
 		E1E3EED31AF7A5B70095A6EC /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
 		E1E3EED41AF7A5B70095A6EC /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		E1E3EEDC1AF7B9990095A6EC /* Bucharest.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Bucharest.gpx; sourceTree = "<group>"; };
+		E1E503961B00A080000C190A /* QuestImageFetchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestImageFetchOperation.h; sourceTree = "<group>"; };
+		E1E503971B00A080000C190A /* QuestImageFetchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestImageFetchOperation.m; sourceTree = "<group>"; };
+		E1E5039A1B00BD49000C190A /* QuestImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestImage.h; sourceTree = "<group>"; };
+		E1E5039B1B00BD49000C190A /* QuestImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestImage.m; sourceTree = "<group>"; };
 		E1EBEBBB1AEF79FD000A3790 /* QuestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestManager.h; sourceTree = "<group>"; };
 		E1EBEBBC1AEF79FD000A3790 /* QuestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestManager.m; sourceTree = "<group>"; };
 		E1EBEBBF1AEF7AED000A3790 /* TakePhotoQuest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePhotoQuest.h; sourceTree = "<group>"; };
@@ -180,7 +184,6 @@
 				E1D7054A1AEA7E2C00525E19 /* libsqlite3.dylib in Frameworks */,
 				E1D705481AEA7E1E00525E19 /* libz.dylib in Frameworks */,
 				E1D705461AEA7E0E00525E19 /* SystemConfiguration.framework in Frameworks */,
-				E1D705441AEA7E0300525E19 /* StoreKit.framework in Frameworks */,
 				E1D705421AEA7DFD00525E19 /* Security.framework in Frameworks */,
 				E1D7054F1AEA83C900525E19 /* ParseCrashReporting.framework in Frameworks */,
 				E1D705401AEA7DF600525E19 /* QuartzCore.framework in Frameworks */,
@@ -301,7 +304,6 @@
 				E1D7054C1AEA83C900525E19 /* ParseFacebookUtils.framework */,
 				E1D7054D1AEA83C900525E19 /* ParseFacebookUtilsV4.framework */,
 				E1D7054E1AEA83C900525E19 /* ParseUI.framework */,
-				E1D705431AEA7E0300525E19 /* StoreKit.framework */,
 				E1D705411AEA7DFD00525E19 /* Security.framework */,
 				E1D7053F1AEA7DF600525E19 /* QuartzCore.framework */,
 				E1D7053D1AEA7DED00525E19 /* MobileCoreServices.framework */,
@@ -412,6 +414,8 @@
 				E1DE76E61AFA2CEA0028E3D2 /* QuestFetchOperation.m */,
 				E1DE76EB1AFA5E980028E3D2 /* QuestDeleteOperation.h */,
 				E1DE76EC1AFA5E980028E3D2 /* QuestDeleteOperation.m */,
+				E1E503961B00A080000C190A /* QuestImageFetchOperation.h */,
+				E1E503971B00A080000C190A /* QuestImageFetchOperation.m */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -423,6 +427,8 @@
 				E1F45C991AF21E4E00ACAE6D /* QuestTypes */,
 				E1EBEBBB1AEF79FD000A3790 /* QuestManager.h */,
 				E1EBEBBC1AEF79FD000A3790 /* QuestManager.m */,
+				E1E5039A1B00BD49000C190A /* QuestImage.h */,
+				E1E5039B1B00BD49000C190A /* QuestImage.m */,
 			);
 			name = Quests;
 			sourceTree = "<group>";
@@ -553,6 +559,12 @@
 				TargetAttributes = {
 					E1D705011AEA7B8900525E19 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = K682865NGQ;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					E1D7051A1AEA7B8900525E19 = {
 						CreatedOnToolsVersion = 6.3;
@@ -616,6 +628,7 @@
 				212D2C231AEFCABC004991BA /* TakePhotoQuestViewController.m in Sources */,
 				212D2C261AF22231004991BA /* QuestViewController.m in Sources */,
 				212D2C2F1AF78926004991BA /* ViewPhotoViewController.m in Sources */,
+				E1E503981B00A080000C190A /* QuestImageFetchOperation.m in Sources */,
 				BB6308E61AF10A0E002DF589 /* QuestInfo.m in Sources */,
 				E1E3EECA1AF7813A0095A6EC /* QuestResultTableViewController.m in Sources */,
 				E1D7050E1AEA7B8900525E19 /* QuestLoginViewController.m in Sources */,
@@ -626,6 +639,7 @@
 				BB18DC2A1AF119E5005B2AB2 /* TakePhotoQuestInfo.m in Sources */,
 				E1D8FAB31AEE906000F78777 /* QuestTableViewController.m in Sources */,
 				E1EFDF911AF0F12E00894032 /* ViewPhotoQuest.m in Sources */,
+				E1E5039C1B00BD49000C190A /* QuestImage.m in Sources */,
 				E1EBEBBD1AEF79FD000A3790 /* QuestManager.m in Sources */,
 				E1D705081AEA7B8900525E19 /* main.m in Sources */,
 				BBEC01781AFB91F2005BC759 /* UIView+Frame.m in Sources */,
@@ -694,7 +708,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Georgel Vintila (5PPDJ6BEYT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Georgel Vintila (5PPDJ6BEYT)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -717,6 +732,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "95c79423-3566-40c9-a94f-e2ab4c5d1198";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -739,7 +755,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Georgel Vintila (5PPDJ6BEYT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Georgel Vintila (5PPDJ6BEYT)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -755,6 +772,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "95c79423-3566-40c9-a94f-e2ab4c5d1198";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -765,6 +783,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Georgel Vintila (5PPDJ6BEYT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Georgel Vintila (5PPDJ6BEYT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Quest",
@@ -773,6 +793,7 @@
 				INFOPLIST_FILE = Quest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "95c79423-3566-40c9-a94f-e2ab4c5d1198";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -781,6 +802,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Georgel Vintila (5PPDJ6BEYT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Georgel Vintila (5PPDJ6BEYT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Quest",
@@ -789,6 +812,7 @@
 				INFOPLIST_FILE = Quest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "95c79423-3566-40c9-a94f-e2ab4c5d1198";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

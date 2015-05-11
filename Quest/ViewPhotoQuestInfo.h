@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 
 #import "QuestInfo.h"
+#import "QuestImage.h"
 
 @interface ViewPhotoQuestInfo : QuestInfo
 
 #pragma mark - Properties
 
-@property (nonatomic) NSNumber *questPhotoViewRadius; // TODO: slider (asemantor cu TakePhoto)
-@property (nonatomic) NSString *questPhotoMessage; // TODO: textfieldview
-@property (nonatomic) id questPhotoImage; // TODO: button => add action picker (take photo & save / from gallery) (camera: popover controller)
+@property (nonatomic) NSNumber *questPhotoViewRadius;
+@property (nonatomic) NSString *questPhotoMessage;
+@property (nonatomic) QuestImage * questPhotoImage;
+@property (nonatomic) BOOL hasImage;
 @end

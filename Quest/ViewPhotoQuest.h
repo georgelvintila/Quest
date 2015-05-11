@@ -20,8 +20,6 @@
 
 @property (nonatomic,readonly) PFFile *imageFile;
 
-@property (nonatomic,readonly) NSData *image;
-
 #pragma mark - Class Methods
 
 + (NSString *)parseClassName;

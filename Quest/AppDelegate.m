@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import <Bolts/Bolts.h>
 #import "UserManager.h"
 
 @interface AppDelegate ()
@@ -26,16 +27,21 @@
     
 //    [PFUser enableAutomaticUser];
 //    [[PFUser currentUser] saveInBackground];
-
-    [PFUser logInWithUsernameInBackground:@"testuser" password:@"pass"];
-    PFACL *defaultACL = [PFACL ACL];
-    [defaultACL setPublicReadAccess:YES];
-    [defaultACL setWriteAccess:YES forUser:[PFUser currentUser]];
-    [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
-    // [Optional] Track statistics around application opens.
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     [UserManager sharedManager].name =[PFUser currentUser].username ;
+    
+    [[PFUser logInWithUsernameInBackground:@"testuser" password:@"pass"] continueWithSuccessBlock:^id(BFTask *task) {
+        PFACL *defaultACL = [PFACL ACL];
+        [defaultACL setPublicReadAccess:YES];
+        [defaultACL setWriteAccess:YES forUser:[PFUser currentUser]];
+        [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
+        // [Optional] Track statistics around application opens.
+        
+        
+
+        return task;
+    }];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     return YES;
 }
 

@@ -53,16 +53,19 @@
 {
     @autoreleasepool {
         PFQuery *query = [PFQuery queryWithClassName:self.questType];
+        PFUser *current =[PFUser currentUser];
+        if(!current)
+            return;
         switch (self.questOwner)
         {
             case QuestOwnerTypeCurrent:
             {
-                [query whereKey:kQuestColumnOwner equalTo:[PFUser currentUser]];
+                [query whereKey:kQuestColumnOwner equalTo:current];
                 break;
             }
             case QuestOwnerTypeOthers:
             {
-                [query whereKey:kQuestColumnOwner notEqualTo:[PFUser currentUser]];
+                [query whereKey:kQuestColumnOwner notEqualTo:current];
                 [query whereKey:kQuestColumnComplete notEqualTo:@0];
                 CLLocation *location = [UserManager sharedManager].location;
                 if(!location)

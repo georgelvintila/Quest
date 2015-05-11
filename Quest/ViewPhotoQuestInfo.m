@@ -28,9 +28,6 @@
     return self.dictionary[kQuestColumnViewPhotoMessage];
 }
 
-- (id)questPhotoImage {
-    return self.dictionary[kQuestColumnViewPhotoImage];
-}
 
 - (void)setQuestPhotoViewRadius:(NSNumber *)questPhotoViewRadius {
     if(questPhotoViewRadius)
@@ -42,9 +39,5 @@
         self.dictionary[kQuestColumnViewPhotoMessage] = questPhotoMessage;
 }
 
-- (void)setQuestPhotoImage:(id)questPhotoImage {
-    if(questPhotoImage)
-        self.dictionary[kQuestColumnViewPhotoImage] = questPhotoImage;
-}
 
 @end

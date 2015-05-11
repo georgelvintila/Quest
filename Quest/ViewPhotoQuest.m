@@ -10,6 +10,7 @@
 #import <Parse/PFObject+Subclass.h>
 #import "ViewPhotoQuestInfo.h"
 #import "PFObject+Quest.h"
+#import "QuestImage.h"
 
 @interface ViewPhotoQuest ()
 {
@@ -30,24 +31,14 @@
 
 #pragma mark - Property Methods
 
--(NSData *)image
-{
-    __block NSData *image = nil;
-    
-    [self.imageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if (!error) {
-            image = imageData;
-        }
-    }];
-    return image;
-}
 
 -(void)saveQuestInformation:(QuestInfo *)questInfo
 {
-    NSData *image = [[questInfo questDictionary] objectForKey:kQuestColumnViewPhotoImage];
+    NSData *image = ((ViewPhotoQuestInfo*)questInfo).questPhotoImage.imageData;
     if(image)
     {
-        ((ViewPhotoQuestInfo*)questInfo).questPhotoImage = [PFFile fileWithData:image];
+        ((ViewPhotoQuestInfo*)questInfo).questPhotoImage = nil;
+        [self setObject:[PFFile fileWithData:image] forKey:kQuestColumnViewPhotoImage];
     }
     [super saveQuestInformation:questInfo];
 }
@@ -61,7 +52,8 @@
     _questInfo.questLocation = self.mapLocation;
     _questInfo.questName = self.name;
     _questInfo.questDetails = self.details;
-    _questInfo.questPhotoImage = self.image;
+    if(self.imageFile)
+        _questInfo.questPhotoImage =  [[QuestImage alloc] initWithUrl:self.imageFile.url];
     _questInfo.questPhotoMessage = self.message;
     _questInfo.questPhotoViewRadius = self.viewRadius;
     _questInfo.questComplete = [self.complete boolValue];

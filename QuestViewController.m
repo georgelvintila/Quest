@@ -74,7 +74,7 @@
                     }
                     self.containerViewController.viewPhotoViewController.viewPhotoRadius = [info.questPhotoViewRadius integerValue];
                     self.containerViewController.viewPhotoViewController.viewPhotoMessage = info.questPhotoMessage;
-                    self.containerViewController.viewPhotoViewController.viewPhotoImage = info.questPhotoImage;
+//                    self.containerViewController.viewPhotoViewController.viewPhotoImage = info.questPhotoImage;
                 }
                 default:
                 break;
@@ -163,7 +163,8 @@
             info.questLocation = self.questLocation;
             
             info.questPhotoMessage = self.containerViewController.viewPhotoViewController.viewPhotoMessage;
-            info.questPhotoImage = self.containerViewController.viewPhotoViewController.viewPhotoImage;
+            if(self.containerViewController.viewPhotoViewController.viewPhotoImage)
+                info.questPhotoImage = [[QuestImage alloc] initWithData:self.containerViewController.viewPhotoViewController.viewPhotoImage];
             info.questPhotoViewRadius = [NSNumber numberWithInteger:self.containerViewController.viewPhotoViewController.viewPhotoRadius];
             
             BOOL complete = (info.questName.length && info.questDetails.length && info.questLocation != nil && info.questPhotoImage);

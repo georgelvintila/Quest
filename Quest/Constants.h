@@ -68,6 +68,9 @@ static NSString * const kFetchOwner = @"kFetchOwner";
 static NSString * const kFetchItems= @"kFetchItems";
 static NSString * const kFetchType= @"kFetchType";
 
+static NSString * const kQuestFetchImageDataKey = @"kQuestFetchImageDataKey";
+static NSString * const kQuestFetchSuccesImageData = @"kQuestFetchSuccesImageData";
+
 static NSString * const kQuestCurrentLocation = @"kQuestCurrentLocation";
 
 static CGFloat const kFilterDistance = 1000.0f;

@@ -626,7 +626,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Sri-uZ-D8E"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cAX-xT-ifk">
-                        <rect key="frame" x="0.0" y="0.0" width="288" height="151"/>
+                        <rect key="frame" x="0.0" y="0.0" width="288" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="ER1-74-fTe">
@@ -672,8 +672,11 @@
                                     <action selector="choosePhotoTouched:" destination="gYV-f3-ABZ" eventType="touchUpInside" id="gzL-xm-ZCN"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zQa-dC-NgI">
+                                <rect key="frame" x="16" y="130" width="256" height="150"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YG8-xy-Rp0" firstAttribute="leading" secondItem="f6Q-qg-iZt" secondAttribute="leading" id="4uj-Yp-qbM"/>
                             <constraint firstItem="sJ6-kn-ySr" firstAttribute="trailing" secondItem="cAX-xT-ifk" secondAttribute="trailingMargin" id="9Rn-4k-gJY"/>
@@ -692,7 +695,7 @@
                     </view>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="288" height="151"/>
+                    <size key="freeformSize" width="288" height="300"/>
                     <connections>
                         <outlet property="choosePhotoButton" destination="sJ6-kn-ySr" id="wOQ-aF-XpF"/>
                         <outlet property="messageTextField" destination="f6Q-qg-iZt" id="b3g-LN-UeK"/>
@@ -703,7 +706,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4tG-ek-0yP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2068" y="-589.5"/>
+            <point key="canvasLocation" x="2068" y="-590"/>
         </scene>
         <!--Image Picker Controller-->
         <scene sceneID="XCY-Un-EhW">
