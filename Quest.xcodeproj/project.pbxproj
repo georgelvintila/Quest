@@ -14,6 +14,7 @@
 		212D2C2C1AF78834004991BA /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212D2C2B1AF78834004991BA /* ContainerViewController.m */; };
 		212D2C2F1AF78926004991BA /* ViewPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212D2C2E1AF78926004991BA /* ViewPhotoViewController.m */; };
 		BB01334F1AF7940D00E5785F /* QuestDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB01334E1AF7940D00E5785F /* QuestDetailsViewController.m */; };
+		BB0C2FB71B01ED9D00AE325F /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0C2FB61B01ED9D00AE325F /* SettingsViewController.m */; };
 		BB18DC271AF11739005B2AB2 /* ViewPhotoQuestInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB18DC261AF11739005B2AB2 /* ViewPhotoQuestInfo.m */; };
 		BB18DC2A1AF119E5005B2AB2 /* TakePhotoQuestInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB18DC291AF119E5005B2AB2 /* TakePhotoQuestInfo.m */; };
 		BB6308E61AF10A0E002DF589 /* QuestInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6308E51AF10A0E002DF589 /* QuestInfo.m */; };
@@ -93,6 +94,8 @@
 		212D2C2E1AF78926004991BA /* ViewPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPhotoViewController.m; sourceTree = "<group>"; };
 		BB01334D1AF7940D00E5785F /* QuestDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestDetailsViewController.h; sourceTree = "<group>"; };
 		BB01334E1AF7940D00E5785F /* QuestDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestDetailsViewController.m; sourceTree = "<group>"; };
+		BB0C2FB51B01ED9D00AE325F /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		BB0C2FB61B01ED9D00AE325F /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		BB18DC251AF11739005B2AB2 /* ViewPhotoQuestInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPhotoQuestInfo.h; sourceTree = "<group>"; };
 		BB18DC261AF11739005B2AB2 /* ViewPhotoQuestInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPhotoQuestInfo.m; sourceTree = "<group>"; };
 		BB18DC281AF119E5005B2AB2 /* TakePhotoQuestInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePhotoQuestInfo.h; sourceTree = "<group>"; };
@@ -354,6 +357,8 @@
 			children = (
 				E1E3EECD1AF79DA10095A6EC /* FilterTableViewController.h */,
 				E1E3EECE1AF79DA10095A6EC /* FilterTableViewController.m */,
+				BB0C2FB51B01ED9D00AE325F /* SettingsViewController.h */,
+				BB0C2FB61B01ED9D00AE325F /* SettingsViewController.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -630,6 +635,7 @@
 				212D2C2F1AF78926004991BA /* ViewPhotoViewController.m in Sources */,
 				E1E503981B00A080000C190A /* QuestImageFetchOperation.m in Sources */,
 				BB6308E61AF10A0E002DF589 /* QuestInfo.m in Sources */,
+				BB0C2FB71B01ED9D00AE325F /* SettingsViewController.m in Sources */,
 				E1E3EECA1AF7813A0095A6EC /* QuestResultTableViewController.m in Sources */,
 				E1D7050E1AEA7B8900525E19 /* QuestLoginViewController.m in Sources */,
 				E1D7050B1AEA7B8900525E19 /* AppDelegate.m in Sources */,

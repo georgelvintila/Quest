@@ -19,7 +19,7 @@ static NSString * const kQuestTableViewControllerTitleOtherQuests = @"OtherQuest
 static NSString * const kQuestTableViewControllerTitleMyQuests = @"MyQuests";
 
 static NSString * const kQuestSelectedFilterType = @"kQuestSelectedFilterType";
-
+static NSString * const kQuestSelectedRadius = @"kQuestSelectedRadius";
 //Cell Identifiers
 
 static NSString * const kCellIdentifier = @"kCellIdentifier";
