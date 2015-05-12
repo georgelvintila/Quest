@@ -40,22 +40,47 @@
     return [self.filterTypes count];
 }
 
+- (NSString*) currentSelectedFilterType {
+    NSString *selectedItem = [[NSUserDefaults standardUserDefaults] objectForKey:kQuestSelectedFilterType];
+    return selectedItem;
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *cellIdentifier = kCellIdentifier;
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if(!cell)
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.textLabel.text = [self.filterTypes objectAtIndex:indexPath.row];
-    return  cell;
+    
+    NSString *currentSelected = [self currentSelectedFilterType];
+    
+    if ([cell.textLabel.text isEqualToString:currentSelected]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    return cell;
     
 }
 
 -(void)tableView:tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSString *oldValue = [self currentSelectedFilterType];
+
+    UITableViewCell *cellNew = [tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell *cellOld = [tableView cellForRowAtIndexPath: [NSIndexPath indexPathForItem: [self.filterTypes indexOfObject: oldValue] inSection:0]];
+    
+    cellOld.accessoryType = UITableViewCellAccessoryNone;
+    cellNew.accessoryType = UITableViewCellAccessoryCheckmark;
+    
     [[NSUserDefaults standardUserDefaults] setObject:[self.filterTypes objectAtIndex:indexPath.row] forKey:kQuestSelectedFilterType];
+    
+    [cellNew setSelected:NO animated:YES];
+}
+
+
+// hide sections not used
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    return [UIView new];
 }
 
 @end
