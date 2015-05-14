@@ -7,8 +7,10 @@
 //
 
 #import "SettingsViewController.h"
+#import "FilterTableViewController.h"
 #import <Parse/Parse.h>
-@interface SettingsViewController ()
+@interface SettingsViewController () <SettingsFilterDelegate>
+
 @property (weak, nonatomic) IBOutlet UILabel *textFieldRadius;
 @property (weak, nonatomic) IBOutlet UISlider *sliderRadius;
 @property (weak, nonatomic) IBOutlet UILabel *textFieldSelectedQuest;
@@ -17,6 +19,30 @@
 @end
 
 @implementation SettingsViewController
+
+- (void)viewDidLoad {
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    NSString *str = [def objectForKey:kQuestSelectedFilterType];
+    if (str) {
+        self.textFieldSelectedQuest.text = str;
+    }
+    
+    NSNumber *numberValue = [def objectForKey:kQuestSelectedRadius];
+    if (numberValue == nil) {
+        numberValue = @(5);
+        [def setObject:numberValue forKey:kQuestSelectedRadius];
+    }
+    
+    self.sliderRadius.value = [numberValue floatValue];
+    self.textFieldRadius.text = [NSString stringWithFormat:@"%@m", numberValue];
+    
+}
+
+- (void)filterDidSelectQuestType:(NSString *)questType {
+    [[NSUserDefaults standardUserDefaults] setObject:questType forKey:kQuestSelectedFilterType];
+    self.textFieldSelectedQuest.text = questType;
+}
+
 
 - (IBAction)buttonLogout:(id)sender {
     [PFUser logOut];
@@ -35,13 +61,10 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    NSString *str = [[NSUserDefaults standardUserDefaults] objectForKey:kQuestSelectedFilterType];
-    if (str) {
-        self.textFieldSelectedQuest.text = str;
+    if ([segue.destinationViewController isMemberOfClass:[FilterTableViewController class]]) {
+        FilterTableViewController *ctrl = segue.destinationViewController;
+        ctrl.delegate = self;
+        ctrl.currentSelectedFilterType = [[NSUserDefaults standardUserDefaults] objectForKey:kQuestSelectedFilterType];
     }
     NSUInteger value = [[[NSUserDefaults standardUserDefaults] objectForKey:kQuestSelectedRadius] unsignedIntegerValue];
     if (value < 5)

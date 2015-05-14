@@ -40,20 +40,13 @@
     return [self.filterTypes count];
 }
 
-- (NSString*) currentSelectedFilterType {
-    NSString *selectedItem = [[NSUserDefaults standardUserDefaults] objectForKey:kQuestSelectedFilterType];
-    return selectedItem;
-}
-
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *cellIdentifier = kCellIdentifier;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.textLabel.text = [self.filterTypes objectAtIndex:indexPath.row];
     
-    NSString *currentSelected = [self currentSelectedFilterType];
-    
-    if ([cell.textLabel.text isEqualToString:currentSelected]) {
+    if ([cell.textLabel.text isEqualToString:self.currentSelectedFilterType]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -64,7 +57,8 @@
 
 -(void)tableView:tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *oldValue = [self currentSelectedFilterType];
+    NSString *oldValue = self.currentSelectedFilterType;
+    NSString *newValue = [self.filterTypes objectAtIndex:indexPath.row];
 
     UITableViewCell *cellNew = [tableView cellForRowAtIndexPath:indexPath];
     UITableViewCell *cellOld = [tableView cellForRowAtIndexPath: [NSIndexPath indexPathForItem: [self.filterTypes indexOfObject: oldValue] inSection:0]];
@@ -77,6 +71,12 @@
     
     [cellNew setSelected:NO animated:YES];
     [[NSNotificationCenter defaultCenter] postNotificationName:kQuestFilterHasChanged object:nil];
+    if (self.delegate)
+        [self.delegate filterDidSelectQuestType: newValue];
+    
+    [cellNew setSelected:NO animated:YES];
+    
+    self.currentSelectedFilterType = newValue;
 }
 
 
