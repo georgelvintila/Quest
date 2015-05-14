@@ -68,6 +68,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:kQuestDataChangedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:kQuestQueryNoLocationNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestData) name:kQuestFilterHasChanged object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestData) name:kQuestUserLocationDidChangeNotification object:nil];
     
     _resultsTableController = [[QuestResultTableViewController alloc] init];
     _searchController = [[UISearchController alloc] initWithSearchResultsController:self.resultsTableController];
@@ -139,7 +140,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestDataChangedNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestQueryNoLocationNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestFilterHasChanged object:nil];
-    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestUserLocationDidChangeNotification object:nil];
 }
 
 #pragma mark - Deletion of elements
