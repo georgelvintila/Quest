@@ -19,8 +19,12 @@
 
 @property (nonatomic, strong) CLLocation *questLocation;
 @property (nonatomic, strong) NSCharacterSet *blockedCharacterSet;
-
 @property (nonatomic, strong) ContainerViewController *containerViewController;
+
+@property (weak, nonatomic) IBOutlet UITextField *questNameText;
+@property (weak, nonatomic) IBOutlet UITextView *detailTextView;
+@property (weak, nonatomic) IBOutlet UIButton *mapButton;
+@property (weak, nonatomic) IBOutlet UIView *takePhotoContainer;
 
 @end
 
@@ -28,16 +32,17 @@
 
 @implementation QuestViewController
 
+#pragma mark - Instantiation
+
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];
     if (self) {
-        self.editMode = NO;
+        _editMode = NO;
         isMapTransition = NO;
     }
     return self;
 }
-
 
 #pragma mark - Base Methods
 
@@ -56,7 +61,7 @@
                     self.questLocation = info.questLocation;
                     if(self.questLocation)
                     {
-                      [ self.mapButton setSelected:YES];
+                        [self.mapButton setSelected:YES];
                     }
                     self.containerViewController.takePhotoQuestViewController.questAngle = [info.questPhotoAngle doubleValue];
                     self.containerViewController.takePhotoQuestViewController.questRadius = [info.questPhotoRadius doubleValue];
@@ -74,7 +79,6 @@
                     }
                     self.containerViewController.viewPhotoViewController.viewPhotoRadius = [info.questPhotoViewRadius integerValue];
                     self.containerViewController.viewPhotoViewController.viewPhotoMessage = info.questPhotoMessage;
-//                    self.containerViewController.viewPhotoViewController.viewPhotoImage = info.questPhotoImage;
                 }
                 default:
                 break;
@@ -206,8 +210,5 @@
             locationPickerViewController.delegate = self;
         }
 }
-
-#pragma mark - Instance Method
-
 
 @end

@@ -26,8 +26,9 @@
 
 - (IBAction)sliderChanged:(UISlider *)sender {
     NSUInteger value = sender.value;
-    self.textFieldRadius.text = [NSString stringWithFormat:@"%um", value];
+    self.textFieldRadius.text = [NSString stringWithFormat:@"%lum", (unsigned long)value];
     [[NSUserDefaults standardUserDefaults] setObject:@(value) forKey:kQuestSelectedRadius];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 - (IBAction)buttonFilter:(id)sender {
     // segue
@@ -46,7 +47,7 @@
     if (value < 5)
         value = 5;
     self.sliderRadius.value = value;
-    self.textFieldRadius.text = [NSString stringWithFormat:@"%um", value];
+    self.textFieldRadius.text = [NSString stringWithFormat:@"%lum", (unsigned long)value];
     
 }
 

@@ -73,8 +73,10 @@
     cellNew.accessoryType = UITableViewCellAccessoryCheckmark;
     
     [[NSUserDefaults standardUserDefaults] setObject:[self.filterTypes objectAtIndex:indexPath.row] forKey:kQuestSelectedFilterType];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     [cellNew setSelected:NO animated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kQuestFilterHasChanged object:nil];
 }
 
 

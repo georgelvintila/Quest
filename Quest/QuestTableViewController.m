@@ -67,6 +67,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:kQuestDataChangedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:kQuestQueryNoLocationNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestData) name:kQuestFilterHasChanged object:nil];
     
     _resultsTableController = [[QuestResultTableViewController alloc] init];
     _searchController = [[UISearchController alloc] initWithSearchResultsController:self.resultsTableController];
@@ -95,9 +96,7 @@
 - (void)refreshContent {
     [self requestData];
     [self.tableView reloadData];
-
 }
-
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -139,6 +138,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestDataChangedNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestQueryNoLocationNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestFilterHasChanged object:nil];
     
 }
 
@@ -163,19 +163,36 @@
 
 -(void) requestData
 {
-    [self.questManager requestAllItemsForOwner:self.owner];
-
+    NSString *filter = [[NSUserDefaults standardUserDefaults] objectForKey:kQuestSelectedFilterType];
+    if(!filter || [filter isEqualToString:kQuestTypeAllQuests])
+    {
+        [self.questManager requestAllItemsForOwner:self.owner];
+    }
+    else
+    {
+        [self.questManager requestItemsOfType:filter forOwner:self.owner];
+    }
 }
 
 -(void)reloadData:(NSNotification*)notification
 {
-    self.allQuestTypes = [self.questManager allQuestTypesForOwner:self.owner];
+    
     [self.questItems removeAllObjects];
+    NSString *filter = [[NSUserDefaults standardUserDefaults] objectForKey:kQuestSelectedFilterType];
+    NSArray *types = [self.questManager allQuestTypesForOwner:self.owner];
+    if(!filter || [filter isEqualToString:kQuestTypeAllQuests])
+    {
+        self.allQuestTypes = types;
+    }
+    else
+    {
+        if([types containsObject:filter])
+            self.allQuestTypes = @[filter];
+    }
     for (NSString *type in self.allQuestTypes)
     {
         [self.questItems addObject:[self.questManager questListOfType:type forOwner:self.owner]];
     }
-    
     [self.tableView reloadData];
     
     [self.refreshControl endRefreshing];

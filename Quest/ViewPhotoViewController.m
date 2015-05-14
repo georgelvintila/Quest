@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UISlider *radiusSlider;
 @property (strong, nonatomic) UIImagePickerController* imagePickerController;
 @property (weak, nonatomic) IBOutlet UIButton *choosePhotoButton;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 
 @end
@@ -156,14 +157,16 @@
     self.radiusTextLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)radius];
 }
 
-
 - (IBAction)choosePhotoTouched:(id)sender {
     [self.messageTextField resignFirstResponder];
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"Choose Photo" message:@"You could take a photo, or select a photo from your library" preferredStyle: UIAlertControllerStyleActionSheet];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        pickerType = UIImagePickerControllerSourceTypeCamera;
-        [self performSegueWithIdentifier:@"kPickPhoto" sender:nil];
-    }]];
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Take Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            pickerType = UIImagePickerControllerSourceTypeCamera;
+            [self performSegueWithIdentifier:@"kPickPhoto" sender:nil];
+        }]];
+    }
     [alertController addAction:[UIAlertAction actionWithTitle:@"From Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         pickerType = UIImagePickerControllerSourceTypePhotoLibrary;
         [self performSegueWithIdentifier:@"kPickPhoto" sender:nil];
@@ -171,11 +174,12 @@
     [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alertController animated:YES completion:nil];
 }
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
     [self dismissViewControllerAnimated:YES completion:nil];
+    self.imageView.image = info[UIImagePickerControllerOriginalImage];
     self.viewPhotoImage = UIImagePNGRepresentation(info[UIImagePickerControllerOriginalImage]);
-    
 }
 
 #pragma mark - Navigation

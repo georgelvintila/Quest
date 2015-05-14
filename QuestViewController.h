@@ -18,10 +18,7 @@
 
 #pragma mark - Properties
 
-@property (weak, nonatomic) IBOutlet UITextField *questNameText;
-@property (weak, nonatomic) IBOutlet UITextView *detailTextView;
-@property (weak, nonatomic) IBOutlet UIButton *mapButton;
-@property (weak, nonatomic) IBOutlet UIView *takePhotoContainer;
+
 
 @property (nonatomic) QuestType questType;
 @property (nonatomic) NSInteger questIndex;

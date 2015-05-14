@@ -8,6 +8,7 @@
 
 #import "LocationPickerViewController.h"
 #import "CLLocationManager+Addition.h"
+#import "UserManager.h"
 
 @interface LocationPickerViewController ()
 
@@ -49,6 +50,7 @@
         [self addAnnotationForSavedLocation];
         [self gotoLocation:self.savedLocation];
     }
+    self.currentLocation = [UserManager sharedManager].location;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationHasChanged:) name:kQuestUserLocationDidChangeNotification object:nil];
     
 }

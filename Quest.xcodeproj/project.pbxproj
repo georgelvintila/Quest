@@ -56,7 +56,6 @@
 		E1DE76ED1AFA5E980028E3D2 /* QuestDeleteOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DE76EC1AFA5E980028E3D2 /* QuestDeleteOperation.m */; };
 		E1E3EECA1AF7813A0095A6EC /* QuestResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E3EEC91AF7813A0095A6EC /* QuestResultTableViewController.m */; };
 		E1E3EED01AF79DA10095A6EC /* FilterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E3EECE1AF79DA10095A6EC /* FilterTableViewController.m */; };
-		E1E3EED11AF79DA10095A6EC /* FilterTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E3EECF1AF79DA10095A6EC /* FilterTableViewController.xib */; };
 		E1E3EED51AF7A5B70095A6EC /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E3EED41AF7A5B70095A6EC /* UserManager.m */; };
 		E1E3EEDD1AF7B9990095A6EC /* Bucharest.gpx in Resources */ = {isa = PBXBuildFile; fileRef = E1E3EEDC1AF7B9990095A6EC /* Bucharest.gpx */; };
 		E1E503981B00A080000C190A /* QuestImageFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E503971B00A080000C190A /* QuestImageFetchOperation.m */; };
@@ -154,7 +153,6 @@
 		E1E3EEC91AF7813A0095A6EC /* QuestResultTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestResultTableViewController.m; sourceTree = "<group>"; };
 		E1E3EECD1AF79DA10095A6EC /* FilterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterTableViewController.h; sourceTree = "<group>"; };
 		E1E3EECE1AF79DA10095A6EC /* FilterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterTableViewController.m; sourceTree = "<group>"; };
-		E1E3EECF1AF79DA10095A6EC /* FilterTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterTableViewController.xib; sourceTree = "<group>"; };
 		E1E3EED31AF7A5B70095A6EC /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
 		E1E3EED41AF7A5B70095A6EC /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		E1E3EEDC1AF7B9990095A6EC /* Bucharest.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Bucharest.gpx; sourceTree = "<group>"; };
@@ -489,7 +487,6 @@
 			children = (
 				212D2C271AF7879E004991BA /* EmptySegue.h */,
 				212D2C281AF7879E004991BA /* EmptySegue.m */,
-				E1E3EECF1AF79DA10095A6EC /* FilterTableViewController.xib */,
 				E1D7050F1AEA7B8900525E19 /* Main.storyboard */,
 				E1D705141AEA7B8900525E19 /* LaunchScreen.xib */,
 			);
@@ -604,7 +601,6 @@
 				E1D705111AEA7B8900525E19 /* Main.storyboard in Resources */,
 				E1D705161AEA7B8900525E19 /* LaunchScreen.xib in Resources */,
 				E1D705131AEA7B8900525E19 /* Images.xcassets in Resources */,
-				E1E3EED11AF79DA10095A6EC /* FilterTableViewController.xib in Resources */,
 				E1E3EEDD1AF7B9990095A6EC /* Bucharest.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

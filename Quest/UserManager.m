@@ -38,6 +38,9 @@
     self = [super init];
     if (self) {
         _locationManager = [CLLocationManager locationManagerWithDelegate:self];
+        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+            [_locationManager requestWhenInUseAuthorization];
+        }
     }
     return self;
 }

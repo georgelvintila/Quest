@@ -63,6 +63,7 @@ static NSString * const kQuestQueryFailureNotification = @"kQuestQueryFailureNot
 static NSString * const kQuestDataChangedNotification = @"kQuestDataChangedNotification";
 static NSString * const kQuestUserLocationDidChangeNotification = @"kQuestUserLocationDidChangeNotification";
 static NSString * const kQuestQueryNoLocationNotification = @"kQuestQueryNoLocationNotification";
+static NSString * const kQuestFilterHasChanged = @"kQuestFilterHasChanged";
 
 static NSString * const kFetchOwner = @"kFetchOwner";
 static NSString * const kFetchItems= @"kFetchItems";

@@ -18,8 +18,8 @@
     NSArray *typesList;
 }
 #pragma mark - Properties
-@property (atomic,readwrite) NSMutableDictionary *myQuests;
-@property (atomic,readwrite) NSMutableDictionary *otherQuests;
+@property (atomic,readwrite) NSDictionary *myQuests;
+@property (atomic,readwrite) NSDictionary *otherQuests;
 @property (nonatomic) NSOperationQueue* editOperationQueue;
 @property (nonatomic) NSOperationQueue* fetchOperationQueue;
 
@@ -65,7 +65,7 @@
 
 #pragma mark - Property Methods
 
--(NSMutableDictionary *)otherQuests
+-(NSDictionary *)otherQuests
 {
     @synchronized(self)
     {
@@ -73,7 +73,7 @@
     }
 }
 
--(void)setOtherQuests:(NSMutableDictionary *)otherQuests
+-(void)setOtherQuests:(NSDictionary *)otherQuests
 {
     @synchronized(self)
     {
@@ -82,7 +82,7 @@
     }
 }
 
--(NSMutableDictionary *)myQuests
+-(NSDictionary *)myQuests
 {
     @synchronized(self)
     {
@@ -90,7 +90,7 @@
     }
 }
 
--(void)setMyQuests:(NSMutableDictionary *)myQuests
+-(void)setMyQuests:(NSDictionary *)myQuests
 {
     @synchronized(self)
     {
@@ -104,20 +104,27 @@
 -(void)dataChanged:(NSNotification *)notification
 {
     NSMutableDictionary *source = nil;
+
     NSDictionary *userInfo =notification.userInfo;
     switch ([userInfo[kFetchOwner] integerValue])
     {
         case QuestOwnerTypeCurrent:
-            source = self.myQuests;
+        {
+            source = [self.myQuests mutableCopy];
+            [source setValue:userInfo[kFetchItems] forKey:userInfo[kFetchType]];
+            self.myQuests = [NSDictionary dictionaryWithDictionary:source];
             break;
+        }
         case QuestOwnerTypeOthers:
-            source = self.otherQuests;
+        {
+            source = [self.otherQuests mutableCopy];
+            [source setValue:userInfo[kFetchItems] forKey:userInfo[kFetchType]];
+            self.otherQuests = [NSDictionary dictionaryWithDictionary:source];
             break;
+        }
         default:
             break;
     }
-    
-    [source setValue:userInfo[kFetchItems] forKey:userInfo[kFetchType]];
     [[NSNotificationCenter defaultCenter] postNotificationName:kQuestDataChangedNotification object:nil];
 }
 
