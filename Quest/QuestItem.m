@@ -120,12 +120,30 @@
 
 #pragma mark - Instance Methods
 
--(void)saveQuest
+-(void)saveQuestWithComplition:(void (^)(void))block
 {
     [self.quest saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
      {
          if (!succeeded) {
              DLog(@"%@",error);
+         }
+         else
+         {
+             block();
+         }
+     }];
+}
+
+-(void)deleteQuestWithComplition:(void (^)(void))block
+{
+    [self.quest deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+     {
+         if (!succeeded) {
+             DLog(@"%@",error);
+         }
+         else
+         {
+             block();
          }
      }];
 }

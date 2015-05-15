@@ -170,47 +170,37 @@
 
 -(void)addNewQuestWithType:(NSString *)type andInfo:(QuestItem *)questInfo
 {
-    NSMutableArray *array = [self.myQuests objectForKey:type];
-    
-    Class typeClass = NSClassFromString(type);
-    
-    Quest *quest = [[typeClass alloc] init];
-    QuestSaveOperation *saveOp = [[QuestSaveOperation alloc] initWithQuest:quest andQuestInfo:questInfo];
-    [saveOp setCompletionBlock:^{
-//        [array insertObject:[quest questInfo] atIndex:0];
+    [questInfo saveQuestWithComplition:^{
+        NSMutableArray *array = [self.myQuests objectForKey:type];
+        [array insertObject:questInfo atIndex:0];
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:kQuestDataChangedNotification object:nil];
         });
     }];
-    [self.editOperationQueue addOperation:saveOp];
     
 }
 
 -(void)deleteQuestOfType:(NSString *)type atIndex:(NSUInteger) index
 {
     NSMutableArray *array = [self.myQuests objectForKey:type];
-    QuestItem *info = [array objectAtIndex:index];
-    [array removeObjectAtIndex:index];
-    QuestDeleteOperation *delOp = [[QuestDeleteOperation alloc] initWithOldQuestInfo:info forType:type];
-    [delOp setCompletionBlock:^{
+    QuestItem *questInfo = [array objectAtIndex:index];
+    [questInfo deleteQuestWithComplition:^{
+        [array removeObjectAtIndex:index];
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:kQuestDataChangedNotification object:nil];
         });
     }];
-    [self.editOperationQueue addOperation:delOp];
 }
 
 -(void) updateQuestOfType:(NSString *)type atIndex:(NSUInteger) index withQuestInfo:(QuestItem*)questInfo
 {
-    NSMutableArray *array = [self.myQuests objectForKey:type];
-    QuestItem *info = [array objectAtIndex:index];
-    QuestSaveOperation *saveOp = [[QuestSaveOperation alloc] initWithOldQuestInfo:info andNewQuestInfo:questInfo forType:type];
-    [saveOp setCompletionBlock:^{
+    [questInfo saveQuestWithComplition:^{
+         NSMutableArray *array = [self.myQuests objectForKey:type];
+        [array replaceObjectAtIndex:index withObject:questInfo];
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:kQuestDataChangedNotification object:nil];
         });
     }];
-    [self.editOperationQueue addOperation:saveOp];
 }
 
 #pragma mark - Request Methods

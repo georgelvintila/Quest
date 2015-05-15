@@ -27,7 +27,8 @@
 
 #pragma mark - Instance Methods
 
-- (void) saveQuest;
+-(void)saveQuestWithComplition:(void (^)(void))block;
+-(void)deleteQuestWithComplition:(void (^)(void))block;
 
 @end
 

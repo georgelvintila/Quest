@@ -167,8 +167,8 @@
             info.questLocation = self.questLocation;
             
             info.questPhotoMessage = self.containerViewController.viewPhotoViewController.viewPhotoMessage;
-            if(self.containerViewController.viewPhotoViewController.viewPhotoImage)
-                info.questPhotoImage = [[QuestImage alloc] initWithData:self.containerViewController.viewPhotoViewController.viewPhotoImage];
+//            if(self.containerViewController.viewPhotoViewController.viewPhotoImage)
+//                info.questPhotoImage = [[QuestImage alloc] initWithData:self.containerViewController.viewPhotoViewController.viewPhotoImage];
             info.questPhotoViewRadius = [NSNumber numberWithInteger:self.containerViewController.viewPhotoViewController.viewPhotoRadius];
             
             BOOL complete = (info.questName.length && info.questDetails.length && info.questLocation != nil && info.questPhotoImage);
