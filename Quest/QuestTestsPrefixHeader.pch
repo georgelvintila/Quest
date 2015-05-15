@@ -18,7 +18,7 @@
 
 #import <Parse/Parse.h>
 #import "Constants.h"
-#import "QuestInfo.h"
+#import "QuestItem.h"
 
 typedef NS_ENUM(NSUInteger, QuestOwnerType) {
     QuestOwnerTypeAll = 0,

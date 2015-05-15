@@ -17,7 +17,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Constants.h"
-#import "QuestInfo.h"
+#import "QuestItem.h"
 #import "UIColor+Quest.h"
 #import "UIView+Frame.h"
 

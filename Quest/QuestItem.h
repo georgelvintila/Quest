@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface QuestInfo : NSObject
+@interface QuestItem : NSObject
 
 #pragma mark - Properties
 
@@ -22,9 +22,12 @@
 @property (nonatomic) BOOL questComplete;
 
 
+- (instancetype)initWithType:(NSString *)type;
++ (QuestItem*)questItemForQuest:(id)quest;
+
 #pragma mark - Instance Methods
 
-- (NSDictionary *) questDictionary;
+- (void) saveQuest;
 
 @end
 

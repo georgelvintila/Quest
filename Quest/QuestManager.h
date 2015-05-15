@@ -17,13 +17,13 @@
 #pragma mark - Instance Methods
 
 ///@brief Add a new Quest of a specific type
--(void)addNewQuestWithType:(NSString *)type andInfo:(QuestInfo *)questInfo;
+-(void)addNewQuestWithType:(NSString *)type andInfo:(QuestItem *)questInfo;
 
 ///@brief Delete a certain quest
 -(void)deleteQuestOfType:(NSString *)type atIndex:(NSUInteger) index;
 
 ///@brief Update information for a certain quest
--(void)updateQuestOfType:(NSString *)type atIndex:(NSUInteger) index withQuestInfo:(QuestInfo*)questInfo;
+-(void)updateQuestOfType:(NSString *)type atIndex:(NSUInteger) index withQuestInfo:(QuestItem*)questInfo;
 
 ///@brief Make a request for all the quests of a specific type for a certain owner
 -(void)requestItemsOfType:(NSString *)questType forOwner:(QuestOwnerType)questOwner;

@@ -33,7 +33,7 @@
     }
     
     NSArray *quests = [self.questItems objectAtIndex:indexPath.section];
-    QuestInfo *quest = [quests objectAtIndex:indexPath.row];
+    QuestItem *quest = [quests objectAtIndex:indexPath.row];
     
     cell.textLabel.text = quest.questName;
     cell.textLabel.textColor = [UIColor tintGreenColor];

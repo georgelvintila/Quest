@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "QuestInfo.h"
+#import "QuestItem.h"
 
-@interface TakePhotoQuestInfo : QuestInfo
+@interface TakePhotoQuestItem : QuestItem
 
 #pragma mark - Properties
 
 @property (nonatomic) NSNumber *questPhotoAngle;
 @property (nonatomic) NSNumber *questPhotoRadius;
+
 
 @end

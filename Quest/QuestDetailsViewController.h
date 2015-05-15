@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class TakePhotoQuestInfo;
+@class TakePhotoQuestItem;
 
 @interface QuestDetailsViewController : UIViewController
 
 #pragma mark - Properties
 
-@property (nonatomic) QuestInfo* questInfo;
+@property (nonatomic) QuestItem* questInfo;
 
 @end

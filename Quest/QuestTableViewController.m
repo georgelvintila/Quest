@@ -231,7 +231,7 @@
     if(self.owner == QuestOwnerTypeOthers)
     {
         NSArray *quests = [self.questItems objectAtIndex:indexPath.section];
-        QuestInfo *quest = [quests objectAtIndex:indexPath.row];
+        QuestItem *quest = [quests objectAtIndex:indexPath.row];
         QuestDetailsViewController *questDetailsViewController = (QuestDetailsViewController*)self.destinationViewController;
         questDetailsViewController.questInfo = quest;
     }
@@ -273,7 +273,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
    
     NSArray *quests = [self.questItems objectAtIndex:indexPath.section];
-    QuestInfo *quest = [quests objectAtIndex:indexPath.row];
+    QuestItem *quest = [quests objectAtIndex:indexPath.row];
 
     cell.textLabel.text = quest.questName;
     cell.detailTextLabel.text = quest.questDetails;

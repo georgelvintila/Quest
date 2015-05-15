@@ -7,8 +7,8 @@
 //
 
 #import "QuestViewController.h"
-#import "TakePhotoQuestInfo.h"
-#import "ViewPhotoQuestInfo.h"
+#import "TakePhotoQuestItem.h"
+#import "ViewPhotoQuestItem.h"
 
 @interface QuestViewController ()
 {
@@ -55,7 +55,7 @@
         {
                 case QuestTypeTakePhoto:
                 {
-                    TakePhotoQuestInfo *info = (TakePhotoQuestInfo *)self.questInfo;
+                    TakePhotoQuestItem *info = (TakePhotoQuestItem *)self.questInfo;
                     self.questNameText.text = info.questName;
                     self.detailTextView.text = info.questDetails;
                     self.questLocation = info.questLocation;
@@ -69,7 +69,7 @@
                 break;
                 case QuestTypeViewPhoto:
                 {
-                    ViewPhotoQuestInfo *info = (ViewPhotoQuestInfo *)self.questInfo;
+                    ViewPhotoQuestItem *info = (ViewPhotoQuestItem *)self.questInfo;
                     self.questNameText.text = info.questName;
                     self.detailTextView.text = info.questDetails;
                     self.questLocation = info.questLocation;
@@ -135,8 +135,8 @@
         case QuestTypeTakePhoto:
         {
             if(!self.questInfo)
-                self.questInfo = [[TakePhotoQuestInfo alloc]init];
-            TakePhotoQuestInfo *info = (TakePhotoQuestInfo *)self.questInfo;
+                self.questInfo = [[TakePhotoQuestItem alloc]init];
+            TakePhotoQuestItem *info = (TakePhotoQuestItem *)self.questInfo;
             
             info.questName = self.questNameText.text;
             info.questDetails = self.detailTextView.text;
@@ -159,8 +159,8 @@
         case QuestTypeViewPhoto:
         {
             if(!self.questInfo)
-                self.questInfo = [[ViewPhotoQuestInfo alloc]init];
-            ViewPhotoQuestInfo *info = (ViewPhotoQuestInfo *)self.questInfo;
+                self.questInfo = [[ViewPhotoQuestItem alloc]init];
+            ViewPhotoQuestItem *info = (ViewPhotoQuestItem *)self.questInfo;
             
             info.questName = self.questNameText.text;
             info.questDetails = self.detailTextView.text;

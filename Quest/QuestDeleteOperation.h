@@ -12,6 +12,6 @@
 
 #pragma mark - Instantiation
 
-- (instancetype)initWithOldQuestInfo:(QuestInfo *)oldInfo forType:(NSString*)type;
+- (instancetype)initWithOldQuestInfo:(QuestItem *)oldInfo forType:(NSString*)type;
 
 @end

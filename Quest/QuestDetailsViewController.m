@@ -8,7 +8,7 @@
 
 #import "QuestDetailsViewController.h"
 #import <MapKit/MapKit.h>
-#import "QuestInfo.h"
+#import "QuestItem.h"
 #import "CLLocationManager+Addition.h"
 
 @interface QuestDetailsViewController () <MKMapViewDelegate,CLLocationManagerDelegate>

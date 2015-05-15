@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import <Parse/Parse.h>
-#import "QuestInfo.h"
-#import "ViewPhotoQuestInfo.h"
-#import "TakePhotoQuestInfo.h"
+#import "QuestItem.h"
+#import "ViewPhotoQuestItem.h"
+#import "TakePhotoQuestItem.h"
 
 @interface QuestInfoTests : XCTestCase
 

@@ -8,15 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-#import "QuestInfo.h"
+#import "QuestItem.h"
 #import "QuestImage.h"
 
-@interface ViewPhotoQuestInfo : QuestInfo
+@interface ViewPhotoQuestItem : QuestItem
 
 #pragma mark - Properties
 
 @property (nonatomic) NSNumber *questPhotoViewRadius;
 @property (nonatomic) NSString *questPhotoMessage;
-@property (nonatomic) QuestImage * questPhotoImage;
+@property (nonatomic) UIImage * questPhotoImage;
 @property (nonatomic) BOOL hasImage;
 @end

@@ -12,7 +12,7 @@
 
 #pragma mark - Instantiation Methods
 
-- (instancetype)initWithOldQuestInfo:(QuestInfo *)oldInfo andNewQuestInfo:(QuestInfo *)newInfo forType:(NSString*)type;
-- (instancetype)initWithQuest:(id)quest andQuestInfo:(QuestInfo*)questInfo;
+- (instancetype)initWithOldQuestInfo:(QuestItem *)oldInfo andNewQuestInfo:(QuestItem *)newInfo forType:(NSString*)type;
+- (instancetype)initWithQuest:(id)quest andQuestInfo:(QuestItem*)questInfo;
 
 @end

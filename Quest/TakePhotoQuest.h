@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Stefanini. All rights reserved.
 //
 
-#import <Parse/Parse.h>
+#import "PFObject+Quest.h"
 
 
 @interface TakePhotoQuest : PFObject<PFSubclassing>

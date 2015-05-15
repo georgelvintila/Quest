@@ -100,8 +100,9 @@
         NSArray *results = [query findObjects];
         NSMutableArray *quests = [NSMutableArray new];
         for (Quest *item  in results) {
-            QuestInfo *info = [item questInfo];
-            [quests addObject:info];
+            id q = [QuestItem questItemForQuest:item];
+            [quests addObject:q];
+            
         }
         NSDictionary *userInfo = @{kFetchType:self.questType,kFetchItems:quests, kFetchOwner:[NSNumber numberWithInteger:self.questOwner]};
         dispatch_async(dispatch_get_main_queue(), ^{

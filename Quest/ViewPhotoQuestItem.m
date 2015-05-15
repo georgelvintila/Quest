@@ -6,37 +6,39 @@
 //  Copyright (c) 2015 Stefanini. All rights reserved.
 //
 
-#import "ViewPhotoQuestInfo.h"
+#import "ViewPhotoQuestItem.h"
+#import "ViewPhotoQuest.h"
 
-@interface QuestInfo ()
+@interface QuestItem ()
 
 #pragma mark - Properties
 
-@property (nonatomic) NSMutableDictionary *dictionary;
+@property (nonatomic) ViewPhotoQuest *quest;
 
 @end
 
-@implementation ViewPhotoQuestInfo
+@implementation ViewPhotoQuestItem
+@dynamic quest;
 
 #pragma mark - Property Methods
 
 - (NSNumber *)questPhotoViewRadius {
-    return self.dictionary[kQuestColumnViewPhotoViewRadius];
+    return self.quest[kQuestColumnViewPhotoViewRadius];
 }
 
 - (NSString *)questPhotoMessage {
-    return self.dictionary[kQuestColumnViewPhotoMessage];
+    return self.quest[kQuestColumnViewPhotoMessage];
 }
 
 
 - (void)setQuestPhotoViewRadius:(NSNumber *)questPhotoViewRadius {
     if(questPhotoViewRadius)
-        self.dictionary[kQuestColumnViewPhotoViewRadius] = questPhotoViewRadius;
+        self.quest[kQuestColumnViewPhotoViewRadius] = questPhotoViewRadius;
 }
 
 - (void)setQuestPhotoMessage:(NSString *)questPhotoMessage {
     if(questPhotoMessage)
-        self.dictionary[kQuestColumnViewPhotoMessage] = questPhotoMessage;
+        self.quest[kQuestColumnViewPhotoMessage] = questPhotoMessage;
 }
 
 

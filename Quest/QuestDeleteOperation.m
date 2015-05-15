@@ -14,7 +14,7 @@
 
 #pragma mark - Properties
 
-@property (nonatomic) QuestInfo *oldInfo;
+@property (nonatomic) QuestItem *oldInfo;
 @property (nonatomic) NSString * questType;
 @property (nonatomic) Quest *quest;
 
@@ -27,7 +27,7 @@
 
 #pragma mark - Instantiation
 
-- (instancetype)initWithOldQuestInfo:(QuestInfo *)oldInfo forType:(NSString*)type
+- (instancetype)initWithOldQuestInfo:(QuestItem *)oldInfo forType:(NSString*)type
 {
     self = [super init];
     if (self) {

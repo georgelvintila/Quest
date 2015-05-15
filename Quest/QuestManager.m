@@ -168,7 +168,7 @@
 
 #pragma mark - Edit Methods
 
--(void)addNewQuestWithType:(NSString *)type andInfo:(QuestInfo *)questInfo
+-(void)addNewQuestWithType:(NSString *)type andInfo:(QuestItem *)questInfo
 {
     NSMutableArray *array = [self.myQuests objectForKey:type];
     
@@ -177,7 +177,7 @@
     Quest *quest = [[typeClass alloc] init];
     QuestSaveOperation *saveOp = [[QuestSaveOperation alloc] initWithQuest:quest andQuestInfo:questInfo];
     [saveOp setCompletionBlock:^{
-        [array insertObject:[quest questInfo] atIndex:0];
+//        [array insertObject:[quest questInfo] atIndex:0];
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:kQuestDataChangedNotification object:nil];
         });
@@ -189,7 +189,7 @@
 -(void)deleteQuestOfType:(NSString *)type atIndex:(NSUInteger) index
 {
     NSMutableArray *array = [self.myQuests objectForKey:type];
-    QuestInfo *info = [array objectAtIndex:index];
+    QuestItem *info = [array objectAtIndex:index];
     [array removeObjectAtIndex:index];
     QuestDeleteOperation *delOp = [[QuestDeleteOperation alloc] initWithOldQuestInfo:info forType:type];
     [delOp setCompletionBlock:^{
@@ -200,10 +200,10 @@
     [self.editOperationQueue addOperation:delOp];
 }
 
--(void) updateQuestOfType:(NSString *)type atIndex:(NSUInteger) index withQuestInfo:(QuestInfo*)questInfo
+-(void) updateQuestOfType:(NSString *)type atIndex:(NSUInteger) index withQuestInfo:(QuestItem*)questInfo
 {
     NSMutableArray *array = [self.myQuests objectForKey:type];
-    QuestInfo *info = [array objectAtIndex:index];
+    QuestItem *info = [array objectAtIndex:index];
     QuestSaveOperation *saveOp = [[QuestSaveOperation alloc] initWithOldQuestInfo:info andNewQuestInfo:questInfo forType:type];
     [saveOp setCompletionBlock:^{
         dispatch_async(dispatch_get_main_queue(), ^{
