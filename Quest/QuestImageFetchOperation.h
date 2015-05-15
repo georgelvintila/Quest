@@ -10,6 +10,8 @@
 
 @interface QuestImageFetchOperation : NSOperation
 
+#pragma mark - Instantiation
+
 -(instancetype)initWithQuestType:(NSString*)questType andQuestId:(NSString*)questId;
 
 @end

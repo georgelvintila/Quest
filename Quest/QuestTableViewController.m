@@ -22,7 +22,7 @@
 @property(nonatomic) NSInteger questType;
 @property(nonatomic,strong) UISearchController *searchController;
 @property(nonatomic,strong) NSMutableArray *questItems;
-@property (nonatomic, strong) QuestResultTableViewController *resultsTableController;
+@property(nonatomic, strong) QuestResultTableViewController *resultsTableController;
 
 @property (nonatomic, weak) UIViewController* destinationViewController;
 
@@ -89,14 +89,9 @@
     // refresh controller
     
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(refreshContent) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(requestData) forControlEvents:UIControlEventValueChanged];
     
     [self requestData];
-}
-
-- (void)refreshContent {
-    [self requestData];
-    [self.tableView reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated

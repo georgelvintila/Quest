@@ -20,6 +20,7 @@ static NSString * const kQuestTableViewControllerTitleMyQuests = @"MyQuests";
 
 static NSString * const kQuestSelectedFilterType = @"kQuestSelectedFilterType";
 static NSString * const kQuestSelectedRadius = @"kQuestSelectedRadius";
+
 //Cell Identifiers
 
 static NSString * const kCellIdentifier = @"kCellIdentifier";
@@ -49,15 +50,18 @@ static NSString * const kQuestColumnComplete = @"complete";
 
 //Specific Quest Property Keys
 //Take Photo Quest
+
 static NSString * const kQuestColumnTakePhotoAngle = @"angle";
 static NSString * const kQuestColumnTakePhotoRadius = @"radius";
 
 //View Photo Quest
+
 static NSString * const kQuestColumnViewPhotoViewRadius = @"viewRadius";
 static NSString * const kQuestColumnViewPhotoMessage = @"message";
 static NSString * const kQuestColumnViewPhotoImage = @"imageFile";
 
 //Notification Strings
+
 static NSString * const kQuestQuerySuccesNotification = @"kQuestQuerySuccesNotification";
 static NSString * const kQuestQueryFailureNotification = @"kQuestQueryFailureNotification";
 static NSString * const kQuestDataChangedNotification = @"kQuestDataChangedNotification";
@@ -65,14 +69,22 @@ static NSString * const kQuestUserLocationDidChangeNotification = @"kQuestUserLo
 static NSString * const kQuestQueryNoLocationNotification = @"kQuestQueryNoLocationNotification";
 static NSString * const kQuestFilterHasChanged = @"kQuestFilterHasChanged";
 
+//Fetch UserInfo Keys
+
 static NSString * const kFetchOwner = @"kFetchOwner";
 static NSString * const kFetchItems= @"kFetchItems";
 static NSString * const kFetchType= @"kFetchType";
 
+//Fetch Keys
+
 static NSString * const kQuestFetchImageDataKey = @"kQuestFetchImageDataKey";
 static NSString * const kQuestFetchSuccesImageData = @"kQuestFetchSuccesImageData";
 
+//Current Location Key
+
 static NSString * const kQuestCurrentLocation = @"kQuestCurrentLocation";
+
+//Numbers
 
 static CGFloat const kFilterDistance = 1000.0f;
 static CGFloat const kHeaderHeight = 25.0f;

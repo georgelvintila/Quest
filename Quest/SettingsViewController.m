@@ -56,8 +56,8 @@
     [[NSUserDefaults standardUserDefaults] setObject:@(value) forKey:kQuestSelectedRadius];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
-- (IBAction)buttonFilter:(id)sender {
-    // segue
+- (IBAction)doneButtonPressed:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -8,12 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-//@class Quest;
-
 @interface QuestSaveOperation : NSOperation
 
-- (instancetype)initWithOldQuestInfo:(QuestInfo *)oldInfo andNewQuestInfo:(QuestInfo *)newInfo forType:(NSString*)type;
+#pragma mark - Instantiation Methods
 
+- (instancetype)initWithOldQuestInfo:(QuestInfo *)oldInfo andNewQuestInfo:(QuestInfo *)newInfo forType:(NSString*)type;
 - (instancetype)initWithQuest:(id)quest andQuestInfo:(QuestInfo*)questInfo;
 
 @end

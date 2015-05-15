@@ -11,12 +11,18 @@
 
 @interface QuestImageFetchOperation ()
 
+#pragma mark - Properties
+
 @property(nonatomic) NSString *questType;
 @property(nonatomic) NSString *questId;
 
 @end
 
+#pragma mark -
+
 @implementation QuestImageFetchOperation
+
+#pragma mark - Instantiation
 
 -(instancetype)initWithQuestType:(NSString *)questType andQuestId:(NSString *)questId
 {
@@ -27,6 +33,8 @@
     }
     return self;
 }
+
+#pragma mark - Main
 
 -(void)main
 {

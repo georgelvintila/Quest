@@ -126,7 +126,7 @@
     [self.choosePhotoButton setSelected:YES];
 }
 
-#pragma mark - keyboard movements
+#pragma mark - Keyboard Movements
 - (void)keyboardWillShow:(NSNotification *)notification
 {
     yMove = [@([[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size.height) unsignedIntegerValue];

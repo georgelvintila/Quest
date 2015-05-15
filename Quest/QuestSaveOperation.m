@@ -12,15 +12,20 @@
 
 @interface QuestSaveOperation ()
 
+#pragma mark - Properties
+
 @property (nonatomic) QuestInfo *oldInfo;
 @property (nonatomic) QuestInfo *questInfo;
 @property (nonatomic) NSString * questType;
 @property (nonatomic) Quest *quest;
 
-
 @end
 
+#pragma mark -
+
 @implementation QuestSaveOperation
+
+#pragma mark - Instantiation Methods
 
 - (instancetype)initWithOldQuestInfo:(QuestInfo *)oldInfo andNewQuestInfo:(QuestInfo *)newInfo forType:(NSString*)type
 {
@@ -42,6 +47,8 @@
     }
     return self;
 }
+
+#pragma mark - Main
 
 -(void)main
 {

@@ -30,7 +30,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EmU-Jb-ELm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="-176"/>
+            <point key="canvasLocation" x="138" y="-372"/>
         </scene>
         <!--MyQuests-->
         <scene sceneID="bsS-bb-Ouh">
@@ -80,7 +80,13 @@
                             <outlet property="delegate" destination="GWF-7b-0Co" id="Htn-o2-XHj"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="My Quests" id="Ban-JQ-AjB">
+                        <barButtonItem key="leftBarButtonItem" systemItem="compose" id="F7f-dY-a2k">
+                            <connections>
+                                <segue destination="qUc-8P-BhY" kind="presentation" id="Fey-iB-sl6"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="sWX-kY-63H">
                             <color key="tintColor" red="0.092573540489999995" green="0.2925149936" blue="0.081826784639999997" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -89,13 +95,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="32d-ao-9PT" kind="show" identifier="QuestSegue" id="GuE-OP-K02"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zxn-Nv-qCm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="633" y="-176"/>
+            <point key="canvasLocation" x="627" y="-372"/>
         </scene>
         <!--Quest-->
         <scene sceneID="o8h-8F-Ig8">
@@ -212,7 +219,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1093" y="-176"/>
+            <point key="canvasLocation" x="1087" y="-372"/>
         </scene>
         <!--Location Picker-->
         <scene sceneID="vKc-h6-5lJ">
@@ -298,7 +305,20 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lOt-ZG-hPj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1550" y="-176"/>
+            <point key="canvasLocation" x="1544" y="-372"/>
+        </scene>
+        <!--Quest Login View Controller-->
+        <scene sceneID="GI4-yd-8fW">
+            <objects>
+                <viewController id="Lzy-nl-YAG" customClass="QuestLoginViewController" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="HMO-TQ-h4y" kind="custom" identifier="kLogin" customClass="EmptySegue" id="zZs-0z-AGw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SCv-nA-W3d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-833" y="362"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8H7-pe-9sX">
@@ -321,12 +341,11 @@
                     <connections>
                         <segue destination="EDU-Ti-Gp3" kind="relationship" relationship="viewControllers" id="8zz-vn-zMt"/>
                         <segue destination="BlC-Fo-637" kind="relationship" relationship="viewControllers" id="SwT-R4-DVq"/>
-                        <segue destination="qUc-8P-BhY" kind="relationship" relationship="viewControllers" id="AbG-zQ-ahj"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fhq-xD-chi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-387" y="504"/>
+            <point key="canvasLocation" x="-389" y="362"/>
         </scene>
         <!--Other Quests-->
         <scene sceneID="amg-ON-Nhm">
@@ -338,6 +357,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8cY-SX-8nP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.092573540489999995" green="0.2925149936" blue="0.081826784639999997" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.092573540489999995" green="0.2925149936" blue="0.081826784639999997" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="textShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -350,7 +370,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="whs-7K-lI6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="504"/>
+            <point key="canvasLocation" x="178" y="660"/>
         </scene>
         <!--OtherQuests-->
         <scene sceneID="WJ5-G1-VX8">
@@ -392,11 +412,17 @@
                             <outlet property="delegate" destination="btl-f7-gAh" id="W7O-V2-5zb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Other Quests" id="DZI-8a-RUx"/>
+                    <navigationItem key="navigationItem" title="Other Quests" id="DZI-8a-RUx">
+                        <barButtonItem key="leftBarButtonItem" systemItem="compose" id="81O-JP-fTh">
+                            <connections>
+                                <segue destination="qUc-8P-BhY" kind="presentation" modalTransitionStyle="coverVertical" id="0Nj-Gx-i1j"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Yn-Kx-Ohs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="633" y="504"/>
+            <point key="canvasLocation" x="667" y="660"/>
         </scene>
         <!--Quest Details-->
         <scene sceneID="tZh-Ei-6Yr">
@@ -476,7 +502,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v4u-XX-8aN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1093" y="504"/>
+            <point key="canvasLocation" x="667" y="1390"/>
         </scene>
         <!--Settings-->
         <scene sceneID="rdg-Uu-aXe">
@@ -536,7 +562,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonFilter:" destination="KeP-aA-HZL" eventType="touchUpInside" id="Hw6-jI-qrK"/>
                                     <segue destination="JJE-ui-x4a" kind="show" id="EEF-bW-A2P"/>
                                 </connections>
                             </button>
@@ -558,15 +583,15 @@
                             <constraint firstItem="p88-E2-MoL" firstAttribute="leading" secondItem="6DB-Kv-COb" secondAttribute="leadingMargin" id="15H-5c-Vop"/>
                             <constraint firstItem="F5a-Tz-DY6" firstAttribute="leading" secondItem="6DB-Kv-COb" secondAttribute="leadingMargin" id="1ga-wv-i7r"/>
                             <constraint firstItem="2iw-BS-vDd" firstAttribute="leading" secondItem="F5a-Tz-DY6" secondAttribute="trailing" constant="8" id="2MR-UQ-Zja"/>
-                            <constraint firstItem="seU-jh-iqW" firstAttribute="top" secondItem="ouS-kJ-nr8" secondAttribute="bottom" constant="12" id="8as-pX-dtu"/>
-                            <constraint firstItem="6Ly-9F-ZDE" firstAttribute="top" secondItem="p88-E2-MoL" secondAttribute="bottom" constant="8" id="9fh-i4-IZy"/>
+                            <constraint firstItem="seU-jh-iqW" firstAttribute="top" secondItem="ouS-kJ-nr8" secondAttribute="bottom" constant="32" id="8as-pX-dtu"/>
+                            <constraint firstItem="6Ly-9F-ZDE" firstAttribute="top" secondItem="p88-E2-MoL" secondAttribute="bottom" constant="57" id="9fh-i4-IZy"/>
                             <constraint firstItem="seU-jh-iqW" firstAttribute="leading" secondItem="2iw-BS-vDd" secondAttribute="trailing" constant="8" id="Bfm-RU-edP"/>
                             <constraint firstItem="UH4-um-1Vw" firstAttribute="top" secondItem="2iw-BS-vDd" secondAttribute="bottom" constant="50" id="Fex-HO-rbB"/>
                             <constraint firstItem="UH4-um-1Vw" firstAttribute="leading" secondItem="6DB-Kv-COb" secondAttribute="leadingMargin" id="Kdu-ip-wiE"/>
-                            <constraint firstItem="F5a-Tz-DY6" firstAttribute="top" secondItem="ouS-kJ-nr8" secondAttribute="bottom" constant="12" id="NwS-av-VVh"/>
+                            <constraint firstItem="F5a-Tz-DY6" firstAttribute="top" secondItem="ouS-kJ-nr8" secondAttribute="bottom" constant="32" id="NwS-av-VVh"/>
                             <constraint firstItem="seU-jh-iqW" firstAttribute="trailing" secondItem="6DB-Kv-COb" secondAttribute="trailingMargin" id="T2T-DZ-ZwB"/>
                             <constraint firstItem="nNt-3A-VnP" firstAttribute="trailing" secondItem="6DB-Kv-COb" secondAttribute="trailingMargin" id="WRC-uX-Mnl"/>
-                            <constraint firstItem="2iw-BS-vDd" firstAttribute="top" secondItem="ouS-kJ-nr8" secondAttribute="bottom" constant="8" id="YU6-b4-X4D"/>
+                            <constraint firstItem="2iw-BS-vDd" firstAttribute="top" secondItem="ouS-kJ-nr8" secondAttribute="bottom" constant="28" id="YU6-b4-X4D"/>
                             <constraint firstItem="ihp-lv-b8Z" firstAttribute="leading" secondItem="6DB-Kv-COb" secondAttribute="leadingMargin" id="b6d-fv-ige"/>
                             <constraint firstItem="nNt-3A-VnP" firstAttribute="top" secondItem="UH4-um-1Vw" secondAttribute="bottom" constant="32" id="fz8-Lc-jmT"/>
                             <constraint firstItem="ihp-lv-b8Z" firstAttribute="top" secondItem="UH4-um-1Vw" secondAttribute="bottom" constant="32" id="gin-cn-Y5I"/>
@@ -574,7 +599,14 @@
                             <constraint firstItem="p88-E2-MoL" firstAttribute="trailing" secondItem="6DB-Kv-COb" secondAttribute="trailingMargin" id="rrM-Qn-uaU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Settings" id="Znc-zG-ESR"/>
+                    <navigationItem key="navigationItem" title="Settings" id="Znc-zG-ESR">
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="done" systemItem="done" id="gaf-gL-qJn">
+                            <color key="tintColor" red="0.092573540489999995" green="0.2925149936" blue="0.081826784639999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="KeP-aA-HZL" id="eoM-BM-e8X"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="sliderRadius" destination="2iw-BS-vDd" id="pkc-fg-A8y"/>
@@ -584,7 +616,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GOA-eK-y3E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="633" y="1190"/>
+            <point key="canvasLocation" x="1544" y="660"/>
         </scene>
         <!--Filter-->
         <scene sceneID="paP-VZ-zSd">
@@ -610,7 +642,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CRK-xJ-c0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1093" y="1190"/>
+            <point key="canvasLocation" x="2068" y="660"/>
         </scene>
         <!--Container View Controller-->
         <scene sceneID="ROm-25-ORC">
@@ -633,7 +665,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ac-oa-zn4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1550" y="-708.5"/>
+            <point key="canvasLocation" x="1544" y="-904.5"/>
         </scene>
         <!--Take Photo Quest View Controller-->
         <scene sceneID="0Wn-nC-0sZ">
@@ -738,7 +770,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nZM-6f-y9L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2068" y="-859.5"/>
+            <point key="canvasLocation" x="2068" y="-1033.5"/>
         </scene>
         <!--View Photo View Controller-->
         <scene sceneID="nuy-U6-Dwg">
@@ -833,7 +865,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4tG-ek-0yP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2068" y="-589"/>
+            <point key="canvasLocation" x="2068" y="-687"/>
         </scene>
         <!--Image Picker Controller-->
         <scene sceneID="XCY-Un-EhW">
@@ -852,7 +884,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rmM-02-ktk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2506" y="-589"/>
+            <point key="canvasLocation" x="2506" y="-687"/>
         </scene>
         <!--Settings-->
         <scene sceneID="D7y-Ip-eCc">
@@ -860,9 +892,11 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qUc-8P-BhY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" id="izl-Pk-5T7"/>
                     <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fQZ-9p-fs6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.092573540489999995" green="0.2925149936" blue="0.081826784639999997" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -871,10 +905,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wFB-E9-vHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="1190"/>
+            <point key="canvasLocation" x="1087" y="660"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="H3l-VS-N2o"/>
+        <segue reference="GuE-OP-K02"/>
+        <segue reference="0Nj-Gx-i1j"/>
     </inferredMetricsTieBreakers>
 </document>

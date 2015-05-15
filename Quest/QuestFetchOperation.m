@@ -13,6 +13,8 @@
 
 @interface QuestFetchOperation ()
 
+#pragma mark - Properties
+
 @property(nonatomic) NSString *questType;
 @property(nonatomic) QuestOwnerType questOwner;
 @property(nonatomic) NSUInteger limit;
@@ -20,7 +22,11 @@
 
 @end
 
+#pragma mark -
+
 @implementation QuestFetchOperation
+
+#pragma mark - Class Methods
 
 +(instancetype)fetchQuestOperationWithType:(NSString *)questType forOwner:(QuestOwnerType)questOwner
 {
@@ -37,6 +43,8 @@
     return [[QuestFetchOperation alloc]initWithType:questType forOwner:questOwner withLimit:limit skipFirst:skip];
 }
 
+#pragma mark - Instantiation Methods
+
 -(instancetype)initWithType:(NSString *)questType forOwner:(QuestOwnerType)questOwner withLimit:(NSUInteger)limit skipFirst:(NSUInteger)skip
 {
     self = [super init];
@@ -48,6 +56,8 @@
     }
     return self;
 }
+
+#pragma mark - Main
 
 -(void)main
 {
@@ -76,7 +86,7 @@
                     return;
                 }
                 PFGeoPoint * point = [PFGeoPoint geoPointWithLocation:location];
-                [query whereKey:kQuestColumnLocation nearGeoPoint:point withinKilometers:1];
+                [query whereKey:kQuestColumnLocation nearGeoPoint:point withinKilometers:3];
                 break;
             }
             default:

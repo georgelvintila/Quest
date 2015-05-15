@@ -12,6 +12,8 @@
 
 @interface QuestDeleteOperation ()
 
+#pragma mark - Properties
+
 @property (nonatomic) QuestInfo *oldInfo;
 @property (nonatomic) NSString * questType;
 @property (nonatomic) Quest *quest;
@@ -19,7 +21,11 @@
 
 @end
 
+#pragma mark -
+
 @implementation QuestDeleteOperation
+
+#pragma mark - Instantiation
 
 - (instancetype)initWithOldQuestInfo:(QuestInfo *)oldInfo forType:(NSString*)type
 {
@@ -31,6 +37,7 @@
     return self;
 }
 
+#pragma mark - Main
 
 -(void)main
 {

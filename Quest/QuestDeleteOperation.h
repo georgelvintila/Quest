@@ -10,6 +10,8 @@
 
 @interface QuestDeleteOperation : NSOperation
 
+#pragma mark - Instantiation
+
 - (instancetype)initWithOldQuestInfo:(QuestInfo *)oldInfo forType:(NSString*)type;
 
 @end
