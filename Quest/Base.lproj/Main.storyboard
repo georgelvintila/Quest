@@ -162,7 +162,7 @@
                                     <outlet property="delegate" destination="32d-ao-9PT" id="Kx3-3l-tZW"/>
                                 </connections>
                             </textView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O80-Px-aOY">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O80-Px-aOY">
                                 <rect key="frame" x="16" y="307" width="288" height="205"/>
                                 <connections>
                                     <segue destination="np2-LK-Oa9" kind="embed" identifier="ContainerSegue" id="GXw-QK-s7I"/>
