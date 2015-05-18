@@ -126,9 +126,9 @@
     {
         self.quest[kQuestColumnOwner] = [PFUser currentUser];
     }
-    [self.quest saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
+    [self.quest saveInBackgroundWithBlock:^(BOOL succeded, NSError *error)
      {
-         if (!succeeded) {
+         if (!succeded) {
              DLog(@"%@",error);
          }
          else

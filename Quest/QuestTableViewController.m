@@ -250,11 +250,12 @@
         {
             self.questType = QuestTypeViewPhoto;
         }
-    
+        
         NSArray *quests = [self.questItems objectAtIndex:indexPath.section];
         
         EditQuestViewController *questViewController = (EditQuestViewController *)self.destinationViewController;
         questViewController.questType = self.questType;
+        questViewController.delegate = self;
         
         self.selectedQuestIndex = indexPath.row;
         questViewController.editMode = YES;

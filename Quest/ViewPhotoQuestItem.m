@@ -52,7 +52,10 @@
 -(void)setQuestPhotoImageSmall:(UIImage *)questPhotoImageSmall
 {
     if(questPhotoImageSmall)
-        self.quest[kQuestColumnViewPhotoImage] = UIImagePNGRepresentation(questPhotoImageSmall);
+    {
+        NSData *data = UIImagePNGRepresentation(questPhotoImageSmall);
+        self.quest[kQuestColumnViewPhotoImage] = data;
+    }
 }
 
 -(UIImage *)questPhotoImageSmall
@@ -64,8 +67,11 @@
 
 -(void)addImageData:(NSData *)imageData
 {
-    PFFile *file  = [PFFile fileWithData:imageData];
-    self.quest[kQuestColumnViewPhotoImageFile] = file;
+    if(imageData)
+    {
+        PFFile *file  = [PFFile fileWithData:imageData];
+        self.quest[kQuestColumnViewPhotoImageFile] = file;
+    }
 }
 
 - (void)requestImageData

@@ -190,7 +190,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     UIImage *image = info[UIImagePickerControllerOriginalImage];
     
-     image = [image imageOfSize:self.imageView.frameSize];
+     image = [image imageOfSize:CGSizeMake(150,150)];
     self.imageView.image = image;
     self.viewPhotoImageData = UIImagePNGRepresentation(info[UIImagePickerControllerOriginalImage]);
 }
