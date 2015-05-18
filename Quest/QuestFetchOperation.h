@@ -10,18 +10,22 @@
 
 @protocol QuestFetchOperationDelegate <NSObject>
 
+#pragma mark - Delegate Methods
+
 -(void) operation:(NSOperation *)operation finishedWithInfo:(NSDictionary*)userInfo;
 
 @end
 
 @interface QuestFetchOperation : NSOperation
 
+#pragma mark - Properties
+
+@property (nonatomic,weak) id<QuestFetchOperationDelegate> delegate;
+
 #pragma mark - Class Methods
 
 +(instancetype)fetchQuestOperationWithType:(NSString *)questType forOwner:(QuestOwnerType)questOwner;
 +(instancetype)fetchQuestOperationWithType:(NSString *)questType forOwner:(QuestOwnerType)questOwner withLimit:(NSUInteger)limit;
 +(instancetype)fetchQuestOperationWithType:(NSString *)questType forOwner:(QuestOwnerType)questOwner withLimit:(NSUInteger)limit skipFirst:(NSUInteger) skip;
-
-@property (nonatomic,weak) id<QuestFetchOperationDelegate> delegate;
 
 @end

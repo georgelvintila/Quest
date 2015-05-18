@@ -107,7 +107,7 @@
         <!--Quest-->
         <scene sceneID="o8h-8F-Ig8">
             <objects>
-                <viewController id="32d-ao-9PT" userLabel="Quest" customClass="QuestViewController" sceneMemberID="viewController">
+                <viewController id="32d-ao-9PT" userLabel="Quest" customClass="EditQuestViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8OW-db-ahG"/>
                         <viewControllerLayoutGuide type="bottom" id="NJf-BG-KzK"/>

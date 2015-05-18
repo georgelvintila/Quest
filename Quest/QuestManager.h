@@ -10,6 +10,8 @@
 
 @protocol QuestManagerDelegate <NSObject>
 
+#pragma mark - Delegate Methods
+
 -(void)updateQuestList;
 
 @end
@@ -17,18 +19,20 @@
 
 @interface QuestManager : NSObject
 
+#pragma mark - Properties
+
 @property (nonatomic,weak)id<QuestManagerDelegate> delegate;
 
-#pragma mark - Class Methods
+#pragma mark - Instantiation Methods
 
-///@brief Shared Instance of the Manager
+///@brief Init method of the Manager
 
 - (instancetype)initWithOwner:(QuestOwnerType)questOwner;
 
 #pragma mark - Instance Methods
 
 ///@brief Add a new Quest of a specific type
--(void)addNewQuestWithType:(NSString *)type andInfo:(QuestItem *)questInfo;
+-(void)addNewQuestOfType:(NSString *)type andInfo:(QuestItem *)questInfo;
 
 ///@brief Delete a certain quest
 -(void)deleteQuestOfType:(NSString *)type atIndex:(NSUInteger) index;

@@ -13,7 +13,7 @@
 #import "TakePhotoQuestViewController.h"
 
 @class QuestItem;
-@class QuestViewController;
+@class EditQuestViewController;
 
 @protocol QuestViewControllerDelegate <NSObject>
 
@@ -22,7 +22,7 @@
 
 @end
 
-@interface QuestViewController : UIViewController<LocationPickerViewControllerDelegate,UITextFieldDelegate>
+@interface EditQuestViewController : UIViewController<LocationPickerViewControllerDelegate,UITextFieldDelegate>
 
 #pragma mark - Properties
 

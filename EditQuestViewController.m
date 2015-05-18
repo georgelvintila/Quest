@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 Stefanini. All rights reserved.
 //
 
-#import "QuestViewController.h"
+#import "EditQuestViewController.h"
 #import "TakePhotoQuestItem.h"
 #import "ViewPhotoQuestItem.h"
 
-@interface QuestViewController ()
+@interface EditQuestViewController ()
 {
     BOOL isMapTransition;
 }
@@ -30,7 +30,7 @@
 
 #pragma mark -
 
-@implementation QuestViewController
+@implementation EditQuestViewController
 
 #pragma mark - Instantiation
 

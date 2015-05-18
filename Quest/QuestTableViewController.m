@@ -9,7 +9,7 @@
 #import "QuestTableViewController.h"
 #import "QuestManager.h"
 #import "QuestResultTableViewController.h"
-#import "QuestViewController.h"
+#import "EditQuestViewController.h"
 #import "QuestDetailsViewController.h"
 
 @interface QuestTableViewController ()<UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating,QuestManagerDelegate,QuestViewControllerDelegate>
@@ -153,13 +153,14 @@
     return YES;
 }
 
-
-#pragma mark - Data Methods
+#pragma mark - Quest Manager Delegate Methods
 
 -(void)updateQuestList
 {
     [self reloadData];
 }
+
+#pragma mark - Data Methods
 
 -(void) requestData
 {
@@ -252,7 +253,7 @@
     
         NSArray *quests = [self.questItems objectAtIndex:indexPath.section];
         
-        QuestViewController *questViewController = (QuestViewController *)self.destinationViewController;
+        EditQuestViewController *questViewController = (EditQuestViewController *)self.destinationViewController;
         questViewController.questType = self.questType;
         
         self.selectedQuestIndex = indexPath.row;
@@ -385,19 +386,23 @@
     [tableController.tableView reloadData];
 }
 
+#pragma mark - Navigation Methods
+
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     self.destinationViewController = segue.destinationViewController;
     if([segue.identifier isEqualToString:kQuestSegue])
     {
-        ((QuestViewController *)(self.destinationViewController)).questType = self.questType;
-        ((QuestViewController *)(self.destinationViewController)).delegate = self;
+        ((EditQuestViewController *)(self.destinationViewController)).questType = self.questType;
+        ((EditQuestViewController *)(self.destinationViewController)).delegate = self;
     }
 }
 
+#pragma mark - Quest View Controller Delegate Methods
+
 -(void)addQuestItem:(QuestItem *)questItem ofType:(NSString *)type
 {
-    [self.questManager addNewQuestWithType:type andInfo:questItem];
+    [self.questManager addNewQuestOfType:type andInfo:questItem];
 }
 
 -(void)updateQuestItem:(QuestItem *)questItem ofType:(NSString *)type

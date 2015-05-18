@@ -72,6 +72,8 @@
 }
 
 
+#pragma mark - Quest Fetch Operation Delegate Methods
+
 -(void)operation:(NSOperation *)operation finishedWithInfo:(NSDictionary *)userInfo
 {
     NSMutableDictionary *source = [self.questList mutableCopy];
@@ -96,7 +98,7 @@
 
 #pragma mark - Edit Methods
 
--(void)addNewQuestWithType:(NSString *)type andInfo:(QuestItem *)questInfo
+-(void)addNewQuestOfType:(NSString *)type andInfo:(QuestItem *)questInfo
 {
     [questInfo saveQuestWithComplition:^{
         NSMutableArray *array = [self.questList objectForKey:type];

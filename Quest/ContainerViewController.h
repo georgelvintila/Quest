@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TakePhotoQuestViewController.h"
 #import "ViewPhotoViewController.h"
-#import "QuestViewController.h"
+#import "EditQuestViewController.h"
 
 
 @interface ContainerViewController : UIViewController

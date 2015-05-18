@@ -122,6 +122,10 @@
 
 -(void)saveQuestWithComplition:(void (^)(void))block
 {
+    if(!self.quest[kQuestColumnOwner])
+    {
+        self.quest[kQuestColumnOwner] = [PFUser currentUser];
+    }
     [self.quest saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
      {
          if (!succeeded) {

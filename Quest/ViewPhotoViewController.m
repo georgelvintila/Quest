@@ -182,6 +182,7 @@
     self.viewPhotoImage = UIImagePNGRepresentation(info[UIImagePickerControllerOriginalImage]);
 }
 
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

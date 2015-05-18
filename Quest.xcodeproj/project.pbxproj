@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		212D2C221AEFCABC004991BA /* LocationPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212D2C1F1AEFCABC004991BA /* LocationPickerViewController.m */; };
 		212D2C231AEFCABC004991BA /* TakePhotoQuestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212D2C211AEFCABC004991BA /* TakePhotoQuestViewController.m */; };
-		212D2C261AF22231004991BA /* QuestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212D2C251AF22231004991BA /* QuestViewController.m */; };
+		212D2C261AF22231004991BA /* EditQuestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212D2C251AF22231004991BA /* EditQuestViewController.m */; };
 		212D2C291AF7879E004991BA /* EmptySegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 212D2C281AF7879E004991BA /* EmptySegue.m */; };
 		212D2C2C1AF78834004991BA /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212D2C2B1AF78834004991BA /* ContainerViewController.m */; };
 		212D2C2F1AF78926004991BA /* ViewPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212D2C2E1AF78926004991BA /* ViewPhotoViewController.m */; };
@@ -83,8 +83,8 @@
 		212D2C1F1AEFCABC004991BA /* LocationPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationPickerViewController.m; sourceTree = "<group>"; };
 		212D2C201AEFCABC004991BA /* TakePhotoQuestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePhotoQuestViewController.h; sourceTree = "<group>"; };
 		212D2C211AEFCABC004991BA /* TakePhotoQuestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakePhotoQuestViewController.m; sourceTree = "<group>"; };
-		212D2C241AF22231004991BA /* QuestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestViewController.h; sourceTree = SOURCE_ROOT; };
-		212D2C251AF22231004991BA /* QuestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestViewController.m; sourceTree = SOURCE_ROOT; };
+		212D2C241AF22231004991BA /* EditQuestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditQuestViewController.h; sourceTree = SOURCE_ROOT; };
+		212D2C251AF22231004991BA /* EditQuestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditQuestViewController.m; sourceTree = SOURCE_ROOT; };
 		212D2C271AF7879E004991BA /* EmptySegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptySegue.h; sourceTree = "<group>"; };
 		212D2C281AF7879E004991BA /* EmptySegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptySegue.m; sourceTree = "<group>"; };
 		212D2C2A1AF78834004991BA /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
@@ -333,8 +333,8 @@
 				E1DDE13A1AF8B53A00EB95B9 /* Container */,
 				E1DDE1361AF8B4A800EB95B9 /* Location */,
 				E1DDE1371AF8B4B900EB95B9 /* QuestTypes */,
-				212D2C241AF22231004991BA /* QuestViewController.h */,
-				212D2C251AF22231004991BA /* QuestViewController.m */,
+				212D2C241AF22231004991BA /* EditQuestViewController.h */,
+				212D2C251AF22231004991BA /* EditQuestViewController.m */,
 			);
 			name = QuestEdit;
 			sourceTree = "<group>";
@@ -627,7 +627,7 @@
 				E1EFDF8E1AF0C3CA00894032 /* PFObject+Quest.m in Sources */,
 				212D2C2C1AF78834004991BA /* ContainerViewController.m in Sources */,
 				212D2C231AEFCABC004991BA /* TakePhotoQuestViewController.m in Sources */,
-				212D2C261AF22231004991BA /* QuestViewController.m in Sources */,
+				212D2C261AF22231004991BA /* EditQuestViewController.m in Sources */,
 				212D2C2F1AF78926004991BA /* ViewPhotoViewController.m in Sources */,
 				E1E503981B00A080000C190A /* QuestImageFetchOperation.m in Sources */,
 				BB6308E61AF10A0E002DF589 /* QuestItem.m in Sources */,
