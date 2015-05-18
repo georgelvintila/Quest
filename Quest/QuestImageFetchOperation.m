@@ -40,7 +40,7 @@
 {
     PFQuery *query= [PFQuery queryWithClassName:self.questType];
     PFObject * quest = [query getObjectWithId:self.questId];
-    PFFile *imageFile = [quest valueForKey:kQuestColumnViewPhotoImage];
+    PFFile *imageFile = [quest valueForKey:kQuestColumnViewPhotoImageFile];
     NSError *error = nil;
     NSData *imageData = [imageFile getData:&error];
     if(error)

@@ -21,6 +21,7 @@
 		BB8962581AF1216B0068D150 /* QuestInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8962571AF1216B0068D150 /* QuestInfoTests.m */; };
 		BBEC01781AFB91F2005BC759 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEC01771AFB91F2005BC759 /* UIView+Frame.m */; };
 		E1D64E261AFB58450061EB11 /* CLLocationManager+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D64E251AFB58450061EB11 /* CLLocationManager+Addition.m */; };
+		E1D7031B1B09E06C0035EF13 /* UIImage+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D7031A1B09E06C0035EF13 /* UIImage+Size.m */; };
 		E1D705081AEA7B8900525E19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D705071AEA7B8900525E19 /* main.m */; };
 		E1D7050B1AEA7B8900525E19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D7050A1AEA7B8900525E19 /* AppDelegate.m */; };
 		E1D7050E1AEA7B8900525E19 /* QuestLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D7050D1AEA7B8900525E19 /* QuestLoginViewController.m */; };
@@ -106,6 +107,8 @@
 		BBEC01771AFB91F2005BC759 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		E1D64E241AFB58450061EB11 /* CLLocationManager+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Addition.h"; sourceTree = "<group>"; };
 		E1D64E251AFB58450061EB11 /* CLLocationManager+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocationManager+Addition.m"; sourceTree = "<group>"; };
+		E1D703191B09E06C0035EF13 /* UIImage+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Size.h"; sourceTree = "<group>"; };
+		E1D7031A1B09E06C0035EF13 /* UIImage+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Size.m"; sourceTree = "<group>"; };
 		E1D705021AEA7B8900525E19 /* Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1D705061AEA7B8900525E19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1D705071AEA7B8900525E19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -213,7 +216,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BB6308E31AF109F9002DF589 /* QuestInfo */ = {
+		BB6308E31AF109F9002DF589 /* QuestItem */ = {
 			isa = PBXGroup;
 			children = (
 				BB6308E41AF10A0E002DF589 /* QuestItem.h */,
@@ -223,7 +226,7 @@
 				BB18DC251AF11739005B2AB2 /* ViewPhotoQuestItem.h */,
 				BB18DC261AF11739005B2AB2 /* ViewPhotoQuestItem.m */,
 			);
-			name = QuestInfo;
+			name = QuestItem;
 			sourceTree = "<group>";
 		};
 		E1D704F91AEA7B8900525E19 = {
@@ -426,7 +429,7 @@
 		E1E3EED61AF7A5DA0095A6EC /* Quests */ = {
 			isa = PBXGroup;
 			children = (
-				BB6308E31AF109F9002DF589 /* QuestInfo */,
+				BB6308E31AF109F9002DF589 /* QuestItem */,
 				E1F45C991AF21E4E00ACAE6D /* QuestTypes */,
 				E1EBEBBB1AEF79FD000A3790 /* QuestManager.h */,
 				E1EBEBBC1AEF79FD000A3790 /* QuestManager.m */,
@@ -467,6 +470,8 @@
 				E1D64E251AFB58450061EB11 /* CLLocationManager+Addition.m */,
 				BBEC01761AFB91F2005BC759 /* UIView+Frame.h */,
 				BBEC01771AFB91F2005BC759 /* UIView+Frame.m */,
+				E1D703191B09E06C0035EF13 /* UIImage+Size.h */,
+				E1D7031A1B09E06C0035EF13 /* UIImage+Size.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -636,6 +641,7 @@
 				E1D7050E1AEA7B8900525E19 /* QuestLoginViewController.m in Sources */,
 				E1D7050B1AEA7B8900525E19 /* AppDelegate.m in Sources */,
 				E1E3EED01AF79DA10095A6EC /* FilterTableViewController.m in Sources */,
+				E1D7031B1B09E06C0035EF13 /* UIImage+Size.m in Sources */,
 				E1D64E261AFB58450061EB11 /* CLLocationManager+Addition.m in Sources */,
 				BB18DC271AF11739005B2AB2 /* ViewPhotoQuestItem.m in Sources */,
 				BB18DC2A1AF119E5005B2AB2 /* TakePhotoQuestItem.m in Sources */,

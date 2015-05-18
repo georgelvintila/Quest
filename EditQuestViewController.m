@@ -55,30 +55,31 @@
         {
                 case QuestTypeTakePhoto:
                 {
-                    TakePhotoQuestItem *info = (TakePhotoQuestItem *)self.questItem;
-                    self.questNameText.text = info.questName;
-                    self.detailTextView.text = info.questDetails;
-                    self.questLocation = info.questLocation;
+                    TakePhotoQuestItem *item = (TakePhotoQuestItem *)self.questItem;
+                    self.questNameText.text = item.questName;
+                    self.detailTextView.text = item.questDetails;
+                    self.questLocation = item.questLocation;
                     if(self.questLocation)
                     {
                         [self.mapButton setSelected:YES];
                     }
-                    self.containerViewController.takePhotoQuestViewController.questAngle = [info.questPhotoAngle doubleValue];
-                    self.containerViewController.takePhotoQuestViewController.questRadius = [info.questPhotoRadius doubleValue];
+                    self.containerViewController.takePhotoQuestViewController.questAngle = [item.questPhotoAngle doubleValue];
+                    self.containerViewController.takePhotoQuestViewController.questRadius = [item.questPhotoRadius doubleValue];
                 }
                 break;
                 case QuestTypeViewPhoto:
                 {
-                    ViewPhotoQuestItem *info = (ViewPhotoQuestItem *)self.questItem;
-                    self.questNameText.text = info.questName;
-                    self.detailTextView.text = info.questDetails;
-                    self.questLocation = info.questLocation;
+                    ViewPhotoQuestItem *item = (ViewPhotoQuestItem *)self.questItem;
+                    self.questNameText.text = item.questName;
+                    self.detailTextView.text = item.questDetails;
+                    self.questLocation = item.questLocation;
                     if(self.questLocation)
                     {
                         [ self.mapButton setSelected:YES];
                     }
-                    self.containerViewController.viewPhotoViewController.viewPhotoRadius = [info.questPhotoViewRadius integerValue];
-                    self.containerViewController.viewPhotoViewController.viewPhotoMessage = info.questPhotoMessage;
+                    self.containerViewController.viewPhotoViewController.viewPhotoRadius = [item.questPhotoViewRadius integerValue];
+                    self.containerViewController.viewPhotoViewController.viewPhotoMessage = item.questPhotoMessage;
+                    self.containerViewController.viewPhotoViewController.viewPhotoImageSmall = item.questPhotoImageSmall;
                 }
                 default:
                 break;
@@ -165,11 +166,11 @@
             item.questLocation = self.questLocation;
             
             item.questPhotoMessage = self.containerViewController.viewPhotoViewController.viewPhotoMessage;
-//            if(self.containerViewController.viewPhotoViewController.viewPhotoImage)
-//                info.questPhotoImage = [[QuestImage alloc] initWithData:self.containerViewController.viewPhotoViewController.viewPhotoImage];
+            item.questPhotoImageSmall = self.containerViewController.viewPhotoViewController.viewPhotoImageSmall;
+            [item addImageData:self.containerViewController.viewPhotoViewController.viewPhotoImageData];
             item.questPhotoViewRadius = [NSNumber numberWithInteger:self.containerViewController.viewPhotoViewController.viewPhotoRadius];
             
-            BOOL complete = (item.questName.length && item.questDetails.length && item.questLocation != nil && item.questPhotoImage);
+            BOOL complete = (item.questName.length && item.questDetails.length && item.questLocation != nil && item.questPhotoImageSmall);
             item.questComplete = complete;
             if(self.editMode)
             {

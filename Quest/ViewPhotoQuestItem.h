@@ -10,6 +10,13 @@
 
 #import "QuestItem.h"
 #import "QuestImage.h"
+@class ViewPhotoQuestItem;
+@protocol ViewPhotoQuestItemDelegate <NSObject>
+
+-(void)imageReceived:(UIImage*)image;
+
+@end
+
 
 @interface ViewPhotoQuestItem : QuestItem
 
@@ -17,6 +24,11 @@
 
 @property (nonatomic) NSNumber *questPhotoViewRadius;
 @property (nonatomic) NSString *questPhotoMessage;
-@property (nonatomic) UIImage * questPhotoImage;
+@property (nonatomic) UIImage *questPhotoImageSmall;
 @property (nonatomic) BOOL hasImage;
+@property (nonatomic,weak) id<ViewPhotoQuestItemDelegate> delegate;
+
+-(void)addImageData:(NSData*)imageData;
+-(void)requestImageData;
+
 @end

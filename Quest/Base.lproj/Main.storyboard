@@ -162,7 +162,7 @@
                                     <outlet property="delegate" destination="32d-ao-9PT" id="Kx3-3l-tZW"/>
                                 </connections>
                             </textView>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O80-Px-aOY">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O80-Px-aOY">
                                 <rect key="frame" x="16" y="307" width="288" height="205"/>
                                 <connections>
                                     <segue destination="np2-LK-Oa9" kind="embed" identifier="ContainerSegue" id="GXw-QK-s7I"/>
@@ -182,7 +182,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zCP-ge-q6P" firstAttribute="top" secondItem="b0a-gb-qY0" secondAttribute="bottom" constant="8" id="3Ef-O6-Phd"/>
-                            <constraint firstItem="NJf-BG-KzK" firstAttribute="top" secondItem="O80-Px-aOY" secondAttribute="bottom" constant="7" id="3U1-BW-h8t"/>
+                            <constraint firstItem="NJf-BG-KzK" firstAttribute="top" secondItem="O80-Px-aOY" secondAttribute="bottom" constant="12" id="3U1-BW-h8t"/>
                             <constraint firstAttribute="centerY" secondItem="dXe-gg-fbC" secondAttribute="centerY" id="4C5-4d-Yqv"/>
                             <constraint firstItem="dXe-gg-fbC" firstAttribute="leading" secondItem="aoc-3q-ErD" secondAttribute="leadingMargin" id="4cL-nS-qMp"/>
                             <constraint firstItem="n0c-MQ-yym" firstAttribute="trailing" secondItem="aoc-3q-ErD" secondAttribute="trailingMargin" id="9ZO-G2-G8u"/>
@@ -600,7 +600,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="Znc-zG-ESR">
-                        <barButtonItem key="rightBarButtonItem" title="Item" style="done" systemItem="done" id="gaf-gL-qJn">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="gaf-gL-qJn">
                             <color key="tintColor" red="0.092573540489999995" green="0.2925149936" blue="0.081826784639999997" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="doneButtonPressed:" destination="KeP-aA-HZL" id="eoM-BM-e8X"/>
@@ -829,6 +829,7 @@
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zQa-dC-NgI">
                                 <rect key="frame" x="16" y="130" width="256" height="150"/>
+                                <gestureRecognizers/>
                             </imageView>
                         </subviews>
                         <constraints>
@@ -909,7 +910,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="Fey-iB-sl6"/>
         <segue reference="GuE-OP-K02"/>
-        <segue reference="0Nj-Gx-i1j"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,6 +7,7 @@
 //
 
 #import "ViewPhotoViewController.h"
+#import "UIImage+Size.h"
 
 
 @interface ViewPhotoViewController () <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -27,7 +28,6 @@
 @property (strong, nonatomic) UIImagePickerController* imagePickerController;
 @property (weak, nonatomic) IBOutlet UIButton *choosePhotoButton;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-
 
 @end
 
@@ -120,10 +120,20 @@
     return self.messageTextField.text;
 }
 
--(void)setViewPhotoImage:(NSData *)viewPhotoImage
+-(void)setViewPhotoImageData:(NSData *)viewPhotoImageData
 {
-    _viewPhotoImage = viewPhotoImage;
+    _viewPhotoImageData = viewPhotoImageData;
     [self.choosePhotoButton setSelected:YES];
+}
+
+-(void)setViewPhotoImageSmall:(UIImage *)viewPhotoImageSmall
+{
+    self.imageView.image = viewPhotoImageSmall;
+}
+
+-(UIImage *)viewPhotoImageSmall
+{
+    return self.imageView.image;
 }
 
 #pragma mark - Keyboard Movements
@@ -178,8 +188,11 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
     [self dismissViewControllerAnimated:YES completion:nil];
-    self.imageView.image = info[UIImagePickerControllerOriginalImage];
-    self.viewPhotoImage = UIImagePNGRepresentation(info[UIImagePickerControllerOriginalImage]);
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    
+     image = [image imageOfSize:self.imageView.frameSize];
+    self.imageView.image = image;
+    self.viewPhotoImageData = UIImagePNGRepresentation(info[UIImagePickerControllerOriginalImage]);
 }
 
 
@@ -187,10 +200,13 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    self.imagePickerController = [segue.destinationViewController init];
-    self.imagePickerController.allowsEditing = NO;
-    self.imagePickerController.delegate = self;
-    self.imagePickerController.sourceType = pickerType;
+    if([segue.identifier isEqualToString:@"kPickPhoto"])
+    {
+        self.imagePickerController = [segue.destinationViewController init];
+        self.imagePickerController.allowsEditing = NO;
+        self.imagePickerController.delegate = self;
+        self.imagePickerController.sourceType = pickerType;
+    }
 }
 
 
