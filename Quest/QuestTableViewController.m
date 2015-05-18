@@ -12,7 +12,7 @@
 #import "QuestViewController.h"
 #import "QuestDetailsViewController.h"
 
-@interface QuestTableViewController ()<UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating>
+@interface QuestTableViewController ()<UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating,QuestManagerDelegate,QuestViewControllerDelegate>
 #pragma mark - Properties
 
 @property(nonatomic,strong) QuestManager *questManager;
@@ -25,6 +25,7 @@
 @property(nonatomic, strong) QuestResultTableViewController *resultsTableController;
 
 @property (nonatomic, weak) UIViewController* destinationViewController;
+@property (nonatomic) NSInteger selectedQuestIndex;
 
 @end
 
@@ -38,7 +39,6 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-        _questManager = [QuestManager sharedManager];
         _allQuestTypes = [NSMutableArray new];
         _questItems = [NSMutableArray new];
         if ([self.title isEqualToString:kQuestTableViewControllerTitleMyQuests]) {
@@ -55,7 +55,7 @@
                 _owner = QuestOwnerTypeAll;
             }
         }
-
+        _questManager = [[QuestManager alloc] initWithOwner:_owner];
     }
     return self;
 }
@@ -65,11 +65,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:kQuestDataChangedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:kQuestQueryNoLocationNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:kQuestQueryNoLocationNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestData) name:kQuestFilterHasChanged object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestData) name:kQuestUserLocationDidChangeNotification object:nil];
     
+    _questManager.delegate = self;
     _resultsTableController = [[QuestResultTableViewController alloc] init];
     _searchController = [[UISearchController alloc] initWithSearchResultsController:self.resultsTableController];
     self.searchController.searchResultsUpdater = self;
@@ -132,8 +132,7 @@
 
 -(void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestDataChangedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestQueryNoLocationNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestQueryNoLocationNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestFilterHasChanged object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestUserLocationDidChangeNotification object:nil];
 }
@@ -144,7 +143,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.questManager deleteQuestOfType:self.allQuestTypes[indexPath.section] atIndex:indexPath.item];
-        [self reloadData:nil];
+        [self reloadData];
     }
 }
 
@@ -157,25 +156,30 @@
 
 #pragma mark - Data Methods
 
+-(void)updateQuestList
+{
+    [self reloadData];
+}
+
 -(void) requestData
 {
     NSString *filter = [[NSUserDefaults standardUserDefaults] objectForKey:kQuestSelectedFilterType];
     if(!filter || [filter isEqualToString:kQuestTypeAllQuests])
     {
-        [self.questManager requestAllItemsForOwner:self.owner];
+        [self.questManager requestAllItems];
     }
     else
     {
-        [self.questManager requestItemsOfType:filter forOwner:self.owner];
+        [self.questManager requestItemsOfType:filter];
     }
 }
 
--(void)reloadData:(NSNotification*)notification
+-(void)reloadData
 {
     
     [self.questItems removeAllObjects];
     NSString *filter = [[NSUserDefaults standardUserDefaults] objectForKey:kQuestSelectedFilterType];
-    NSArray *types = [self.questManager allQuestTypesForOwner:self.owner];
+    NSArray *types = [self.questManager allQuestTypes];
     if(!filter || [filter isEqualToString:kQuestTypeAllQuests])
     {
         self.allQuestTypes = types;
@@ -187,7 +191,7 @@
     }
     for (NSString *type in self.allQuestTypes)
     {
-        [self.questItems addObject:[self.questManager questListOfType:type forOwner:self.owner]];
+        [self.questItems addObject:[self.questManager questListOfType:type]];
     }
     [self.tableView reloadData];
     
@@ -251,9 +255,9 @@
         QuestViewController *questViewController = (QuestViewController *)self.destinationViewController;
         questViewController.questType = self.questType;
         
-        questViewController.questIndex = indexPath.row;
+        self.selectedQuestIndex = indexPath.row;
         questViewController.editMode = YES;
-        questViewController.questInfo = [quests objectAtIndex:indexPath.row];
+        questViewController.questItem = [quests objectAtIndex:indexPath.row];
     }
 }
 
@@ -387,7 +391,18 @@
     if([segue.identifier isEqualToString:kQuestSegue])
     {
         ((QuestViewController *)(self.destinationViewController)).questType = self.questType;
+        ((QuestViewController *)(self.destinationViewController)).delegate = self;
     }
+}
+
+-(void)addQuestItem:(QuestItem *)questItem ofType:(NSString *)type
+{
+    [self.questManager addNewQuestWithType:type andInfo:questItem];
+}
+
+-(void)updateQuestItem:(QuestItem *)questItem ofType:(NSString *)type
+{
+    [self.questManager updateQuestOfType:type atIndex:self.selectedQuestIndex withQuestInfo:questItem];
 }
 
 @end

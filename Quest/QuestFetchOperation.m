@@ -82,6 +82,7 @@
                 {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [[NSNotificationCenter defaultCenter] postNotificationName:kQuestQueryNoLocationNotification object:self];
+                        
                     });
                     return;
                 }
@@ -102,11 +103,10 @@
         for (Quest *item  in results) {
             id q = [QuestItem questItemForQuest:item];
             [quests addObject:q];
-            
         }
-        NSDictionary *userInfo = @{kFetchType:self.questType,kFetchItems:quests, kFetchOwner:[NSNumber numberWithInteger:self.questOwner]};
+        NSDictionary *userInfo = @{kFetchType:self.questType,kFetchItems:quests};
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:kQuestQuerySuccesNotification object:self userInfo:userInfo];
+            [self.delegate operation:self finishedWithInfo:userInfo];
         });
     }
 }

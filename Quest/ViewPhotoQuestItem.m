@@ -20,6 +20,14 @@
 @implementation ViewPhotoQuestItem
 @dynamic quest;
 
+- (instancetype)init
+{
+    self = [super initWithType:kQuestTypeViewPhotoQuest];
+    if (self) {
+    }
+    return self;
+}
+
 #pragma mark - Property Methods
 
 - (NSNumber *)questPhotoViewRadius {

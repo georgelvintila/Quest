@@ -55,7 +55,7 @@
         {
                 case QuestTypeTakePhoto:
                 {
-                    TakePhotoQuestItem *info = (TakePhotoQuestItem *)self.questInfo;
+                    TakePhotoQuestItem *info = (TakePhotoQuestItem *)self.questItem;
                     self.questNameText.text = info.questName;
                     self.detailTextView.text = info.questDetails;
                     self.questLocation = info.questLocation;
@@ -69,7 +69,7 @@
                 break;
                 case QuestTypeViewPhoto:
                 {
-                    ViewPhotoQuestItem *info = (ViewPhotoQuestItem *)self.questInfo;
+                    ViewPhotoQuestItem *info = (ViewPhotoQuestItem *)self.questItem;
                     self.questNameText.text = info.questName;
                     self.detailTextView.text = info.questDetails;
                     self.questLocation = info.questLocation;
@@ -127,60 +127,60 @@
 
 - (void)saveQuest
 {
-    QuestManager *qmanager = [QuestManager sharedManager];
-    qmanager = [QuestManager sharedManager];
     
     switch (self.questType)
     {
         case QuestTypeTakePhoto:
         {
-            if(!self.questInfo)
-                self.questInfo = [[TakePhotoQuestItem alloc]init];
-            TakePhotoQuestItem *info = (TakePhotoQuestItem *)self.questInfo;
+            if(!self.questItem)
+                self.questItem = [[TakePhotoQuestItem alloc]init];
+            TakePhotoQuestItem *item = (TakePhotoQuestItem *)self.questItem;
             
-            info.questName = self.questNameText.text;
-            info.questDetails = self.detailTextView.text;
-            info.questLocation = self.questLocation;
-            info.questPhotoAngle = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.questAngle];
-            info.questPhotoRadius = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.questRadius];
-            BOOL complete = (info.questName.length && info.questDetails.length && info.questLocation != nil);
-            info.questComplete = complete;
+            item.questName = self.questNameText.text;
+            item.questDetails = self.detailTextView.text;
+            item.questLocation = self.questLocation;
+            item.questPhotoAngle = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.questAngle];
+            item.questPhotoRadius = [NSNumber numberWithInteger:self.containerViewController.takePhotoQuestViewController.questRadius];
+            BOOL complete = (item.questName.length && item.questDetails.length && item.questLocation != nil);
+            item.questComplete = complete;
             if(self.editMode)
             {
-                [qmanager updateQuestOfType:kQuestTypeTakePhotoQuest atIndex:self.questIndex withQuestInfo:info];
+                [self.delegate updateQuestItem:item ofType:kQuestTypeTakePhotoQuest];
             }
             else
             {
-                if(info.questName.length || info.questDetails.length)
-                    [qmanager addNewQuestWithType:kQuestTypeTakePhotoQuest andInfo:info];
+                if(item.questName.length || item.questDetails.length)
+                    [self.delegate addQuestItem:item ofType:kQuestTypeTakePhotoQuest];
             }
             break;
         }
         case QuestTypeViewPhoto:
         {
-            if(!self.questInfo)
-                self.questInfo = [[ViewPhotoQuestItem alloc]init];
-            ViewPhotoQuestItem *info = (ViewPhotoQuestItem *)self.questInfo;
+            if(!self.questItem)
+                self.questItem = [[ViewPhotoQuestItem alloc]init];
+            ViewPhotoQuestItem *item = (ViewPhotoQuestItem *)self.questItem;
             
-            info.questName = self.questNameText.text;
-            info.questDetails = self.detailTextView.text;
-            info.questLocation = self.questLocation;
+            item.questName = self.questNameText.text;
+            item.questDetails = self.detailTextView.text;
+            item.questLocation = self.questLocation;
             
-            info.questPhotoMessage = self.containerViewController.viewPhotoViewController.viewPhotoMessage;
+            item.questPhotoMessage = self.containerViewController.viewPhotoViewController.viewPhotoMessage;
 //            if(self.containerViewController.viewPhotoViewController.viewPhotoImage)
 //                info.questPhotoImage = [[QuestImage alloc] initWithData:self.containerViewController.viewPhotoViewController.viewPhotoImage];
-            info.questPhotoViewRadius = [NSNumber numberWithInteger:self.containerViewController.viewPhotoViewController.viewPhotoRadius];
+            item.questPhotoViewRadius = [NSNumber numberWithInteger:self.containerViewController.viewPhotoViewController.viewPhotoRadius];
             
-            BOOL complete = (info.questName.length && info.questDetails.length && info.questLocation != nil && info.questPhotoImage);
-            info.questComplete = complete;
+            BOOL complete = (item.questName.length && item.questDetails.length && item.questLocation != nil && item.questPhotoImage);
+            item.questComplete = complete;
             if(self.editMode)
             {
-                [qmanager updateQuestOfType:kQuestTypeViewPhotoQuest atIndex:self.questIndex withQuestInfo:info];
+                [self.delegate updateQuestItem:item ofType:kQuestTypeViewPhotoQuest];
             }
             else
             {
-                if(info.questName.length || info.questDetails.length)
-                    [qmanager addNewQuestWithType:kQuestTypeViewPhotoQuest andInfo:info];
+                if(item.questName.length || item.questDetails.length)
+                {
+                    [self.delegate addQuestItem:item ofType:kQuestTypeViewPhotoQuest];
+                }
             }
             break;
 

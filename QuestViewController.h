@@ -13,14 +13,23 @@
 #import "TakePhotoQuestViewController.h"
 
 @class QuestItem;
+@class QuestViewController;
+
+@protocol QuestViewControllerDelegate <NSObject>
+
+-(void)addQuestItem:(QuestItem*)questItem ofType:(NSString *)type;
+-(void)updateQuestItem:(QuestItem*)questItem ofType:(NSString *)type;
+
+@end
 
 @interface QuestViewController : UIViewController<LocationPickerViewControllerDelegate,UITextFieldDelegate>
 
 #pragma mark - Properties
 
 @property (nonatomic) QuestType questType;
-@property (nonatomic) NSInteger questIndex;
 @property (nonatomic) BOOL editMode;
-@property (nonatomic) QuestItem* questInfo;
+@property (nonatomic) QuestItem* questItem;
+
+@property(nonatomic,weak) id<QuestViewControllerDelegate> delegate;
 
 @end
