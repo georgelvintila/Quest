@@ -7,7 +7,6 @@
 //
 
 #import "PFObject+Quest.h"
-#import "PFGeoPoint+Addition.h"
 
 @implementation PFObject (Quest)
 
