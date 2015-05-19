@@ -10,8 +10,11 @@
 #import <Parse/Parse.h>
 #import <Bolts/Bolts.h>
 #import "UserManager.h"
+#import "QuestLoginViewController.h"
 
 @interface AppDelegate ()
+
+@property (nonatomic,strong) QuestLoginViewController *loginController;
 
 @end
 
@@ -41,6 +44,7 @@
 
         return task;
     }];
+    
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     return YES;
 }
@@ -66,5 +70,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 @end

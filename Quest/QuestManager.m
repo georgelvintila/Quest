@@ -8,9 +8,7 @@
 
 #import "QuestManager.h"
 #import "PFObject+Quest.h"
-#import "QuestSaveOperation.h"
 #import "QuestFetchOperation.h"
-#import "QuestDeleteOperation.h"
 
 
 @interface QuestManager ()<QuestFetchOperationDelegate>
@@ -19,7 +17,6 @@
 }
 #pragma mark - Properties
 @property (atomic,readwrite) NSDictionary *questList;
-@property (nonatomic) NSOperationQueue* editOperationQueue;
 @property (nonatomic) NSOperationQueue* fetchOperationQueue;
 @property (nonatomic) QuestOwnerType questOwner;
 
@@ -43,8 +40,6 @@
         _questList = [NSDictionary new];
         _questOwner = questOwner;
         typesList = @[kQuestTypeTakePhotoQuest,kQuestTypeViewPhotoQuest];
-        _editOperationQueue = [NSOperationQueue new];
-        _editOperationQueue.name = @"QuestQueue";
         _fetchOperationQueue = [NSOperationQueue new];
         _fetchOperationQueue.name = @"FetchQueue";
         

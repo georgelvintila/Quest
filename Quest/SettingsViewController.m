@@ -21,6 +21,7 @@
 @implementation SettingsViewController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     NSString *str = [def objectForKey:kQuestSelectedFilterType];
     if (str) {
@@ -46,7 +47,6 @@
 
 - (IBAction)buttonLogout:(id)sender {
     [PFUser logOut];
-    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 

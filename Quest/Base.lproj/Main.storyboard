@@ -30,7 +30,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EmU-Jb-ELm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="178" y="-364"/>
+            <point key="canvasLocation" x="138" y="-372"/>
         </scene>
         <!--MyQuests-->
         <scene sceneID="bsS-bb-Ouh">
@@ -102,7 +102,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zxn-Nv-qCm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="667" y="-364"/>
+            <point key="canvasLocation" x="627" y="-372"/>
         </scene>
         <!--Quest-->
         <scene sceneID="o8h-8F-Ig8">
@@ -219,7 +219,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1127" y="-364"/>
+            <point key="canvasLocation" x="1087" y="-372"/>
         </scene>
         <!--Location Picker-->
         <scene sceneID="vKc-h6-5lJ">
@@ -305,20 +305,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lOt-ZG-hPj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1584" y="-364"/>
-        </scene>
-        <!--Quest Login View Controller-->
-        <scene sceneID="GI4-yd-8fW">
-            <objects>
-                <viewController storyboardIdentifier="kQuestLoginViewController" id="Lzy-nl-YAG" customClass="QuestLoginViewController" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <connections>
-                        <segue destination="HMO-TQ-h4y" kind="custom" identifier="kLogin" customClass="EmptySegue" id="zZs-0z-AGw"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SCv-nA-W3d" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1003" y="382"/>
+            <point key="canvasLocation" x="1544" y="-372"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8H7-pe-9sX">
@@ -451,7 +438,6 @@
                                     <constraint firstAttribute="height" constant="61" id="dIf-Df-TKJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <color key="tintColor" red="0.094117647058823528" green="0.29411764705882354" blue="0.090936411571207423" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="START QUEST">
                                     <color key="titleColor" red="0.094117647060000004" green="0.29411764709999999" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -666,7 +652,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ac-oa-zn4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1584" y="-896.5"/>
+            <point key="canvasLocation" x="1544" y="-904.5"/>
         </scene>
         <!--Take Photo Quest View Controller-->
         <scene sceneID="0Wn-nC-0sZ">
@@ -771,7 +757,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nZM-6f-y9L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2108" y="-1025.5"/>
+            <point key="canvasLocation" x="2068" y="-1033.5"/>
         </scene>
         <!--View Photo View Controller-->
         <scene sceneID="nuy-U6-Dwg">
@@ -867,7 +853,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4tG-ek-0yP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2108" y="-679"/>
+            <point key="canvasLocation" x="2068" y="-687"/>
         </scene>
         <!--Image Picker Controller-->
         <scene sceneID="XCY-Un-EhW">
@@ -886,7 +872,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rmM-02-ktk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2546" y="-679"/>
+            <point key="canvasLocation" x="2506" y="-687"/>
         </scene>
         <!--Settings-->
         <scene sceneID="D7y-Ip-eCc">
@@ -912,6 +898,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Fey-iB-sl6"/>
-        <segue reference="H3l-VS-N2o"/>
+        <segue reference="GuE-OP-K02"/>
     </inferredMetricsTieBreakers>
 </document>
