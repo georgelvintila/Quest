@@ -61,6 +61,7 @@
     [self.map showAnnotations:@[point] animated:YES];
     self.map.userTrackingMode = MKUserTrackingModeFollow;
     [self.manager startUpdatingLocation];
+    
 }
 
 #pragma mark - MapView Delegate Methods
@@ -82,12 +83,26 @@
 
     [self.map setCenterCoordinate: userLocation.coordinate animated:YES];
     [self.map setRegion: [self.map regionThatFits: MKCoordinateRegionMakeWithDistance(self.map.centerCoordinate, distance, distance)] animated: YES];
+    
+    if (distance / 2.3 < 150 + MAX(userLocation.location.horizontalAccuracy, userLocation.location.verticalAccuracy))
+        self.startButton.selected = YES;
+    else
+        self.startButton.selected = NO;
 }
 
 #pragma mark - Action Methods
 
-- (IBAction)startQuestButtonClick:(id)sender {
+- (IBAction)startQuestButtonClick:(UIButton *)sender {
     DLog(@"user clicked on the button, start the quest!");
+    if (!sender.selected) {
+        UIAlertController *alc = [UIAlertController alertControllerWithTitle:@"Get closer!" message:@"Please get within 150m to start the quest!" preferredStyle:UIAlertControllerStyleAlert];
+        [alc addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [alc dismissViewControllerAnimated:YES completion:nil];
+        }]];
+        [self presentViewController:alc animated:YES completion:nil
+         ];
+        return;
+    }
 }
 
 #pragma mark - Navigation
