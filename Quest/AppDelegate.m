@@ -33,7 +33,7 @@
     
     [UserManager sharedManager].name =[PFUser currentUser].username ;
     
-    [[PFUser logInWithUsernameInBackground:@"testuser" password:@"pass"] continueWithSuccessBlock:^id(BFTask *task) {
+    [[PFUser logInWithUsernameInBackground:@"helloworld" password:@"helloworld"] continueWithSuccessBlock:^id(BFTask *task) {
         PFACL *defaultACL = [PFACL ACL];
         [defaultACL setPublicReadAccess:YES];
         [defaultACL setWriteAccess:YES forUser:[PFUser currentUser]];

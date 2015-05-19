@@ -432,20 +432,6 @@
                                 <color key="textColor" red="0.10274835409999999" green="0.2202399273" blue="0.31904987369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oV4-n2-Vnm">
-                                <rect key="frame" x="8" y="450" width="304" height="61"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="61" id="dIf-Df-TKJ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <state key="normal" title="START QUEST">
-                                    <color key="titleColor" red="0.094117647060000004" green="0.29411764709999999" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="startQuestButtonClick:" destination="AF7-y9-bAk" eventType="touchUpInside" id="ytA-7x-Rdb"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Details" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnU-de-5Ah">
                                 <rect key="frame" x="8" y="334" width="304" height="108"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -462,6 +448,21 @@
                                     <outlet property="delegate" destination="AF7-y9-bAk" id="QIe-yF-Sht"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oV4-n2-Vnm">
+                                <rect key="frame" x="8" y="450" width="304" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="dIf-Df-TKJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="tintColor" red="0.094117647060000004" green="0.29411764709999999" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="START QUEST">
+                                    <color key="titleColor" red="0.094117647060000004" green="0.29411764709999999" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startQuestButtonClick:" destination="AF7-y9-bAk" eventType="touchUpInside" id="ytA-7x-Rdb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -485,11 +486,84 @@
                         <outlet property="map" destination="qEh-Yy-1pT" id="zrO-et-2a1"/>
                         <outlet property="startButton" destination="oV4-n2-Vnm" id="x3I-HG-uUT"/>
                         <outlet property="titleText" destination="j99-8g-DqF" id="C6b-c9-QzE"/>
+                        <segue destination="NMs-zV-8V9" kind="show" identifier="StartQuestTakePhotoSegue" id="WUq-0W-fWs"/>
+                        <segue destination="hbF-gL-VBc" kind="show" identifier="StartQuestViewPhotoSegue" id="dAW-aP-b30"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v4u-XX-8aN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="667" y="1390"/>
+        </scene>
+        <!--Take Photo-->
+        <scene sceneID="xJy-57-811">
+            <objects>
+                <viewController title="Take Photo" id="NMs-zV-8V9" customClass="QuestTakePhotoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9R0-ba-Pjg"/>
+                        <viewControllerLayoutGuide type="bottom" id="EFI-g9-fnn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IDj-Q1-GRr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iqw-RX-Lzb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1269" y="1390"/>
+        </scene>
+        <!--View Photo-->
+        <scene sceneID="iGq-Rd-7Dh">
+            <objects>
+                <viewController title="View Photo" id="hbF-gL-VBc" customClass="QuestViewPhotoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wgr-Os-yCW"/>
+                        <viewControllerLayoutGuide type="bottom" id="0AO-6Z-hzz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="y9T-a9-lsn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DcS-ik-1q1">
+                                <rect key="frame" x="16" y="52" width="288" height="251"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EKf-iX-nxI">
+                                <rect key="frame" x="60" y="311" width="200" height="200"/>
+                                <color key="backgroundColor" red="0.092573540489999995" green="0.2925149936" blue="0.081826784639999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Nex-Ie-bha"/>
+                                    <constraint firstAttribute="width" constant="200" id="hGC-G4-1c4"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3X-Vc-reQ">
+                                <rect key="frame" x="146" y="400" width="28" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.31990131578947362" green="0.47897820723684209" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0AO-6Z-hzz" firstAttribute="top" secondItem="g3X-Vc-reQ" secondAttribute="bottom" constant="98" id="Oze-ib-xHU"/>
+                            <constraint firstItem="g3X-Vc-reQ" firstAttribute="top" secondItem="DcS-ik-1q1" secondAttribute="bottom" constant="97" id="UTp-qN-aO2"/>
+                            <constraint firstItem="EKf-iX-nxI" firstAttribute="top" secondItem="DcS-ik-1q1" secondAttribute="bottom" constant="8" id="hU9-7G-4HD"/>
+                            <constraint firstItem="DcS-ik-1q1" firstAttribute="top" secondItem="wgr-Os-yCW" secondAttribute="bottom" constant="8" id="nLn-pm-QWM"/>
+                            <constraint firstItem="0AO-6Z-hzz" firstAttribute="top" secondItem="EKf-iX-nxI" secondAttribute="bottom" constant="8" id="pjU-Re-vOR"/>
+                            <constraint firstAttribute="centerX" secondItem="EKf-iX-nxI" secondAttribute="centerX" id="taS-sb-IWq"/>
+                            <constraint firstAttribute="centerX" secondItem="g3X-Vc-reQ" secondAttribute="centerX" id="uzq-2Z-CFH"/>
+                            <constraint firstItem="DcS-ik-1q1" firstAttribute="leading" secondItem="y9T-a9-lsn" secondAttribute="leadingMargin" id="xFK-Kc-dWK"/>
+                            <constraint firstItem="DcS-ik-1q1" firstAttribute="trailing" secondItem="y9T-a9-lsn" secondAttribute="trailingMargin" id="zUZ-rq-SX5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imagePicture" destination="DcS-ik-1q1" id="LFW-Fe-XbH"/>
+                        <outlet property="labelTimeLeft" destination="g3X-Vc-reQ" id="ano-LO-trs"/>
+                        <outlet property="viewTimeLeft" destination="EKf-iX-nxI" id="x1N-Tx-8AG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v9g-7d-TFw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1269" y="2107"/>
         </scene>
         <!--Settings-->
         <scene sceneID="rdg-Uu-aXe">

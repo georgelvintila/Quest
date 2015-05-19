@@ -9,7 +9,11 @@
 #import "QuestDetailsViewController.h"
 #import <MapKit/MapKit.h>
 #import "QuestItem.h"
+#import "TakePhotoQuestItem.h"
+#import "ViewPhotoQuestItem.h"
 #import "CLLocationManager+Addition.h"
+#import "QuestTakePhotoViewController.h"
+#import "QuestViewPhotoViewController.h"
 
 @interface QuestDetailsViewController () <MKMapViewDelegate,CLLocationManagerDelegate>
 
@@ -64,6 +68,16 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+//    if (self.questInfo.questComplete) {
+//        self.startButton.selected = NO;
+//        self.startButton.enabled = NO;
+//        [self.startButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+//        [self.startButton setTitle:@"QUEST COMPLETED" forState:UIControlStateDisabled];
+//    }
+}
+
 #pragma mark - MapView Delegate Methods
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
@@ -84,7 +98,7 @@
     [self.map setCenterCoordinate: userLocation.coordinate animated:YES];
     [self.map setRegion: [self.map regionThatFits: MKCoordinateRegionMakeWithDistance(self.map.centerCoordinate, distance, distance)] animated: YES];
     
-    if (distance / 2.3 < 150 + MAX(userLocation.location.horizontalAccuracy, userLocation.location.verticalAccuracy))
+    if (distance / 2.3 < 150 + MAX(userLocation.location.horizontalAccuracy, userLocation.location.verticalAccuracy) && self.startButton.enabled)
         self.startButton.selected = YES;
     else
         self.startButton.selected = NO;
@@ -99,9 +113,14 @@
         [alc addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [alc dismissViewControllerAnimated:YES completion:nil];
         }]];
-        [self presentViewController:alc animated:YES completion:nil
-         ];
+        [self presentViewController:alc animated:YES completion:nil];
         return;
+    }
+    if ([self.questInfo isMemberOfClass: [TakePhotoQuestItem class]]) {
+        [self performSegueWithIdentifier: kStartQuestTakePhotoSegue sender:self];
+    }
+    if ([self.questInfo isMemberOfClass:[ViewPhotoQuestItem class]]) {
+        [self performSegueWithIdentifier: kStartQuestViewPhotoSegue sender:self];
     }
 }
 
@@ -110,6 +129,14 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.destinationViewController isMemberOfClass:[QuestTakePhotoViewController class]]) {
+        QuestTakePhotoViewController *controller = (QuestTakePhotoViewController *)segue.destinationViewController;
+        controller.questItem = (TakePhotoQuestItem *)self.questInfo;
+    } else if ([segue.destinationViewController isMemberOfClass:[QuestViewPhotoViewController class]]){
+        
+        QuestViewPhotoViewController *controller = (QuestViewPhotoViewController *)segue.destinationViewController;
+        controller.questItem = (ViewPhotoQuestItem *)self.questInfo;
+    }
 }
 
 @end

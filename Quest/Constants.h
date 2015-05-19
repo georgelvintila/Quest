@@ -34,6 +34,8 @@ static NSString * const kQuestDetailsSegue = @"QuestDetailsSegue";
 static NSString * const kTakePhotoSegue = @"TakePhotoSegue";
 static NSString * const kViewPhotoSegue = @"ViewPhotoSegue";
 static NSString * const kQuestSegue = @"QuestSegue";
+static NSString * const kStartQuestTakePhotoSegue = @"StartQuestTakePhotoSegue";
+static NSString * const kStartQuestViewPhotoSegue = @"StartQuestViewPhotoSegue";
 
 
 //General Quest Property Keys
@@ -90,5 +92,7 @@ static NSString * const kQuestCurrentLocation = @"kQuestCurrentLocation";
 
 static CGFloat const kFilterDistance = 1000.0f;
 static CGFloat const kHeaderHeight = 25.0f;
+static CGFloat const kViewPhotoTime = 60;
+
 
 #endif
