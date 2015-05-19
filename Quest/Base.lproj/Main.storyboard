@@ -307,19 +307,6 @@
             </objects>
             <point key="canvasLocation" x="1544" y="-372"/>
         </scene>
-        <!--Quest Login View Controller-->
-        <scene sceneID="GI4-yd-8fW">
-            <objects>
-                <viewController id="Lzy-nl-YAG" customClass="QuestLoginViewController" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <connections>
-                        <segue destination="HMO-TQ-h4y" kind="custom" identifier="kLogin" customClass="EmptySegue" id="zZs-0z-AGw"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SCv-nA-W3d" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-833" y="362"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8H7-pe-9sX">
             <objects>

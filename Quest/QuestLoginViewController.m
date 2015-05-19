@@ -12,7 +12,7 @@
 
 #pragma mark - Properties
 
-@property (nonatomic,strong) PFLogInViewController *loginViewController;
+//@property (nonatomic,strong) PFLogInViewController *loginViewController;
 
 @end
 
@@ -24,8 +24,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSucces) name:PFLogInSuccessNotification object:nil];
 }
 
+
+-(void)loginSucces
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

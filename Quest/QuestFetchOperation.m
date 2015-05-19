@@ -65,7 +65,13 @@
         PFQuery *query = [PFQuery queryWithClassName:self.questType];
         PFUser *current =[PFUser currentUser];
         if(!current)
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:kQuestQueryNoUserNotification object:self];
+                
+            });
             return;
+        }
         switch (self.questOwner)
         {
             case QuestOwnerTypeCurrent:

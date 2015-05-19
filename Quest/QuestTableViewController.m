@@ -65,7 +65,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:kQuestQueryNoLocationNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:kQuestQueryNoLocationNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:kQuestQueryNoUserNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestData) name:kQuestFilterHasChanged object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestData) name:kQuestUserLocationDidChangeNotification object:nil];
     
@@ -132,7 +133,8 @@
 
 -(void)dealloc
 {
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestQueryNoLocationNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestQueryNoLocationNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestQueryNoUserNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestFilterHasChanged object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kQuestUserLocationDidChangeNotification object:nil];
 }
@@ -177,7 +179,6 @@
 
 -(void)reloadData
 {
-    
     [self.questItems removeAllObjects];
     NSString *filter = [[NSUserDefaults standardUserDefaults] objectForKey:kQuestSelectedFilterType];
     NSArray *types = [self.questManager allQuestTypes];

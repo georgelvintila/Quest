@@ -68,6 +68,7 @@ static NSString * const kQuestQueryFailureNotification = @"kQuestQueryFailureNot
 static NSString * const kQuestDataChangedNotification = @"kQuestDataChangedNotification";
 static NSString * const kQuestUserLocationDidChangeNotification = @"kQuestUserLocationDidChangeNotification";
 static NSString * const kQuestQueryNoLocationNotification = @"kQuestQueryNoLocationNotification";
+static NSString * const kQuestQueryNoUserNotification = @"kQuestQueryNoUserNotification";
 static NSString * const kQuestFilterHasChanged = @"kQuestFilterHasChanged";
 
 //Fetch UserInfo Keys
