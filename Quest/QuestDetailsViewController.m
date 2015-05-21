@@ -131,7 +131,19 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+//    if ([[CompletedQuestsManager sharedManager] objectForKeyedSubscript:self.questInfo.questObjectId]) {
+//        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Dude" message:@"Reset?" preferredStyle:UIAlertControllerStyleAlert];
+//        [alertController addAction:[UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//            [[CompletedQuestsManager sharedManager] setNoForKey: self.questInfo.questObjectId];
+//            self.startButton.selected = YES;
+//            self.startButton.enabled = YES;
+//            [alertController dismissViewControllerAnimated:YES completion:nil];
+//        }]];
+//        [alertController addAction:[UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+//            [alertController dismissViewControllerAnimated:YES completion:nil];
+//        }]];
+//        [self presentViewController:alertController animated:YES completion:nil];
+//    }
     if ([[CompletedQuestsManager sharedManager] objectForKeyedSubscript:self.questInfo.questObjectId]) {
         self.startButton.selected = NO;
         self.startButton.enabled = NO;
@@ -186,6 +198,7 @@
         UIAlertController *alc = [UIAlertController alertControllerWithTitle:@"Get closer!" message:@"Please get within 150m to start the quest!" preferredStyle:UIAlertControllerStyleAlert];
         [alc addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [alc dismissViewControllerAnimated:YES completion:nil];
+//            [self performSegueWithIdentifier: kStartQuestViewPhotoSegue sender:self];
         }]];
         [self presentViewController:alc animated:YES completion:nil];
         return;

@@ -14,5 +14,6 @@
 
 - (BOOL)objectForKeyedSubscript:(NSString *)key;
 - (void)setYesForKey:(NSString *)string;
+- (void)setNoForKey:(NSString *)string;
 
 @end

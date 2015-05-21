@@ -45,6 +45,7 @@
     self.labelTimeLeft.hidden = NO;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerTick) userInfo:nil repeats:YES];
     self.timeLeft = kViewPhotoTime;
+    [self updateTimeLeft];
     [self.activityIndicatorView stopAnimating];
 }
 
@@ -89,9 +90,18 @@
 }
 
 - (void)updateTimeDone {
+    [self.timer invalidate];
     CompletedQuestsManager *questsManager = [CompletedQuestsManager sharedManager];
-    [questsManager setYesForKey: self.questItem.questObjectId]; 
-    [self.navigationController popViewControllerAnimated:YES];
+    [questsManager setYesForKey: self.questItem.questObjectId];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Message!" message:self.questItem.questPhotoMessage preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//        [alertController dismissViewControllerAnimated:YES completion:nil];
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }]];
+    [self presentViewController:alertController animated:YES completion:nil];
+
 }
 
 #pragma mark - Timer tick

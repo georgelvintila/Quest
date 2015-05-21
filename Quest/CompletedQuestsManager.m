@@ -41,11 +41,18 @@ static NSString * const kCompletedQuestsSettings = @"completedQuests";
     return [self.completedQuests[key] boolValue];
 }
 - (void)setYesForKey:(NSString *)string {
+    [self setBoolValue:YES forKey:string];
+}
+- (void)setNoForKey:(NSString *)string {
+    [self setBoolValue:NO forKey:string];
+}
+
+- (void)setBoolValue:(BOOL)value forKey:(NSString *)string {
     if (string == nil) {
         NSLog(@"string is nil!");
         return;
     }
-    self.completedQuests[string] = @(YES);
+    self.completedQuests[string] = @(value);
     
     // dispatch async so that the UI is smoooth as a criminal #MichaelJackson
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
