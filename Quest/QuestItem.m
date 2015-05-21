@@ -78,7 +78,7 @@
 
 - (void)setQuestObjectId:(NSString *)questObjectId {
     if(questObjectId)
-        self.quest[kQuestColumnObjectId] = questObjectId;
+        self.quest.objectId = questObjectId;
 }
 
 -(void)setQuestComplete:(BOOL)questComplete
@@ -110,7 +110,7 @@
 }
 
 - (NSString *)questObjectId {
-    return self.quest[kQuestColumnObjectId];
+    return self.quest.objectId;
 }
 
 -(BOOL)questComplete

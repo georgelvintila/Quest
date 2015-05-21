@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ViewPhotoQuestItem.h"
 
 @interface QuestViewPhotoViewController : UIViewController
 
-@property (nonatomic, strong) QuestItem *questItem;
+@property (nonatomic, strong) ViewPhotoQuestItem *questItem;
 
 @end

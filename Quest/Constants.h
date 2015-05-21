@@ -92,7 +92,7 @@ static NSString * const kQuestCurrentLocation = @"kQuestCurrentLocation";
 
 static CGFloat const kFilterDistance = 1000.0f;
 static CGFloat const kHeaderHeight = 25.0f;
-static CGFloat const kViewPhotoTime = 60;
+static CGFloat const kViewPhotoTime = 10;
 
 
 #endif

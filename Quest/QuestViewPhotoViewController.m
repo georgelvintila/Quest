@@ -7,8 +7,9 @@
 //
 
 #import "QuestViewPhotoViewController.h"
+#import "CompletedQuestsManager.h"
 
-@interface QuestViewPhotoViewController ()
+@interface QuestViewPhotoViewController () <ViewPhotoQuestItemDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *labelTimeLeft;
 @property (weak, nonatomic) IBOutlet UIView *viewTimeLeft;
@@ -19,24 +20,56 @@
 
 @property (assign, nonatomic) NSUInteger timeLeft;
 
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicatorView;
+
 @end
 
 @implementation QuestViewPhotoViewController
+
+#pragma mark - ViewPhotoQuestItemDelegate
+
+-(void)imageReceived:(UIImage*)image {
+    [self.imagePicture setImage: image];
+    [self imageDidLoad];
+}
 
 #pragma mark - View Triggers
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self updateCorners];
+    self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)imageDidLoad {
+    self.labelTimeLeft.hidden = NO;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerTick) userInfo:nil repeats:YES];
     self.timeLeft = kViewPhotoTime;
+    [self.activityIndicatorView stopAnimating];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self prepareLoadImage];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
     [self.timer invalidate];
+}
+
+- (void)prepareLoadImage {
+    self.activityIndicatorView.frameWidth = 50;
+    self.activityIndicatorView.frameHeight = 50;
+    self.activityIndicatorView.frameCenter = self.viewTimeLeft.frameCenter;
+    self.activityIndicatorView.frameTop += 50;
+    
+    // add the activityIndicatorView and hide the label
+    self.labelTimeLeft.hidden = YES;
+    [self.view addSubview: self.activityIndicatorView];
+    [self.activityIndicatorView startAnimating];
+    self.questItem.delegate = self;
+    [self.questItem requestImageData];
 }
 
 #pragma mark - Updaters
@@ -56,8 +89,9 @@
 }
 
 - (void)updateTimeDone {
-//    self.questItem.questComplete = YES;
-    [self dismissViewControllerAnimated:YES completion:nil];
+    CompletedQuestsManager *questsManager = [CompletedQuestsManager sharedManager];
+    [questsManager setYesForKey: self.questItem.questObjectId]; 
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Timer tick

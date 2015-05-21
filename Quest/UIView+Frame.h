@@ -18,7 +18,9 @@
 @property (nonatomic) CGFloat frameWidth;
 @property (nonatomic) CGFloat frameHeight;
 
-// frame valuess
+@property (nonatomic) CGPoint frameCenter;
+
+// frame values
 @property (nonatomic) CGSize frameSize;
 @property (nonatomic) CGPoint frameOrigin;
 

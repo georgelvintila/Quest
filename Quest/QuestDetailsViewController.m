@@ -14,7 +14,7 @@
 #import "CLLocationManager+Addition.h"
 #import "QuestTakePhotoViewController.h"
 #import "QuestViewPhotoViewController.h"
-
+#import "CompletedQuestsManager.h"
 @interface QuestDetailsViewController () <MKMapViewDelegate,CLLocationManagerDelegate>
 
 #pragma mark - Properties
@@ -25,6 +25,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) CLLocationManager *manager;
 
+@property (strong, nonatomic) MKCircle *circle;
+
+@property (strong, nonatomic) UITapGestureRecognizer *tgr;
+
+@property (assign, nonatomic) CGRect lastMapRect;
+@property (strong, nonatomic) UIBarButtonItem *lastBarButtonItem;
 @end
 
 #pragma mark -
@@ -58,24 +64,80 @@
     point.title = self.questInfo.questName;
     
     // the radius
-    MKCircle *circle = [MKCircle circleWithCenterCoordinate:self.questInfo.questLocation.coordinate radius: 150];
-    [self.map addOverlay:circle];
+    self.circle = [MKCircle circleWithCenterCoordinate:self.questInfo.questLocation.coordinate radius: 150];
+    [self.map addOverlay:self.circle];
     
     // the logic
     [self.map showAnnotations:@[point] animated:YES];
     self.map.userTrackingMode = MKUserTrackingModeFollow;
     [self.manager startUpdatingLocation];
     
+    self.tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMap)];
+    [self.map addGestureRecognizer: self.tgr];
+    self.lastMapRect = CGRectZero;
+    self.map.autoresizesSubviews = NO;
+    
 }
+
+- (void)tapMap {
+    NSLog(@"tap map!");
+    if (self.lastMapRect.size.width == 0 && self.lastMapRect.size.height == 0) {
+        self.view.autoresizesSubviews = NO;
+        self.lastMapRect = self.map.frame;
+//        [self.view bringSubviewToFront:self.map];
+        [UIView animateWithDuration:0.5 animations:^{
+            self.map.frame = self.view.bounds;
+            self.map.autoresizingMask = self.view.autoresizingMask;
+        } completion:^(BOOL finished) {
+            if (!finished)
+                return;
+            
+            // again.. ?
+            self.map.frame = self.view.bounds;
+            
+            UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(actionBack)];
+        
+            self.lastBarButtonItem = self.navigationItem.leftBarButtonItem;
+            self.navigationItem.leftBarButtonItem = backButton;
+            self.navigationItem.title = @"Map";
+        }];
+    }
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    if (self.lastMapRect.size.width != 0 || self.lastMapRect.size.height != 0) {
+        self.map.frame = self.view.bounds;
+    }
+}
+
+- (void)actionBack {
+    NSLog(@"action back!");
+    [UIView animateWithDuration:0.5 animations:^{
+        self.map.frame = self.lastMapRect;
+    } completion:^(BOOL finished) {
+        if (!finished)
+            return;
+        self.view.autoresizesSubviews = YES;
+        self.navigationItem.leftBarButtonItem = self.lastBarButtonItem;
+        self.lastBarButtonItem = nil;
+        self.navigationItem.title = @"Quest Details";
+        self.lastMapRect = CGRectZero;
+    }];
+
+}
+
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-//    if (self.questInfo.questComplete) {
-//        self.startButton.selected = NO;
-//        self.startButton.enabled = NO;
-//        [self.startButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
-//        [self.startButton setTitle:@"QUEST COMPLETED" forState:UIControlStateDisabled];
-//    }
+    
+    if ([[CompletedQuestsManager sharedManager] objectForKeyedSubscript:self.questInfo.questObjectId]) {
+        self.startButton.selected = NO;
+        self.startButton.enabled = NO;
+        [self.startButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
+        [self.startButton setTitle:@"QUEST COMPLETED" forState:UIControlStateDisabled];
+    }
 }
 
 #pragma mark - MapView Delegate Methods
@@ -83,25 +145,37 @@
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
     MKCircleRenderer *renderer = [[MKCircleRenderer alloc] initWithOverlay: overlay];
-    renderer.fillColor = [[UIColor redColor] colorWithAlphaComponent: 0.3];
+    if (!self.startButton.selected) {
+        renderer.fillColor = [[UIColor redColor] colorWithAlphaComponent: 0.3];
+    } else {
+        renderer.fillColor = [[UIColor greenColor] colorWithAlphaComponent: 0.3];
+    }
     return renderer;
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    DLog(@"received update");
-    if (self.map.userTrackingMode != MKUserTrackingModeFollow)
-        return;
     DLog(@"updated user location: %@", userLocation);
     double distance = [userLocation.location distanceFromLocation:self.questInfo.questLocation] * 2.3;
-
-    [self.map setCenterCoordinate: userLocation.coordinate animated:YES];
-    [self.map setRegion: [self.map regionThatFits: MKCoordinateRegionMakeWithDistance(self.map.centerCoordinate, distance, distance)] animated: YES];
+    DLog(@"distance: %.2f", distance);
+   
+    int radius = 15;
+    if ([self.questInfo isMemberOfClass:[ViewPhotoQuestItem class]]) {
+        radius = [((ViewPhotoQuestItem*)self.questInfo).questPhotoViewRadius intValue];
+        NSLog(@"following the int value here: %u", radius);
+    }
     
-    if (distance / 2.3 < 150 + MAX(userLocation.location.horizontalAccuracy, userLocation.location.verticalAccuracy) && self.startButton.enabled)
+    if (distance / 2.3 < radius + MAX(userLocation.location.horizontalAccuracy, userLocation.location.verticalAccuracy) && self.startButton.enabled)
         self.startButton.selected = YES;
     else
         self.startButton.selected = NO;
+    
+    [self.map removeOverlay:self.circle];
+    [self.map addOverlay:self.circle];
+
+//    [self.map setCenterCoordinate: userLocation.coordinate animated:YES];
+    [self.map setRegion: [self.map regionThatFits: MKCoordinateRegionMakeWithDistance(userLocation.coordinate, distance, distance)] animated: YES];
+
 }
 
 #pragma mark - Action Methods
@@ -121,6 +195,9 @@
     }
     if ([self.questInfo isMemberOfClass:[ViewPhotoQuestItem class]]) {
         [self performSegueWithIdentifier: kStartQuestViewPhotoSegue sender:self];
+    }
+    if (self.lastMapRect.size.width != 0 || self.lastMapRect.size.height != 0) {
+        [self actionBack];
     }
 }
 

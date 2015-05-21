@@ -21,6 +21,7 @@
 		BB2105971B0B784100F59F27 /* EmptySegue.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2105961B0B784100F59F27 /* EmptySegue.m */; };
 		BB6308E61AF10A0E002DF589 /* QuestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6308E51AF10A0E002DF589 /* QuestItem.m */; };
 		BB8962581AF1216B0068D150 /* QuestInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8962571AF1216B0068D150 /* QuestInfoTests.m */; };
+		BBD713281B0E017300AB7A0A /* CompletedQuestsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD713271B0E017300AB7A0A /* CompletedQuestsManager.m */; };
 		BBEC01781AFB91F2005BC759 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEC01771AFB91F2005BC759 /* UIView+Frame.m */; };
 		E1D64E261AFB58450061EB11 /* CLLocationManager+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D64E251AFB58450061EB11 /* CLLocationManager+Addition.m */; };
 		E1D7031B1B09E06C0035EF13 /* UIImage+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D7031A1B09E06C0035EF13 /* UIImage+Size.m */; };
@@ -105,6 +106,8 @@
 		BB6308E41AF10A0E002DF589 /* QuestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestItem.h; sourceTree = "<group>"; };
 		BB6308E51AF10A0E002DF589 /* QuestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestItem.m; sourceTree = "<group>"; };
 		BB8962571AF1216B0068D150 /* QuestInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestInfoTests.m; sourceTree = "<group>"; };
+		BBD713261B0E017300AB7A0A /* CompletedQuestsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletedQuestsManager.h; sourceTree = "<group>"; };
+		BBD713271B0E017300AB7A0A /* CompletedQuestsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletedQuestsManager.m; sourceTree = "<group>"; };
 		BBEC01761AFB91F2005BC759 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		BBEC01771AFB91F2005BC759 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		E1D64E241AFB58450061EB11 /* CLLocationManager+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocationManager+Addition.h"; sourceTree = "<group>"; };
@@ -443,6 +446,8 @@
 			children = (
 				E1E3EED31AF7A5B70095A6EC /* UserManager.h */,
 				E1E3EED41AF7A5B70095A6EC /* UserManager.m */,
+				BBD713261B0E017300AB7A0A /* CompletedQuestsManager.h */,
+				BBD713271B0E017300AB7A0A /* CompletedQuestsManager.m */,
 			);
 			name = Users;
 			sourceTree = "<group>";
@@ -624,6 +629,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBD713281B0E017300AB7A0A /* CompletedQuestsManager.m in Sources */,
 				E1F45C9C1AF27BD200ACAE6D /* UIColor+Quest.m in Sources */,
 				E1DE76E71AFA2CEA0028E3D2 /* QuestFetchOperation.m in Sources */,
 				E1E3EED51AF7A5B70095A6EC /* UserManager.m in Sources */,
